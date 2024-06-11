@@ -1,0 +1,5 @@
+@mixin keyAnimation ($name) {
+    @keyframes #{$name} {
+        @content
+    }
+}

@@ -1,0 +1,37 @@
+// animations
+@mixin create-animation($name: 'slide',
+  $init: translateY(0) translateX(0),
+  $from: translateX(100%),
+  $to: translateX(100%),
+  $duration: .4s,
+  $duration-out: .6s,
+  $delay: 0s,
+  $ease: linear,
+) {
+
+  .#{$name}-leave,
+  .#{$name}-enter-to {
+    opacity: 1;
+    transform: $init
+  }
+
+  .#{$name}-leave-active,
+  .#{$name}-enter-active {
+    transition: transform $duration $ease $delay, opacity $duration $ease $delay;
+  }
+
+  .#{$name}-leave-active {
+    transition-duration: $duration-out;
+    transition-timing-function: $ease
+  }
+
+  .#{$name}-leave-to {
+    opacity: 0;
+    transform: $to;
+  }
+
+  .#{$name}-enter-from {
+    opacity: 0;
+    transform: $from
+  }
+}
