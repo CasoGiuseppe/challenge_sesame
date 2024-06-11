@@ -11,12 +11,4 @@
     --spacing-70: #{px2rem(calc(useUnit.$unit-base * 4))}; // 32
     --spacing-80: #{px2rem(calc(useUnit.$unit-base * 5))}; // 40
     --spacing-90: #{px2rem(calc(useUnit.$unit-base * 6))}; // 48
-    --spacing-100: #{px2rem(calc(useUnit.$unit-base * useUnit.$unit-base))}; // 64
-    --spacing-110: #{px2rem(calc(useUnit.$unit-base * 10))}; // 80
-    --spacing-120: #{px2rem(calc(useUnit.$unit-base * 12))}; // 96
-    --spacing-130: #{px2rem(calc(useUnit.$unit-base * 15))}; // 120
-    --spacing-140: #{px2rem(calc(useUnit.$unit-base * 16))}; // 128
-    --spacing-150: #{px2rem(calc(useUnit.$unit-base * 25))}; // 200
-    --spacing-170: #{px2rem(calc(useUnit.$unit-base * 37.5))}; // 300
-    --spacing-200: #{px2rem(calc(useUnit.$unit-base * 78.5))}; // 630
 }
