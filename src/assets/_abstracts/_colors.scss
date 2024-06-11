@@ -1,6 +1,10 @@
-// create a global custom variables for colors tokens
-// example:
 :root {
-  --base-c-white: hsla(0, 0%, 100%, 1);
-  --base-c-yellow: hsla(30, 26%, 69%, 1);
+  --logo-100: hsla(227, 100%, 98%, 1);
+  --logo-400: hsla(224, 36%, 56%, 1);
+  --logo-500: hsla(224, 36%, 38%, 1);
+  --logo-600: hsla(224, 45%, 22%, 1);
+
+  --background-200: hsla(214, 32%, 91%, 1);
+  --neutral-300: hsla(213, 27%, 84%, 1);
+  --neutral-100: hsla(0, 0%, 100%, 1);
 }
