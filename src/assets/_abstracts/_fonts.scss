@@ -12,65 +12,10 @@
     --font-style-normal: normal;
     --font-style-bold: bold;
 
-    --font-size-3xl: #{px2rem(calc(30))} / #{px2rem(calc(37.5))};
-    --font-size-base: #{px2rem(calc(16))} / #{px2rem(calc(20))};
-    --font-size-sm: #{px2rem(calc(14))} / #{px2rem(calc(17.5))};
-    --font-size-xs: #{px2rem(calc(12))} / #{px2rem(calc(15))};
+    --font-size-xl: px2rem(calc(30));
+    --font-size-regular: px2rem(calc(16));
+    --font-size-sm: px2rem(calc(14));
+    --font-size-xs: px2rem(calc(12));
 
     --font-underline: underline
-}
-
-:root {
-    // font style
-    // font weight
-    // font size
-    // font line-height
-    // font family
-    --font-display-3xl: 
-        var(--font-style-bold, bold) 
-        var(--font-weight-700, bold) 
-        var(--font-size-3xl, 1rem)
-        var(--font-default-family);
-
-    --font-display-base-bold: 
-        var(--font-style-bold, bold) 
-        var(--font-weight-700, bold) 
-        var(--font-size-base, 1rem)
-        var(--font-default-family);
-
-    --font-display-base-normal: 
-        var(--font-style-normal, normal) 
-        var(--font-weight-400, normal) 
-        var(--font-size-base, 1rem)
-        var(--font-default-family);
-
-    --font-display-base-semibold: 
-        var(--font-style-normal, normal) 
-        var(--font-weight-600, bold) 
-        var(--font-size-base, 1rem)
-        var(--font-default-family);
-
-    --font-display-base-bold: 
-        var(--font-style-bold, bold) 
-        var(--font-weight-700, bold) 
-        var(--font-size-base, 1rem)
-        var(--font-default-family);
-
-    --font-display-sm-normal: 
-        var(--font-style-normal, normal) 
-        var(--font-weight-400, normal) 
-        var(--font-size-sm, 1rem)
-        var(--font-default-family);
-    
-    --font-display-sm-semibold: 
-        var(--font-style-normal, normal) 
-        var(--font-weight-600, normal) 
-        var(--font-size-sm, 1rem)
-        var(--font-default-family);
-
-    --font-display-xs-normal: 
-        var(--font-style-normal, normal) 
-        var(--font-weight-400, normal) 
-        var(--font-size-xs, 1rem)
-        var(--font-default-family);
 }

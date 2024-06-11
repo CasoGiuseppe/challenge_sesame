@@ -24,6 +24,16 @@ export default {
       xxxlg: 'var(--spacing-90, 1rem)' // 64
     },
 
+    borderRadius: {
+      none: 'var(--radius-00, 0)',
+      xsm: 'var(--radius-100, 1rem)', // 4
+      sm: 'var(--radius-200, 1rem)', // 8
+      md: 'var(--radius-300, 1rem)', // 12
+      lg: 'var(--radius-400, 1rem)', // 16
+      xlg: 'var(--radius-500, 1rem)', // 24
+      full: 'var(--radius-600, 1rem)' // 100%
+    },
+
     colors: {
       logo: {
         600: 'var(--color-logo-600, #000)',
@@ -43,6 +53,34 @@ export default {
         none: 'transparent',
       }
     },
+
+    fontFamily: {
+      default: 'var(--font-default-family, Arial)'
+    },
+
+    fontWeight: {
+      regular: 'var(--font-weight-400, 400)', // 400
+      medium: 'var(--font-weight-600, 600)', // 600
+      bold: 'var(--font-weight-700, 700)' // 700
+    },
+
+    fontSize: {
+      xsm: ['var(--font-size-xs)', { lineHeight: '0.938rem' }], // 12
+      sm: ['var(--font-size-sm)', { lineHeight: '1.094rem' }], // 14
+      md: ['var(--font-size-regular)', { lineHeight: '1.25rem' }], // 16
+      xlg: ['var(--font-size-xl)', { lineHeight: '2.344rem' }], // 30
+
+    },
+
+    transitionProperty: {
+      colors:
+        'color, background-color, border-color, text-decoration-color, fill, stroke, outline, box-shadow',
+      transform: 'transform opacity',
+      size: 'width, min-width, height, min-height',
+      spacing: 'margin, padding',
+      opacity: 'opacity'
+    },
+
     extend: {},
   },
   plugins: [],
