@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
 import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue"
-import { ComponentIs, Sizes, Types } from "@app/ui/components/base/base-button/types"
+import { Sizes, Types } from "@app/ui/components/base/base-button/types"
 import { action } from "@storybook/addon-actions"
 import { vueRouter } from "storybook-vue3-router"
+import { Is } from "@app/ui/components/abstracts/component-is/types"
 
 const meta = {
     title: "Base/Base Button",
@@ -14,7 +15,7 @@ const meta = {
         ariaLabel: { control: "text" },
         type: { control: "select", options: Object.values(Types) },
         size: { control: "select", options: Object.values(Sizes) },
-        is: { control: "select", options: Object.values(ComponentIs) },
+        is: { control: "select", options: Object.values(Is) },
         disabled: { control: "radio", options: [true, false] },
         default: { control: "text" },
     },
@@ -24,7 +25,7 @@ const meta = {
         ariaLabel: "button aria title",
         type: Types.PRIMARY,
         size: Sizes.DEFAULT,
-        is: ComponentIs.BUTTON,
+        is: Is.BUTTON,
         disabled: false,
         default: "Button",
     }

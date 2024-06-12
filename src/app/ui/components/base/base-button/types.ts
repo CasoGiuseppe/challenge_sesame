@@ -1,8 +1,3 @@
-export enum ComponentIs {
-    BUTTON = 'button',
-    ROUTERLINK = "router-link"
-}
-
 export enum Types {
     PRIMARY = 'primary',
     SECONDARY = 'secondary',
