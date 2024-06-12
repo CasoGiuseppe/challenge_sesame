@@ -1,7 +1,25 @@
-// create a root (html, body) properties and global tags inital state
-// example:
-html,
-body {
-    margin: 0;
-    padding: 0;
-}
+@layer base {
+    html,
+    body {
+      // @apply min-h-full m-none p-none bg-default-positive font-default;
+      @apply bg-logo-400;
+  
+      * {
+        @apply box-border;
+  
+        &::after,
+        &::before {
+          @apply box-border;
+        }
+  
+        &:is(button) {
+          @apply cursor-pointer bg-none border-none outline-none;
+        }
+  
+        &:is(ul, ol, li, h1, h2, h3, h4, p, form) {
+          @apply m-none p-none list-none;
+        }
+      }
+    }
+  }
+  
