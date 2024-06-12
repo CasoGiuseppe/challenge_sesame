@@ -35,8 +35,8 @@ export default {
     },
 
     boxShadow: {
-      dark: 'var(--shadow-dark-md)',
-      light: 'var(--shadow-light-sm)'
+      dark: '0 10px 8px -2px hsla(224, 45%, 22%, .3)',
+      light: '0 4px 4px 0 hsla(224, 45%, 22%, .3)'
     },
 
     colors: {
