@@ -83,7 +83,8 @@ export default {
       transform: 'transform opacity',
       size: 'width, min-width, height, min-height',
       spacing: 'margin, padding',
-      opacity: 'opacity'
+      opacity: 'opacity',
+      all: 'all'
     },
 
     extend: {},

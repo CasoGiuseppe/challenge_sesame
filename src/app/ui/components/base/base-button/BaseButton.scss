@@ -4,7 +4,7 @@
 
     @apply bg-default-none border-none outline-none; // reset
     @apply text-neutral-100 font-default bg-neutral-300;
-    @apply transition-spacing transition-colors duration-[var(--animationTime)];
+    @apply transition-all duration-[var(--animationTime)];
 
     &:not(:disabled) {
         @apply cursor-pointer;
@@ -30,6 +30,12 @@
                 &#{$basebutton}--is-secondary {
                     @apply bg-logo-400 text-neutral-100
                 }
+            }
+        }
+
+        &#{$basebutton}--has {
+            &-loading {
+                @apply pr-xxlg
             }
         }
     }

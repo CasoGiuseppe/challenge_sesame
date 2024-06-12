@@ -9,7 +9,7 @@
       'base-button',
       `base-button--is-${type}`,
       `base-button--is-${size}`,
-      `base-button--has-${loading}`
+      `${loading ? 'base-button--has-loading' : ''}`
     ]"
   >
     <span :key="isLoadingKey">
