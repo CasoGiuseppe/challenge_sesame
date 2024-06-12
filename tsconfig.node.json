@@ -18,6 +18,7 @@
       "@app/*": ["./src/app/*"],
       "@assets/*": ["./src/assets/*"],
       "@modules/*": ["./src/modules/*"],
+      "@tests/*": ["./src/app/shared/tests/*"],
     }
   }
 }

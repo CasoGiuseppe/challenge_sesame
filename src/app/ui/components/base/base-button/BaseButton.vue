@@ -30,6 +30,7 @@ import { ensureValueCollectionExists } from '@/app/ui/validators/useCustomValida
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import ComponentIs from '@/app/ui/components/abstracts/component-is/ComponentIs.vue';
 import TransitionIs from '@/app/ui/components/abstracts/transition-is/TransitionIs.vue';
+
 const props = defineProps({
   /**
    * Set the unique id of the ui button
