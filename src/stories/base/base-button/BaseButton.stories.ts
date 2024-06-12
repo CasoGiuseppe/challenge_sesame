@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3"
 import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue"
 import { ComponentIs, Sizes, Types } from "@app/ui/components/base/base-button/types"
 import { action } from "@storybook/addon-actions"
+import { ref } from "vue"
 
 const meta = {
     title: "Base/Base Button",
@@ -41,7 +42,7 @@ const Templates: Story = {
         },
         template: `
             <BaseButton v-bind="args">
-                <template #default>{{ args.default }}</template>
+                <template #default>{{ args.loading == false ? args.default : 'cargando' }}</template>
             </BaseButton>
         `,
         methods: {

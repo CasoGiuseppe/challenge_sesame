@@ -1,5 +1,13 @@
 .base-button {
     $basebutton: &;
+    @include create-animation(
+      $name: 'change-button-state',
+      $from: translateY(10%),
+      $to: translateY(-10%),
+      $duration: var(--animationTime),
+      $duration-out: .2s
+    );
+
     @apply bg-default-none border-none outline-none; // reset
 
     @apply flex items-center gap-sm justify-between relative;
@@ -9,6 +17,7 @@
     &:not(:disabled) {
         &:not(#{$basebutton}--has-loading) {
             @apply cursor-pointer;
+
             @media(hover) {
                 &:hover {
                     @apply shadow-light;
@@ -37,10 +46,11 @@
         &#{$basebutton}--has {
             &-loading {
                @apply pr-xxxlg pointer-events-none;
+               @apply bg-logo-500;
 
                 &::after {
                     @apply w-md aspect-square inline-block content-[''] absolute right-xmd;
-                    @apply border-2 border-neutral-100 border-solid border-b-logo-400 rounded-[50%];
+                    @apply border-[1px] border-neutral-100 border-solid border-b-logo-600 rounded-[50%];
                     @apply animate-spinner;
 
                     &#{$basebutton}--is-secondary {

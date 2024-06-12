@@ -12,9 +12,14 @@
       `${loading ? 'base-button--has-loading' : ''}`
     ]"
   >
-    <span :key="isLoadingKey">
-      <slot />
-    </span>
+    <Transition
+      name="change-button-state"
+      mode="out-in"
+    >
+      <span :key="isLoadingKey">
+        <slot>Wait please</slot>
+      </span>
+    </Transition>
   </component>
 </template>
 <script setup lang="ts">
@@ -23,7 +28,7 @@ import { computed, type PropType } from 'vue'
 import { ComponentIs, Sizes, Types } from './types'
 import { ensureValueCollectionExists } from '@/app/ui/validators/useCustomValidator'
 
-const { loading } = defineProps({
+const props = defineProps({
   /**
    * Set the unique id of the ui button
    */
@@ -85,6 +90,6 @@ const { loading } = defineProps({
   },
 })
 
-const isLoadingKey = computed(() => loading ? 'loading' : 'default')
+const isLoadingKey = computed(() => props.loading ? 'loading' : 'default')
 </script>
 <style src="./BaseButton.scss" lang="scss"></style>
