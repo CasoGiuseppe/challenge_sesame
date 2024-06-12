@@ -16,7 +16,10 @@
       name="change-button-state"
       mode="out-in"
     >
-      <span :key="isLoadingKey">
+      <span
+        :key="isLoadingKey"
+        class="base-button__label"
+      >
         <slot>Wait please</slot>
       </span>
     </Transition>
