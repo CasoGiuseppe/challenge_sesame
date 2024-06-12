@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3"
 import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue"
 import { ComponentIs, Sizes, Types } from "@app/ui/components/base/base-button/types"
 import { action } from "@storybook/addon-actions"
-import { ref } from "vue"
+import { vueRouter } from "storybook-vue3-router"
 
 const meta = {
     title: "Base/Base Button",
@@ -55,3 +55,5 @@ export const Default: Story = {
     ...Templates,
     args: {}
 }
+
+Default.decorators = [vueRouter()]

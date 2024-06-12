@@ -1,16 +1,27 @@
 <template>
+  <RouterLink
+    v-if="isInternalLink"
+    v-bind="reactiveProp"
+    :to="to"
+    :class="reactiveClass.filter(res => res !== null)"
+  >
+    <Transition
+      name="change-button-state"
+      mode="out-in"
+    >
+      <span
+        :key="isLoadingKey"
+        class="base-button__label"
+      >
+        <slot>Wait please</slot>
+      </span>
+    </Transition>
+  </RouterLink>
   <component
+    v-else
     :is="is"
-    :disabled="disabled"
-    :aria-disabled="disabled"
-    :aria-invalid="disabled"
-    :aria-label="ariaLabel"
-    :class="[
-      'base-button',
-      `base-button--is-${type}`,
-      `base-button--is-${size}`,
-      `${loading ? 'base-button--has-loading' : ''}`
-    ]"
+    v-bind="reactiveProp"
+    :class="reactiveClass.filter(res => res !== null)"
   >
     <Transition
       name="change-button-state"
@@ -28,7 +39,7 @@
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types'
 import { computed, type PropType } from 'vue'
-import { ComponentIs, Sizes, Types } from './types'
+import { ComponentIs, Sizes, Types, type RouterTo } from './types'
 import { ensureValueCollectionExists } from '@/app/ui/validators/useCustomValidator'
 
 const props = defineProps({
@@ -45,7 +56,7 @@ const props = defineProps({
    */
   is: {
     type: String as PropType<ComponentIs>,
-    default: ComponentIs.BUTTON,
+    default: ComponentIs.ROUTERLINK,
     validator: (prop: ComponentIs) =>
       ensureValueCollectionExists({ collection: ComponentIs, value: prop })
   },
@@ -91,8 +102,44 @@ const props = defineProps({
     type: String as PropType<string>,
     default: 'component aria label'
   },
+
+   /**
+   * Set the router-to object for navigation
+   */
+    to: {
+      type: Object as PropType<RouterTo>,
+      default: () => ({ path: "/" })
+  },
 })
 
 const isLoadingKey = computed(() => props.loading ? 'loading' : 'default')
+const isInternalLink = computed(() => props.is === ComponentIs.ROUTERLINK )
+
+const reactiveProp = computed({
+    get: () => {
+        return {
+            id: props.id,
+            disabled: props.disabled,
+            'aria-disabled':props.disabled,
+            'aria-invalid':props.disabled,
+            'aria-label':props.ariaLabel,
+            'data-testID': "ui-button-test",
+            ...(props.to && { to: props.to })
+         }
+    },
+    set:() => {}
+})
+
+const reactiveClass = computed({
+    get: () => {
+        return [
+            'base-button',
+            `base-button--is-${props.type}`,
+            `base-button--is-${props.size}`,
+            `${props.loading ? 'base-button--has-loading' : null}`
+        ]
+    },
+    set:() => {}
+})
 </script>
 <style src="./BaseButton.scss" lang="scss"></style>

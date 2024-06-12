@@ -1,6 +1,6 @@
 export enum ComponentIs {
     BUTTON = 'button',
-    ANCHOR = 'anchor',
+    ROUTERLINK = "router-link"
 }
 
 export enum Types {
@@ -11,4 +11,10 @@ export enum Types {
 export enum Sizes {
     SMALL = 'small',
     DEFAULT = 'default',
+}
+
+export type RouterTo = {
+    path?: string
+    name?: string
+    query?: { [key: string]: string }
 }

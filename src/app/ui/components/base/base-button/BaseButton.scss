@@ -10,9 +10,13 @@
 
     @apply bg-default-none border-none outline-none; // reset
 
-    @apply flex items-center gap-sm justify-between relative;
+    @apply inline-flex items-center gap-sm justify-between relative;
     @apply text-neutral-100 font-default bg-neutral-300;
     @apply transition-all duration-[var(--animationTime)];
+
+    &:is(a) {
+        @apply no-underline
+    }
 
     &:not(:disabled) {
         &:not(#{$basebutton}--has-loading) {
