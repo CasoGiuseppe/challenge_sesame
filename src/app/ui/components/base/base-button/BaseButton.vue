@@ -14,11 +14,11 @@
       `${props.loading ? 'base-button--has-loading' : null}`
     ]"
   >
-    <Transition name="change-button-state" mode="out-in">
+    <TransitionIs>
       <span :key="isLoadingKey" class="base-button__label">
         <slot>{{ fallback }}</slot>
       </span>
-    </Transition>
+    </TransitionIs>
   </ComponentIs>
 </template>
 <script setup lang="ts">
@@ -28,6 +28,7 @@ import { Sizes, Types, type RouterTo } from './types';
 import { ensureValueCollectionExists } from '@/app/ui/validators/useCustomValidator';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import ComponentIs from '@/app/ui/components/abstracts/component-is/ComponentIs.vue';
+import TransitionIs from '@/app/ui/components/abstracts/transition-is/TransitionIs.vue';
 const props = defineProps({
   /**
    * Set the unique id of the ui button
