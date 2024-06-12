@@ -8,12 +8,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@ui/*": ["./src/app/ui/*"],
-      "@shared/*": ["./src/app/shared/*"],
-      "@router/*": ["./src/app/router/*"],
+      "@app/*": ["./src/app/*"],
       "@assets/*": ["./src/assets/*"],
       "@modules/*": ["./src/modules/*"],
-      "@translation/*": ["./src/app/translation/*"]
     },
     "allowJs": true
   }

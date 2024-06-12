@@ -1,6 +1,6 @@
 import { useI18n } from 'vue-i18n';
 import type { ITranslation } from './interfaces/ITranslation.interface';
-import i18n from '@translation/index';
+import i18n from '@app/translation';
 export default function useTranslation(): ITranslation {
     const { global: { availableLocales, locale }} = i18n;
     const { t, te } = useI18n({
