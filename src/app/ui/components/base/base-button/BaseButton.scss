@@ -1,0 +1,23 @@
+.base-button {
+    $basebutton: &;
+
+    @apply bg-default-none border-none outline-none; // reset
+    @apply text-neutral-100 font-default;
+
+    &:not(disabled) {
+        @apply cursor-pointer
+    }
+
+    background: red;
+    &--is {
+        &-default {
+            @apply px-md py-xmd;
+            @apply rounded-lg text-sm
+        }
+
+        &-small {
+            @apply px-xmd py-sm;
+            @apply rounded-md text-md
+        }
+    }
+}

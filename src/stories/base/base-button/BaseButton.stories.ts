@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
 import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue"
-import { ComponentIs, Types } from "@app/ui/components/base/base-button/types"
+import { ComponentIs, Sizes, Types } from "@app/ui/components/base/base-button/types"
 import { action } from "@storybook/addon-actions"
 
 const meta = {
@@ -11,6 +11,7 @@ const meta = {
         id: { control: "text" },
         ariaLabel: { control: "text" },
         type: { control: "select", options: Object.values(Types) },
+        size: { control: "select", options: Object.values(Sizes) },
         is: { control: "select", options: Object.values(ComponentIs) },
         disabled: { control: "radio", options: [true, false] },
         loading: { control: "radio", options: [true, false] },
@@ -20,10 +21,11 @@ const meta = {
         id: "defaultID",
         ariaLabel: "button aria title",
         type: Types.PRIMARY,
+        size: Sizes.DEFAULT,
         is: ComponentIs.BUTTON,
         disabled: false,
         loading: false,
-        default: "Default Button",
+        default: "Button",
     }
 } satisfies Meta<typeof BaseButton>
 

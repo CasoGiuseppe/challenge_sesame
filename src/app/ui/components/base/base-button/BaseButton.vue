@@ -8,6 +8,7 @@
     :class="[
       'base-button',
       `base-button--is-${type}`,
+      `base-button--is-${size}`,
       `base-button--has-${loading}`
     ]"
   >
@@ -19,7 +20,7 @@
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types'
 import { computed, type PropType } from 'vue'
-import { ComponentIs, Types } from './types'
+import { ComponentIs, Sizes, Types } from './types'
 import { ensureValueCollectionExists } from '@/app/ui/validators/useCustomValidator'
 
 const { loading } = defineProps({
@@ -51,6 +52,15 @@ const { loading } = defineProps({
   },
 
   /**
+   * Set the button size type [small, default]
+   */
+   size: {
+    type: String as PropType<Sizes>,
+    default: Sizes.DEFAULT,
+    validator: (prop: Sizes) => ensureValueCollectionExists({ collection: Sizes, value: prop })
+  },
+
+  /**
    * Set the disabled button state
    */
    disabled: {
@@ -77,3 +87,4 @@ const { loading } = defineProps({
 
 const isLoadingKey = computed(() => loading ? 'loading' : 'default')
 </script>
+<style src="./BaseButton.scss" lang="scss"></style>
