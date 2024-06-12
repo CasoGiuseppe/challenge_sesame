@@ -7,17 +7,22 @@
     :aria-label="ariaLabel"
     :class="[
       'base-button',
-      `base-button--is-${type}`
+      `base-button--is-${type}`,
+      `base-button--has-${loading}`
     ]"
-  ></component>
+  >
+    <span :key="isLoadingKey">
+      <slot />
+    </span>
+  </component>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types'
-import type { PropType } from 'vue'
+import { computed, type PropType } from 'vue'
 import { ComponentIs, Types } from './types'
 import { ensureValueCollectionExists } from '@/app/ui/validators/useCustomValidator'
 
-defineProps({
+const { loading } = defineProps({
   /**
    * Set the unique id of the ui button
    */
@@ -54,6 +59,14 @@ defineProps({
   },
 
   /**
+   * Set the loading button state
+   */
+   loading: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
+
+  /**
    * Set the aria accesibility label
    */
    ariaLabel: {
@@ -61,4 +74,6 @@ defineProps({
     default: 'component aria label'
   },
 })
+
+const isLoadingKey = computed(() => loading ? 'loading' : 'default')
 </script>
