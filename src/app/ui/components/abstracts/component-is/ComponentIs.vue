@@ -21,7 +21,7 @@ import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidat
 const { is } = defineProps({
     is: {
         type: String as PropType<Is>,
-        default: Is.ROUTERLINK,
+        default: Is.BUTTON,
         required: true,
         validator: (prop: Is) => ensureValueCollectionExists({ collection: Is, value: prop })
     }

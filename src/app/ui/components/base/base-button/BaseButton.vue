@@ -13,6 +13,7 @@
       `base-button--is-${props.size}`,
       `${props.loading ? 'base-button--has-loading' : null}`
     ]"
+    @click="handleEmitClick"
   >
     <TransitionIs>
       <span :key="isLoadingKey" class="base-button__label">
@@ -43,7 +44,8 @@ const props = defineProps({
    */
   is: {
     type: String as PropType<Is>,
-    default: ComponentIs.ROUTERLINK,
+    default: Is.BUTTON,
+    required: true,
     validator: (prop: Is) =>
       ensureValueCollectionExists({ collection: Is, value: prop })
   },
@@ -101,6 +103,12 @@ const props = defineProps({
 
 const fallback = ref<string>('Please wait');
 const isLoadingKey = computed(() => (props.loading ? 'loading' : 'default'));
+const isTypeLink = computed(() => (props.is === Is.ROUTERLINK));
 
+const emits = defineEmits(['send']);
+const handleEmitClick = () => {
+  if(isTypeLink.value) return 
+  emits('send')
+};
 </script>
 <style src="./BaseButton.scss" lang="scss"></style>

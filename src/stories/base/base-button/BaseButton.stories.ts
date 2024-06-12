@@ -42,7 +42,7 @@ const Templates: Story = {
             return { args }
         },
         template: `
-            <BaseButton v-bind="args">
+            <BaseButton v-bind="args" @send="action">
                 <template #default>{{ args.loading == false ? args.default : 'cargando' }}</template>
             </BaseButton>
         `,
