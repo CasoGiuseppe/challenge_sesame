@@ -34,6 +34,11 @@ export default {
       full: 'var(--radius-600, 1rem)' // 100%
     },
 
+    boxShadow: {
+      dark: 'var(--shadow-dark-md)',
+      light: 'var(--shadow-light-sm)'
+    },
+
     colors: {
       logo: {
         600: 'var(--color-logo-600, #000)',

@@ -1,0 +1,14 @@
+:root {
+    --elevation-100-size: 0 4px 4px 0;
+    --elevation-200-size: 0 10px 8px -2px;
+  }
+
+  :root {
+    --shadow-light-sm:
+      var(--elevation-100-size, 0 0 0 0)
+      hsla(var(--color-logo-600), .3);
+
+    --shadow-dark-md:
+      var(--elevation-200-size, 0 0 0 0)
+      hsla(var(--color-logo-600), .3);
+ }
