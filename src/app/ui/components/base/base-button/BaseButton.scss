@@ -7,39 +7,45 @@
     @apply transition-all duration-[var(--animationTime)];
 
     &:not(:disabled) {
-        @apply cursor-pointer;
+        &:not(#{$basebutton}--has-loading) {
+            @apply cursor-pointer;
+            @media(hover) {
+                &:hover {
+                    @apply shadow-light;
 
-        @media(hover) {
-            &:hover {
-                @apply shadow-light;
+                    &#{$basebutton}--is-primary {
+                        @apply bg-logo-400
+                    }
 
-                &#{$basebutton}--is-primary {
-                    @apply bg-logo-400
+                    &#{$basebutton}--is-secondary {
+                        @apply bg-logo-100
+                    }
                 }
 
-                &#{$basebutton}--is-secondary {
-                    @apply bg-logo-100
-                }
-            }
+                &:active {
+                    &#{$basebutton}--is-primary {
+                        @apply bg-logo-500
+                    }
 
-            &:active {
-                &#{$basebutton}--is-primary {
-                    @apply bg-logo-500
-                }
-
-                &#{$basebutton}--is-secondary {
-                    @apply bg-logo-400 text-neutral-100
+                    &#{$basebutton}--is-secondary {
+                        @apply bg-logo-400 text-neutral-100
+                    }
                 }
             }
         }
 
         &#{$basebutton}--has {
             &-loading {
-               @apply gap-md;
+               @apply pr-xxxlg pointer-events-none;
 
                 &::after {
-                    @apply w-md aspect-square inline-block content-[''];
+                    @apply w-md aspect-square inline-block content-[''] absolute right-xmd;
                     @apply border-2 border-neutral-100 border-solid border-b-logo-400 rounded-[50%];
+                    @apply animate-spinner;
+
+                    &#{$basebutton}--is-secondary {
+                        @apply border-logo-400 border-b-neutral-300
+                    }
                 }
             }
         }

@@ -9,22 +9,22 @@ const meta = {
     tags: ["autodocs"],
     argTypes: {
         id: { control: "text" },
+        loading: { control: "radio", options: [true, false] },
         ariaLabel: { control: "text" },
         type: { control: "select", options: Object.values(Types) },
         size: { control: "select", options: Object.values(Sizes) },
         is: { control: "select", options: Object.values(ComponentIs) },
         disabled: { control: "radio", options: [true, false] },
-        loading: { control: "radio", options: [true, false] },
         default: { control: "text" },
     },
     args: {
+        loading: false,
         id: "defaultID",
         ariaLabel: "button aria title",
         type: Types.PRIMARY,
         size: Sizes.DEFAULT,
         is: ComponentIs.BUTTON,
         disabled: false,
-        loading: false,
         default: "Button",
     }
 } satisfies Meta<typeof BaseButton>
