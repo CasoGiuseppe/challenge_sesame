@@ -1,18 +1,20 @@
 <template>
   <label
     :id="id"
-    :aria-disabled="readonly"
-    :aria-readonly="readonly"
     :loading="loading"
     class="base-input"
   >
     <input
+      :aria-disabled="readonly"
+      :aria-readonly="readonly"
+      :aria-placeholder="placeholder"
       :readonly="readonly"
       :type="type"
       :pattern="pattern"
       :placeholder="placeholder"
       :required="required"
       v-model.lazy="value"
+      autocomplete="one-time-code"
       class="base-input__field"
     />
   </label>

@@ -3,6 +3,21 @@
 
     @apply py-sm px-xmd flex gap-xsm;
     @apply bg-background-300 border-background-200 border-solid border-[1px] rounded-xlg;
+    @apply transition-colors duration-[var(--animationTime)];
+
+    &:focus-within {
+        &:not(:has(input:hover)) {
+            @apply shadow-focus
+        }
+    }
+
+    @media (hover) {
+        &:hover {
+            &:not(:has(input:invalid)) {
+                @apply shadow-hover
+            }
+        }
+    }
 
     &__field {
         @apply bg-default-none border-none font-default text-md outline-none text-logo-300 w-full;
