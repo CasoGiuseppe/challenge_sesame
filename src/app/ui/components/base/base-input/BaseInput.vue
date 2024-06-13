@@ -2,30 +2,32 @@
   <label
     :id="id"
     :loading="loading"
+    :dirty="dirty"
     class="base-input"
   >
     <input
       :aria-disabled="readonly"
       :aria-readonly="readonly"
       :aria-placeholder="placeholder"
-      :readonly="readonly"
+      :readonly="readonly || loading"
       :type="type"
       :pattern="pattern"
       :placeholder="placeholder"
-      :required="required"
       v-model.lazy="value"
       autocomplete="one-time-code"
       class="base-input__field"
+      @input="updateValue"
     />
   </label>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types';
-import type { PropType } from 'vue';
+import { ref, type PropType } from 'vue';
 import { Types } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 const value = defineModel("proxyValue")
+const dirty = ref<boolean>(false)
 const { proxyValue } = defineProps({
   /**
    * Set the unique id of the ui input
@@ -59,14 +61,6 @@ const { proxyValue } = defineProps({
   },
 
   /**
-   * Set the required property
-   */
-  required: {
-    type: Boolean as PropType<boolean>,
-    default: false
-  },
-
-  /**
    * Set allowed input pattern [example: [A-Za-z0-9_]{5,}]
    */
   pattern: {
@@ -89,5 +83,16 @@ const { proxyValue } = defineProps({
     default: false
   }
 });
+
+const updateValue = (payload: Event) => {
+    const { value } = payload.target as HTMLInputElement
+    if(value.length === 0) {
+      dirty.value = false
+      return
+    }
+    
+    dirty.value === false ? (dirty.value = true) : null
+    // customEmits("update:modelValue", value)
+}
 </script>
 <style src="./BaseInput.scss" lang="scss"></style>

@@ -5,15 +5,27 @@
     @apply bg-background-300 border-background-200 border-solid border-[1px] rounded-xlg;
     @apply transition-colors duration-[var(--animationTime)];
 
-    &:focus-within {
-        &:not(:has(input:hover)) {
-            @apply shadow-focus
+    &:not(:has(input:invalid)) {
+        &:focus-within {
+            &:not(:has(input:hover)) {
+                @apply shadow-focus
+            }
+        }
+    }
+
+    &[dirty=true] {
+        &:has(input:invalid) {
+            @apply shadow-invalid
+        }
+    
+        &:has(input:valid) {
+            @apply shadow-valid
         }
     }
 
     @media (hover) {
         &:hover {
-            &:not(:has(input:invalid)) {
+            &:not(:has(input:invalid)):not(:has(input:valid)) {
                 @apply shadow-hover
             }
         }
