@@ -5,7 +5,6 @@
     :aria-disabled="disabled"
     :aria-invalid="disabled"
     :aria-label="ariaLabel"
-    :data-testID="`ui-button-test`"
     :is="is"
     :class="[
       'base-button',
@@ -13,10 +12,15 @@
       `base-button--is-${props.size}`,
       `${props.loading ? 'base-button--has-loading' : null}`
     ]"
+    data-testID="ui-button-test"
     @click="handleEmitClick"
   >
     <TransitionIs>
-      <span :key="isLoadingKey" class="base-button__label">
+      <span
+        :key="isLoadingKey"
+        class="base-button__label"
+        data-testID="ui-button-test-label"
+      >
         <slot>{{ fallback }}</slot>
       </span>
     </TransitionIs>

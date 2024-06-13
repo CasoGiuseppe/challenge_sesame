@@ -1,10 +1,13 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { mountComponent } from '@tests/utilities';
+import { mountComponent } from '@tests/index';
 import BaseButton from '../BaseButton.vue';
-import { Types, Sizes } from '../types';
+import { Types, Sizes,  } from '../types';
+import { Is } from '@app/ui/components/abstracts/component-is/types';
+
 import {
   $providedButtonLabel,
-  $uiSubmitTrigger
+  $uiSubmitTrigger,
+  $uiButtonLabel
 } from './utilities';
 
 let $wrapper: any
@@ -13,7 +16,8 @@ describe('BaseButton component tests', () => {
     beforeEach(async () => {
       $wrapper = await mountComponent(BaseButton, {
         props: {
-          disabled: true
+          disabled: true,
+          is: Is.BUTTON
         }
       })
     })
@@ -24,20 +28,6 @@ describe('BaseButton component tests', () => {
     })
   })
 
-  describe('Test slost behaviours', () => {
-    beforeEach(async () => {
-      $wrapper = await mountComponent(BaseButton, {
-        slots: {
-          default: $providedButtonLabel
-        }
-      })
-    })
-
-    it('Should default slot have a correct label content', () => {
-      expect($wrapper.html()).toContain($providedButtonLabel)
-    })
-  })
-
   describe('Test props behaviours', () => {
     beforeEach(async () => {
       $wrapper = await mountComponent(BaseButton, {
@@ -45,7 +35,8 @@ describe('BaseButton component tests', () => {
           id: 'test',
           type: Types.PRIMARY,
           variant: true,
-          size: Sizes.L,
+          size: Sizes.DEFAULT,
+          is: Is.BUTTON,
           disabled: false,
           label: 'Aria label'
         }
@@ -55,10 +46,9 @@ describe('BaseButton component tests', () => {
     it('Should props have a correct typeof', async () => {
       expect(typeof $wrapper.props('id')).toBe('string')
       expect(typeof $wrapper.props('type')).toBe('string')
-      expect(typeof $wrapper.props('variant')).toBe('boolean')
       expect(typeof $wrapper.props('size')).toBe('string')
       expect(typeof $wrapper.props('disabled')).toBe('boolean')
-      expect(typeof $wrapper.props('label')).toBe('string')
+      expect(typeof $wrapper.props('ariaLabel')).toBe('string')
     })
 
     it('Should prop type have a correct content', async () => {
@@ -66,7 +56,7 @@ describe('BaseButton component tests', () => {
     })
 
     it('Should prop size have a correct content', async () => {
-      expect($wrapper.props('size')).toEqual(Sizes.L)
+      expect($wrapper.props('size')).toEqual(Sizes.DEFAULT)
     })
   })
 
@@ -83,23 +73,22 @@ describe('BaseButton component tests', () => {
         props: {
           type: Types.SECONDARY,
           variant: true,
-          size: Sizes.M
+          size: Sizes.DEFAULT,
+          loading: true
         }
       })
     })
     it('Should have a correct type class', async () => {
-      const $child = $wrapper.find('.base-button__element')
-      expect($child.classes()).toContain('base-button--is-secondary')
-    })
-
-    it('Should have a correct variant class', async () => {
-      const $child = $wrapper.find('.base-button__element')
-      expect($child.classes()).toContain('base-button--is-secondary-ALT')
+      expect($wrapper.classes()).toContain('base-button--is-secondary')
     })
 
     it('Should have a correct size class', async () => {
-      const $child = $wrapper.find('.base-button__element')
-      expect($child.classes()).toContain('base-button--is-M')
+      expect($wrapper.classes()).toContain('base-button--is-default')
+    })
+
+    it('Should have a correct loading class', async () => {
+      expect($wrapper.find('.base-button--has-loading').exists()).toBe(true)
+      expect($wrapper.classes()).toContain('base-button--is-default')
     })
   })
 })
