@@ -6,6 +6,7 @@
     class="base-input"
   >
     <input
+      data-testID="ui-input"
       :aria-disabled="readonly"
       :aria-readonly="readonly"
       :aria-placeholder="placeholder"
