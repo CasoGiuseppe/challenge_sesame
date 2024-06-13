@@ -5,12 +5,13 @@
     :aria-disabled="disabled"
     :aria-invalid="disabled"
     :aria-label="ariaLabel"
+    :aria-loading="loading"
     :is="is"
+    :loading="loading"
     :class="[
       'base-button',
-      `base-button--is-${props.type}`,
-      `base-button--is-${props.size}`,
-      `${props.loading ? 'base-button--has-loading' : null}`
+      `base-button--is-${type}`,
+      `base-button--is-${size}`,
     ]"
     data-testID="ui-button-test"
     @click="handleEmitClick"

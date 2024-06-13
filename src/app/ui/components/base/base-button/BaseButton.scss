@@ -18,8 +18,14 @@
         @apply no-underline
     }
 
+    &:focus-within {
+        &:not(:hover) {
+            @apply shadow-focus
+        }
+    }
+
     &:not(:disabled) {
-        &:not(#{$basebutton}--has-loading) {
+        &:not([laoding=true]) {
             @apply cursor-pointer;
 
             @media(hover) {
@@ -47,19 +53,17 @@
             }
         }
 
-        &#{$basebutton}--has {
-            &-loading {
-               @apply pr-xxxlg pointer-events-none;
-               @apply bg-logo-500;
+        &[loading=true] {
+            @apply pr-xxxlg pointer-events-none;
+            @apply bg-logo-500;
 
-                &::after {
-                    @apply w-md aspect-square inline-block content-[''] absolute right-xmd;
-                    @apply border-[1px] border-neutral-100 border-solid border-b-logo-600 rounded-[50%];
-                    @apply animate-spinner;
+            &::after {
+                @apply w-md aspect-square inline-block content-[''] absolute right-xmd;
+                @apply border-[1px] border-neutral-100 border-solid border-b-logo-600 rounded-[50%];
+                @apply animate-spinner;
 
-                    &#{$basebutton}--is-secondary {
-                        @apply border-logo-400 border-b-neutral-300
-                    }
+                &#{$basebutton}--is-secondary {
+                    @apply border-logo-400 border-b-neutral-300
                 }
             }
         }

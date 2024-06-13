@@ -1,7 +1,7 @@
 .base-input {
     $baseinput: &;
 
-    @apply py-sm px-xmd flex gap-xsm;
+    @apply py-sm px-xmd flex items-center gap-xsm relative;
     @apply bg-background-300 border-background-200 border-solid border-[1px] rounded-xlg;
     @apply transition-colors duration-[var(--animationTime)];
 
@@ -16,6 +16,16 @@
             &:not(:has(input:invalid)) {
                 @apply shadow-hover
             }
+        }
+    }
+
+    &[loading=true] {
+        @apply pointer-events-none;
+
+        &::after {
+            @apply w-md aspect-square inline-block content-[''];
+            @apply border-[1px] border-neutral-300 border-solid border-b-logo-300 rounded-[50%];
+            @apply animate-spinner;
         }
     }
 
