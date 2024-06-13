@@ -32,6 +32,52 @@ const props = defineProps({
     type: String as PropType<Types>,
     default: Types.TEXT,
     validator: (prop: Types) => ensureValueCollectionExists({ collection: Types, value: prop })
+  },
+
+  /**
+   * Set the start placeholder value
+   */
+  placeholder: {
+    type: String as PropType<string>
+  },
+
+  /**
+   * Set the required property
+   */
+  required: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
+
+  /**
+   * Handle disabled state
+   */
+  disabled: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
+
+  /**
+   * Set allowed input pattern [example: [A-Za-z0-9_]{5,}]
+   */
+  pattern: {
+    type: String as PropType<string>
+  },
+
+  /**
+   * Handle loading state
+   */
+  loading: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
+
+  /**
+   * Handle readonly state
+   */
+  readonly: {
+    type: Boolean as PropType<boolean>,
+    default: false
   }
 });
 </script>
