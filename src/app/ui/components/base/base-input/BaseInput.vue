@@ -1,6 +1,20 @@
 <template>
-  <label class="base-input">
-    <input />
+  <label
+    :id="id"
+    :aria-disabled="readonly"
+    :aria-readonly="readonly"
+    :loading="loading"
+    class="base-input"
+  >
+    <input
+      :readonly="readonly"
+      :type="type"
+      :pattern="pattern"
+      :placeholder="placeholder"
+      :required="required"
+      v-model.lazy="value"
+      class="base-input__field"
+    />
   </label>
 </template>
 <script setup lang="ts">
@@ -9,7 +23,8 @@ import type { PropType } from 'vue';
 import { Types } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
-const props = defineProps({
+const value = defineModel("proxyValue")
+const { proxyValue } = defineProps({
   /**
    * Set the unique id of the ui input
    */
@@ -73,3 +88,4 @@ const props = defineProps({
   }
 });
 </script>
+<style src="./BaseInput.scss" lang="scss"></style>

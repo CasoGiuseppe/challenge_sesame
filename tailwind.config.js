@@ -43,10 +43,12 @@ export default {
         600: 'var(--color-logo-600, #000)',
         500: 'var(--color-logo-500, #000)',
         400: 'var(--color-logo-400, #000)',
+        300: 'var(--color-logo-300, #000)',
         100: 'var(--color-logo-100, #000)'
       },
       background: {
-        200: 'var(--color-background-200, #000)'
+        200: 'var(--color-background-200, #000)',
+        300: 'var(--color-background-300, #000)'
       },
       neutral: {
         300: 'var(--color-neutral-300, #000)',

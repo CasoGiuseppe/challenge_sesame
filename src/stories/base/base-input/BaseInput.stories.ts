@@ -19,7 +19,7 @@ const meta = {
     },
     args: {
         id: 'inputID',
-        type: Types.TEXT,
+        type: Types.SEARCH,
         placeholder: 'Add here your text',
         required: false,
         loading: false,

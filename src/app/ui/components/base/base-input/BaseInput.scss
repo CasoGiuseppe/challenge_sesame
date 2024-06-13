@@ -1,0 +1,23 @@
+.base-input {
+    $baseinput: &;
+
+    @apply py-sm px-xmd flex gap-xsm;
+    @apply bg-background-300 border-background-200 border-solid border-[1px] rounded-xlg;
+
+    &__field {
+        @apply bg-default-none border-none font-default text-md outline-none text-logo-300 w-full;
+
+        &::placeholder {
+            @apply text-logo-300
+        }
+
+        &:is(input[type="search"]) {
+            &::-webkit-search-decoration,
+            &::-webkit-search-cancel-button,
+            &::-webkit-search-results-button,
+            &::-webkit-search-results-decoration {
+                -webkit-appearance:none;
+            }
+        }
+    }
+}
