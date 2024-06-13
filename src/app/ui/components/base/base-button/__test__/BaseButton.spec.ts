@@ -5,9 +5,7 @@ import { Types, Sizes,  } from '../types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 
 import {
-  $providedButtonLabel,
   $uiSubmitTrigger,
-  $uiButtonLabel
 } from './utilities';
 
 let $wrapper: any
@@ -87,8 +85,8 @@ describe('BaseButton component tests', () => {
     })
 
     it('Should have a correct loading class', async () => {
+      expect($wrapper.classes()).toContain('base-button--has-loading')
       expect($wrapper.find('.base-button--has-loading').exists()).toBe(true)
-      expect($wrapper.classes()).toContain('base-button--is-default')
     })
   })
 })
