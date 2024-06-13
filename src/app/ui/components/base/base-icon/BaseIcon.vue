@@ -1,0 +1,43 @@
+<template>
+  <picture class="base-icon">
+    <component
+      data-testID="ui-icon"
+      v-if="name !== null"
+      :is="asyncComponent"
+      :id="id"
+      :class="[ `base-icon--is-${size}` ]"
+    />
+  </picture>
+</template>
+<script setup lang="ts">
+import { type PropType } from 'vue';
+import type { UniqueId } from '@app/ui/types';
+import { Sizes } from './types';
+import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
+
+const props = defineProps({
+  /**
+   * Set the unique id of the ui button
+   */
+  id: {
+    type: String as PropType<UniqueId>,
+    default: 'iconId'
+  },
+
+  /**
+   * Set icon name to get svg file
+   */
+  name: {
+    type: String as PropType<string>,
+  },
+
+  /**
+   * Set the icon size [L, M]
+   */
+  size: {
+    type: String as PropType<Sizes>,
+    default: Sizes.M,
+    validator: (prop: Sizes) => ensureValueCollectionExists({ collection: Sizes, value: prop })
+  }
+})
+</script>
