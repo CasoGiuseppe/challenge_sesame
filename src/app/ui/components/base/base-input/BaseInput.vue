@@ -84,15 +84,17 @@ const { proxyValue } = defineProps({
   }
 });
 
+const customEmits = defineEmits(["update:modelValue",])
 const updateValue = (payload: Event) => {
     const { value } = payload.target as HTMLInputElement
     if(value.length === 0) {
       dirty.value = false
       return
     }
-    
+
     dirty.value === false ? (dirty.value = true) : null
-    // customEmits("update:modelValue", value)
+    customEmits("update:modelValue", value)
 }
+
 </script>
 <style src="./BaseInput.scss" lang="scss"></style>
