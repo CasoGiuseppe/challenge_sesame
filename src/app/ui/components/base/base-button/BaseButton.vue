@@ -51,7 +51,6 @@ const props = defineProps({
   is: {
     type: String as PropType<Is>,
     default: Is.BUTTON,
-    required: true,
     validator: (prop: Is) =>
       ensureValueCollectionExists({ collection: Is, value: prop })
   },

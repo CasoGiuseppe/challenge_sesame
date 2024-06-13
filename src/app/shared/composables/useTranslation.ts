@@ -11,7 +11,6 @@ export default function useTranslation(): ITranslation {
     
     /**
      * Method to return locale translation string
-     * @date 26/2/2024 - 0:48:07
      * @param {string} key - translation locale key name
      * @param {string} option - record of parameters for locale translation options
      * @returns {string} - translation string or default value if locale translation is not found
@@ -23,7 +22,6 @@ export default function useTranslation(): ITranslation {
 
     /**
      * Method to set a new translation locale value
-     * @date 26/2/2024 - 1:31:03
      * @param {string} newLocale - new translation locale value
      * @returns {void}
      */

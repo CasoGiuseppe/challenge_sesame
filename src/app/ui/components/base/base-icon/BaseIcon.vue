@@ -3,7 +3,7 @@
     <component
       data-testID="ui-icon"
       v-if="name !== null"
-      :is="asyncComponent"
+      :is="asyncIcon"
       :id="id"
       :class="[ `base-icon--is-${size}` ]"
     />
@@ -14,8 +14,10 @@ import { type PropType } from 'vue';
 import type { UniqueId } from '@app/ui/types';
 import { Sizes } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
+import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
 
-const props = defineProps({
+const { create } = useAsyncComponent();
+const { name } = defineProps({
   /**
    * Set the unique id of the ui button
    */
@@ -29,6 +31,7 @@ const props = defineProps({
    */
   name: {
     type: String as PropType<string>,
+      required: true
   },
 
   /**
@@ -40,4 +43,7 @@ const props = defineProps({
     validator: (prop: Sizes) => ensureValueCollectionExists({ collection: Sizes, value: prop })
   }
 })
+
+const asyncIcon = await create({ component: `elements/icons/${name}` })
 </script>
+<style src="./BaseIcon.scss" lang="scss"></style>

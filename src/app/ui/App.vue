@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import BaseButton from './components/base/base-button/BaseButton.vue';
+import BaseIcon from './components/base/base-icon/BaseIcon.vue'
 </script>
 
 <template>
+  <Suspense>
   <!-- <Suspense>
     <section class="app">
       <RouterView v-slot="{ Component }">
@@ -10,7 +12,8 @@ import BaseButton from './components/base/base-button/BaseButton.vue';
       </RouterView>
     </section>
   </Suspense> -->
-  <BaseButton><template #default>ciccio</template></BaseButton>
+  <BaseIcon name="IconSearch" />
+</Suspense>
 </template>
 <style scoped lang="scss">
 .app {

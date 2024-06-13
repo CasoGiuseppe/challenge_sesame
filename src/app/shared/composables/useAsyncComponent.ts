@@ -4,6 +4,12 @@ import type { IAsyncComponent } from "./interfaces/IAsyncComponent";
 // import UserDefaultLoader from "@ui/defaults/loaders/default-loader/DefaultLoader.vue";
 
 export default function useAsyncComponent(): IAsyncComponent {
+  /**
+     * Method to return an async component loaded
+     * @param {string} component - component path/name
+     * @returns {string} - vue component istance
+     */
+
   const create = async ({
     component,
     // error = UserDefaultError,
@@ -12,7 +18,7 @@ export default function useAsyncComponent(): IAsyncComponent {
     return await defineAsyncComponent({
       // errorComponent: error,
       // loadingComponent: loader,
-      loader: () => import (/* @vite-ignore */ `../../${ component }.vue`)
+      loader: () => import (/* @vite-ignore */ `../../ui/components/${ component }.vue`)
     })
   }
 

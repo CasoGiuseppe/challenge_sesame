@@ -1,0 +1,19 @@
+.base-icon {
+    $baseicon: &;
+
+    @apply h-auto aspect-square flex items-center justify-center;
+
+    > svg {
+        @apply flex items-center justify-center;
+    }
+
+    &--is {
+        &-M {
+            @apply w-md;
+        }
+
+        &-L {
+            @apply w-lg;
+        }
+    }
+}
