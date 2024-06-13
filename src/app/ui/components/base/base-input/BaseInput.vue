@@ -50,14 +50,6 @@ const props = defineProps({
   },
 
   /**
-   * Handle disabled state
-   */
-  disabled: {
-    type: Boolean as PropType<boolean>,
-    default: false
-  },
-
-  /**
    * Set allowed input pattern [example: [A-Za-z0-9_]{5,}]
    */
   pattern: {
