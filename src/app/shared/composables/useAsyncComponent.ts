@@ -9,7 +9,7 @@ export default function useAsyncComponent(): IAsyncComponent {
      * @param {string} component - component path/name
      * @param {Component} error - component instance to handle error state
      * @param {Component} loader - component instace to handle loading state
-     * @returns {string} - vue component istance
+     * @returns {Promise<Component>} - vue component instance promise
      */
 
   const create = async ({
