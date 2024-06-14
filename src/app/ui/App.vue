@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BaseButton from './components/base/base-button/BaseButton.vue';
-import BaseIcon from './components/base/base-icon/BaseIcon.vue'
+import BaseIcon from './components/base/base-icon/BaseIcon.vue';
+import LoadingState from './components/states/default/loading-state/LoadingState.vue'
 </script>
 
 <template>
@@ -12,7 +13,10 @@ import BaseIcon from './components/base/base-icon/BaseIcon.vue'
       </RouterView>
     </section>
   </Suspense> -->
-  <BaseIcon name="IconSearch" />
+  <div>
+    <LoadingState></LoadingState>
+    <BaseIcon name="IconSearch" />
+  </div>
 </Suspense>
 </template>
 <style scoped lang="scss">
