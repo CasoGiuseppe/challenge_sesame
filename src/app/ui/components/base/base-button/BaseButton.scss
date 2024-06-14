@@ -72,12 +72,12 @@
     &--is {
         &-default {
             @apply px-md py-xmd;
-            @apply rounded-lg text-sm
+            @apply rounded-lg text-md
         }
 
         &-small {
             @apply px-xmd py-sm;
-            @apply rounded-md text-md
+            @apply rounded-md text-sm
         }
 
         &-primary {

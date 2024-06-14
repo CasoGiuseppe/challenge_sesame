@@ -1,0 +1,28 @@
+.error-state {
+    @apply flex flex-col items-center;
+    @apply text-warning-100;
+
+    &__icon {
+        @apply w-lg aspect-square flex items-center justify-center relative;
+        @apply border-warning-100 border-[2px] rounded-full bg-warning-100;
+
+        &::before,
+        &::after {
+            @apply h-[1px] w-[50%] absolute;
+            @apply content-[''] bg-neutral-100;
+            @apply origin-center
+        }
+
+        &:before {
+            @apply rotate-45
+        }
+
+        &:after {
+            @apply rotate-[-45deg]
+        }
+    }
+
+    &__message {
+        @apply font-default text-xsm;
+    }
+}

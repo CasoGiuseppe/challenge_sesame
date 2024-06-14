@@ -1,8 +1,7 @@
 @layer base {
     html,
     body {
-      // @apply min-h-full m-none p-none bg-default-positive font-default;
-      @apply bg-logo-400;
+      @apply min-h-full m-none p-none font-default;
   
       * {
         @apply box-border;

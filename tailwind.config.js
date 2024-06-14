@@ -81,6 +81,7 @@ export default {
     },
 
     fontSize: {
+      xxsm: ['var(--font-size-xxs)', { lineHeight: 'normal' }], // 8
       xsm: ['var(--font-size-xs)', { lineHeight: '0.938rem' }], // 12
       sm: ['var(--font-size-sm)', { lineHeight: '1.094rem' }], // 14
       md: ['var(--font-size-regular)', { lineHeight: '1.25rem' }], // 16
