@@ -20,12 +20,12 @@ const meta = {
         default: { control: "text" },
     },
     args: {
-        loading: false,
         id: "defaultID",
         ariaLabel: "button aria title",
         type: Types.PRIMARY,
         size: Sizes.DEFAULT,
         is: Is.BUTTON,
+        loading: false,
         disabled: false,
         default: "Button",
     }

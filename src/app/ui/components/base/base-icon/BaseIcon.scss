@@ -1,7 +1,7 @@
 .base-icon {
     $baseicon: &;
 
-    @apply h-auto aspect-square flex items-center justify-center;
+    @apply h-auto aspect-square inline-flex items-center justify-center;
 
     > svg {
         @apply flex items-center justify-center;
