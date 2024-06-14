@@ -1,35 +1,49 @@
 <template>
-  <label
-    :id="id"
-    :loading="loading"
-    :dirty="dirty"
-    class="base-input"
-  >
-    <input
-      data-testID="ui-input"
-      :aria-disabled="readonly"
-      :aria-readonly="readonly"
-      :aria-placeholder="placeholder"
-      :readonly="readonly || loading"
-      :type="type"
-      :pattern="pattern"
-      :placeholder="placeholder"
-      v-model.lazy="value"
-      autocomplete="one-time-code"
-      class="base-input__field"
-      @input="updateValue"
-    />
-  </label>
+  <Suspense>
+    <label
+      :id="id"
+      :loading="loading"
+      :dirty="dirty"
+      class="base-input"
+    >
+      <TransitionIs :type="transType.FROMLEFT">
+        <!-- @slot Icon: slot to show icon if is necessary -->
+        <slot name="icon" v-if="!loading">
+            <BaseInput
+              v-if="isSearchType"
+              name="IconSearch"
+            />
+        </slot>
+      </TransitionIs>
+      <input
+        data-testID="ui-input"
+        :aria-disabled="readonly"
+        :aria-readonly="readonly"
+        :aria-placeholder="placeholder"
+        :readonly="readonly || loading"
+        :type="type"
+        :pattern="pattern"
+        :placeholder="placeholder"
+        v-model.lazy="value"
+        autocomplete="one-time-code"
+        class="base-input__field"
+        @input="updateValue"
+      />
+    </label>
+  </Suspense>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types';
-import { ref, type PropType } from 'vue';
+import { computed, ref, type PropType } from 'vue';
 import { Types } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
+import BaseInput from '@app/ui/components/base/base-icon/BaseIcon.vue';
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { Types as transType } from '@app/ui/components/abstracts/transition-is/types';
 
 const value = defineModel("proxyValue")
 const dirty = ref<boolean>(false)
-const { proxyValue } = defineProps({
+const { type, loading } = defineProps({
   /**
    * Set the unique id of the ui input
    */
@@ -86,7 +100,7 @@ const { proxyValue } = defineProps({
 });
 
 const customEmits = defineEmits(["update:modelValue",])
-const updateValue = (payload: Event) => {
+const updateValue = (payload: Event): void => {
     const { value } = payload.target as HTMLInputElement
     if(value.length === 0) {
       dirty.value = false
@@ -96,6 +110,8 @@ const updateValue = (payload: Event) => {
     dirty.value === false ? (dirty.value = true) : null
     customEmits("update:modelValue", value)
 }
+
+const isSearchType = computed<boolean>(() =>  type === Types.SEARCH)
 
 </script>
 <style src="./BaseInput.scss" lang="scss"></style>

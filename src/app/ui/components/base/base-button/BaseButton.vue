@@ -22,6 +22,7 @@
         class="base-button__label"
         data-testID="ui-button-test-label"
       >
+        <!-- @slot Default: slot to show button label -->
         <slot>{{ fallback }}</slot>
       </span>
     </TransitionIs>

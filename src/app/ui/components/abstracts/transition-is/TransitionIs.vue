@@ -17,8 +17,24 @@ const { type } = defineProps({
 <style lang="scss">
 @include create-animation(
   $name: 'from-bottom',
-  $from: translateY(10%),
-  $to: translateY(-10%),
+  $from: translateY(20%),
+  $to: translateY(-20%),
+  $duration: var(--animationTime),
+  $duration-out: 0.2s
+);
+
+@include create-animation(
+  $name: 'from-left',
+  $from: translateX(-50%),
+  $to: translateX(-50%),
+  $duration: var(--animationTime),
+  $duration-out: 0.2s
+);
+
+@include create-animation(
+  $name: 'from-right',
+  $from: translateX(50%),
+  $to: translateX(50%),
   $duration: var(--animationTime),
   $duration-out: 0.2s
 );
