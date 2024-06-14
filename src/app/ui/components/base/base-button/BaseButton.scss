@@ -55,7 +55,10 @@
 
         &[loading=true] {
             @apply pr-xxxlg pointer-events-none;
-            @apply bg-logo-500;
+
+            &:not(#{$basebutton}--is-secondary) {
+                @apply bg-logo-500;
+            }
 
             &::after {
                 @apply w-md aspect-square inline-block content-[''] absolute right-xmd;
@@ -63,7 +66,7 @@
                 @apply animate-spinner;
 
                 &#{$basebutton}--is-secondary {
-                    @apply border-logo-400 border-b-neutral-300
+                    @apply border-logo-400 border-b-neutral-300 
                 }
             }
         }

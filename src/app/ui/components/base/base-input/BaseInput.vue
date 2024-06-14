@@ -28,6 +28,7 @@
         autocomplete="one-time-code"
         class="base-input__field"
         @input="updateValue"
+        @change="changeValue"
       />
     </label>
   </Suspense>
@@ -99,7 +100,7 @@ const { type, loading } = defineProps({
   }
 });
 
-const customEmits = defineEmits(["update:modelValue",])
+const customEmits = defineEmits(["update:modelValue", "change"])
 const updateValue = (payload: Event): void => {
     const { value } = payload.target as HTMLInputElement
     if(value.length === 0) {
@@ -109,6 +110,11 @@ const updateValue = (payload: Event): void => {
 
     dirty.value === false ? (dirty.value = true) : null
     customEmits("update:modelValue", value)
+}
+
+const changeValue = (payload: Event): void => {
+    const { value } = payload.target as HTMLInputElement
+    customEmits("change", value)
 }
 
 const isSearchType = computed<boolean>(() =>  type === Types.SEARCH)

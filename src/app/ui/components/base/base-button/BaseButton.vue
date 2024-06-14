@@ -1,5 +1,6 @@
 <template>
   <ComponentIs
+    :key="is"
     :id="id"
     :disabled="disabled"
     :aria-disabled="disabled"
