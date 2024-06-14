@@ -8,6 +8,7 @@ export default function useAsyncComponent(): IAsyncComponent {
      * Method to return an async component loaded
      * @param {string} component - component path/name
      * @param {Component} error - component instance to handle error state
+     * @param {Component} loader - component instace to handle loading state
      * @returns {string} - vue component istance
      */
 
