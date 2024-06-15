@@ -1,3 +1,16 @@
 .tabs-bar {
-    @apply px-lg relative flex
+    @apply px-lg relative flex relative;
+    @apply font-default text-warning-100;
+
+    &:after {
+        @apply absolute bottom-none w-full h-[1px];
+        @apply content-[''];
+        @apply bg-neutral-200
+    }
+
+    &--is {
+        &-empty {
+            @apply py-sm
+        }
+    }
 }
