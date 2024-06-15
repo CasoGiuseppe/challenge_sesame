@@ -24,11 +24,17 @@
     }
 
     @media (hover) {
-        &:hover {
-            &:not(:has(input:invalid)):not(:has(input:valid)) {
-                @apply shadow-hover
+        &:not(:read-only) {
+            &:hover {
+                &:not(:has(input:invalid)):not(:has(input:valid)) {
+                    @apply shadow-hover
+                }
             }
         }
+    }
+
+    &:has(input:read-only) {
+        @apply bg-neutral-300
     }
 
     &[loading=true] {
@@ -55,6 +61,10 @@
             &::-webkit-search-results-decoration {
                 -webkit-appearance:none;
             }
+        }
+
+        &:read-only {
+            @apply cursor-not-allowed
         }
     }
 }

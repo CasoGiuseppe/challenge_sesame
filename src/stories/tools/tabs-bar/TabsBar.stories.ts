@@ -3,17 +3,24 @@ import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
 import TabsBar from "@/app/ui/components/tools/tabs-bar/TabsBar.vue";
 import { Is } from "@app/ui/components/abstracts/component-is/types";
 
+const tabsList = [
+    { id: 'tab1', label: 'Tab 1'},
+    { id: 'tab2', label: 'Tab 2',},
+    { id: 'tab3', label: 'Tab 3',}
+]
 const meta = {
     title: "Tools/Tabs Bar",
     component: TabsBar,
     tags: ["autodocs"],
     argTypes: {
         id: { control: "text" },
+        tabs: { control: "object" }
     },
     args: {
         id: "TabsBarID",
+        tabs: tabsList
     }
-} satisfies Meta<typeof BaseTab>
+} satisfies Meta<typeof TabsBar>
 
 export default meta
 

@@ -1,18 +1,41 @@
 <template>
-  <Transition :name="type" mode="out-in">
+  <Transition
+    v-if="isNotAGroup"
+    :name="type"
+    mode="out-in"
+    appear
+    class="transition-is"
+  >
     <slot />
   </Transition>
+  <TransitionGroup
+    v-else
+    :name="type"
+    v-bind="$attrs"
+    mode="out-in"
+    appear
+    class="transition-is"
+  >
+    <slot />
+  </TransitionGroup>
 </template>
 <script setup lang="ts">
-import type { PropType } from 'vue';
+import { type PropType, computed } from 'vue';
 import { Types } from './types';
 
-const { type } = defineProps({
+const { type, group } = defineProps({
   type: {
     type: String as PropType<Types>,
     default: Types.FROMBOTTOM
+  },
+
+  group: {
+    type: Boolean as PropType<boolean>,
+    default: false
   }
 });
+
+const isNotAGroup = computed(() => !group)
 </script>
 <style lang="scss">
 @include create-animation(
@@ -39,3 +62,4 @@ const { type } = defineProps({
   $duration-out: 0.2s
 );
 </style>
+<style src="./TransitionIs.scss" lang="scss"></style>

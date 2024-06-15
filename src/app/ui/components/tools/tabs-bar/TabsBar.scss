@@ -1,6 +1,6 @@
 .tabs-bar {
-    @apply px-lg relative flex relative;
-    @apply font-default text-warning-100;
+    @apply px-lg relative flex relative overflow-hidden;
+    @apply font-default;
 
     &:after {
         @apply absolute bottom-none w-full h-[1px];
@@ -10,7 +10,12 @@
 
     &--is {
         &-empty {
-            @apply py-sm
+            @apply py-sm;
+            @apply text-warning-100
         }
+    }
+
+    &__list {
+        @apply flex flex-nowrap
     }
 }
