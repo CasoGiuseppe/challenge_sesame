@@ -19,10 +19,6 @@
     @media(hover) {
         &:hover {
             @apply font-bold text-variant-100;
-
-            &::after {
-                @apply py-[2px]
-            }
         }
     }
 

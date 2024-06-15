@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
 import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
 import { Is } from "@app/ui/components/abstracts/component-is/types"
+import { vueRouter } from "storybook-vue3-router"
 
 const meta = {
     title: "Base/Base Tab",
@@ -42,3 +43,5 @@ export const Default: Story = {
     ...Templates,
     args: {}
 }
+
+Default.decorators = [vueRouter()]

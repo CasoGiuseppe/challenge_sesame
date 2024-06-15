@@ -5,6 +5,7 @@
     class="base-tab"
     data-testID="ui-button-test"
     :selected="selected"
+    @click="handleEmitClick"
   >
     <!-- @slot Default: slot to show tab label -->
     <slot></slot>
@@ -17,7 +18,7 @@ import ComponentIs from '@app/ui/components/abstracts/component-is/ComponentIs.v
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
-defineProps({
+const { id } = defineProps({
   /**
    * Set the unique id of the ui tab
    */
@@ -44,6 +45,9 @@ defineProps({
         default: false
     }
 });
+
+const emits = defineEmits(['send']);
+const handleEmitClick = () => emits('send', { id });
 </script>
 
 <style src="./BaseTab.scss" lang="scss"></style>

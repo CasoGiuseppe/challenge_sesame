@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
 import TabsBar from "@/app/ui/components/tools/tabs-bar/TabsBar.vue";
-import { Is } from "@app/ui/components/abstracts/component-is/types";
 import { ref } from "vue";
+import { vueRouter } from "storybook-vue3-router"
 
 const tabsList = [
     { id: 'tab1', label: 'Tab 1'},
@@ -31,25 +31,32 @@ const Templates: Story = {
     render: (args) => ({
         components: { BaseTab, TabsBar },
         setup() {
-            const selected = ref<string>('tab1')
-            return { args, selected }
+            const current = ref<string>('tab1')
+            return { args, current }
         },
         template: `
             <TabsBar v-bind="args" >
                 <template #tab="{ property: { id, label } }">
                     <BaseTab
                         :id="id"
-                        :selected="id === selected"
+                        :selected="id === current"
+                        @send="setCurrent"
                     >
-                        label
+                        {{ label }}
                     </BaseTab>
                 </template>
             </TabsBar>
-        `
+        `,
+        methods: {
+            setCurrent({ id }: { id: string }): void {
+                this.current = id
+            }
+        }
     })
 }
 
 export const Default: Story = {
-    ...Templates,
-    args: {}
+    ...Templates
 }
+
+Default.decorators = [vueRouter()]
