@@ -8,8 +8,6 @@
       $duration-out: .2s
     );
 
-    @apply bg-default-none border-none outline-none select-none; // reset
-
     @apply inline-flex items-center gap-sm justify-between relative;
     @apply text-neutral-100 font-default bg-neutral-300;
     @apply transition-all duration-[var(--animationTime)];

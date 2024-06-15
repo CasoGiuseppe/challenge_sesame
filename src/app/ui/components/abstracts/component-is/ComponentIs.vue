@@ -3,12 +3,14 @@
         v-if="isInternalLink"
         v-bind="$attrs"
         :to="$attrs"
+        class="component-is"
     >
         <slot />
     </RouterLink>
     <component
         v-else
         :is="is"
+        class="component-is"
     >
         <slot />
     </component>
@@ -27,3 +29,4 @@ const { is } = defineProps({
 })
 const isInternalLink = computed(() => is === Is.ROUTERLINK )
 </script>
+<style src="./ComponentIs.scss" lang="scss"></style>

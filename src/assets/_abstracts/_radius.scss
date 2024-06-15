@@ -2,6 +2,7 @@
 
 :root {
     --radius-00: 0; // 0
+    --radius-50: #{px2rem(calc(useUnit.$unit-base / 4))}; // 2
     --radius-100: #{px2rem(calc(useUnit.$unit-base / 2))}; // 4
     --radius-200: #{px2rem(calc(useUnit.$unit-base))}; // 8
     --radius-300: #{px2rem(calc(useUnit.$unit-base + 4))}; // 12

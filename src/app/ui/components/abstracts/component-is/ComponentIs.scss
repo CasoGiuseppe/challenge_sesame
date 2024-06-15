@@ -1,0 +1,5 @@
+.component-is {
+    &:is(button) {
+        @apply bg-default-none border-none outline-none select-none; // reset
+    }
+}

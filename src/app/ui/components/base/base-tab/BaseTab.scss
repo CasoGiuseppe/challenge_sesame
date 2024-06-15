@@ -1,3 +1,34 @@
 .base-tab {
-    @apply inline-flex py-sm
+    @apply inline-flex py-sm relative;
+    @apply font-default text-neutral-300 text-md font-regular;
+    @apply transition-colors duration-[var(--animationTime)];
+
+    &:not([selected = true]) {
+        @apply cursor-pointer
+    }
+
+    &[selected = true] {
+        @apply pointer-events-none;
+        @apply font-bold text-variant-100;
+
+        &::after {
+            @apply py-[1px]
+        }
+    }
+
+    @media(hover) {
+        &:hover {
+            @apply font-bold text-variant-100;
+
+            &::after {
+                @apply py-[1px]
+            }
+        }
+    }
+
+    &::after {
+        @apply absolute bottom-none w-full inset-x-none inset-y-auto;
+        @apply content-[''] bg-variant-100 rounded-t-xxsm;
+        @apply transition-spacing duration-[var(--animationTime)]
+    }
 }

@@ -30,7 +30,7 @@
   </ComponentIs>
 </template>
 <script setup lang="ts">
-import type { UniqueId } from '@/app/ui/types';
+import type { UniqueId } from '@app/ui/types';
 import { computed, ref, type PropType } from 'vue';
 import { Sizes, Types, type RouterTo } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';

@@ -1,3 +1,5 @@
+
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{vue, js, ts, jsx, tsx}'],
@@ -25,6 +27,7 @@ export default {
 
     borderRadius: {
       none: 'var(--radius-00, 0)',
+      xxsm: 'var(--radius-50, 1rem)', // 2
       xsm: 'var(--radius-100, 1rem)', // 4
       sm: 'var(--radius-200, 1rem)', // 8
       md: 'var(--radius-300, 1rem)', // 12
@@ -67,7 +70,10 @@ export default {
       },
       success: {
         100: 'var(--color-success-100, #000)'
-      }
+      },
+      variant: {
+        100: 'var(--color-variant-100, #000)'
+      },
     },
 
     fontFamily: {
