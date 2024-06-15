@@ -3,7 +3,7 @@
     @apply font-default;
 
     &:after {
-        @apply absolute bottom-none w-full h-[1px];
+        @apply absolute bottom-[0px] w-full h-[1px];
         @apply content-[''];
         @apply bg-neutral-200
     }
@@ -16,6 +16,6 @@
     }
 
     &__list {
-        @apply flex flex-nowrap
+        @apply flex flex-nowrap m-none gap-xxxlg
     }
 }

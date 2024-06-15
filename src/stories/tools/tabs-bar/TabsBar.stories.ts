@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3";
 import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
 import TabsBar from "@/app/ui/components/tools/tabs-bar/TabsBar.vue";
 import { Is } from "@app/ui/components/abstracts/component-is/types";
+import { ref } from "vue";
 
 const tabsList = [
     { id: 'tab1', label: 'Tab 1'},
@@ -30,11 +31,19 @@ const Templates: Story = {
     render: (args) => ({
         components: { BaseTab, TabsBar },
         setup() {
-            return { args }
+            const selected = ref<string>('tab1')
+            return { args, selected }
         },
         template: `
             <TabsBar v-bind="args" >
-                
+                <template #tab="{ property: { id, label } }">
+                    <BaseTab
+                        :id="id"
+                        :selected="id === selected"
+                    >
+                        label
+                    </BaseTab>
+                </template>
             </TabsBar>
         `
     })

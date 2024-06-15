@@ -22,7 +22,7 @@ export default {
       lg: 'var(--spacing-60, 1rem)', // 24
       xlg: 'var(--spacing-70, 1rem)', // 32
       xxlg: 'var(--spacing-80, 1rem)', // 40
-      xxxlg: 'var(--spacing-90, 1rem)' // 64
+      xxxlg: 'var(--spacing-90, 1rem)' // 48
     },
 
     borderRadius: {
@@ -103,6 +103,7 @@ export default {
       size: 'width, min-width, height, min-height',
       spacing: 'margin, padding',
       opacity: 'opacity',
+      text: 'text-decoration, font-size, font-weight, color',
       all: 'all'
     },
 

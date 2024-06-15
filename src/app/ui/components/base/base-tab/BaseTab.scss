@@ -1,8 +1,8 @@
 .base-tab {
     @apply inline-flex py-sm relative;
     @apply font-default text-neutral-300 text-md font-regular;
-    @apply transition-colors duration-[var(--animationTime)];
-
+    @apply transition-text duration-[var(--animationTime)];
+    
     &:not([selected = true]) {
         @apply cursor-pointer
     }
@@ -12,7 +12,7 @@
         @apply font-bold text-variant-100;
 
         &::after {
-            @apply py-[1px]
+            @apply py-[2px]
         }
     }
 
@@ -21,7 +21,7 @@
             @apply font-bold text-variant-100;
 
             &::after {
-                @apply py-[1px]
+                @apply py-[2px]
             }
         }
     }
