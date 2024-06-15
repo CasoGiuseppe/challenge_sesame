@@ -16,6 +16,7 @@
     }
 
     &__list {
-        @apply flex flex-nowrap m-none gap-xxxlg
+        @apply flex flex-nowrap m-none gap-xxxlg;
+        @apply z-[1]
     }
 }
