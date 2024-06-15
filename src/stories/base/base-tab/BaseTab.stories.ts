@@ -16,7 +16,7 @@ const meta = {
         id: "defaultID",
         is: Is.BUTTON,
         selected: false,
-        default: 'Tab'
+        default: 'Candidatos'
     }
 } satisfies Meta<typeof BaseTab>
 
