@@ -22,6 +22,7 @@ describe('BaseInput component tests', () => {
         });
 
         it('Should model value have correct text on input change', async () => {
+            console.log($wrapper.html())
             await $wrapper.find(`${$uiDOMInputTrigger}`).setValue($newProvidedEmittedValue);
             expect($wrapper.props('proxyValue')).toBe($newProvidedEmittedValue);
         });

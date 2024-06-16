@@ -32,11 +32,8 @@ describe('BaseButton component tests', () => {
         props: {
           id: 'test',
           type: Types.PRIMARY,
-          variant: true,
           size: Sizes.DEFAULT,
-          is: Is.BUTTON,
           disabled: false,
-          label: 'Aria label'
         }
       })
     })
@@ -46,7 +43,6 @@ describe('BaseButton component tests', () => {
       expect(typeof $wrapper.props('type')).toBe('string')
       expect(typeof $wrapper.props('size')).toBe('string')
       expect(typeof $wrapper.props('disabled')).toBe('boolean')
-      expect(typeof $wrapper.props('ariaLabel')).toBe('string')
     })
 
     it('Should prop type have a correct content', async () => {

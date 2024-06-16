@@ -1,5 +1,4 @@
 <template>
-  <Suspense>
     <label
       :id="id"
       :loading="loading"
@@ -31,7 +30,6 @@
         @change="changeValue"
       />
     </label>
-  </Suspense>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types';

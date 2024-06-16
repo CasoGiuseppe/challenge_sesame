@@ -3,6 +3,7 @@
       class="card-data"
       aria-labelledby="ui-card-title"
       aria-describedby="ui-card-content"
+      data-testID="ui-card-test"
     >
       <header class="card-data__header">
         <h2
@@ -17,6 +18,7 @@
           v-if="contextualMenu"
           class="card-data__contextual-action"
           aria-label="Open contextual menu"
+          data-testID="ui-card-contextual-test"
         >
           <span />
         </button>
@@ -56,7 +58,7 @@ defineProps({
    */
   contextualMenu: {
     type: Boolean as PropType<boolean>,
-      default: true
+    default: true
   }
 });
 </script>

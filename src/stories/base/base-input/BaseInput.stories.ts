@@ -37,8 +37,9 @@ const Templates: Story = {
             return { args }
         },
         template: `
-            <BaseInput v-bind="args" @send="action">
-            </BaseInput>
+            <Suspense>
+                <BaseInput v-bind="args" @send="action" />
+            </Suspense>
         `,
         methods: {
             action: action("submitted"),
