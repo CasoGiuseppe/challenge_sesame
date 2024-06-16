@@ -31,7 +31,8 @@
     }
 
     &__content {
-        @apply p-none m-none
+        @apply p-none m-none;
+        @apply text-xsm text-logo-400
     }
 
     &__contextual-action {

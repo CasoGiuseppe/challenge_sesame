@@ -14,7 +14,7 @@
             <slot name="title" />
         </h2>
         <button
-          v-if="hasAction"
+          v-if="contextualMenu"
           class="card-data__contextual-action"
           aria-label="Open contextual menu"
         >
@@ -45,7 +45,7 @@ defineProps({
   /**
    * Set action contextual menu visibility
    */
-  hasAction: {
+  contextualMenu: {
     type: Boolean as PropType<boolean>,
       default: true
   }

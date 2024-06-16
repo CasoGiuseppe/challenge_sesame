@@ -7,13 +7,15 @@ const meta = {
     tags: ["autodocs"],
     argTypes: {
         id: { control: "text" },
-        hasAction: { control: "radio", options: [true, false] },
+        contextualMenu: { control: "radio", options: [true, false] },
         title: { control: "text" },
+        content: { control: "text" },
     },
     args: {
         id: "defaultID",
-        hasAction: true,
+        contextualMenu: true,
         title: 'Lorem ipsum dolor sit amet, consectetur adip',
+        content: 'content'
     }
 } satisfies Meta<typeof CardData>
 
@@ -30,6 +32,7 @@ const Templates: Story = {
         template: `
             <CardData v-bind="args">
                 <template #title>{{ args.title }}</template>
+                <template #content>{{ args.content }}</template>
             </CardData>
         `,
     })
