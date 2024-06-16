@@ -28,6 +28,13 @@
       >
         <slot name="content" />
       </p>
+
+      <footer
+        v-if="$slots['footer']"
+        class="card-data__footer"
+      >
+        <slot name="footer" />
+      </footer>
     </article>
 </template>
 <script setup lang="ts">

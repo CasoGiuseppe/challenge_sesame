@@ -8,10 +8,14 @@
 
         @media(hover) {
             &:hover {
-                @apply w-[70%] h-xxsm;
-                @apply rounded-none bg-logo-400;
+               @include commonHoverState()
             }
         }
+    }
+
+    @mixin commonHoverState() {
+        @apply w-[50%] h-xxsm;
+        @apply rounded-none bg-logo-400;
     }
 
     @apply flex flex-col py-sm px-xmd gap-sm;
@@ -21,6 +25,7 @@
     &__header {
         @apply flex gap-sm justify-between items-center
     }
+    
 
     &__title {
         @apply text-logo-600 font-medium text-md;
@@ -30,9 +35,19 @@
         }
     }
 
+    &__content,
+    &__footer {
+        @apply text-xsm
+    }
+
     &__content {
         @apply p-none m-none;
-        @apply text-xsm text-logo-400
+        @apply text-logo-400
+    }
+
+    &__footer {
+        @apply flex gap-xsm;
+        @apply text-logo-300
     }
 
     &__contextual-action {
@@ -61,11 +76,10 @@
 
         @media(hover) {
             &:hover {
-                @apply gap-xsm;
-
+                @apply cursor-context-menu;
+                
                 > * {
-                    @apply w-[70%] h-xxsm;
-                    @apply rounded-none bg-logo-400;
+                    @include commonHoverState();
                 }
             }
         }
