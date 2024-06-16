@@ -2,7 +2,7 @@
     $cardData: &;
 
     @mixin commonActionState() {
-        @apply w-xsm h-xsm inline-block;
+        @apply w-[3px] h-[3px] inline-block;
         @apply bg-logo-600 rounded-full;
         @apply transition-all duration-[var(--animationTime)] delay-150;
 
@@ -52,7 +52,7 @@
 
     &__contextual-action {
         @apply bg-default-none border-none p-none outline-none; // reset
-        @apply w-lg aspect-square flex flex-col items-center justify-center gap-xxsm;
+        @apply w-lg aspect-square flex flex-col items-center justify-center gap-[3px];
         @apply cursor-pointer rounded-xsm;
         @apply transition-all duration-[var(--animationTime)];
 
