@@ -1,5 +1,5 @@
 .tabs-bar {
-    @apply px-lg relative flex relative overflow-hidden;
+    @apply px-lg relative flex relative;
     @apply font-default;
 
     &:after {

@@ -39,7 +39,7 @@ export default {
     boxShadow: {
       dark: '0 10px 8px -2px hsla(224, 45%, 22%, .3)',
       light: '0 4px 4px 0 hsla(224, 45%, 22%, .3)',
-      focus:  '0 0 0 2px var(--color-neutral-100, #000), 0 0 0 4px var(--color-logo-400, #000);',
+      focus:  '0 0 0 2px var(--color-neutral-100, #000), 0 0 0 4px var(--color-outline, #000);',
       hover:  '0 0 0 1px var(--color-logo-400, #000);',
       invalid: '0 0 0 1px var(--color-warning-100);',
       valid: '0 0 0 1px var(--color-success-100);'

@@ -1,12 +1,5 @@
 .base-button {
     $basebutton: &;
-    @include create-animation(
-      $name: 'change-button-state',
-      $from: translateY(10%),
-      $to: translateY(-10%),
-      $duration: var(--animationTime),
-      $duration-out: .2s
-    );
 
     @apply inline-flex items-center gap-sm justify-between relative;
     @apply text-neutral-100 font-default bg-neutral-300;
@@ -68,6 +61,11 @@
                 }
             }
         }
+    }
+
+    &:disabled {
+        @apply bg-neutral-300;
+        @apply text-neutral-100
     }
 
     &--is {

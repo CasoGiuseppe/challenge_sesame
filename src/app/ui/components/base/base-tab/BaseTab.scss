@@ -1,7 +1,8 @@
 .base-tab {
     @apply inline-flex py-sm relative;
     @apply font-default text-neutral-300 text-md font-regular;
-    @apply transition-text duration-[var(--animationTime)];
+    @apply rounded-xsm;
+    @apply transition-all duration-[var(--animationTime)];
     
     &:not([selected = true]) {
         @apply cursor-pointer
@@ -13,6 +14,13 @@
 
         &::after {
             @apply py-[2px]
+        }
+    }
+
+    &:focus-within {
+        &:not(:hover) {
+            @apply shadow-focus;
+            @apply font-bold text-variant-100;
         }
     }
 

@@ -33,8 +33,8 @@
     &__contextual-action {
         @apply bg-default-none border-none p-none outline-none; // reset
         @apply w-lg aspect-square flex flex-col items-center justify-center gap-xxsm;
-        @apply cursor-pointer;
-        @apply transition-spacing duration-[var(--animationTime)];
+        @apply cursor-pointer rounded-xsm;
+        @apply transition-all duration-[var(--animationTime)];
 
         > * {
             &:is(span) {
@@ -46,6 +46,12 @@
         &::after {
             @include commonActionState();
             @apply content-[''];
+        }
+
+        &:focus {
+            &:not(:hover) {
+                @apply shadow-focus
+            }
         }
 
         @media(hover) {
