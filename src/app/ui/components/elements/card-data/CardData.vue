@@ -26,6 +26,7 @@
         v-if="$slots['content']"
         class="card-data__content"
       >
+        <!-- @slot Content: slot to show card main content -->
         <slot name="content" />
       </p>
 
@@ -33,6 +34,7 @@
         v-if="$slots['footer']"
         class="card-data__footer"
       >
+        <!-- @slot Footer: slot to show card footer info -->
         <slot name="footer" />
       </footer>
     </article>
