@@ -2,15 +2,16 @@
     <article
       class="card-data"
       aria-labelledby="ui-card-title"
+      aria-describedby="ui-card-content"
     >
       <header class="card-data__header">
         <h2
-          v-if="$slots['title']"
-          class="card-data__title"
           id="ui-card-title"
+          v-if="$slots['title']"
+          class="card-data__title card-data--is-truncate"
         > 
-          <!-- @slot Title: slot to show card title -->
-          <slot name="title" />
+            <!-- @slot Title: slot to show card title -->
+            <slot name="title" />
         </h2>
         <button
           v-if="hasAction"
@@ -20,6 +21,13 @@
           <span />
         </button>
       </header>
+      <p
+        id="ui-card-content"
+        v-if="$slots['content']"
+        class="card-data__content"
+      >
+        <slot name="content" />
+      </p>
     </article>
 </template>
 <script setup lang="ts">

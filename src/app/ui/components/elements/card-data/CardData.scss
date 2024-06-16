@@ -30,6 +30,10 @@
         }
     }
 
+    &__content {
+        @apply p-none m-none
+    }
+
     &__contextual-action {
         @apply bg-default-none border-none p-none outline-none; // reset
         @apply w-lg aspect-square flex flex-col items-center justify-center gap-xxsm;
@@ -63,6 +67,13 @@
                     @apply rounded-none bg-logo-400;
                 }
             }
+        }
+    }
+
+    &--is {
+        &-truncate {
+            @apply flex-1 overflow-hidden w-full;
+            @apply truncate
         }
     }
 }
