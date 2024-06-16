@@ -8,6 +8,7 @@
       v-if="tabs.length > 0"
       group
       :easing="Easing.ELASTIC"
+      :timing="Timing.FAST"
       tag="ul"
       class="tabs-bar__list"
       data-testID="ui-tabs-list-test"
@@ -32,7 +33,7 @@ import type { UniqueId } from '@/app/ui/types';
 import { type PropType } from 'vue';
 import type { ITabs } from './types';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
-import { Easing } from '@app/ui/components/abstracts/transition-is/types';
+import { Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 
 const { tabs } = defineProps({
   /**

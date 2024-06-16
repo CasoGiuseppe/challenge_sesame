@@ -8,6 +8,7 @@
       <TransitionIs
         :type="transType.FROMLEFT"
         :easing="Easing.ELASTIC"
+        :timing="Timing.FAST"
       >
         <!-- @slot Icon: slot to show icon if is necessary -->
         <slot name="icon" v-if="!loading">
@@ -41,7 +42,7 @@ import { Types } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 import BaseInput from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
-import { Types as transType, Easing } from '@app/ui/components/abstracts/transition-is/types';
+import { Types as transType, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 
 const value = defineModel("proxyValue")
 const dirty = ref<boolean>(false)

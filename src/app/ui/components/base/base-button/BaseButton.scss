@@ -9,7 +9,7 @@
         @apply no-underline
     }
 
-    &:focus-within {
+    &:focus-visible {
         &:not(:hover) {
             @apply shadow-focus
         }

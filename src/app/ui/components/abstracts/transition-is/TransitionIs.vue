@@ -21,7 +21,7 @@
 </template>
 <script setup lang="ts">
 import { type PropType, computed } from 'vue';
-import { Types, Easing } from './types';
+import { Types, Easing, Timing } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 const { type, group } = defineProps({
@@ -42,6 +42,13 @@ const { type, group } = defineProps({
     default: Easing.OUT,
     validator: (prop: Easing) =>
       ensureValueCollectionExists({ collection: Easing, value: prop })
+  },
+
+  timing: {
+    type: String as PropType<Timing>,
+    default: Timing.NORMAL,
+    validator: (prop: Timing) =>
+      ensureValueCollectionExists({ collection: Timing, value: prop })
   }
 });
 
@@ -53,8 +60,8 @@ const isNotAGroup = computed(() => !group)
   $name: 'from-bottom',
   $from: translateY(20%),
   $to: translateY(-20%),
-  $duration: var(--animationTime),
-  $duration-out: 0.2s,
+  $duration: v-bind(timing),
+  $duration-out: 0.3s,
   $ease: v-bind(easing)
 );
 
@@ -62,8 +69,8 @@ const isNotAGroup = computed(() => !group)
   $name: 'from-left',
   $from: translateX(-50%),
   $to: translateX(-50%),
-  $duration: var(--animationTime),
-  $duration-out: 0.2s,
+  $duration: v-bind(timing),
+  $duration-out: 0.3s,
   $ease: v-bind(easing)
 );
 
@@ -71,8 +78,8 @@ const isNotAGroup = computed(() => !group)
   $name: 'from-right',
   $from: translateX(50%),
   $to: translateX(50%),
-  $duration: var(--animationTime),
-  $duration-out: 0.2s,
+  $duration: v-bind(timing),
+  $duration-out: 0.3s,
   $ease: v-bind(easing)
 );
 </style>

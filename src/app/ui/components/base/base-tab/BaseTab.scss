@@ -17,7 +17,7 @@
         }
     }
 
-    &:focus-within {
+    &:focus-visible {
         &:not(:hover) {
             @apply shadow-focus;
             @apply font-bold text-variant-100;
