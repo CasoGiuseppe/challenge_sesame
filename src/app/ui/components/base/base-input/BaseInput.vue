@@ -5,7 +5,10 @@
       :dirty="dirty"
       class="base-input"
     >
-      <TransitionIs :type="transType.FROMLEFT">
+      <TransitionIs
+        :type="transType.FROMLEFT"
+        :easing="Easing.ELASTIC"
+      >
         <!-- @slot Icon: slot to show icon if is necessary -->
         <slot name="icon" v-if="!loading">
             <BaseInput
@@ -38,7 +41,7 @@ import { Types } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 import BaseInput from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
-import { Types as transType } from '@app/ui/components/abstracts/transition-is/types';
+import { Types as transType, Easing } from '@app/ui/components/abstracts/transition-is/types';
 
 const value = defineModel("proxyValue")
 const dirty = ref<boolean>(false)

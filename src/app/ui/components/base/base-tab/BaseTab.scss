@@ -1,7 +1,7 @@
 .base-tab {
     @apply inline-flex py-sm relative;
     @apply font-default text-neutral-300 text-md font-regular;
-    @apply rounded-xsm;
+    @apply rounded-xsm select-none;
     @apply transition-all duration-[var(--animationTime)];
     
     &:not([selected = true]) {

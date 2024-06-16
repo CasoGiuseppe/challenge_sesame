@@ -7,6 +7,7 @@
     <TransitionIs
       v-if="tabs.length > 0"
       group
+      :easing="Easing.ELASTIC"
       tag="ul"
       class="tabs-bar__list"
       data-testID="ui-tabs-list-test"
@@ -28,9 +29,10 @@
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types';
-import { computed, type PropType } from 'vue';
+import { type PropType } from 'vue';
 import type { ITabs } from './types';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { Easing } from '@app/ui/components/abstracts/transition-is/types';
 
 const { tabs } = defineProps({
   /**

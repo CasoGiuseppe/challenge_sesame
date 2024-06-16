@@ -1,3 +1,23 @@
 .accordion-info {
-    $accordionInfo: &
+    $accordionInfo: &;
+
+    @apply py-xmd px-sm;
+    @apply select-none rounded-xsm;
+    @apply transition-colors duration-[var(--animationTime)];
+
+    &:focus-within{
+        @apply shadow-focus
+    }
+
+    &__summary {
+        @apply flex items-center justify-center m-none gap-sm;
+        @apply outline-none cursor-pointer;
+
+        &::after {
+            @apply inline-block p-xsm ml-auto;
+            @apply content-[''] border-solid border-logo-300 border-t-0 border-r-2 border-b-2 border-l-0;
+            @apply transition-transform duration-[var(--animationTime)];
+            transform: rotate(45deg) translateX(-2px)
+        }
+    }
 }

@@ -64,7 +64,7 @@
         }
 
         &:read-only {
-            @apply cursor-not-allowed
+            @apply cursor-not-allowed select-none pointer-events-none
         }
     }
 }

@@ -6,8 +6,16 @@ const meta = {
     component: AccordionInfo,
     tags: ["autodocs"],
     argTypes: {
+        id: { control: "text" },
+        title: { control: "text" },
+        open: { control: "boolean" },
+        summary: { control: "text" },
     },
     args: {
+        id: "AccordionID",
+        title: "Accordion title",
+        open: false,
+        summary: "Summary title"
     }
 } satisfies Meta<typeof AccordionInfo>
 
@@ -23,6 +31,7 @@ const Templates: Story = {
         },
         template: `
             <AccordionInfo v-bind="args">
+                <template #summary>{{ args.summary }}</template>
             </AccordionInfo>
         `
     })

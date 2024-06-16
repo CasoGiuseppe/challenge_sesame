@@ -17,7 +17,7 @@
     data-testID="ui-button-test"
     @click="handleEmitClick"
   >
-    <TransitionIs>
+    <TransitionIs :easing="Easing.ELASTIC">
       <span
         id="ui-button-label"
         :key="isLoadingKey"
@@ -38,6 +38,7 @@ import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidat
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import ComponentIs from '@app/ui/components/abstracts/component-is/ComponentIs.vue';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { Easing } from '@app/ui/components/abstracts/transition-is/types';
 
 const props = defineProps({
   /**

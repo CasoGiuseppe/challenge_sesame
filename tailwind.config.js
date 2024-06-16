@@ -99,7 +99,7 @@ export default {
     transitionProperty: {
       colors:
         'color, background-color, border-color, text-decoration-color, fill, stroke, outline, box-shadow',
-      transform: 'transform opacity',
+      transform: 'transform, opacity',
       size: 'width, min-width, height, min-height',
       spacing: 'margin, padding, gap',
       opacity: 'opacity',
@@ -117,6 +117,11 @@ export default {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
         },
+      },
+
+      transitionTimingFunction: {
+        'out': 'var(--ease-out, linear)',
+        'elastic': 'var(--ease-elastic, linear)',
       }
     },
   },
