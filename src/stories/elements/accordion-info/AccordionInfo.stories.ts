@@ -10,12 +10,14 @@ const meta = {
         title: { control: "text" },
         open: { control: "boolean" },
         summary: { control: "text" },
+        content: { control: "text" },
     },
     args: {
         id: "AccordionID",
         title: "Accordion title",
         open: false,
-        summary: "Summary title"
+        summary: "SUMMARY TITLE",
+        content: "content"
     }
 } satisfies Meta<typeof AccordionInfo>
 
@@ -32,6 +34,7 @@ const Templates: Story = {
         template: `
             <AccordionInfo v-bind="args">
                 <template #summary>{{ args.summary }}</template>
+                <template #content>{{ args.content }}</template>
             </AccordionInfo>
         `
     })

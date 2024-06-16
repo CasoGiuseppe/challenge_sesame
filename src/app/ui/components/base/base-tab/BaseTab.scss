@@ -2,7 +2,7 @@
     @apply inline-flex py-sm relative;
     @apply font-default text-neutral-300 text-md font-regular;
     @apply rounded-xsm select-none;
-    @apply transition-all duration-[var(--animationTime)];
+    @apply transition-all duration-[var(--animationTime)] ease-elastic;
     
     &:not([selected = true]) {
         @apply cursor-pointer

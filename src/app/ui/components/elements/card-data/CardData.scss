@@ -4,7 +4,7 @@
     @mixin commonActionState() {
         @apply w-[3px] h-[3px] inline-block;
         @apply bg-logo-600 rounded-full;
-        @apply transition-all duration-[var(--animationTime)] delay-150;
+        @apply transition-all duration-[var(--animationTime)] ease-elastic;
 
         @media(hover) {
             &:hover {

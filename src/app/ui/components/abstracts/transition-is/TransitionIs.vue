@@ -61,7 +61,7 @@ const isNotAGroup = computed(() => !group)
   $from: translateY(20%),
   $to: translateY(-20%),
   $duration: v-bind(timing),
-  $duration-out: 0.3s,
+  $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing)
 );
 
@@ -70,7 +70,7 @@ const isNotAGroup = computed(() => !group)
   $from: translateX(-50%),
   $to: translateX(-50%),
   $duration: v-bind(timing),
-  $duration-out: 0.3s,
+  $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing)
 );
 
@@ -79,7 +79,7 @@ const isNotAGroup = computed(() => !group)
   $from: translateX(50%),
   $to: translateX(50%),
   $duration: v-bind(timing),
-  $duration-out: 0.3s,
+  $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing)
 );
 </style>

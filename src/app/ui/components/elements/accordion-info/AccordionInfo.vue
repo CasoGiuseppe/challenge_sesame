@@ -3,18 +3,27 @@
     :id="id"
     :title="title"
     :open="open"
-    aria-labelledby="accordion-sumary"
+    aria-labelledby="accordion-summary"
+    aria-describedby="accordion-content"
     data-testid="ui-accordion"
     class="accordion-info"
   >
     <summary
       v-if="$slots['summary']"
-      id="accordion-sumary"
+      id="accordion-summary"
       class="accordion-info__summary"
     >
       <!-- @slot Summary: slot to show accordion summary title -->
       <slot name="summary" />
     </summary>
+    <article
+      v-if="$slots['content']"
+      id="accordion-content"
+      class="accordion-info__content"
+    >
+      <!-- @slot Content: slot to show accordion nested content -->
+      <slot name="content" />
+    </article>
   </details>
 </template>
 <script setup lang="ts">
