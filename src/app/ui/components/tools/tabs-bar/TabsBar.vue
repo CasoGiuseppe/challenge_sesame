@@ -1,10 +1,15 @@
 <template>
-  <menu :class="['tabs-bar', tabsExists ? '' : 'tabs-bar--is-empty']">
+  <menu
+    :class="['tabs-bar', tabs.length > 0 ? '' : 'tabs-bar--is-empty']"
+    aria-orientation="horizontal"
+    data-testID="ui-tabs-test"
+  >
     <TransitionIs
-      v-if="tabsExists"
+      v-if="tabs.length > 0"
       group
       tag="ul"
       class="tabs-bar__list"
+      data-testID="ui-tabs-list-test"
     >
       <li
         :key="id"
@@ -44,7 +49,5 @@ const { tabs } = defineProps({
     default: () => []
   }
 });
-
-const tabsExists = computed(() => tabs.length > 0);
 </script>
 <style src="./TabsBar.scss" lang="scss"></style>
