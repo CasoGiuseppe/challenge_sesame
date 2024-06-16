@@ -101,7 +101,7 @@ export default {
         'color, background-color, border-color, text-decoration-color, fill, stroke, outline, box-shadow',
       transform: 'transform opacity',
       size: 'width, min-width, height, min-height',
-      spacing: 'margin, padding',
+      spacing: 'margin, padding, gap',
       opacity: 'opacity',
       text: 'text-decoration, font-size, font-weight, color',
       all: 'all'

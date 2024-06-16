@@ -5,7 +5,7 @@
     :disabled="disabled"
     :aria-disabled="disabled"
     :aria-invalid="disabled"
-    :aria-label="ariaLabel"
+    aria-labelledby="ui-button-label"
     :aria-loading="loading"
     :is="is"
     :loading="loading"
@@ -19,6 +19,7 @@
   >
     <TransitionIs>
       <span
+        id="ui-button-label"
         :key="isLoadingKey"
         class="base-button__label"
         data-testID="ui-button-test-label"
@@ -89,14 +90,6 @@ const props = defineProps({
   loading: {
     type: Boolean as PropType<boolean>,
     default: false
-  },
-
-  /**
-   * Set the aria accesibility label
-   */
-  ariaLabel: {
-    type: String as PropType<string>,
-    default: 'component aria label'
   },
 
   /**

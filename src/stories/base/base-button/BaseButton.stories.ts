@@ -12,7 +12,6 @@ const meta = {
     argTypes: {
         id: { control: "text" },
         loading: { control: "radio", options: [true, false] },
-        ariaLabel: { control: "text" },
         type: { control: "select", options: Object.values(Types) },
         size: { control: "select", options: Object.values(Sizes) },
         is: { control: "select", options: Object.values(Is) },
@@ -21,7 +20,6 @@ const meta = {
     },
     args: {
         id: "defaultID",
-        ariaLabel: "button aria title",
         type: Types.PRIMARY,
         size: Sizes.DEFAULT,
         is: Is.BUTTON,

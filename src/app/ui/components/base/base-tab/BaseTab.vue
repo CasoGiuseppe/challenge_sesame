@@ -2,9 +2,10 @@
   <ComponentIs
     :key="is"
     :is="is"
-    class="base-tab"
-    data-testID="ui-button-test"
+    :aria-current="selected"
     :selected="selected"
+    class="base-tab"
+    data-testID="ui-tab-test"
     @click="handleEmitClick"
   >
     <!-- @slot Default: slot to show tab label -->

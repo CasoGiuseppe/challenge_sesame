@@ -1,6 +1,62 @@
 .card-data {
     $cardData: &;
 
+    @mixin commonActionState() {
+        @apply w-xsm h-xsm inline-block;
+        @apply bg-logo-600 rounded-full;
+        @apply transition-all duration-[var(--animationTime)] delay-150;
+
+        @media(hover) {
+            &:hover {
+                @apply w-[70%] h-xxsm;
+                @apply rounded-none bg-logo-400;
+            }
+        }
+    }
+
     @apply flex flex-col py-sm px-xmd gap-sm;
-    @apply bg-neutral-200 rounded-md border-background-200 border-[1px] border-solid
+    @apply bg-neutral-200 rounded-md border-background-200 border-[1px] border-solid;
+    @apply font-default;
+
+    &__header {
+        @apply flex gap-sm justify-between items-center
+    }
+
+    &__title {
+        @apply text-logo-600 font-medium text-md;
+
+        &:is(h2) {
+            @apply m-none
+        }
+    }
+
+    &__contextual-action {
+        @apply bg-default-none border-none p-none outline-none; // reset
+        @apply w-lg aspect-square flex flex-col items-center justify-center gap-xxsm;
+        @apply cursor-pointer;
+        @apply transition-spacing duration-[var(--animationTime)];
+
+        > * {
+            &:is(span) {
+                @include commonActionState()
+            }
+        }
+
+        &::before,
+        &::after {
+            @include commonActionState();
+            @apply content-[''];
+        }
+
+        @media(hover) {
+            &:hover {
+                @apply gap-xsm;
+
+                > * {
+                    @apply w-[70%] h-xxsm;
+                    @apply rounded-none bg-logo-400;
+                }
+            }
+        }
+    }
 }
