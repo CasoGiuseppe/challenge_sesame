@@ -1,12 +1,16 @@
 .user-identity {
     $userIdentity: &;
 
-    @apply w-xlg aspect-square overflow-hidden m-none;
-    @apply bg-neutral-200 rounded-full;
+    @apply w-xlg aspect-square overflow-hidden m-none flex items-center justify-center;
+    @apply bg-neutral-300 rounded-full;
 
     > * {
         &:is(img) {
             @apply max-w-full
         }
+    }
+
+    &__base-icon {
+        @apply text-neutral-100
     }
 }

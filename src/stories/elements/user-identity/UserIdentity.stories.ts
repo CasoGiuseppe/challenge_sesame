@@ -24,9 +24,14 @@ const Templates: Story = {
             return { args }
         },
         template: `
-            <UserIdentity v-bind="args">
-                <template #image><img src="https://picsum.photos/200" /></template>
-            </UserIdentity>
+            <Suspense>
+                <section style="display: flex; gap: 12px">
+                    <UserIdentity v-bind="args">
+                        <template #image><img src="https://picsum.photos/200" /></template>
+                    </UserIdentity>
+                    <UserIdentity v-bind="args" />
+                </section>
+            </Suspense>
         `,
     })
 }
