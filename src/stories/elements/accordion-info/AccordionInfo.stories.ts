@@ -34,7 +34,12 @@ const Templates: Story = {
         template: `
             <AccordionInfo v-bind="args">
                 <template #summary>{{ args.summary }}</template>
-                <template #content>{{ args.content }}</template>
+                <template #content>
+                    <AccordionInfo open>
+                        <template #summary>nested</template>
+                        <template #content>nested content</template>
+                    </AccordionInfo>
+                </template>
             </AccordionInfo>
         `
     })

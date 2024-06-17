@@ -7,6 +7,10 @@
     @apply font-default;
     @apply transition-colors duration-[var(--animationTime)];
 
+    &:not(:has(details)) {
+        @apply p-none;
+    }
+
     &:not(:hover) {
         &:focus-within{
             @apply shadow-focus
