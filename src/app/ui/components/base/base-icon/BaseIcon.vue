@@ -31,7 +31,7 @@ const { name } = defineProps({
    */
   name: {
     type: String as PropType<string>,
-      required: true
+    required: true
   },
 
   /**

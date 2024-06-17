@@ -3,9 +3,7 @@ import { flushPromises } from '@vue/test-utils';
 import { mountComponent } from '@tests/index';
 import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue'
 import { Sizes } from '../types'
-import {
-    $uiDOMIDValue,
-  } from './utilities';
+import { $uiDOMIDValue, } from './utilities';
 
 
 let $wrapper: any;
@@ -16,6 +14,7 @@ describe('BaseIcon component tests', () => {
               props: {
                 id: $uiDOMIDValue,
                 size: Sizes.L,
+                name: 'IconSearch',
               }
             });
             await flushPromises;
