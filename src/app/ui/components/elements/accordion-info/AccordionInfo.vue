@@ -11,11 +11,13 @@
       customColor ? 'accordion-info--has-color' : ''
     ]"
     :style="{'--custom-color': customColor ? `#${customColor}` : '#000000' }"
+    data-testID="ui-accordion-test"
   >
     <summary
       v-if="$slots['summary']"
       id="accordion-summary"
       class="accordion-info__summary"
+      data-testID="ui-summary-test"
     >
       <!-- @slot Summary: slot to show accordion summary title -->
       <slot name="summary" />
@@ -24,6 +26,7 @@
       v-if="$slots['content']"
       id="accordion-content"
       class="accordion-info__content"
+      data-testID="ui-content-test"
     >
       <!-- @slot Content: slot to show accordion nested content -->
       <slot name="content" />
