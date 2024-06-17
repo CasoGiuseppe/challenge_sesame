@@ -11,10 +11,16 @@ function useCustomValidator(): ICustomValidator {
         return checkValueInCollection;
     }
 
+    const ensureValueIsHex = ({ value }: { value: string | number }): boolean => {
+        const pattern = /^[0-9a-fA-F]+$/;
+        return pattern.test(value as string);
+    }
+
     return {
-        ensureValueCollectionExists
+        ensureValueCollectionExists,
+        ensureValueIsHex
     }
 }
 
-const { ensureValueCollectionExists } = useCustomValidator();
-export { ensureValueCollectionExists };
+const { ensureValueCollectionExists, ensureValueIsHex } = useCustomValidator();
+export { ensureValueCollectionExists, ensureValueIsHex };
