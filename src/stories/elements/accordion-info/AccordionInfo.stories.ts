@@ -38,8 +38,8 @@ const Templates: Story = {
                 <AccordionInfo v-bind="args">
                     <template #summary>{{ args.summary }}</template>
                     <template #content>
-                        <AccordionInfo open>
-                            <template #summary><BaseIcon name="IconRate" size="M" />Nested title</template>
+                        <AccordionInfo open customColor="#6961ff">
+                            <template #summary><BaseIcon name="IconSearch" size="M" />Nested title</template>
                             <template #content>nested content</template>
                         </AccordionInfo>
                     </template>

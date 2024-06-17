@@ -2,7 +2,9 @@
     $baseinput: &;
 
     @apply py-sm px-xmd flex items-center gap-xsm relative;
+    @apply text-logo-300;
     @apply bg-background-300 border-background-200 border-solid border-[1px] rounded-md;
+
     @apply transition-colors duration-[var(--animationTime)];
     
     &:not(:has(input:invalid)) {
@@ -48,7 +50,8 @@
     }
 
     &__field {
-        @apply bg-default-none border-none font-default text-md outline-none text-logo-300 w-full;
+        @apply bg-default-none border-none outline-none w-full;
+        @apply font-default text-md text-logo-300;
 
         &::placeholder {
             @apply text-logo-300

@@ -6,7 +6,11 @@
     aria-labelledby="accordion-summary"
     aria-describedby="accordion-content"
     data-testid="ui-accordion"
-    class="accordion-info"
+    :class="[
+      'accordion-info',
+      customColor ? 'accordion-info--has-color' : ''
+    ]"
+    :style="{'--custom-color': customColor ? `#${customColor}` : '#000000' }"
   >
     <summary
       v-if="$slots['summary']"
@@ -52,6 +56,13 @@ defineProps({
   open: {
     type: Boolean as PropType<boolean>,
     default: false
+  },
+
+  /**
+  * Set custom color value 
+  */
+  customColor: {
+    type: String as PropType<string>,
   }
 });
 </script>

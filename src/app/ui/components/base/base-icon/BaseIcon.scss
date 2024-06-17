@@ -1,8 +1,7 @@
 .base-icon {
     $baseicon: &;
-    --base-color: hsla(215, 20%, 65%, 1);
 
-    @apply h-auto aspect-square inline-flex items-center justify-center text-[var(--base-color)];
+    @apply h-auto aspect-square inline-flex items-center justify-center;
 
     > svg {
         @apply flex items-center justify-center;

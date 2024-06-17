@@ -1,6 +1,7 @@
 .accordion-info {
     $accordionInfo: &;
     --arrow-transform: rotate(45deg) translateY(-2px);
+    --custom-color: #000;
 
     @apply px-sm pb-sm;
     @apply select-none rounded-xsm;
@@ -47,6 +48,10 @@
                 @apply p-none;
                 @apply normal-case
             }
+        }
+
+        #{$accordionInfo}--has-color & {
+            @apply text-[var(--custom-color)]
         }
     }
 
