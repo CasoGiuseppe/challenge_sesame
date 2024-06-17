@@ -38,7 +38,11 @@
             @apply inline-block p-xsm ml-auto;
             @apply content-[''] border-solid border-logo-300 border-t-0 border-r-2 border-b-2 border-l-0;
             @apply transition-transform duration-[var(--animationTime)];
-            transform: var(--arrow-transform)
+            transform: var(--arrow-transform);
+
+            #{$accordionInfo}--has-color & {
+                @apply border-[var(--custom-color)]
+            }
         }
 
 
@@ -51,7 +55,15 @@
         }
 
         #{$accordionInfo}--has-color & {
-            @apply text-[var(--custom-color)]
+            @apply text-[var(--custom-color)];
+
+            &::after {
+                @apply border-[var(--custom-color)]
+            }
+            
+            + #{$accordionInfo}__content {
+                @apply text-[var(--custom-color)]
+            }
         }
     }
 

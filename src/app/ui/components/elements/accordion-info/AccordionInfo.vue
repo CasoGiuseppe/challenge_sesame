@@ -33,6 +33,7 @@
 <script setup lang="ts">
 import type { PropType } from 'vue';
 import type { UniqueId } from '@app/ui/types';
+import { ensureValueIsHex } from '@app/ui/validators/useCustomValidator';
 
 defineProps({
   /**
@@ -63,6 +64,7 @@ defineProps({
   */
   customColor: {
     type: String as PropType<string>,
+    validator: (prop: string) => ensureValueIsHex({ value: prop })
   }
 });
 </script>
