@@ -25,6 +25,10 @@ export default {
       xxxlg: 'var(--spacing-90, 1rem)' // 48
     },
 
+    maxWidth: {
+      'screen-md': 'var(--screen-md, 100%)',
+    },
+
     borderRadius: {
       none: 'var(--radius-00, 0)',
       xxsm: 'var(--radius-50, 1rem)', // 2
