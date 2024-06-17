@@ -1,0 +1,37 @@
+import type { Meta, StoryObj } from "@storybook/vue3"
+import UserIdentity from "@app/ui/components/elements/user-identity/UserIdentity.vue"
+
+const meta = {
+    title: "Elements/User Identity",
+    component: UserIdentity,
+    tags: ["autodocs"],
+    argTypes: {
+        id: { control: "text" },
+    },
+    args: {
+        id: "defaultID",
+    }
+} satisfies Meta<typeof UserIdentity>
+
+export default meta
+
+type Story = StoryObj<typeof UserIdentity>
+
+const Templates: Story = {
+    render: (args) => ({
+        components: { UserIdentity },
+        setup() {
+            return { args }
+        },
+        template: `
+            <UserIdentity v-bind="args">
+                <template #image><img src="https://picsum.photos/200" /></template>
+            </UserIdentity>
+        `,
+    })
+}
+
+export const Default: Story = {
+    ...Templates,
+    args: {}
+}

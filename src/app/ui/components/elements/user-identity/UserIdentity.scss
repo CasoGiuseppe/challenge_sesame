@@ -1,3 +1,12 @@
 .user-identity {
-    $userIdentity: &
+    $userIdentity: &;
+
+    @apply w-xlg aspect-square overflow-hidden m-none;
+    @apply bg-neutral-200 rounded-full;
+
+    > * {
+        &:is(img) {
+            @apply max-w-full
+        }
+    }
 }
