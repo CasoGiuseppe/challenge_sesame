@@ -2,7 +2,7 @@
     $accordionInfo: &;
     --arrow-transform: rotate(45deg) translateY(-2px);
 
-    @apply py-xmd px-sm;
+    @apply px-sm pb-sm;
     @apply select-none rounded-xsm;
     @apply font-default;
     @apply transition-colors duration-[var(--animationTime)];
@@ -19,7 +19,7 @@
 
     &[open] {
         > summary {
-            @apply mb-sm;
+            @apply mb-xmd;
 
             &::after {
                 --arrow-transform: rotate(-135deg) translateY(-2px);
@@ -28,8 +28,8 @@
     }
 
     &__summary {
-        @apply flex items-center justify-center m-none gap-sm;
-        @apply text-xsm text-logo-300;
+        @apply flex items-center justify-center m-none gap-sm pt-xmd;
+        @apply text-sm text-logo-300 uppercase;
         @apply outline-none cursor-pointer;
         @apply transition-spacing;
 
@@ -39,10 +39,18 @@
             @apply transition-transform duration-[var(--animationTime)];
             transform: var(--arrow-transform)
         }
+
+
+        ~ * {
+            #{$accordionInfo}__summary,
+            #{$accordionInfo}__content {
+                @apply p-none;
+                @apply normal-case
+            }
+        }
     }
 
     &__content {
-        @apply p-sm;
-        @apply rounded-sm bg-neutral-200;
+        @apply rounded-sm bg-neutral-200 p-xmd;
     }
 }

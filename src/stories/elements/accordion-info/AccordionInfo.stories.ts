@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
 import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionInfo.vue"
+import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
+import { Sizes } from "@app/ui/components/base/base-icon/types"
 
 const meta = {
     title: "Elements/Accordion Info",
@@ -16,7 +18,7 @@ const meta = {
         id: "AccordionID",
         title: "Accordion title",
         open: false,
-        summary: "SUMMARY TITLE",
+        summary: "Summary title",
         content: "content"
     }
 } satisfies Meta<typeof AccordionInfo>
@@ -27,20 +29,22 @@ type Story = StoryObj<typeof AccordionInfo>
 
 const Templates: Story = {
     render: (args) => ({
-        components: { AccordionInfo },
+        components: { AccordionInfo, BaseIcon },
         setup() {
             return { args }
         },
         template: `
-            <AccordionInfo v-bind="args">
-                <template #summary>{{ args.summary }}</template>
-                <template #content>
-                    <AccordionInfo open>
-                        <template #summary>nested</template>
-                        <template #content>nested content</template>
-                    </AccordionInfo>
-                </template>
-            </AccordionInfo>
+            <Suspense>
+                <AccordionInfo v-bind="args">
+                    <template #summary>{{ args.summary }}</template>
+                    <template #content>
+                        <AccordionInfo open>
+                            <template #summary><BaseIcon name="IconRate" size="M" />Nested title</template>
+                            <template #content>nested content</template>
+                        </AccordionInfo>
+                    </template>
+                </AccordionInfo>
+            </Suspense>
         `
     })
 }
