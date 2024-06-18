@@ -1,5 +1,7 @@
 <template>
     <aside
+        :id="id"
+        :open="open"
         class="responsive-panel"
         data-testID="ui-panel-test"
     >
@@ -8,10 +10,28 @@
             class="responsive-panel__header"
         >
             <slot name="header" />
+            <button @click="displayPanel">close</button>
         </header>
         <section class="responsive-panel__content">
             section
         </section>
     </aside>
 </template>
+<script setup lang="ts">
+import type { UniqueId } from '@app/ui/types';
+import { ref, type PropType } from 'vue';
+
+defineProps({
+  /**
+   * Set the unique id of the ui responsive panel
+   */
+  id: {
+    type: String as PropType<UniqueId>,
+    default: 'panelId'
+  },
+})
+
+const open = ref<boolean>(false)
+const displayPanel = ():void => { open.value =! open.value }
+</script>
 <style src="./ResponsivePanel.scss" lang="scss"></style>

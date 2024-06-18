@@ -3,19 +3,17 @@
     --max-width: 100%;
 
     @apply inline-flex flex-1 flex-col p-sm min-w-[var(--max-width)] gap-sm relative;
-    @apply bg-neutral-100 shadow-light-center;
-
-    background: yellow;
+    @apply bg-neutral-100 shadow-light-center rounded-b-sm;
 
     @screen tablet-pt {
         --max-width: 16rem;
 
         @apply flex-none items-start min-h-full;
-        @apply shadow-light-right;
+        @apply shadow-light-right rounded-b-none;
     }
 
     &__header {
-        @apply inline-flex flex-none items-center;
+        @apply inline-flex flex-none items-center justify-between;
 
         @screen tablet-pt {
             @apply items-start w-full flex-none;
@@ -28,11 +26,16 @@
 
     &__content {
         @apply fixed w-full left-none flex-1 p-sm bottom-none h-[calc(100vh-(6vh+(var(--spacing-30)*2)))];
-        @apply translate-x-[100vw];
-        background: pink;
-
+        @apply bg-neutral-200;
+        @apply translate-x-[100vw] transition-transform duration-[var(--animationTime)] ease-out;
+       
         @screen tablet-pt {
             @apply relative p-none;
+            @apply bg-default-none;
+            @apply translate-x-none
+        }
+
+        [open = true] & {
             @apply translate-x-none
         }
     }

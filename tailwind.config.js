@@ -115,9 +115,9 @@ export default {
     extend: {
       animation: {
         spinner: 'spinner var(--slowAnimationTime) linear infinite',
-        'slide-from-left': 'slide-from-left var(--outAnimationTime) var(--ease-out)',
-        'slide-from-right': 'slide-from-right var(--outAnimationTime) var(--ease-out)',
-        'slide-from-center': 'slide-from-center var(--outAnimationTime) var(--ease-out)',
+        'slide-from-left': 'slide-from-left var(--outAnimationTime) var(--ease-out) forwards',
+        'slide-from-right': 'slide-from-right var(--outAnimationTime) var(--ease-out) forwards',
+        'slide-from-center': 'slide-from-center var(--outAnimationTime) var(--ease-out) forwards',
       },
 
       keyframes: {
