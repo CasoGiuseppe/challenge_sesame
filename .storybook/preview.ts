@@ -1,4 +1,5 @@
 import type { Preview } from '@storybook/vue3'
+import { useArgs } from '@storybook//preview-api';
 
 const preview: Preview = {
   parameters: {
@@ -10,5 +11,13 @@ const preview: Preview = {
     }
   }
 }
+
+export const decorators = [
+  (story, context) => {
+    const [_, updateArgs] = useArgs()
+    return story({ ...context, updateArgs })
+  },
+  () => ({ template: '<story />' }),
+]
 
 export default preview

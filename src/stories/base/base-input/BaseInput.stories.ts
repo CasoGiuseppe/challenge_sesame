@@ -31,18 +31,32 @@ export default meta
 type Story = StoryObj<typeof BaseInput>
 
 const Templates: Story = {
-    render: (args) => ({
+    render: (args, { updateArgs }) => ({
         components: { BaseInput },
         setup() {
             return { args }
         },
         template: `
             <Suspense>
-                <BaseInput v-bind="args" @send="action" />
+                <BaseInput
+                    v-bind="args"
+                    @update:modelValue="update"
+                    @invalid="setInvalid"
+                    @change="change"
+                />
             </Suspense>
         `,
         methods: {
-            action: action("submitted"),
+            change: action('change'),
+            update(value: string): void {
+                updateArgs({ ...args, proxyValue: value })
+            },
+            setInvalid({mode, value}: {mode: string, value: string}): void {
+                console.log(mode, value)
+                // updateArgs({ ...args, error: value
+                //     ? ERRORS[mode as keyof typeof ERRORS]
+                //     : null })
+            },
         }
     })
 }
