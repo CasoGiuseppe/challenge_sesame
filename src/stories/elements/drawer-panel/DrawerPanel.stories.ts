@@ -14,7 +14,7 @@ const meta = {
     args: {
         id: "defaultID",
         is: Types.DRAWER,
-        open: true,
+        open: false,
     }
 } satisfies Meta<typeof DrawerPanel>
 

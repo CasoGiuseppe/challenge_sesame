@@ -1,19 +1,22 @@
 <template>
   <dialog
     :id="id"
-    :drawer
-    class="drawer-panel"
+    :drawer="isDrawer"
     data-testID="ui-modal"
     ref="drawer"
+    :class="[
+      'drawer-panel',
+      `drawer-panel--is-${position}`
+    ]"
   >drawer</dialog>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { computed, onMounted, ref, type PropType } from 'vue';
+import { computed, onMounted, ref, watch, type PropType } from 'vue';
 import { Types, Position } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
-const { open, is } = defineProps({
+const props = defineProps({
   /**
    * Set the unique id of the drawer panel
    */
@@ -36,7 +39,7 @@ const { open, is } = defineProps({
    */
    position: {
     type: String as PropType<Position>,
-    default: Position.CENTER,
+    default: Position.LEFT,
     validator: (prop: Position) => ensureValueCollectionExists({ collection: Position, value: prop })
   },
 
@@ -51,9 +54,12 @@ const { open, is } = defineProps({
 
 const drawer = ref<HTMLDialogElement | null>(null)
 const show = ():void => drawer.value?.showModal?.();
-const isDrawer = computed(():boolean => is === Types.DRAWER)
-onMounted(() => {
-  open ? show() : null
-})
+const isDrawer = computed(():boolean => props.is === Types.DRAWER)
+
+watch(
+    () => props.open,
+    (v: any) => props.open ? show() : null,
+    { immediate: true }
+)
 </script>
 <style src="./DrawerPanel.scss" lang="scss"></style>

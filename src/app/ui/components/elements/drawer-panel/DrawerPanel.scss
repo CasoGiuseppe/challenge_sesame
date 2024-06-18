@@ -1,7 +1,19 @@
 .drawer-panel {
-    @apply p-sm h-full;
+    @apply p-sm h-full max-h-full;
     @apply outline-none border-none;
-    @apply shadow-light-right:
+    @apply shadow-light-right;
 
-    
+    &--is {
+        &-center {
+            @apply inset-x-none inset-y-none
+        }
+
+        &-left {
+            @apply left-none right-auto
+        }
+
+        &-right {
+            @apply right-none left-auto
+        }
+    }
 }
