@@ -9,7 +9,7 @@
         >
             <slot name="header" />
         </header>
-        <section>
+        <section class="responsive-panel__content">
             section
         </section>
     </aside>

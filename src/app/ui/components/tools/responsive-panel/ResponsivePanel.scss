@@ -2,7 +2,7 @@
     $responsivepanel: &;
     --max-width: 100%;
 
-    @apply inline-flex flex-none flex-col p-sm max-w-[var(--max-width)] gap-sm;
+    @apply inline-flex flex-1 flex-col p-sm min-w-[var(--max-width)] gap-sm relative;
     @apply bg-neutral-100 shadow-light-center;
 
     background: yellow;
@@ -10,7 +10,7 @@
     @screen tablet-pt {
         --max-width: 16rem;
 
-        @apply flex-1 items-start;
+        @apply flex-none items-start min-h-full;
         @apply shadow-light-right;
     }
 
@@ -23,6 +23,17 @@
             > * {
                 @apply w-full;
             }
+        }
+    }
+
+    &__content {
+        @apply fixed w-full left-none flex-1 p-sm bottom-none h-[calc(100vh-(6vh+(var(--spacing-30)*2)))];
+        @apply translate-x-[100vw];
+        background: pink;
+
+        @screen tablet-pt {
+            @apply relative p-none;
+            @apply translate-x-none
         }
     }
 }
