@@ -29,6 +29,7 @@ const meta = {
         loading: false,
         readonly: false,
         pattern: '^[a-zA-Z0-9 ]+$',
+        message: null,
     }
 } satisfies Meta<typeof BaseInput>
 
@@ -50,7 +51,7 @@ const Templates: Story = {
                     @invalid="setInvalid"
                     @change="change"
                 >
-                    <template #message>{{ args.message }}</template>
+                    <template #message v-if="args.message !== null">{{ args.message }}</template>
                 </BaseInput>
             </Suspense>
         `,

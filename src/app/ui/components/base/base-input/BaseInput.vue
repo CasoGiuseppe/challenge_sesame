@@ -35,13 +35,19 @@
       />
     </label>
     
-    <p
-      v-if="$slots['message']"
-      class="base-input__message"
+    <TransitionIs
+      :type="transType.FROMBOTTOM"
+      :easing="Easing.ELASTIC"
+      :timing="Timing.FAST"
     >
-      <!-- @slot Message: slot to show user message -->
-      <slot name="message" />
-    </p>
+      <p
+        v-if="$slots['message']"
+        class="base-input__message"
+      >
+        <!-- @slot Message: slot to show user message -->
+        <slot name="message" />
+      </p>
+    </TransitionIs>
     
 </template>
 <script setup lang="ts">
