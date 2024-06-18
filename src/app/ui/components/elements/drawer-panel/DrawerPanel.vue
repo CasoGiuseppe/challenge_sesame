@@ -20,10 +20,13 @@
             <!-- @slot Header: set drawer title -->
             <slot name="header" />
         </h2>
-        <button class="drawer-panel__close">close</button>
+        <button
+          class="drawer-panel__close"
+          @click="close"
+        />
       </header>
-      <!-- @slot Content: slot to display drawer content -->
-      <slot name="content" />
+      <!-- @slot Body: slot to display drawer content -->
+      <slot name="body" />
     </section>
   </dialog>
 </template>

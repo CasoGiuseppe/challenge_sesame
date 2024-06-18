@@ -11,14 +11,16 @@ const meta = {
         is: { control: "select", options: Object.values(Types) },
         position: { control: "select", options: Object.values(Position) },
         open: { control: "radio", options: [true, false] },
-        header: { control: "text" }
+        header: { control: "text" },
+        body: { control: "text" }
     },
     args: {
         id: "defaultID",
         is: Types.DRAWER,
         position: Position.LEFT,
         open: true,
-        header: "Drawer title"
+        header: "Drawer title",
+        body: "Drawer body"
     }
 } satisfies Meta<typeof DrawerPanel>
 
@@ -38,6 +40,7 @@ const Templates: Story = {
                 @close="close"
             >
                 <template #header>{{ args.header }} </template>
+                <template #body>{{ args.body }} </template>
             </DrawerPanel>
         `,
         methods: {

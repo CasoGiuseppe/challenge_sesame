@@ -117,6 +117,7 @@ export default {
         spinner: 'spinner var(--slowAnimationTime) linear infinite',
         'slide-from-left': 'slide-from-left var(--outAnimationTime) var(--ease-out)',
         'slide-from-right': 'slide-from-right var(--outAnimationTime) var(--ease-out)',
+        'slide-from-center': 'slide-from-center var(--outAnimationTime) var(--ease-out)',
       },
 
       keyframes: {
@@ -142,6 +143,16 @@ export default {
           '100%': {
               opacity: '1',
               transform: 'translateX(0)'
+          }
+        },
+        'slide-from-center': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(20%)'
+          },
+          '100%': {
+              opacity: '1',
+              transform: 'translateY(0)'
           }
         }
       },

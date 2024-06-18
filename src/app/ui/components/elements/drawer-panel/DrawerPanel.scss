@@ -1,24 +1,24 @@
 .drawer-panel {
     $drawerpanel: &;
 
-    @apply h-screen max-h-full min-w-[50vw];
+    @apply p-none h-screen max-h-full min-w-[50vw] flex;
     @apply outline-none border-none;
     
 
     &--is {
         &-center {
             @apply inset-x-none inset-y-none max-h-none h-fit;
-            @apply shadow-light-center
+            @apply shadow-light-center rounded-sm
         }
 
         &-left {
             @apply left-none right-auto;
-            @apply shadow-light-right;
+            @apply shadow-light-right rounded-r-sm;
         }
 
         &-right {
             @apply right-none left-auto;
-            @apply shadow-light-left;
+            @apply shadow-light-left rounded-l-sm;;
         }
     }
 
@@ -30,10 +30,15 @@
         &#{$drawerpanel}--is-right {
             @apply animate-slide-from-right
         }
+
+        &#{$drawerpanel}--is-center {
+            @apply animate-slide-from-center
+        }
     }
 
     &__content {
-        @apply p-md
+        @apply p-md flex flex-col gap-lg flex-1;
+        @apply font-default;
     }
 
     &__header {
@@ -41,11 +46,41 @@
     }
 
     &__title {
-        @apply font-default font-medium text-lg;
-        @apply m-none p-none
+        @apply m-none p-none flex gap-sm; 
+        @apply font-default font-regular text-lg text-logo-500;
     }
 
     &__close {
-        @apply mr-none ml-auto
+        @apply mr-none ml-auto flex justify-center relative w-md aspect-square;
+        @apply bg-default-none border-none cursor-pointer outline-none rounded-xsm;
+        @apply transition-colors duration-[var(--animationTime)];
+        
+        @media(hover) {
+            &:hover {
+                &:before,
+                &:after {
+                    transform: rotate(0deg);
+                } 
+            }
+        }
+
+        &:focus-visible {
+            @apply shadow-focus
+        }
+
+        &:before,
+        &:after {
+            @apply h-[1px] inline-block left-none absolute w-full top-1/2;
+            @apply content-[''] bg-logo-400;
+            @apply transition-transform duration-[var(--outAnimationTime)]
+        }
+
+        &::before {
+            transform: rotate(45deg)
+        }
+
+        &::after {
+            transform: rotate(-45deg)
+        }
     }
 }
