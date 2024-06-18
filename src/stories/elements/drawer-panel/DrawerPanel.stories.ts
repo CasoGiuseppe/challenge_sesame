@@ -6,8 +6,12 @@ const meta = {
     component: DrawerPanel,
     tags: ["autodocs"],
     argTypes: {
+        id: { control: "text" },
+        edit: { control: "radio", options: [true, false] },
     },
     args: {
+        id: "defaultID",
+        edit: false,
     }
 } satisfies Meta<typeof DrawerPanel>
 

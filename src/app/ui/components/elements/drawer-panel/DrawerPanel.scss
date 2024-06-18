@@ -1,3 +1,15 @@
 .drawer-panel {
-    
+    @apply p-sm inline-flex;
+    @apply shadow-light-right bg-neutral-100;
+
+    &:after {
+        @apply absolute inset-none z-[-1];
+        @apply bg-default-drawer
+    }
+
+    &[edit = true] {
+        &::after {
+            content: '';
+        }
+    }
 }

@@ -1,23 +1,32 @@
 <template>
-  <dialog>drawer</dialog>
+  <aside
+    :id="id"
+    :edit="edit"
+    class="drawer-panel"
+    data-testID="ui-modal"
+    
+  >drawer</aside>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
 import { type PropType } from 'vue';
-import { Types } from './types';
-import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 defineProps({
+  /**
+   * Set the unique id of the drawer panel
+   */
   id: {
     type: String as PropType<UniqueId>,
     default: 'drawerPanel'
   },
 
-  is: {
-    type: String as PropType<Types>,
-    default: Types.DRAWER,
-    validator: (prop: Types) => ensureValueCollectionExists({ collection: Types, value: prop })
-  }
+   /**
+   * Set the opne drawer edit state
+   */
+   edit: {
+    type: Boolean as PropType<boolean>,
+    default: true
+  },
 });
 </script>
 <style src="./DrawerPanel.scss" lang="scss"></style>
