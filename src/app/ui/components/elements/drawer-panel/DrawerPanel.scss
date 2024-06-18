@@ -1,7 +1,7 @@
 .drawer-panel {
     $drawerpanel: &;
 
-    @apply p-none h-screen max-h-full min-w-[50vw] flex;
+    @apply p-none h-screen max-h-full min-w-[50vw];
     @apply outline-none border-none;
     
 
@@ -23,6 +23,8 @@
     }
 
     &[open]{
+        @apply flex;
+
         &#{$drawerpanel}--is-left {
             @apply animate-slide-from-left
         }

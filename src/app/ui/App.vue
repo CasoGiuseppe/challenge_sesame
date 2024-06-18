@@ -2,6 +2,7 @@
 import BaseButton from './components/base/base-button/BaseButton.vue';
 import BaseIcon from './components/base/base-icon/BaseIcon.vue';
 import LoadingState from './components/states/default/loading-state/LoadingState.vue'
+import DrawerPanel from './components/elements/drawer-panel/DrawerPanel.vue'
 </script>
 
 <template>
@@ -16,6 +17,7 @@ import LoadingState from './components/states/default/loading-state/LoadingState
   <div>
     <LoadingState></LoadingState>
     <BaseIcon name="IconSearch" />
+    <DrawerPanel></DrawerPanel>
   </div>
 </Suspense>
 </template>

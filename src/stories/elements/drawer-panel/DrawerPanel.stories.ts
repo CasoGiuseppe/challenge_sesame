@@ -18,7 +18,7 @@ const meta = {
         id: "defaultID",
         is: Types.DRAWER,
         position: Position.LEFT,
-        open: true,
+        open: false,
         header: "Drawer title",
         body: "Drawer body"
     }
@@ -35,13 +35,16 @@ const Templates: Story = {
             return { args }
         },
         template: `
-            <DrawerPanel
-                v-bind="args"
-                @close="close"
-            >
-                <template #header>{{ args.header }} </template>
-                <template #body>{{ args.body }} </template>
-            </DrawerPanel>
+            <section>
+                <button @click="() => close({state : true})">Open dialog </button>
+                <DrawerPanel
+                    v-bind="args"
+                    @close="close"
+                >
+                    <template #header>{{ args.header }} </template>
+                    <template #body>{{ args.body }} </template>
+                </DrawerPanel>
+            </section>
         `,
         methods: {
             close({ state }: {state: string}): void {

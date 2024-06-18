@@ -86,9 +86,8 @@ const isDrawer = computed(():boolean => props.is === Types.DRAWER)
 
 watch(
     () => props.open,
-    (v: any) => props.open ? show() : null
+    (v: any) => props.open ? show() : null,
+    { immediate: true }
 )
-
-onMounted(() => props.open ? show() : null )
 </script>
 <style src="./DrawerPanel.scss" lang="scss"></style>
