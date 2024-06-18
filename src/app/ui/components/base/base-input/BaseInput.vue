@@ -27,6 +27,7 @@
         :type="type"
         :pattern="pattern"
         :placeholder="placeholder"
+        :required="required"
         v-model.lazy="value"
         autocomplete="one-time-code"
         class="base-input__field"
@@ -61,7 +62,7 @@ import { Types as transType, Easing, Timing } from '@app/ui/components/abstracts
 
 const value = defineModel("proxyValue")
 const dirty = ref<boolean>(false)
-const { type, loading, pattern, minLength } = defineProps({
+const { type, loading, pattern, minLength, required } = defineProps({
   /**
    * Set the unique id of the ui input
    */
@@ -117,12 +118,20 @@ const { type, loading, pattern, minLength } = defineProps({
   },
 
   /**
-     * Set min input length value
-     */
-     minLength: {
-        type: Number as PropType<number>,
-        default: 0
-    },
+   * Handle required state
+   */
+   required: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
+
+  /**
+   * Set min input length value
+   */
+    minLength: {
+      type: Number as PropType<number>,
+      default: 0
+  },
 });
 
 const customEmits = defineEmits(["update:modelValue", "change", "invalid"])
@@ -130,6 +139,7 @@ const updateValue = (payload: Event): void => {
     const { value } = payload.target as HTMLInputElement
     if(value.length === 0) {
       dirty.value = false
+      customEmits("update:modelValue", value)
       return
     }
 
@@ -154,15 +164,20 @@ const invalidModel = (value: string): void => {
     ) })
 }
 
+const requiredModel = (state: boolean) => {
+    if (required) customEmits("invalid", { mode: "required", value: state })
+}
+
 const isSearchType = computed<boolean>(() =>  type === Types.SEARCH)
 watch(
     () => value.value,
     (v: any) => {
-        if (!v) return
+        if (v === undefined) return
         dirty.value = true
-        invalidModel(v)
-    },
-    { immediate: true }
+        required && v.length === 0
+            ? requiredModel(v.length === 0)
+            : invalidModel(v)
+    }
 )
 </script>
 <style src="./BaseInput.scss" lang="scss"></style>

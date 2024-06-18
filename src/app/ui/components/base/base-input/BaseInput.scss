@@ -6,7 +6,7 @@
     @apply bg-background-300 border-background-200 border-solid border-[1px] rounded-md;
 
     @apply transition-colors duration-[var(--animationTime)];
-    
+
     &:not(:has(input:invalid)) {
         &:focus-within {
             &:not(:has(input:hover)) {
@@ -74,5 +74,9 @@
     &__message {
         @apply text-xsm font-default text-warning-100;
         @apply m-none p-none
+    }
+
+    + * {
+        @apply mt-xsm
     }
 }

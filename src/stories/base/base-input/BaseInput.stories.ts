@@ -19,6 +19,7 @@ const meta = {
         placeholder: { control: 'text' },
         loading: { control: 'radio', options: [true, false] },
         readonly: { control: 'radio', options: [true, false] },
+        required: { control: 'radio', options: [true, false] },
         pattern: { control: 'text' },
         message: { control: 'text' },
     },
@@ -28,6 +29,7 @@ const meta = {
         placeholder: 'Add here your text',
         loading: false,
         readonly: false,
+        required: true,
         pattern: '^[a-zA-Z0-9 ]+$',
         message: null,
     }
