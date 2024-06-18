@@ -1,0 +1,28 @@
+.responsive-panel {
+    $responsivepanel: &;
+    --max-width: 100%;
+
+    @apply inline-flex flex-none flex-col p-sm max-w-[var(--max-width)] gap-sm;
+    @apply bg-neutral-100 shadow-light-center;
+
+    background: yellow;
+
+    @screen tablet-pt {
+        --max-width: 16rem;
+
+        @apply flex-1 items-start;
+        @apply shadow-light-right;
+    }
+
+    &__header {
+        @apply inline-flex flex-none items-center;
+
+        @screen tablet-pt {
+            @apply items-start w-full flex-none;
+
+            > * {
+                @apply w-full;
+            }
+        }
+    }
+}

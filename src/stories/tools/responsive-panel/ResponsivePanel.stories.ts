@@ -22,11 +22,15 @@ const Templates: Story = {
             return { args }
         },
         template: `
-            <section>
+            <section style="height: 60vh; background-color: hsla(227, 100%, 98%, 1); display: flex">
                 <ResponsivePanel
                     v-bind="args"
-                    @close="close"
                 >
+                    <template #header>
+                        <figure style="margin: 0; padding: 16px; display: flex; align-items: center; justify-content: center; border: 1px dotted hsla(213, 27%, 84%, 1)">
+                            Slot Logo
+                        </figure>
+                    </template>
                 </ResponsivePanel>
             </section>
         `,
