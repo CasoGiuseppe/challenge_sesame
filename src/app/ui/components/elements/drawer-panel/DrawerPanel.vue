@@ -12,7 +12,7 @@
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { computed, onMounted, ref, watch, type PropType } from 'vue';
+import { computed, ref, watch, type PropType } from 'vue';
 import { Types, Position } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
@@ -39,7 +39,7 @@ const props = defineProps({
    */
    position: {
     type: String as PropType<Position>,
-    default: Position.LEFT,
+    default: Position.CENTER,
     validator: (prop: Position) => ensureValueCollectionExists({ collection: Position, value: prop })
   },
 

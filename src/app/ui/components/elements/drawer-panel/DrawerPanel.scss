@@ -1,19 +1,34 @@
 .drawer-panel {
-    @apply p-sm h-full max-h-full;
+    $drawerpanel: &;
+
+    @apply p-md h-screen max-h-full min-w-[50vw];
     @apply outline-none border-none;
-    @apply shadow-light-right;
+    
 
     &--is {
         &-center {
-            @apply inset-x-none inset-y-none
+            @apply inset-x-none inset-y-none max-h-none h-fit;
+            @apply shadow-light-center
         }
 
         &-left {
-            @apply left-none right-auto
+            @apply left-none right-auto;
+            @apply shadow-light-right;
         }
 
         &-right {
-            @apply right-none left-auto
+            @apply right-none left-auto;
+            @apply shadow-light-left;
+        }
+    }
+
+    &[open]{
+        &#{$drawerpanel}--is-left {
+            @apply animate-slide-from-left
+        }
+
+        &#{$drawerpanel}--is-right {
+            @apply animate-slide-from-right
         }
     }
 }

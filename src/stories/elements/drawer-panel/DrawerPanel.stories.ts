@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
 import DrawerPanel from "@app/ui/components/elements/drawer-panel/DrawerPanel.vue"
-import { Types } from "@app/ui/components/elements/drawer-panel/types"
+import { Types, Position } from "@app/ui/components/elements/drawer-panel/types"
 
 const meta = {
     title: "Elements/Drawer Panel",
@@ -9,11 +9,13 @@ const meta = {
     argTypes: {
         id: { control: "text" },
         is: { control: "select", options: Object.values(Types) },
+        position: { control: "select", options: Object.values(Position) },
         open: { control: "radio", options: [true, false] },
     },
     args: {
         id: "defaultID",
         is: Types.DRAWER,
+        position: Position.LEFT,
         open: false,
     }
 } satisfies Meta<typeof DrawerPanel>

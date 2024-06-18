@@ -40,6 +40,8 @@ export default {
       dark: '0 10px 8px -2px hsla(224, 45%, 22%, .3)',
       light: '0 4px 4px 0 hsla(224, 45%, 22%, .3)',
       'light-right': '4px 0 4px 0 hsla(243, 100%, 69%, 0.05)',
+      'light-left': '-4px 0 4px 0 hsla(243, 100%, 69%, 0.05)',
+      'light-center': '0 0 24px 0 hsla(243, 100%, 69%, 0.05)',
       focus:  '0 0 0 2px var(--color-logo-100, #000), 0 0 0 4px var(--color-outline, #000);',
       hover:  '0 0 0 1px var(--color-logo-400, #000);',
       invalid: '0 0 0 1px var(--color-warning-100);',
@@ -112,6 +114,8 @@ export default {
     extend: {
       animation: {
         spinner: 'spinner var(--slowAnimationTime) linear infinite',
+        'slide-from-left': 'slide-from-left var(--outAnimationTime) var(--ease-out)',
+        'slide-from-right': 'slide-from-right var(--outAnimationTime) var(--ease-out)',
       },
 
       keyframes: {
@@ -119,6 +123,26 @@ export default {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
         },
+        'slide-from-left': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(-100%)'
+          },
+          '100%': {
+              opacity: '1',
+              transform: 'translateX(0)'
+          }
+        },
+        'slide-from-right': {
+          '0%': {
+            opacity: '0',
+            transform: 'translateX(100%)'
+          },
+          '100%': {
+              opacity: '1',
+              transform: 'translateX(0)'
+          }
+        }
       },
 
       transitionTimingFunction: {
