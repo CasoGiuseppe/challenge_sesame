@@ -22,6 +22,7 @@
         </h2>
         <button
           class="drawer-panel__close"
+          data-testID="ui-close-button"
           @click="close"
         />
       </header>
@@ -89,7 +90,5 @@ watch(
 )
 
 onMounted(() => props.open ? show() : null )
-
-
 </script>
 <style src="./DrawerPanel.scss" lang="scss"></style>
