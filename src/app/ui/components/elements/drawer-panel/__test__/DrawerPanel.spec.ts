@@ -2,11 +2,6 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { mountComponent } from '@tests/index';
 import DrawerPanel from '../DrawerPanel.vue';
 import { Types, Position } from '../types';
-import {
-    $providedTitle,
-    $providedBody,
-    $uiCloseButton
-  } from './utilities';
   
 let $wrapper: any;
 describe('BaseButton component tests', () => {
