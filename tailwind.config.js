@@ -96,6 +96,7 @@ export default {
       xsm: ['var(--font-size-xs)', { lineHeight: '0.938rem' }], // 12
       sm: ['var(--font-size-sm)', { lineHeight: '1.094rem' }], // 14
       md: ['var(--font-size-regular)', { lineHeight: '1.25rem' }], // 16
+      lg: ['var(--font-size-l)', { lineHeight: '1.25rem' }], // 24
       xlg: ['var(--font-size-xl)', { lineHeight: '2.344rem' }], // 30
 
     },

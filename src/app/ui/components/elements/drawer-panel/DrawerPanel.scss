@@ -1,7 +1,7 @@
 .drawer-panel {
     $drawerpanel: &;
 
-    @apply p-md h-screen max-h-full min-w-[50vw];
+    @apply h-screen max-h-full min-w-[50vw];
     @apply outline-none border-none;
     
 
@@ -30,5 +30,22 @@
         &#{$drawerpanel}--is-right {
             @apply animate-slide-from-right
         }
+    }
+
+    &__content {
+        @apply p-md
+    }
+
+    &__header {
+        @apply flex justify-between items-center gap-sm;
+    }
+
+    &__title {
+        @apply font-default font-medium text-lg;
+        @apply m-none p-none
+    }
+
+    &__close {
+        @apply mr-none ml-auto
     }
 }

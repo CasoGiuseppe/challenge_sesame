@@ -13,13 +13,23 @@
       class="drawer-panel__content"
       v-on-click-outside="close"
     >
-      drawer
+      <header class="drawer-panel__header">
+        <h2
+          v-if="$slots['header']"
+          class="drawer-panel__title">
+            <!-- @slot Header: set drawer title -->
+            <slot name="header" />
+        </h2>
+        <button class="drawer-panel__close">close</button>
+      </header>
+      <!-- @slot Content: slot to display drawer content -->
+      <slot name="content" />
     </section>
   </dialog>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { computed, nextTick, ref, watch, type PropType } from 'vue';
+import { computed, onMounted, ref, watch, type PropType } from 'vue';
 import { Types, Position } from './types';
 import { vOnClickOutside } from "@vueuse/components"
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
@@ -56,7 +66,7 @@ const props = defineProps({
    */
    open: {
     type: Boolean as PropType<boolean>,
-    default: true
+    default: false
   },
 });
 
@@ -72,8 +82,11 @@ const isDrawer = computed(():boolean => props.is === Types.DRAWER)
 
 watch(
     () => props.open,
-    (v: any) => props.open ? show() : null,
-    { immediate: true }
+    (v: any) => props.open ? show() : null
 )
+
+onMounted(() => props.open ? show() : null )
+
+
 </script>
 <style src="./DrawerPanel.scss" lang="scss"></style>
