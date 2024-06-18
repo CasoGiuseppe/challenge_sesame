@@ -3,6 +3,11 @@ import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue"
 import { Types } from "@app/ui/components/base/base-input/types"
 import { action } from "@storybook/addon-actions"
 
+const ERRORS = {
+    required: 'input value is required',
+    validation: 'input validation failed'
+};
+
 const meta = {
     title: "Base/Base Input",
     component: BaseInput,
@@ -15,6 +20,7 @@ const meta = {
         loading: { control: 'radio', options: [true, false] },
         readonly: { control: 'radio', options: [true, false] },
         pattern: { control: 'text' },
+        message: { control: 'text' },
     },
     args: {
         id: 'inputID',
@@ -43,7 +49,9 @@ const Templates: Story = {
                     @update:modelValue="update"
                     @invalid="setInvalid"
                     @change="change"
-                />
+                >
+                    <template #message>{{ args.message }}</template>
+                </BaseInput>
             </Suspense>
         `,
         methods: {
@@ -53,9 +61,9 @@ const Templates: Story = {
             },
             setInvalid({mode, value}: {mode: string, value: string}): void {
                 console.log(mode, value)
-                // updateArgs({ ...args, error: value
-                //     ? ERRORS[mode as keyof typeof ERRORS]
-                //     : null })
+                updateArgs({ ...args, message: value
+                    ? ERRORS[mode as keyof typeof ERRORS]
+                    : null })
             },
         }
     })

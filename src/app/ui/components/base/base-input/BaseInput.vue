@@ -36,10 +36,11 @@
     </label>
     
     <p
-      v-if="$slots['error']"
+      v-if="$slots['message']"
       class="base-input__message"
     >
-      <slot name="error">error</slot>
+      <!-- @slot Message: slot to show user message -->
+      <slot name="message" />
     </p>
     
 </template>
