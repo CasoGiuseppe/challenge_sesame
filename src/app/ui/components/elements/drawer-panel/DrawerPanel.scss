@@ -1,15 +1,7 @@
 .drawer-panel {
-    @apply p-sm inline-flex;
-    @apply shadow-light-right bg-neutral-100;
+    @apply p-sm h-full;
+    @apply outline-none border-none;
+    @apply shadow-light-right:
 
-    &:after {
-        @apply absolute inset-none z-[-1];
-        @apply bg-default-drawer
-    }
-
-    &[edit = true] {
-        &::after {
-            content: '';
-        }
-    }
+    
 }
