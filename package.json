@@ -22,6 +22,7 @@
     "flush-promises": "^1.0.2",
     "pinia": "^2.1.7",
     "storybook-vue3-router": "^5.0.0",
+    "@vueuse/components": "^10.9.0",
     "vue": "^3.3.11",
     "vue-i18n": "^9.9.1",
     "vue-router": "^4.2.5"

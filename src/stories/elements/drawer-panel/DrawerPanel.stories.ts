@@ -25,15 +25,23 @@ export default meta
 type Story = StoryObj<typeof DrawerPanel>
 
 const Templates: Story = {
-    render: (args) => ({
+    render: (args, { updateArgs }) => ({
         components: { DrawerPanel },
         setup() {
             return { args }
         },
         template: `
-            <DrawerPanel v-bind="args">
+            <DrawerPanel
+                v-bind="args"
+                @close="close"
+            >
             </DrawerPanel>
         `,
+        methods: {
+            close({ state }: {state: string}): void {
+                updateArgs({ ...args, open: state })
+            },
+        }
     })
 }
 

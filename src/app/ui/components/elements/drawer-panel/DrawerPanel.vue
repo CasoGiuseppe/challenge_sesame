@@ -2,18 +2,26 @@
   <dialog
     :id="id"
     :drawer="isDrawer"
-    data-testID="ui-modal"
+    data-testID="ui-drawer"
     ref="drawer"
     :class="[
       'drawer-panel',
       `drawer-panel--is-${position}`
     ]"
-  >drawer</dialog>
+  >
+    <section
+      class="drawer-panel__content"
+      v-on-click-outside="close"
+    >
+      drawer
+    </section>
+  </dialog>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { computed, ref, watch, type PropType } from 'vue';
+import { computed, nextTick, ref, watch, type PropType } from 'vue';
 import { Types, Position } from './types';
+import { vOnClickOutside } from "@vueuse/components"
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 const props = defineProps({
@@ -52,8 +60,14 @@ const props = defineProps({
   },
 });
 
+const customEmits = defineEmits(["close", "open"])
 const drawer = ref<HTMLDialogElement | null>(null)
 const show = ():void => drawer.value?.showModal?.();
+const close = ():void => {
+  drawer.value?.close()
+  setTimeout(() => customEmits('close', { state: false }), 50)
+  
+}
 const isDrawer = computed(():boolean => props.is === Types.DRAWER)
 
 watch(
