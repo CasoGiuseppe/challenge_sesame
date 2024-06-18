@@ -45,7 +45,7 @@
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types';
-import { computed, ref, type PropType } from 'vue';
+import { computed, ref, watch, type PropType } from 'vue';
 import { Types } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 import BaseInput from '@app/ui/components/base/base-icon/BaseIcon.vue';
@@ -148,6 +148,14 @@ const invalidModel = (value: string): void => {
 }
 
 const isSearchType = computed<boolean>(() =>  type === Types.SEARCH)
-
+watch(
+    () => value.value,
+    (v: any) => {
+        if (!v) return
+        dirty.value = true
+        invalidModel(v)
+    },
+    { immediate: true }
+)
 </script>
 <style src="./BaseInput.scss" lang="scss"></style>
