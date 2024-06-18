@@ -34,6 +34,14 @@
         @change="changeValue"
       />
     </label>
+    
+    <p
+      v-if="$slots['error']"
+      class="base-input__message"
+    >
+      <slot name="error">error</slot>
+    </p>
+    
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types';
@@ -46,7 +54,7 @@ import { Types as transType, Easing, Timing } from '@app/ui/components/abstracts
 
 const value = defineModel("proxyValue")
 const dirty = ref<boolean>(false)
-const { type, loading } = defineProps({
+const { type, loading, pattern, minLength } = defineProps({
   /**
    * Set the unique id of the ui input
    */
@@ -99,10 +107,18 @@ const { type, loading } = defineProps({
   readonly: {
     type: Boolean as PropType<boolean>,
     default: false
-  }
+  },
+
+  /**
+     * Set min input length value
+     */
+     minLength: {
+        type: Number as PropType<number>,
+        default: 0
+    },
 });
 
-const customEmits = defineEmits(["update:modelValue", "change"])
+const customEmits = defineEmits(["update:modelValue", "change", "invalid"])
 const updateValue = (payload: Event): void => {
     const { value } = payload.target as HTMLInputElement
     if(value.length === 0) {
@@ -117,6 +133,18 @@ const updateValue = (payload: Event): void => {
 const changeValue = (payload: Event): void => {
     const { value } = payload.target as HTMLInputElement
     customEmits("change", value)
+}
+
+const invalidModel = (value: string): void => {
+    if (!pattern) return
+    if (value.length === 0) {
+        customEmits("invalid", { mode: "validation", value: false })
+        return
+    }
+    const re = new RegExp(pattern)
+    customEmits("invalid", { mode: "validation", value: [!re.test(value), value.length < minLength].some(
+        (value) => value
+    ) })
 }
 
 const isSearchType = computed<boolean>(() =>  type === Types.SEARCH)
