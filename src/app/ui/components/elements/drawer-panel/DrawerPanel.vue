@@ -2,6 +2,7 @@
   <dialog
     :id="id"
     :drawer="isDrawer"
+    out="false"
     data-testID="ui-drawer"
     ref="drawer"
     :class="[
@@ -9,10 +10,7 @@
       `drawer-panel--is-${position}`
     ]"
   >
-    <section
-      class="drawer-panel__content"
-      v-on-click-outside="close"
-    >
+    <section class="drawer-panel__content">
       <header class="drawer-panel__header">
         <h2
           v-if="$slots['header']"
@@ -33,9 +31,8 @@
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { computed, onMounted, ref, watch, type PropType } from 'vue';
+import { computed, ref, watch, type PropType } from 'vue';
 import { Types, Position } from './types';
-import { vOnClickOutside } from "@vueuse/components"
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 const props = defineProps({
@@ -78,10 +75,21 @@ const customEmits = defineEmits(["close", "open"])
 const drawer = ref<HTMLDialogElement | null>(null)
 const show = ():void => drawer.value?.showModal?.();
 const close = ():void => {
-  drawer.value?.close()
-  setTimeout(() => customEmits('close', { state: false }), 50)
-  
+  const target = drawer.value;
+  if(!target) return;
+
+  target.setAttribute('out', 'true')
+  target.addEventListener("transitionend", (ev) => {
+    if(ev.target !== target) return;
+    
+    target.close()
+    target.setAttribute('out', 'false')
+    
+    setTimeout(() => customEmits('close', { state: false }), 50)
+    target.removeEventListener("transitionend", () => {});
+  }, true)
 }
+
 const isDrawer = computed(():boolean => props.is === Types.DRAWER)
 
 watch(

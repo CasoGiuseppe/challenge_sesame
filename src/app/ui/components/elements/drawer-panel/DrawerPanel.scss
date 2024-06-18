@@ -1,9 +1,10 @@
 .drawer-panel {
     $drawerpanel: &;
+    --out-transition: 100%;
 
     @apply p-none h-screen max-h-full min-w-[50vw];
     @apply outline-none border-none;
-    
+    @apply transition-transform duration-[var(--animationTime)] ease-out;
 
     &--is {
         &-center {
@@ -22,11 +23,23 @@
         }
     }
 
+    &[out=true] {
+        @apply animate-none;
+        transform: translateX(var(--out-transition));
+    }
+
+    
     &[open]{
         @apply flex;
-
+        
         &#{$drawerpanel}--is-left {
-            @apply animate-slide-from-left
+            &:not([out='true']) {
+                @apply animate-slide-from-left
+            }
+
+            &[out='true'] {
+                --out-transition: -100%
+            }
         }
 
         &#{$drawerpanel}--is-right {
@@ -34,9 +47,15 @@
         }
 
         &#{$drawerpanel}--is-center {
-            @apply animate-slide-from-center
+            @apply animate-slide-from-center;
+
+            &[out='true'] {
+                transform: translateY(var(--out-transition));
+                @apply opacity-0
+            }
         }
     }
+    
 
     &__content {
         @apply p-md flex flex-col gap-lg flex-1;

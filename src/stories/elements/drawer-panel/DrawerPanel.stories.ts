@@ -10,7 +10,6 @@ const meta = {
         id: { control: "text" },
         is: { control: "select", options: Object.values(Types) },
         position: { control: "select", options: Object.values(Position) },
-        open: { control: "radio", options: [true, false] },
         header: { control: "text" },
         body: { control: "text" }
     },
@@ -18,7 +17,6 @@ const meta = {
         id: "defaultID",
         is: Types.DRAWER,
         position: Position.LEFT,
-        open: false,
         header: "Drawer title",
         body: "Drawer body"
     }
