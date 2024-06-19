@@ -12,13 +12,15 @@ const meta = {
         id: { control: "text" },
         is: { control: "select", options: Object.values(Is) },
         selected: { control: "radio", options: [true, false] },
+        disabled: { control: "radio", options: [true, false] },
         to: { control: "object" },
         default: { control: "text" },
     },
     args: {
         id: "defaultID",
-        is: Is.ROUTERLINK,
+        is: Is.BUTTON,
         selected: false,
+        disabled:false,
         to: { path: '/testPath'},
         default: 'Item menu label'
     }

@@ -5,12 +5,14 @@
         :is="is"
         :selected="selected"
         :to="to"
+        :disabled="disabled"
+        :aria-disabled="disabled"
         aria-labelledby="ui-item-label"
         class="base-item-menu"
         data-testID="ui-item-test"
     >
         <!-- @slot Default: slot to show item label -->
-        <slot />
+        <slot id="ui-item-label" />
     </ComponentIs>
 </template>
 <script setup lang="ts">
@@ -45,6 +47,14 @@ const props = defineProps({
    */
   selected: {
     type: Boolean as PropType<Boolean>,
+    default: false
+  },
+
+  /**
+   * Set the disabled item state
+   */
+   disabled: {
+    type: Boolean as PropType<boolean>,
     default: false
   },
 

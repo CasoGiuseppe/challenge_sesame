@@ -1,8 +1,21 @@
 .base-item-menu {
     @apply py-sm px-md w-full flex;
-    @apply cursor-pointer outline-none;
+    @apply outline-none;
     @apply text-default-current text-sm font-regular font-default;
     @apply transition-colors duration-[var(--animationTime)];
+
+    &:not(:disabled):not([selected=true]) {
+        @apply cursor-pointer
+    }
+
+    &:disabled,
+    &[selected=true] {
+        @apply pointer-events-none;
+    }
+
+    &:disabled {
+        @apply text-logo-300
+    }
 
     @media(hover) {
         &:focus-visible {
