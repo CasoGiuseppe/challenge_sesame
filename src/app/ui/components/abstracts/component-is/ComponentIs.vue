@@ -2,7 +2,7 @@
     <RouterLink
         v-if="isInternalLink"
         v-bind="$attrs"
-        :to="$attrs"
+        :to="$attrs.to ?? { path: '/'}"
         class="component-is"
     >
         <slot />
@@ -25,7 +25,7 @@ const { is } = defineProps({
         type: String as PropType<Is>,
         default: Is.BUTTON,
         validator: (prop: Is) => ensureValueCollectionExists({ collection: Is, value: prop })
-    }
+    },
 })
 const isInternalLink = computed(() => is === Is.ROUTERLINK )
 </script>

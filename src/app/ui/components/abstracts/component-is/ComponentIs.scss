@@ -1,7 +1,8 @@
 .component-is {
-    @apply p-none;
+    @apply p-none no-underline;
 
     &:is(button) {
         @apply bg-default-none border-none outline-none select-none; // reset
     }
+    
 }

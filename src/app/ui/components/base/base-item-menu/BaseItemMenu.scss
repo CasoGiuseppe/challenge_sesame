@@ -1,7 +1,7 @@
 .base-item-menu {
     @apply py-sm px-md w-full flex;
     @apply cursor-pointer outline-none;
-    @apply text-default-current text-sm font-regular;
+    @apply text-default-current text-sm font-regular font-default;
     @apply transition-colors duration-[var(--animationTime)];
 
     @media(hover) {

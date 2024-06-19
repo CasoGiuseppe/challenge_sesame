@@ -12,12 +12,14 @@ const meta = {
         id: { control: "text" },
         is: { control: "select", options: Object.values(Is) },
         selected: { control: "radio", options: [true, false] },
+        to: { control: "object" },
         default: { control: "text" },
     },
     args: {
         id: "defaultID",
-        is: Is.BUTTON,
+        is: Is.ROUTERLINK,
         selected: false,
+        to: { path: '/testPath'},
         default: 'Item menu label'
     }
 } satisfies Meta<typeof BaseItemMenu>

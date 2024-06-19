@@ -4,6 +4,7 @@
         :id="id"
         :is="is"
         :selected="selected"
+        :to="to"
         aria-labelledby="ui-item-label"
         class="base-item-menu"
         data-testID="ui-item-test"
@@ -18,6 +19,7 @@ import { type PropType } from 'vue';
 import ComponentIs from '@app/ui/components/abstracts/component-is/ComponentIs.vue';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
+import type { RouterTo } from './types';
 
 const props = defineProps({
   /**
@@ -44,6 +46,14 @@ const props = defineProps({
   selected: {
     type: Boolean as PropType<Boolean>,
     default: false
+  },
+
+  /**
+   * Set the router-to object for navigation
+   */
+   to: {
+    type: Object as PropType<RouterTo>,
+    default: () => ({ path: '/' })
   }
 })
 </script>
