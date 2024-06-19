@@ -53,7 +53,7 @@ const props = defineProps({
   },
 
   /**
-   * Set button type [button, anchor]
+   * Set button type [button, router-link]
    */
   is: {
     type: String as PropType<Is>,
