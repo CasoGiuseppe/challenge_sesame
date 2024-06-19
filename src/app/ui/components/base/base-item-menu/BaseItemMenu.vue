@@ -2,12 +2,14 @@
     <ComponentIs
         :key="is"
         :id="id"
-        aria-labelledby="ui-item-label"
         :is="is"
+        :selected="selected"
+        aria-labelledby="ui-item-label"
         class="base-item-menu"
         data-testID="ui-item-test"
     >
-        item menu
+        <!-- @slot Default: slot to show item label -->
+        <slot />
     </ComponentIs>
 </template>
 <script setup lang="ts">
@@ -35,5 +37,14 @@ const props = defineProps({
     validator: (prop: Is) =>
       ensureValueCollectionExists({ collection: Is, value: prop })
   },
+
+  /**
+   * Set item selected state
+   */
+  selected: {
+    type: Boolean as PropType<Boolean>,
+    default: false
+  }
 })
 </script>
+<style src="./BaseItemMenu.scss" lang="scss"></style>

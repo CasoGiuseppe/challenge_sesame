@@ -45,7 +45,8 @@ export default {
       focus:  '0 0 0 2px var(--color-logo-100, #000), 0 0 0 4px var(--color-outline, #000);',
       hover:  '0 0 0 1px var(--color-logo-400, #000);',
       invalid: '0 0 0 1px var(--color-warning-100);',
-      valid: '0 0 0 1px var(--color-success-100);'
+      valid: '0 0 0 1px var(--color-success-100);',
+      selected: 'inset var(--spacing-10, 0) 0 0 currentColor'
     },
 
     colors: {

@@ -1,0 +1,21 @@
+.base-item-menu {
+    @apply py-sm px-md w-full flex;
+    @apply cursor-pointer outline-none;
+    @apply text-default-current text-sm font-regular;
+    @apply transition-colors duration-[var(--animationTime)];
+
+    @media(hover) {
+        &:focus-visible {
+            @apply shadow-focus
+        }
+
+        &:hover {
+            @apply shadow-selected
+        }
+    }
+
+    &[selected=true] {
+        @apply font-medium;
+        @apply shadow-selected
+    }
+}

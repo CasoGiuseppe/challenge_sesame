@@ -9,8 +9,16 @@ const meta = {
     component: BaseItemMenu,
     tags: ["autodocs"],
     argTypes: {
+        id: { control: "text" },
+        is: { control: "select", options: Object.values(Is) },
+        selected: { control: "radio", options: [true, false] },
+        default: { control: "text" },
     },
     args: {
+        id: "defaultID",
+        is: Is.BUTTON,
+        selected: false,
+        default: 'Item menu label'
     }
 } satisfies Meta<typeof BaseItemMenu>
 
@@ -26,7 +34,7 @@ const Templates: Story = {
         },
         template: `
             <BaseItemMenu v-bind="args" @send="action">
-                <template #default>{{ args.loading == false ? args.default : 'cargando' }}</template>
+                <template #default>{{ args.default }}</template>
             </BaseItemMenu>
         `,
         methods: {

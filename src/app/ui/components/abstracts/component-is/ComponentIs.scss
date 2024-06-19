@@ -1,4 +1,6 @@
 .component-is {
+    @apply p-none;
+
     &:is(button) {
         @apply bg-default-none border-none outline-none select-none; // reset
     }

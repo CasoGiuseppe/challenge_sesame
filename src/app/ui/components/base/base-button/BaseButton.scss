@@ -3,7 +3,7 @@
 
     @apply inline-flex items-center gap-sm justify-between relative;
     @apply text-neutral-100 font-default bg-neutral-300;
-    @apply transition-all duration-[var(--animationTime)];
+    @apply transition-all duration-[var(--animationTime)] ease-out;
 
     &:is(a) {
         @apply no-underline

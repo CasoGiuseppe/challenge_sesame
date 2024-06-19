@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
 import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionInfo.vue"
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
+import BaseItemMenu from "@app/ui/components/base/base-item-menu/BaseItemMenu.vue"
 import { Sizes } from "@app/ui/components/base/base-icon/types"
 
 const meta = {
@@ -29,7 +30,7 @@ type Story = StoryObj<typeof AccordionInfo>
 
 const Templates: Story = {
     render: (args) => ({
-        components: { AccordionInfo, BaseIcon },
+        components: { AccordionInfo, BaseIcon, BaseItemMenu },
         setup() {
             return { args }
         },
@@ -40,7 +41,9 @@ const Templates: Story = {
                     <template #content>
                         <AccordionInfo open customColor="6961ff">
                             <template #summary><BaseIcon name="IconRate" size="M" />Nested title</template>
-                            <template #content>nested content</template>
+                            <template #content>
+                                <BaseItemMenu>item menu</BaseItemMenu>
+                            </template>
                         </AccordionInfo>
                     </template>
                 </AccordionInfo>
