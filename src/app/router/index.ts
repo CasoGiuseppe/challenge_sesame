@@ -22,17 +22,31 @@ const router = createRouter({
           children: [
             {
               path: 'positions',
+              meta: { family: 'positions'},
               name: 'positions',
               components: {
                 default: () => import(/* webpackChunkName: "PositionsBoard" */ '@modules/positions/presentation/ui/positions-board/PositionsBoards.vue'),
+                aside: () => import(/* webpackChunkName: "Panel" */ '@app/ui/layouts/partials/section-panel/SectionPanel.vue'),
               }
             },
             {
               path: 'applicants',
+              meta: { family: 'applicants'},
               name: 'applicants',
               components: {
                 default: () => import(/* webpackChunkName: "ApplicantsBoard" */ '@modules/applicants/presentation/ui/applicants-board/ApplicantsBoard.vue'),
-              }
+                aside: () => import(/* webpackChunkName: "Panel" */ '@app/ui/layouts/partials/section-panel/SectionPanel.vue'),
+              },
+              children: [
+                {
+                  path: 'create',
+                  meta: { family: 'applicants'},
+                  name: 'createApplicant',
+                  components: {
+                    panel: () => import(/* webpackChunkName: "CreateApplicant" */ '@modules/applicants/presentation/ui/create-applicant/CreateApplicant.vue'),
+                  }
+                },
+              ]
             }
           ]
         }

@@ -1,6 +1,6 @@
 <template>
     <section class="section-content" style="background: gray; flex: 2;">
-        <RouterView v-slot="{ Component, route: { name } }">
+        <RouterView v-slot="{ Component, route: { name, meta: { family } } }">
             <TransitionIs
                 :type="transType.FROMBOTTOM"
                 :easing="Easing.ELASTIC"
@@ -8,9 +8,16 @@
             >
                 <component
                     :is="Component"
-                    :key="name"
+                    :key="family"
                 />
             </TransitionIs>
+        </RouterView>
+
+        <RouterView
+            v-slot="{ Component }"
+            name="aside"
+        >
+            <component :is="Component"/>
         </RouterView>
     </section>
 </template>
