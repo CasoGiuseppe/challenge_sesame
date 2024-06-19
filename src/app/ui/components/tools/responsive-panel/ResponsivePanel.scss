@@ -35,17 +35,16 @@
             @apply translate-x-none
         }
 
-        [open = true] & {
+        [open=true] & {
             @apply translate-x-none
         }
     }
 
     &__close {
-        @include create-contextual-menu(
+        @include create-hamburger-menu(
             $width: var(--spacing-60),
-            $size: var(--spacing-20),
-            $color: var(--color-logo-600),
-            $hoverColor: var(--color-outline)
+            $color: var(--color-logo-500),
+            $activeColor: var(--color-outline)
         );
 
         @screen tablet-pt {

@@ -11,12 +11,17 @@
         >
             <slot name="header" />
             <button
+                v-if="$slots['body']"
                 class="responsive-panel__close"
+                :open="open"
                 @click="displayPanel"
             ><span /></button>
         </header>
-        <section class="responsive-panel__content">
-            section
+        <section
+            v-if="$slots['body']"
+            class="responsive-panel__content"
+        >
+            <slot name="body" />
         </section>
     </aside>
 </template>

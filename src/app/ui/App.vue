@@ -33,6 +33,7 @@ import ResponsivePanel from './components/tools/responsive-panel/ResponsivePanel
               Slot Logo
           </figure>
       </template>
+      <template #body>body</template>
     </ResponsivePanel>
   </div>
 </Suspense>
