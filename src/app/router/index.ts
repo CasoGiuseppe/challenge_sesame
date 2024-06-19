@@ -1,4 +1,11 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
+import type { DomainRoutes } from './interfaces'
+import loadDomainsRouters from './utilities';
+
+const domainsRouters = <DomainRoutes[]>[
+  { router: import('@modules/applicants/presentation/router') },
+  { router: import('@modules/positions/presentation/router') }
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,34 +27,7 @@ const router = createRouter({
           },
 
           children: [
-            {
-              path: 'positions',
-              meta: { family: 'positions'},
-              name: 'positions',
-              components: {
-                default: () => import(/* webpackChunkName: "PositionsBoard" */ '@modules/positions/presentation/ui/positions-board/PositionsBoards.vue'),
-                aside: () => import(/* webpackChunkName: "Panel" */ '@app/ui/layouts/partials/section-panel/SectionPanel.vue'),
-              }
-            },
-            {
-              path: 'applicants',
-              meta: { family: 'applicants'},
-              name: 'applicants',
-              components: {
-                default: () => import(/* webpackChunkName: "ApplicantsBoard" */ '@modules/applicants/presentation/ui/applicants-board/ApplicantsBoard.vue'),
-                aside: () => import(/* webpackChunkName: "Panel" */ '@app/ui/layouts/partials/section-panel/SectionPanel.vue'),
-              },
-              children: [
-                {
-                  path: 'create',
-                  meta: { family: 'applicants'},
-                  name: 'createApplicant',
-                  components: {
-                    panel: () => import(/* webpackChunkName: "CreateApplicant" */ '@modules/applicants/presentation/ui/create-applicant/CreateApplicant.vue'),
-                  }
-                },
-              ]
-            }
+            ...((await loadDomainsRouters({ collection: domainsRouters })) as RouteRecordRaw[]),
           ]
         }
       ],
