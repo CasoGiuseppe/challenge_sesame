@@ -10,6 +10,7 @@
         aria-labelledby="ui-item-label"
         class="base-item-menu"
         data-testID="ui-item-test"
+        @click="handleEmitClick"
     >
         <!-- @slot Default: slot to show item label -->
         <slot id="ui-item-label" />
@@ -17,13 +18,13 @@
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { type PropType } from 'vue';
+import { computed, type PropType } from 'vue';
 import ComponentIs from '@app/ui/components/abstracts/component-is/ComponentIs.vue';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 import type { RouterTo } from './types';
 
-const props = defineProps({
+const { id, is } = defineProps({
   /**
    * Set the unique id of the ui menu item
    */
@@ -66,5 +67,12 @@ const props = defineProps({
     default: () => ({ path: '/' })
   }
 })
+
+const isTypeLink = computed(() => (is === Is.ROUTERLINK));
+const emits = defineEmits(['send']);
+const handleEmitClick = () => {
+  if(isTypeLink.value) return 
+  emits('send', { id })
+};
 </script>
 <style src="./BaseItemMenu.scss" lang="scss"></style>
