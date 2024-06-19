@@ -68,6 +68,7 @@ export default {
       default: {
         current: 'currentColor',
         drawer: 'hsla(224, 45%, 22%, .3)',
+        outline: 'var(--color-outline, #000)',
         none: 'transparent',
       },
       warning: {

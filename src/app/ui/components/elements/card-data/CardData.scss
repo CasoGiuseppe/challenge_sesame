@@ -1,23 +1,6 @@
 .card-data {
     $cardData: &;
 
-    @mixin commonActionState() {
-        @apply w-[3px] h-[3px] inline-block;
-        @apply bg-logo-600 rounded-full;
-        @apply transition-all duration-[var(--animationTime)] ease-elastic;
-
-        @media(hover) {
-            &:hover {
-               @include commonHoverState()
-            }
-        }
-    }
-
-    @mixin commonHoverState() {
-        @apply w-[50%] h-xxsm;
-        @apply rounded-none bg-logo-400;
-    }
-
     @apply flex flex-col py-sm px-xmd gap-sm;
     @apply bg-neutral-200 rounded-md border-background-200 border-[1px] border-solid;
     @apply font-default;
@@ -51,38 +34,10 @@
     }
 
     &__contextual-action {
-        @apply bg-default-none border-none p-none outline-none; // reset
-        @apply w-lg aspect-square flex flex-col items-center justify-center gap-[3px];
-        @apply cursor-pointer rounded-xsm;
-        @apply transition-all duration-[var(--animationTime)];
-
-        > * {
-            &:is(span) {
-                @include commonActionState()
-            }
-        }
-
-        &::before,
-        &::after {
-            @include commonActionState();
-            @apply content-[''];
-        }
-
-        &:focus {
-            &:not(:hover) {
-                @apply shadow-focus
-            }
-        }
-
-        @media(hover) {
-            &:hover {
-                @apply cursor-context-menu;
-                
-                > * {
-                    @include commonHoverState();
-                }
-            }
-        }
+        @include create-contextual-menu(
+            $color: var(--color-logo-600),
+            $hoverColor: var(--color-outline)
+        );
     }
 
     &--is {

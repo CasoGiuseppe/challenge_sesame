@@ -1,0 +1,67 @@
+@mixin create-contextual-menu($width:16px,  $size: 3px, $color: #000, $hoverColor: #000){
+    @apply bg-default-none border-none p-none outline-none; // reset
+    @apply flex flex-col items-center justify-center gap-[3px];
+    @apply cursor-pointer rounded-xsm aspect-square;
+    @apply transition-all duration-[var(--animationTime)];
+
+    width: $width;
+
+    > *,
+    &::before,
+    &::after {
+        @apply inline-block;
+        @apply rounded-full content-[''];
+        @apply transition-all duration-[var(--animationTime)] ease-out;
+
+        width: $size;
+        height: $size;
+        background-color: $color;
+    }
+
+    @media(hover) {
+        &:hover {
+            @apply gap-[1px];
+            transform: rotate(90deg);
+
+            > *,
+            &::before,
+            &::after {
+                width: calc(#{$size} + 2px);
+                height: calc(#{$size} + 2px);
+            }
+
+            > * {
+                background: $hoverColor;
+            }
+        }
+    }
+
+    &:focus {
+        &:not(:hover) {
+            @apply shadow-focus
+        }
+    }
+}
+
+@mixin crate-spinner (
+    $size: 16px,
+    $position: relative,
+    $borderSize: 1px,
+    $borderColor: #fff,
+    $borderBColor: #000,
+){
+    &:after {
+        @apply aspect-square inline-block content-[''];
+        @apply border-solid rounded-[50%];
+        @apply animate-spinner;
+
+        width: $size;
+        position: $position;
+
+        border-width: $borderSize;
+        border-color: $borderColor;
+        border-bottom-color: $borderBColor;
+
+        @content
+    }
+}

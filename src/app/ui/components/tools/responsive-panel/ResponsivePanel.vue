@@ -10,7 +10,10 @@
             class="responsive-panel__header"
         >
             <slot name="header" />
-            <button @click="displayPanel">close</button>
+            <button
+                class="responsive-panel__close"
+                @click="displayPanel"
+            ><span /></button>
         </header>
         <section class="responsive-panel__content">
             section

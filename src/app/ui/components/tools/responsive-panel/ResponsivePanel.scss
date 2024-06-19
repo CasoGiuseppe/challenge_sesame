@@ -39,4 +39,17 @@
             @apply translate-x-none
         }
     }
+
+    &__close {
+        @include create-contextual-menu(
+            $width: var(--spacing-60),
+            $size: var(--spacing-20),
+            $color: var(--color-logo-600),
+            $hoverColor: var(--color-outline)
+        );
+
+        @screen tablet-pt {
+            @apply hidden
+        }
+    }
 }
