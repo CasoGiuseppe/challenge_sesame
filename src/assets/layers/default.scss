@@ -1,7 +1,9 @@
 @layer base {
     html,
     body {
-      @apply min-h-full m-none p-none font-default;
+      @apply min-h-full m-none p-none flex items-center justify-center;
+      @apply font-default;
+      @apply bg-neutral-300;
   
       * {
         @apply box-border;

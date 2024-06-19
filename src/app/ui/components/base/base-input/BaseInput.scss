@@ -43,9 +43,7 @@
         @include crate-spinner(
             $borderColor: var(--color-neutral-100),
             $borderBColor: var(--color-outline)
-        ){
-            @apply right-xmd
-        };
+        );
 
         @apply pointer-events-none;
     }

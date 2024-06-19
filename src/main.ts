@@ -7,7 +7,7 @@ import ClickOutside from "@app/ui/directive/clickOutside";
 import "@assets/index.scss";
 
 // create lazy APP
-const app = createApp(defineAsyncComponent(() => import('@app/ui/App.vue')));
+const app = createApp(defineAsyncComponent(() => import('@app/ui/layouts/App.vue')));
 
 app
   .directive('click-outside', ClickOutside)

@@ -1,7 +1,6 @@
 .loading-state {
-    &::after {
-        @apply w-md aspect-square inline-block content-[''];
-        @apply border-[1px] border-logo-300 border-solid border-b-logo-600 rounded-[50%];
-        @apply animate-spinner;
-    }
+    @include crate-spinner(
+        $borderColor: var(--color-logo-600),
+        $borderBColor: var(--color-logo-300)
+    );
 }

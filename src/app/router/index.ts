@@ -5,8 +5,19 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'name',
-      component: () => import(/* webpackChunkName: "Component Name" */ '@app/ui/components/base/component-name/ComponentName.vue')
+      name: 'root',
+      redirect: { name: 'home' },
+      component: () => import(/* webpackChunkName: "RootLayout" */ '@app/ui/layouts/skeleton-root/SkeletonRoot.vue'),
+
+      children: [
+        {
+          path: 'home',
+          name: 'home',
+          components: {
+            aside: () => import(/* webpackChunkName: "MainNavigation" */ '@app/ui/layouts/partials/main-navigation/MainNavigation.vue')
+          }
+        }
+      ],
     }    
   ]
 })

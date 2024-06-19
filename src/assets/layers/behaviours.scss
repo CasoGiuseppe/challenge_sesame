@@ -1,0 +1,6 @@
+#app {
+  &-layout {
+    @apply h-screen w-screen overflow-auto flex justify-center items-center max-w-max-layout;
+    @apply bg-neutral-200 border-r-logo-300 border-solid border-r-[1px];
+  }
+}
