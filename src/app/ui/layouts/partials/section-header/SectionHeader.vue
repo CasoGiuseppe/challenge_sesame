@@ -1,3 +1,6 @@
 <template>
-    <header class="section-header">header</header>
+    <header class="section-header">
+        <RouterLink :to="{ name: 'positions'}">position</RouterLink>
+        <RouterLink :to="{ name: 'applicants'}">applicants</RouterLink>
+    </header>
 </template>

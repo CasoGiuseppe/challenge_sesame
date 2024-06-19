@@ -1,7 +1,20 @@
 <template>
     <section class="section-content" style="background: gray; flex: 2;">
-        <RouterView v-slot="{ Component }">
-            <component :is="Component"/>
+        <RouterView v-slot="{ Component, route: { name } }">
+            <TransitionIs
+                :type="transType.FROMBOTTOM"
+                :easing="Easing.ELASTIC"
+                :timing="Timing.FAST"
+            >
+                <component
+                    :is="Component"
+                    :key="name"
+                />
+            </TransitionIs>
         </RouterView>
     </section>
 </template>
+<script setup lang="ts">
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { Types as transType, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
+</script>
