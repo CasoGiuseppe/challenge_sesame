@@ -1,7 +1,12 @@
 <template>
     <template v-if="ensureListIsNotEmpty">
         <menu class="router-navigation">
-            <BaseItemMenu></BaseItemMenu>
+            <li 
+                v-for="{to, translation} of list"
+                :key="to"
+            >
+                <slot :property="{ to, translation }" name="navigation"/>
+            </li>
         </menu>
     </template>
     <template v-else>
