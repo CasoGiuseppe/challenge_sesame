@@ -1,6 +1,6 @@
 <template>
     <section class="section-content" style="background: gray; flex: 2;">
-        <RouterView v-slot="{ Component, route: { name, meta: { family } } }">
+        <RouterView v-slot="{ Component, route: { meta: { family } } }">
             <TransitionIs
                 :type="transType.FROMBOTTOM"
                 :easing="Easing.ELASTIC"

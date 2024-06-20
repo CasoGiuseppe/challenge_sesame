@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import type { DomainRoutes } from './interfaces'
-import loadDomainsRouters from './utilities';
+import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
+
+const { loadExternalsRouters } = useRouterUtilities();
 
 const domainsRouters = <DomainRoutes[]>[
   { router: import('@modules/applicants/presentation/router') },
@@ -27,7 +29,7 @@ const router = createRouter({
           },
 
           children: [
-            ...((await loadDomainsRouters({ collection: domainsRouters })) as RouteRecordRaw[]),
+            ...((await loadExternalsRouters({ collection: domainsRouters })) as RouteRecordRaw[]),
 
             {
               path: '/:pathMatch(.*)*',

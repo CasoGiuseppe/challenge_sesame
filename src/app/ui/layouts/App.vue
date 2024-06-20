@@ -1,8 +1,5 @@
 <template>
-  <RouterView
-    v-slot="{ Component }"
-    class="unit--is-content"
-  >
+  <RouterView v-slot="{ Component }">
     <Suspense timeout="0">
       <template #default>
         <component :is="Component" />
@@ -10,5 +7,3 @@
     </Suspense>
   </RouterView>
 </template>
-<script setup lang="ts">
-</script>
