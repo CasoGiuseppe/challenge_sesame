@@ -1,3 +1,11 @@
 {
-  "message": "Hola! desde { name}"
+  "message": "Hola! desde { name}",
+  "MENU": {
+    "role": {
+      "admin": "Administrador"
+    },
+    "sections": {
+      "name": "Talento"
+    }
+  }
 }

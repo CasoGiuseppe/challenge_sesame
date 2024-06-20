@@ -4,18 +4,11 @@
     --custom-color: #000;
 
     @apply px-sm pb-sm;
-    @apply select-none rounded-xsm;
+    @apply select-none;
     @apply font-default;
-    @apply transition-colors duration-[var(--animationTime)];
 
     &:not(:has(details)) {
         @apply p-none;
-    }
-
-    &:not(:hover) {
-        &:focus-within{
-            @apply shadow-focus
-        }
     }
 
     &[open] {
@@ -29,14 +22,14 @@
     }
 
     &__summary {
-        @apply flex items-center justify-center m-none gap-sm pt-xmd;
+        @apply flex items-center justify-center m-none gap-sm pt-xmd pr-sm;
         @apply text-sm text-logo-300 uppercase;
-        @apply outline-none cursor-pointer;
-        @apply transition-spacing;
+        @apply outline-none cursor-pointer rounded-xsm;
+        @apply transition-all duration-[var(--animationTime)];
 
         &::after {
-            @apply inline-block p-xsm ml-auto;
-            @apply content-[''] border-solid border-logo-300 border-t-0 border-r-2 border-b-2 border-l-0;
+            @apply inline-block p-xsm ml-auto right-sm;
+            @apply content-[''] border-solid border-logo-300 border-t-0 border-r-[1px] border-b-[1px] border-l-0;
             @apply transition-transform duration-[var(--animationTime)];
             transform: var(--arrow-transform);
 
@@ -45,6 +38,9 @@
             }
         }
 
+        &:focus-visible{
+            @apply shadow-focus
+        }
 
         ~ * {
             #{$accordionInfo}__summary,
