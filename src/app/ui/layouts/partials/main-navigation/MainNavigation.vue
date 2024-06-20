@@ -44,7 +44,7 @@
     </section>
 </template>
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref, watch } from "vue"
 import ResponsivePanel from "@app/ui/components/tools/responsive-panel/ResponsivePanel.vue"
 import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionInfo.vue"
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
@@ -59,8 +59,10 @@ import { useRoute } from "vue-router"
 const route = useRoute()
 const { translate } = useTranslation();
 
-const routeFamily = ref<string | unknown>(route.meta.family)
+const routeFamily = ref<string | unknown>()
 const { getRoutesByType } = useRouterUtilities();
+
+watch(route, (to) => { routeFamily.value = to.meta?.family }, {flush: 'pre', immediate: true, deep: true})
 
 </script>
 <style src="./MainNavigation.scss" lang="scss"></style>

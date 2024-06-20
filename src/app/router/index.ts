@@ -22,6 +22,7 @@ const router = createRouter({
         {
           path: 'app',
           name: 'app',
+          redirect: { name: 'positions' },
           meta: { type: 'default', translation: 'recruitment', family: 'recruitment' },
           components: {
             aside: () => import(/* webpackChunkName: "MainNavigation" */ '@app/ui/layouts/partials/main-navigation/MainNavigation.vue'),
@@ -31,15 +32,24 @@ const router = createRouter({
 
           children: [
             ...((await loadExternalsRouters({ collection: domainsRouters })) as RouteRecordRaw[]),
-
-            {
-              path: '/:pathMatch(.*)*',
-              components: {
-                default: () =>
-                  import(/* webpackChunkName: "State404" */ '@app/ui/layouts/status/status-404/Status404.vue')
-              }
-            }
           ]
+        },
+
+        {
+          path: 'other',
+          name: 'other',
+          meta: { type: 'default', translation: 'other', family: 'other' },
+          components: {
+            aside: () => import(/* webpackChunkName: "MainNavigation" */ '@app/ui/layouts/partials/main-navigation/MainNavigation.vue'),
+          },
+        },
+
+        {
+          path: '/:pathMatch(.*)*',
+          components: {
+            default: () =>
+              import(/* webpackChunkName: "State404" */ '@app/ui/layouts/status/status-404/Status404.vue')
+          }
         }
       ],
     }    

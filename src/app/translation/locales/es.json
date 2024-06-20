@@ -8,7 +8,8 @@
       "name": "Talento"
     },
     "navigation": {
-      "recruitment": "Reclutamiento"
+      "recruitment": "Reclutamiento",
+      "other": "Otra sección"
     }
   }
 }
