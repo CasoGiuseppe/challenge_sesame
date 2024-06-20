@@ -1,5 +1,8 @@
 .router-navigation {
     $routernavigation: &;
+    --custom-padding: calc(var(--spacing-30) - 1px);
+
+    @apply pl-[var(--custom-padding)];
 
     &--has {
         &-warning {
