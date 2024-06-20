@@ -11,14 +11,33 @@
                 v-slot="{ Component }"
                 name="header"
             >
-                <component :is="Component"/>
+                <TransitionIs
+                    :type="Types.FROMBOTTOM"
+                    :easing="Easing.OUT"
+                    :timing="Timing.NORMAL"
+                >
+                    <component :is="Component"/>
+                </TransitionIs>
             </RouterView>
             <RouterView
-                v-slot="{ Component }"
+                v-slot="{ Component, route: { meta: family } }"
                 name="content"
             >
-                <component :is="Component"/>
+                <TransitionIs
+                    :type="Types.FROMBOTTOM"
+                    :easing="Easing.OUT"
+                    :timing="Timing.NORMAL"
+                >
+                    <component
+                        :is="Component"
+                        :key="family"
+                    />
+                </TransitionIs>
             </RouterView>
         </section>
     </section>
 </template>
+<script setup lang="ts">
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
+</script>

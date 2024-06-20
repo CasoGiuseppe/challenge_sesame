@@ -1,6 +1,6 @@
 .app {
   &-layout {
-    @apply h-screen w-screen overflow-auto flex flex-col justify-between max-w-max-layout;
+    @apply h-screen w-screen overflow-hidden flex flex-col justify-between max-w-max-layout;
     @apply bg-neutral-200 border-r-logo-300 border-solid border-r-[1px];
 
     @screen tablet-pt {
