@@ -1,0 +1,9 @@
+.router-navigation {
+    $routernavigation: &;
+
+    &--has {
+        &-warning {
+            @apply text-sm text-warning-100
+        }
+    }
+}

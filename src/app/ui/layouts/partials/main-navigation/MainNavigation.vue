@@ -22,7 +22,7 @@
                                 {{ translate({key: 'MENU.sections.name' }) }}
                             </template>
                             <template #content>
-                                <MenuNavigation></MenuNavigation>
+                                <RouterNavigation />
                             </template>
                         </AccordionInfo>
                     </template>
@@ -35,7 +35,7 @@
 import ResponsivePanel from "@app/ui/components/tools/responsive-panel/ResponsivePanel.vue"
 import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionInfo.vue"
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
-import MenuNavigation from "@app/ui/layouts/partials/main-navigation/menu-navigation/MenuNavigation.vue"
+import RouterNavigation from "@app/ui/layouts/partials/router-navigation/RouterNavigation.vue"
 import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 import { Sizes } from "@app/ui/components/base/base-icon//types"
 
