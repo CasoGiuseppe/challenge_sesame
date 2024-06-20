@@ -41,6 +41,7 @@ const router = createRouter({
           meta: { type: 'default', translation: 'other', family: 'other' },
           components: {
             aside: () => import(/* webpackChunkName: "MainNavigation" */ '@app/ui/layouts/partials/main-navigation/MainNavigation.vue'),
+            content: () => import(/* webpackChunkName: "FakePage" */ '@app/ui/layouts/fakes/FakePage.vue'),
           },
         },
 
