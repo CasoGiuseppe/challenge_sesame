@@ -2,10 +2,10 @@
     <template v-if="ensureListIsNotEmpty">
         <menu class="router-navigation">
             <li 
-                v-for="{to, translation} of list"
+                v-for="{to, translation, family } of list"
                 :key="to"
             >
-                <slot :property="{ to, translation }" name="navigation"/>
+                <slot :property="{ to, translation, family }" name="navigation"/>
             </li>
         </menu>
     </template>
@@ -16,8 +16,7 @@
 <script setup lang="ts">
 import { computed, type PropType } from "vue";
 import type { UniqueId } from '@app/ui/types';
-import BaseItemMenu from "@app/ui/components/base/base-item-menu/BaseItemMenu.vue"
-import type { IRouterNavigation } from './types';
+import type { IRouterNavigation } from "@/app/shared/composables/types";
 
 const { list } = defineProps({
     /**
@@ -25,7 +24,7 @@ const { list } = defineProps({
      */
      id: {
         type: String as PropType<UniqueId>,
-        default: 'FieldSetId'
+        default: 'RouterNavigationId'
     },
 
     /**

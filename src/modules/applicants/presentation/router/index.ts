@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router';
 
 export default [{
     path: 'applicants',
-    meta: { family: 'applicants'},
+    meta: { family: 'recruitment'},
     name: 'applicants',
     components: {
       default: () => import(/* webpackChunkName: "ApplicantsBoard" */ '@modules/applicants/presentation/ui/applicants-board/ApplicantsBoard.vue'),
@@ -11,7 +11,7 @@ export default [{
     children: [
       {
         path: 'create',
-        meta: { family: 'applicants'},
+        meta: { family: 'recruitment'},
         name: 'createApplicant',
         components: {
           panel: () => import(/* webpackChunkName: "CreateApplicant" */ '@modules/applicants/presentation/ui/create-applicant/CreateApplicant.vue'),

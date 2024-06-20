@@ -22,7 +22,7 @@ const router = createRouter({
         {
           path: 'app',
           name: 'app',
-          meta: { type: 'default', translation: 'recruitment' },
+          meta: { type: 'default', translation: 'recruitment', family: 'recruitment' },
           components: {
             aside: () => import(/* webpackChunkName: "MainNavigation" */ '@app/ui/layouts/partials/main-navigation/MainNavigation.vue'),
             header: () => import(/* webpackChunkName: "HeaderTitle" */ '@app/ui/layouts/partials/section-header/SectionHeader.vue'),

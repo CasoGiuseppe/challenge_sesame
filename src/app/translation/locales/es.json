@@ -6,6 +6,9 @@
     },
     "sections": {
       "name": "Talento"
+    },
+    "navigation": {
+      "recruitment": "Reclutamiento"
     }
   }
 }

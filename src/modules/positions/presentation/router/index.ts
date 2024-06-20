@@ -3,7 +3,7 @@ import type { RouteRecordRaw } from 'vue-router';
 export default [
     {
         path: 'positions',
-        meta: { family: 'positions'},
+        meta: { family: 'recruitment' },
         name: 'positions',
         components: {
           default: () => import(/* webpackChunkName: "PositionsBoard" */ '@modules/positions/presentation/ui/positions-board/PositionsBoards.vue'),
@@ -12,7 +12,7 @@ export default [
         children: [
           {
             path: 'create',
-            meta: { family: 'positions'},
+            meta: { family: 'recruitment'},
             name: 'createPosition',
             components: {
               panel: () => import(/* webpackChunkName: "CreatePosition" */ '@modules/positions/presentation/ui/create-position/CreatePosition.vue'),

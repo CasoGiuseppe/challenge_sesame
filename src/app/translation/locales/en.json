@@ -6,6 +6,9 @@
     },
     "sections": {
       "name": "Talent"
+    },
+    "navigation": {
+      "recruitment": "Recruitment"
     }
   }
 }
