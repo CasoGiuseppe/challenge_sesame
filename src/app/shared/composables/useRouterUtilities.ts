@@ -1,4 +1,4 @@
-import type { RouteRecordRaw } from 'vue-router';
+import { useRouter, type RouteRecordRaw } from 'vue-router';
 import type { IRouterUtilities } from './interfaces/IRouterUtilities';
 import type { DomainRoutes } from '@app/router/interfaces';
 
@@ -8,11 +8,7 @@ export default function useRouterUtilities(): IRouterUtilities {
    * @param collection - An array of DomainRoutes objects, each containing a router property.
    * @returns A Promise that resolves to an array of RouteRecordRaw objects or an empty array in case of an error.
    */
-  const loadExternalsRouters = async ({
-    collection
-  }: {
-    collection: DomainRoutes[];
-  }): Promise<RouteRecordRaw | any[]> => {
+  const loadExternalsRouters = async ({ collection }: { collection: DomainRoutes[]; }): Promise<RouteRecordRaw | any[]> => {
     try {
       const importAll = await Promise.all(
         collection.map(async (child) => {
@@ -26,7 +22,13 @@ export default function useRouterUtilities(): IRouterUtilities {
     }
   };
 
+  const getRoutesByType = ({ type = 'default' }: { type?: string }): RouteRecordRaw[] => {
+    const router = useRouter()
+    return router.getRoutes()
+  }
+
   return {
-    loadExternalsRouters
+    loadExternalsRouters,
+    getRoutesByType
   };
 }

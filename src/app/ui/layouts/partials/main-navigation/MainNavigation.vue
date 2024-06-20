@@ -8,13 +8,21 @@
                         {{ translate({key: 'MENU.role.admin' }) }}
                     </template>
                     <template #content>
-                        <AccordionInfo open customColor="6961ff">
+                        <AccordionInfo
+                            id="navigationMenu"
+                            open
+                            customColor="6961ff"
+                        >
                             <template #summary>
-                                <BaseIcon name="IconRate" :size="Sizes.M" />
+                                <BaseIcon
+                                    id="IconRate"
+                                    name="IconRate"
+                                    :size="Sizes.M"
+                                />
                                 {{ translate({key: 'MENU.sections.name' }) }}
                             </template>
                             <template #content>
-                                <BaseItemMenu>item menu</BaseItemMenu>
+                                <MenuNavigation></MenuNavigation>
                             </template>
                         </AccordionInfo>
                     </template>
@@ -27,11 +35,14 @@
 import ResponsivePanel from "@app/ui/components/tools/responsive-panel/ResponsivePanel.vue"
 import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionInfo.vue"
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
-import BaseItemMenu from "@app/ui/components/base/base-item-menu/BaseItemMenu.vue"
+import MenuNavigation from "@app/ui/layouts/partials/main-navigation/menu-navigation/MenuNavigation.vue"
+import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 import { Sizes } from "@app/ui/components/base/base-icon//types"
 
 import useTranslation from '@app/shared/composables/useTranslation';
 const { translate } = useTranslation();
 
+const { getRoutesByType } = useRouterUtilities();
+console.log(getRoutesByType({}))
 </script>
 <style src="./MainNavigation.scss" lang="scss"></style>
