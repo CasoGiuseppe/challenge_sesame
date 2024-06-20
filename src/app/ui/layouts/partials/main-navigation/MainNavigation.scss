@@ -1,0 +1,7 @@
+.main-navigation {
+    $mainnavigation: &;
+
+    @screen tablet-pt {
+        @apply flex-[16rem] flex-shrink-0 flex-grow-0
+    }
+}

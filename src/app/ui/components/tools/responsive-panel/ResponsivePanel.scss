@@ -1,8 +1,9 @@
 .responsive-panel {
     $responsivepanel: &;
     --max-width: 100%;
+    --min-height: 6vh;
 
-    @apply inline-flex flex-1 flex-col p-sm min-w-[var(--max-width)] gap-sm relative;
+    @apply inline-flex flex-1 flex-col p-sm min-w-[var(--max-width)] min-h-[var(--min-height)] gap-sm relative;
     @apply bg-neutral-100 shadow-light-center rounded-b-sm;
 
     @screen tablet-pt {
@@ -25,12 +26,12 @@
     }
 
     &__content {
-        @apply fixed w-full left-none flex-1 p-sm bottom-none h-[calc(100vh-(6vh+(var(--spacing-30)*2)))];
+        @apply fixed w-full left-none flex-1 p-sm bottom-none min-h-[calc(100vh-(var(--min-height)))];
         @apply bg-neutral-200;
         @apply translate-x-[100vw] transition-transform duration-[var(--animationTime)] ease-out;
        
         @screen tablet-pt {
-            @apply relative p-none;
+            @apply relative p-none min-h-none;
             @apply bg-default-none;
             @apply translate-x-none
         }
@@ -42,7 +43,7 @@
 
     &__close {
         @include create-hamburger-menu(
-            $width: var(--spacing-60),
+            $width: var(--spacing-50),
             $color: var(--color-logo-500),
             $activeColor: var(--color-outline)
         );

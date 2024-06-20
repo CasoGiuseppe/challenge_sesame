@@ -107,7 +107,7 @@ export default {
     transitionProperty: {
       colors:
         'color, background-color, border-color, text-decoration-color, fill, stroke, outline, box-shadow',
-      transform: 'transform, opacity top',
+      transform: 'transform, opacity, top',
       size: 'width, min-width, height, min-height',
       spacing: 'margin, padding, gap',
       opacity: 'opacity',
