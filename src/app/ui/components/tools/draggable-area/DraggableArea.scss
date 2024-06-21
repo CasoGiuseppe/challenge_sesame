@@ -1,7 +1,7 @@
 .draggable-area {
     $draggablearea: &;
 
-    @apply flex flex-col gap-xmd p-md border-[1px] border-background-200 border-solid h-full w-full box-border;
+    @apply flex flex-col gap-xmd py-md border-[1px] border-background-200 border-solid h-full w-full box-border;
     @apply rounded-md;
     @apply font-default text-logo-600;
     @apply transition-colors duration-[var(--animationTime)];
@@ -31,7 +31,7 @@
     }
 
     &__header {
-        @apply flex flex-wrap gap-y-xmd gap-x-xsm;
+        @apply flex flex-wrap gap-y-xmd gap-x-xsm px-md;
 
         &:before {
             @apply h-xsm w-full;
@@ -45,7 +45,9 @@
     }
 
     &__active-zone {
-        @apply flex flex-col flex-[2] m-none p-none gap-sm overflow-auto;
+        @apply flex flex-col flex-[2] m-none px-md gap-sm overflow-auto scroll-smooth;
+        scrollbar-color: var(--color-area-200, #000) transparent;
+        scrollbar-width: thin;
     }
 
 }

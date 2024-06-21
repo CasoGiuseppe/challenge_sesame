@@ -17,6 +17,18 @@ const cards = [
         title: 'card title 2',
         content: 'card content 2',
         footer: 'card footer 2',
+    },
+    {
+        id: '3',
+        title: 'card title 3',
+        content: 'card content 3',
+        footer: 'card footer 3',
+    },
+    {
+        id: '4',
+        title: 'card title 4',
+        content: 'card content 4',
+        footer: 'card footer 4',
     }
 ] as ICardItem[];
 
@@ -28,11 +40,13 @@ const meta = {
         id: { control: "text" },
         area: { control: "select", options: Object.values(Areas) },
         cards: { control: "object" },
+        title: { control: "text" },
     },
     args: {
         id: "defaultID",
         area: Areas.NEW,
-        cards
+        cards,
+        title: "Title area"
     }
 } satisfies Meta<typeof DraggableArea>
 
@@ -49,10 +63,6 @@ const Templates: Story = {
         template: `
             <Suspense>
                 <section style="height: 60vh;  display: flex; justify-content: space-between; align-items: flex-start">
-                <CardData id="dragTest" draggable>
-                    <template #title>Drag me</template>
-                    <template #content>Lorem ipsum</template>
-                </CardData>
                     <DraggableArea
                         style="max-width: 65%"
                         v-bind="args"
@@ -62,7 +72,7 @@ const Templates: Story = {
                         @drag-over="over"
                     >
                         <template #icon><BaseIcon name="IconBriefCase"/></template>
-                        <template #title>title</template>
+                        <template #title>{{ args.title }}</template>
                         <template #items="{ property: { id, title, content, footer } }">
                             <CardData :id="id" draggable>
                                 <template #title>{{ title }}</template>

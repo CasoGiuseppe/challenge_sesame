@@ -1,48 +1,51 @@
 <template>
-    <section
-      :area="area"
-      :dragging="dragging"
-      class="draggable-area"
+  <section
+    :area="area"
+    :dragging="dragging"
+    class="draggable-area"
+  >
+    <header
+      v-if="$slots['title']"
+      class="draggable-area__header"
     >
-        <header
-            v-if="$slots['title']"
-            class="draggable-area__header"
-        >
-            <slot name="icon" />
-            <h3 class="draggable-area__title">
-                <slot name="title" />
-            </h3>
-        </header>
-        <TransitionIs
-            group
-            tag="ul"
-            :id="id"
-            :type="Types.FROMLEFT"
-            :easing="Easing.ELASTIC"
-            :timing="Timing.NORMAL"
-            @dragover="handleDragOver"
-            @dragenter="handleDragEnter"
-            @dragleave="handleDragLeave"
-            @drop="handleDrop"
-            class="draggable-area__active-zone"
-        >
-          <li
-            :key="id"
-            v-for="({ id, title, content, footer }, index) of cards"
-            :style="{ transitionDelay: `${index * 0.05}s` }"
-          >
-            <slot :property="{ id, title, content, footer }" name="items"/>
-          </li>
-        </TransitionIs>
-    </section>
+      <!-- @slot Icon: slot to show icon section -->
+      <slot name="icon" />
+      <h3 class="draggable-area__title">
+        <!-- @slot Title: slot to show title label -->
+        <slot name="title" />
+      </h3>
+    </header>
+    <TransitionIs
+      group
+      tag="ul"
+      :id="id"
+      :type="Types.FROMLEFT"
+      :easing="Easing.ELASTIC"
+      :timing="Timing.NORMAL"
+      @dragover="handleDragOver"
+      @dragenter="handleDragEnter"
+      @dragleave="handleDragLeave"
+      @drop="handleDrop"
+      class="draggable-area__active-zone"
+    >
+      <li
+        :key="id"
+        v-for="({ id, title, content, footer }, index) of cards"
+        :style="{ transitionDelay: `${index * 0.05}s` }"
+      >
+        <!-- @slot Items: slot-scope to show cards -->
+        <slot :property="{ id, title, content, footer }" name="items" />
+      </li>
+    </TransitionIs>
+  </section>
 </template>
 <script setup lang="ts">
-import type { UniqueId } from '@app/ui/types'
-import { ref, type PropType } from 'vue'
-import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator'
-import { Areas, type ICardItem } from './types'
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
-import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
+import type { UniqueId } from '@app/ui/types';
+import { ref, type PropType } from 'vue';
+import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
+import { Areas, type ICardItem } from './types';
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 
 const { cards } = defineProps({
   /**
@@ -59,43 +62,41 @@ const { cards } = defineProps({
   area: {
     type: String as PropType<Areas>,
     default: Areas.NEW,
-    validator: (prop: Areas) =>
-      ensureValueCollectionExists({ collection: Areas, value: prop })
+    validator: (prop: Areas) => ensureValueCollectionExists({ collection: Areas, value: prop })
   },
 
   /**
    * Set the list of card items
    */
-    cards: {
-      type: Array as PropType<Array<ICardItem>>,
-      default: () => []
-  },
-})
+  cards: {
+    type: Array as PropType<Array<ICardItem>>,
+    default: () => []
+  }
+});
 
 const customEmits = defineEmits(['drag-enter', 'drag-leave', 'drop-end', 'drag-over']);
-const dragging = ref<boolean>(false); 
-const handleDragOver = (payload:Event):void => {
+const dragging = ref<boolean>(false);
+const handleDragOver = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
-  customEmits('drag-over', { id })
-}
+  customEmits('drag-over', { id });
+};
 
-const handleDragEnter = (payload: Event):void => {
+const handleDragEnter = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
-  dragging.value = true
-  customEmits('drag-enter', { id })
-}
+  dragging.value = true;
+  customEmits('drag-enter', { id });
+};
 
-const handleDragLeave = (payload: Event):void => {
+const handleDragLeave = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
-  dragging.value = false
-  customEmits('drag-leave', { id })
-}
+  dragging.value = false;
+  customEmits('drag-leave', { id });
+};
 
 const handleDrop = (payload: Event) => {
-  payload.preventDefault()
+  payload.preventDefault();
   const { id } = payload.target as HTMLInputElement;
-  customEmits('drop-end', { id })
-
-}
+  customEmits('drop-end', { id });
+};
 </script>
 <style src="./DraggableArea.scss" lang="scss"></style>
