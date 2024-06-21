@@ -30,16 +30,9 @@ export default function useRouterUtilities(): IRouterUtilities {
    * @param { string } type - The type of routes to retrieve. Defaults to 'default'.
    * @returns { IRouterNavigation[] } An array of IRouterNavigation objects, each containing the route's name, translation, and family.
    */
-  const getRoutesByType = ({ type = 'default' }: { type?: string }): IRouterNavigation[] => {    
+  const getRoutesByType = ({ type = 'default' }: { type?: string }): RouteRecordRaw[] => {    
     return router.getRoutes()
       .filter((route: RouteRecordRaw) => route.meta?.type === type)
-      .map(({name, meta: { translation, family }}) => {
-        return {
-          to: name,
-          translation,
-          family
-        }
-      })
   }
 
   return {

@@ -9,11 +9,11 @@
         class="router-navigation"
     >
         <li 
-            v-for="({to, translation, family }, index) of routes"
-            :key="to"
+            v-for="(route, index) of routes"
+            :key="route.id"
             :style="{ 'transitionDelay': `${index * 0.02}s` }"
         >
-            <slot :property="{ to, translation, family }" name="navigation"/>
+            <slot :property="route" name="navigation"/>
         </li>
     </TransitionIs>
     <template v-else>

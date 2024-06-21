@@ -28,11 +28,11 @@
                             <template #content>
                                 <RouterNavigation
                                     id="mainNavigation"
-                                    :routes="getRoutesByType({})"
+                                    :routes="routesNavigation"
                                 >
-                                    <template #navigation="{ property: { to, family } }">
+                                    <template #navigation="{ property: { id, to, family } }">
                                         <BaseItemMenu
-                                            :id="to?.toString()"
+                                            :id="id?.toString()"
                                             :to="{ name: to as string}"
                                             :is="Is.ROUTERLINK"
                                             :selected="routeFamily === family"
@@ -48,7 +48,7 @@
     </section>
 </template>
 <script setup lang="ts">
-import { ref, watch } from "vue"
+import { computed, ref, watch } from "vue"
 import ResponsivePanel from "@app/ui/components/tools/responsive-panel/ResponsivePanel.vue"
 import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionInfo.vue"
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
@@ -60,12 +60,24 @@ import { Sizes } from "@app/ui/components/base/base-icon//types"
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import useTranslation from '@app/shared/composables/useTranslation';
 import { useRoute } from "vue-router"
+import type { IRouterNavigation } from "@app/shared/composables/types"
 
 const route = useRoute()
 const { translate } = useTranslation();
 
 const routeFamily = ref<string | unknown>()
 const { getRoutesByType } = useRouterUtilities();
+const routesNavigation = computed(():IRouterNavigation[] => {
+    return getRoutesByType({}).map(({name, meta}) => {
+        const { translation, family } = meta || {}
+        return {
+            id: name,
+            to: name,
+            translation,
+            family
+        }
+    })
+})
 
 watch(route, (to):void => {
     routeFamily.value = to.meta?.family
