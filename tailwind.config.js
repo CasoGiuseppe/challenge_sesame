@@ -82,6 +82,10 @@ export default {
       variant: {
         100: 'var(--color-variant-100, #000)'
       },
+      area: {
+        100: 'var(--color-area-100, #000)',
+        200: 'var(--color-area-200, #000)',
+      }
     },
 
     fontFamily: {

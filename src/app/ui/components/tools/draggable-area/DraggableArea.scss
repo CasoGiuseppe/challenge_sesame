@@ -18,4 +18,20 @@
         @apply m-none px-none py-xsm;
         @apply font-bold text-md text-logo-600
     }
+
+    &[area='new'] {
+        @apply text-success-100
+    }
+
+    &[area='interview'] {
+        @apply text-area-100
+    }
+
+    &[area='hired'] {
+        @apply text-area-200
+    }
+
+    &[area='failed'] {
+        @apply text-warning-100
+    }
 }
