@@ -1,13 +1,18 @@
 import type { Meta, StoryObj } from "@storybook/vue3"
-import DraggableArea from "@/app/ui/components/tools/draggable-area/DraggableArea.vue"
+import DraggableArea from "@app/ui/components/tools/draggable-area/DraggableArea.vue"
+import { Areas } from "@app/ui/components/tools/draggable-area/types"
 
 const meta = {
     title: "Tools/Draggable Area",
     component: DraggableArea,
     tags: ["autodocs"],
     argTypes: {
+        id: { control: "text" },
+        area: { control: "select", options: Object.values(Areas) },
     },
     args: {
+        id: "defaultID",
+        area: Areas.NEW,
     }
 } satisfies Meta<typeof DraggableArea>
 

@@ -17,7 +17,7 @@
 import type { UniqueId } from '@app/ui/types'
 import type { PropType } from 'vue'
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator'
-import { AREAS } from './types'
+import { Areas } from './types'
 
 const props = defineProps({
   /**
@@ -32,10 +32,10 @@ const props = defineProps({
    * Set area type [new, interview, hired, failed]
    */
   area: {
-    type: String as PropType<AREAS>,
-    default: AREAS.NEW,
-    validator: (prop: AREAS) =>
-      ensureValueCollectionExists({ collection: AREAS, value: prop })
+    type: String as PropType<Areas>,
+    default: Areas.NEW,
+    validator: (prop: Areas) =>
+      ensureValueCollectionExists({ collection: Areas, value: prop })
   },
 })
 </script>
