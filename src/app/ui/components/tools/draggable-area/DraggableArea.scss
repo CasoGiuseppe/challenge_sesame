@@ -1,12 +1,21 @@
 .draggable-area {
     $draggablearea: &;
 
-    @apply flex flex-col gap-xmd p-md border-[1px] border-background-200 border-solid h-full w-full;
-    @apply rounded-md bg-neutral-100;
+    @apply flex flex-col gap-xmd p-md border-[1px] border-background-200 border-solid h-full w-full box-border;
+    @apply rounded-md;
     @apply font-default text-logo-600;
+    @apply transition-colors duration-[var(--animationTime)];
 
     &[area='new'] {
         @apply text-success-100
+    }
+
+    &[dragging="false"] {
+        @apply bg-neutral-100
+    }
+
+    &[dragging="true"] {
+        @apply bg-neutral-200
     }
 
     &[area='interview'] {
@@ -35,7 +44,7 @@
         @apply font-bold text-md text-logo-600
     }
 
-    &__active {
+    &__active-zone {
         @apply flex-[2];
         background: red;
     }

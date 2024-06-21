@@ -9,8 +9,8 @@
       aria-describedby="ui-card-content"
       data-testID="ui-card-test"
       :draggable="draggable"
-      @dragstart="dragStart"
-      @dragend="dragEnd"
+      @dragstart="handleDragStart"
+      @dragend="handleDragEnd"
     >
       <header class="card-data__header">
         <h2
@@ -77,14 +77,10 @@ const { id } = defineProps({
   }
 });
 
-const draggedID = ref<string>(''); 
-const isDragged = computed(():boolean => draggedID.value === id) 
+const dragged = ref<boolean>(false); 
+const isDragged = computed(():boolean => dragged.value) 
 
-const dragStart = (payload: Event) => {
-  const { id } = payload.target as HTMLInputElement;
-  draggedID.value = id;
-}
-
-const dragEnd = () => draggedID.value = ''
+const handleDragStart = () => dragged.value = true;
+const handleDragEnd = () => dragged.value = false
 </script>
 <style src="./CardData.scss" lang="scss"></style>
