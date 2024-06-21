@@ -4,7 +4,7 @@
     @apply flex flex-col py-sm px-xmd gap-sm;
     @apply bg-neutral-200 rounded-md border-background-200 border-[1px] border-solid;
     @apply font-default;
-
+    
     &__header {
         @apply flex gap-sm justify-between items-center
     }
@@ -44,6 +44,10 @@
         &-truncate {
             @apply flex-1 overflow-hidden w-full;
             @apply truncate
+        }
+
+        &-dragged {
+            @apply opacity-50
         }
     }
 }

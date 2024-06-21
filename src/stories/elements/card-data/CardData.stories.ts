@@ -9,6 +9,7 @@ const meta = {
     argTypes: {
         id: { control: "text" },
         contextualMenu: { control: "radio", options: [true, false] },
+        draggable: { control: "radio", options: [true, false] },
         title: { control: "text" },
         content: { control: "text" },
         footer: { control: "text" },
@@ -16,6 +17,7 @@ const meta = {
     args: {
         id: "defaultID",
         contextualMenu: true,
+        draggable: false,
         title: 'Lorem ipsum dolor sit amet, consectetur adip',
         content: 'content',
         footer: 'time'

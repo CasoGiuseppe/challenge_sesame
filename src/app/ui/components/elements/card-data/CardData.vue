@@ -1,9 +1,16 @@
 <template>
     <article
-      class="card-data"
+      :id="id"
+      :class="[
+        'card-data',
+        `${isDragged ? 'card-data--is-dragged' : ''}`
+      ]"
       aria-labelledby="ui-card-title"
       aria-describedby="ui-card-content"
       data-testID="ui-card-test"
+      :draggable="draggable"
+      @dragstart="dragStart"
+      @dragend="dragEnd"
     >
       <header class="card-data__header">
         <h2
@@ -43,8 +50,8 @@
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import type { PropType } from 'vue';
-defineProps({
+import { computed, ref, type PropType } from 'vue';
+const { id } = defineProps({
   /**
    * Set the unique id of the ui card data
    */
@@ -59,7 +66,25 @@ defineProps({
   contextualMenu: {
     type: Boolean as PropType<boolean>,
     default: true
+  },
+
+  /**
+   * Set draggable state of element
+   */
+   draggable: {
+    type: Boolean as PropType<boolean>,
+    default: false
   }
 });
+
+const draggedID = ref<string>(''); 
+const isDragged = computed(():boolean => draggedID.value === id) 
+
+const dragStart = (payload: Event) => {
+  const { id } = payload.target as HTMLInputElement;
+  draggedID.value = id;
+}
+
+const dragEnd = () => draggedID.value = ''
 </script>
 <style src="./CardData.scss" lang="scss"></style>
