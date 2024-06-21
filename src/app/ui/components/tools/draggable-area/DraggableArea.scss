@@ -1,0 +1,21 @@
+.draggable-area {
+    $draggablearea: &;
+
+    @apply flex flex-col gap-md p-md border-[1px] border-background-200 border-solid h-full w-full;
+    @apply rounded-md bg-neutral-100;
+    @apply font-default text-logo-600;
+
+    &__header {
+        @apply flex flex-col gap-sm;
+
+        &:before {
+            @apply h-xsm w-full;
+            @apply bg-default-current rounded-xxsm content-[''];
+        }
+    }
+
+    &__title {
+        @apply m-none px-none py-xsm;
+        @apply font-bold text-md text-logo-600
+    }
+}
