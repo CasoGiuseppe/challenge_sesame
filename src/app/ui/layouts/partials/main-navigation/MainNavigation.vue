@@ -30,13 +30,13 @@
                                     id="mainNavigation"
                                     :list="getRoutesByType({})"
                                 >
-                                    <template #navigation="{ property: { to, translation, family } }">
+                                    <template #navigation="{ property: { to, family } }">
                                         <BaseItemMenu
                                             :id="to?.toString()"
                                             :to="{ name: to as string}"
                                             :is="Is.ROUTERLINK"
                                             :selected="routeFamily === family"
-                                        >{{ translate({key: `MENU.navigation.${translation}` }) }}</BaseItemMenu>
+                                        >{{ translate({key: `MENU.navigation.${family}` }) }}</BaseItemMenu>
                                     </template>
                                 </RouterNavigation>
                             </template>
@@ -67,7 +67,9 @@ const { translate } = useTranslation();
 const routeFamily = ref<string | unknown>()
 const { getRoutesByType } = useRouterUtilities();
 
-watch(route, (to) => { routeFamily.value = to.meta?.family }, {flush: 'pre', immediate: true, deep: true})
+watch(route, (to):void => {
+    routeFamily.value = to.meta?.family
+}, {flush: 'pre', immediate: true, deep: true})
 
 </script>
 <style src="./MainNavigation.scss" lang="scss"></style>

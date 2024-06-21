@@ -4,9 +4,12 @@
             v-slot="{ Component }"
             name="aside"
         >
-            <component :is="Component"/>
+            <component
+                :is="Component"
+                :key="uuid"
+            />
         </RouterView>
-        <section class="app-layout__content" style="background: yellow;">
+        <section class="app-layout__content">
             <RouterView
                 v-slot="{ Component }"
                 name="header"
@@ -38,6 +41,11 @@
     </section>
 </template>
 <script setup lang="ts">
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
-import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
+import { onBeforeMount, ref } from "vue"
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
+import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
+import { generateUUID } from "@app/shared/utilities"
+
+const uuid = ref<string>(generateUUID())
+onBeforeMount(() => uuid.value = generateUUID())
 </script>

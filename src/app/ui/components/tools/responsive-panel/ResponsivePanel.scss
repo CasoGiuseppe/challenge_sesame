@@ -26,7 +26,7 @@
     }
 
     &__content {
-        @apply fixed w-full left-none flex-1 p-sm bottom-none min-h-[calc(100vh-(var(--min-height)))];
+        @apply fixed w-full left-none flex-1 p-sm bottom-none min-h-[calc(100vh-(var(--min-height)))] z-50;
         @apply bg-neutral-200;
         @apply translate-x-[100vw] transition-transform duration-[var(--animationTime)] ease-out;
        

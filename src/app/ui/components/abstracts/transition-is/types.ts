@@ -1,4 +1,5 @@
 export enum Types {
+    FROMTOP = 'from-top',
     FROMBOTTOM = 'from-bottom',
     FROMLEFT = 'from-left',
     FROMRIGHT = 'from-right',

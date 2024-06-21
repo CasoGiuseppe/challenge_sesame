@@ -55,11 +55,19 @@ const { type, group } = defineProps({
 const isNotAGroup = computed(() => !group)
 </script>
 <style lang="scss">
+@include create-animation(
+  $name: 'from-top',
+  $from: translateY(-50%),
+  $to: translateY(-50%),
+  $duration: v-bind(timing),
+  $duration-out: var(--outAnimationTime),
+  $ease: v-bind(easing)
+);
 
 @include create-animation(
   $name: 'from-bottom',
   $from: translateY(20%),
-  $to: translateY(-20%),
+  $to: translateY(20%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing)

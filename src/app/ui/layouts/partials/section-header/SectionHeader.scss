@@ -1,0 +1,9 @@
+.section-header {
+    @apply flex justify-between items-center gap-xsm;
+    @apply font-default;
+
+    &__title {
+        @apply m-none p-none;
+        @apply text-xlg text-logo-600 font-medium
+    }
+}

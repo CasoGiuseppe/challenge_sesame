@@ -23,7 +23,7 @@ const router = createRouter({
           path: 'app',
           name: 'app',
           redirect: { name: 'positions' },
-          meta: { type: 'default', translation: 'recruitment', family: 'recruitment' },
+          meta: { type: 'default', family: 'recruitment' },
           components: {
             aside: () => import(/* webpackChunkName: "MainNavigation" */ '@app/ui/layouts/partials/main-navigation/MainNavigation.vue'),
             header: () => import(/* webpackChunkName: "HeaderTitle" */ '@app/ui/layouts/partials/section-header/SectionHeader.vue'),
@@ -36,11 +36,12 @@ const router = createRouter({
         },
 
         {
-          path: 'other',
-          name: 'other',
-          meta: { type: 'default', translation: 'other', family: 'other' },
+          path: 'fake',
+          name: 'fake',
+          meta: { type: 'default', family: 'fake' },
           components: {
             aside: () => import(/* webpackChunkName: "MainNavigation" */ '@app/ui/layouts/partials/main-navigation/MainNavigation.vue'),
+            header: () => import(/* webpackChunkName: "HeaderTitle" */ '@app/ui/layouts/partials/section-header/SectionHeader.vue'),
             content: () => import(/* webpackChunkName: "FakePage" */ '@app/ui/layouts/fakes/FakePage.vue'),
           },
         },
