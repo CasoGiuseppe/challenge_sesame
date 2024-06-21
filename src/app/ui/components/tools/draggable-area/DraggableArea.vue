@@ -7,10 +7,14 @@
             v-if="$slots['title']"
             class="draggable-area__header"
         >
+            <slot name="icon" />
             <h3 class="draggable-area__title">
                 <slot name="title" />
             </h3>
         </header>
+        <section
+          class="draggable-area__active">
+        </section>
     </section>
 </template>
 <script setup lang="ts">
