@@ -1,14 +1,21 @@
 <template>
-    <template v-if="ensureListIsNotEmpty">
-        <menu class="router-navigation">
-            <li 
-                v-for="{to, translation, family } of list"
-                :key="to"
-            >
-                <slot :property="{ to, translation, family }" name="navigation"/>
-            </li>
-        </menu>
-    </template>
+    <TransitionIs
+        v-if="ensureListIsNotEmpty"
+        group
+        tag="menu"
+        :type="Types.FROMLEFT"
+        :easing="Easing.ELASTIC"
+        :timing="Timing.NORMAL"
+        class="router-navigation"
+    >
+        <li 
+            v-for="({to, translation, family }, index) of list"
+            :key="to"
+            :style="{ 'transitionDelay': `${index * 0.02}s` }"
+        >
+            <slot :property="{ to, translation, family }" name="navigation"/>
+        </li>
+    </TransitionIs>
     <template v-else>
         <p class="router-navigation--has-warning">no items was found</p>
     </template>
@@ -17,6 +24,8 @@
 import { computed, type PropType } from "vue";
 import type { UniqueId } from '@app/ui/types';
 import type { IRouterNavigation } from "@/app/shared/composables/types";
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 
 const { list } = defineProps({
     /**

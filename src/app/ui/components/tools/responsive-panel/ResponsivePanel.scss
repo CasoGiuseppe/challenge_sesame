@@ -3,7 +3,7 @@
     --max-width: 100%;
     --min-height: 6vh;
 
-    @apply inline-flex flex-1 flex-col p-sm min-w-[var(--max-width)] min-h-[var(--min-height)] gap-sm relative;
+    @apply inline-flex flex-1 flex-col justify-center p-sm min-w-[var(--max-width)] min-h-[var(--min-height)] gap-sm relative;
     @apply bg-neutral-100 shadow-light-center rounded-b-sm;
 
     @screen tablet-pt {
