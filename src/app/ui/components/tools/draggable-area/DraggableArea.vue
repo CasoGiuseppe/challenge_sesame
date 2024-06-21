@@ -1,8 +1,8 @@
 <template>
     <section
-      class="draggable-area"
       :area="area"
       :dragging="dragging"
+      class="draggable-area"
     >
         <header
             v-if="$slots['title']"
@@ -13,13 +13,16 @@
                 <slot name="title" />
             </h3>
         </header>
-        <section
-          class="draggable-area__active-zone"
+        <ul
+          :id="id"
           @dragover="handleDragOver"
           @dragenter="handleDragEnter"
           @dragleave="handleDragLeave"
+          @drop="handleDrop"
+          class="draggable-area__active-zone"
         >
-        </section>
+          
+      </ul>
     </section>
 </template>
 <script setup lang="ts">
@@ -48,12 +51,30 @@ defineProps({
   },
 })
 
+const customEmits = defineEmits(['drag-enter', 'drag-leave', 'drop-end', 'drag-over']);
 const dragging = ref<boolean>(false); 
-const handleDragOver = (e:Event):void => e.preventDefault()
-const handleDragEnter = ():boolean => dragging.value = true
-const handleDragLeave = ():boolean => {
-  console.log('ciccio')
-  return dragging.value = false
+const handleDragOver = (payload:Event):void => {
+  const { id } = payload.target as HTMLInputElement;
+  customEmits('drag-over', { id })
+}
+
+const handleDragEnter = (payload: Event):void => {
+  const { id } = payload.target as HTMLInputElement;
+  dragging.value = true
+  customEmits('drag-enter', { id })
+}
+
+const handleDragLeave = (payload: Event):void => {
+  const { id } = payload.target as HTMLInputElement;
+  dragging.value = false
+  customEmits('drag-leave', { id })
+}
+
+const handleDrop = (payload: Event) => {
+  payload.preventDefault()
+  const { id } = payload.target as HTMLInputElement;
+  customEmits('drop-end', { id })
+
 }
 
 </script>

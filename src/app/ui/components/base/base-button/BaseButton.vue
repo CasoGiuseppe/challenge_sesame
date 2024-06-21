@@ -109,10 +109,10 @@ const fallback = ref<string>('Please wait');
 const isLoadingKey = computed(() => (props.loading ? 'loading' : 'default'));
 const isTypeLink = computed(() => (props.is === Is.ROUTERLINK));
 
-const emits = defineEmits(['send']);
+const customEmits = defineEmits(['send']);
 const handleEmitClick = () => {
   if(isTypeLink.value) return 
-  emits('send')
+  customEmits('send')
 };
 </script>
 <style src="./BaseButton.scss" lang="scss"></style>

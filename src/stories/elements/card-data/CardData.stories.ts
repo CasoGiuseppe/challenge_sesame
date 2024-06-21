@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import CardData from "@app/ui/components/elements/card-data/CardData.vue";
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue";
+import { action } from "@storybook/addon-actions"
 
 const meta = {
     title: "Elements/Card Data",
@@ -37,7 +38,11 @@ const Templates: Story = {
         template: `
             <div style="max-width: 50%">
                 <Suspense>
-                    <CardData v-bind="args">
+                    <CardData
+                        v-bind="args"
+                        @drag-init="init"
+                        @drag-stop="stop"
+                    >
                         <template #title>{{ args.title }}</template>
                         <template #content>{{ args.content }}</template>
                         <template #footer><BaseIcon name="IconTime" />{{ args.footer }}</template>
@@ -45,6 +50,10 @@ const Templates: Story = {
                 </Suspense>
             </div>
         `,
+        methods: {
+            init: action("drag-init"),
+            stop: action("drag-stop"),
+        }
     })
 }
 

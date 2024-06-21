@@ -3,6 +3,7 @@ import DraggableArea from "@app/ui/components/tools/draggable-area/DraggableArea
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
 import CardData from "@app/ui/components/elements/card-data/CardData.vue"
 import { Areas } from "@app/ui/components/tools/draggable-area/types"
+import { action } from "@storybook/addon-actions"
 
 const meta = {
     title: "Tools/Draggable Area",
@@ -23,7 +24,7 @@ export default meta
 type Story = StoryObj<typeof DraggableArea>
 
 const Templates: Story = {
-    render: (args, { updateArgs }) => ({
+    render: (args) => ({
         components: { DraggableArea, BaseIcon, CardData },
         setup() {
             return { args }
@@ -31,11 +32,18 @@ const Templates: Story = {
         template: `
             <Suspense>
                 <section style="height: 60vh;  display: flex; justify-content: space-between; align-items: flex-start">
-                <CardData id="dagTest" draggable>
+                <CardData id="dragTest" draggable>
                     <template #title>Drag me</template>
                     <template #content>Lorem ipsum</template>
                 </CardData>
-                    <DraggableArea v-bind="args" style="max-width: 65%">
+                    <DraggableArea
+                        style="max-width: 65%"
+                        v-bind="args"
+                        @drag-enter="enter"
+                        @drag-leave="leave"
+                        @drop-end="drop"
+                        @drag-over="over"
+                    >
                         <template #icon><BaseIcon name="IconBriefCase"/></template>
                         <template #title>title</template>
                     </DraggableArea>
@@ -43,9 +51,10 @@ const Templates: Story = {
             </Suspense>
         `,
         methods: {
-            close({ state }: {state: string}): void {
-                updateArgs({ ...args, open: state })
-            },
+            enter: action("drag-enter"),
+            leave: action("drag-leave"),
+            drop: action("drop"),
+            over: action("drag-over")
         }
     })
 }

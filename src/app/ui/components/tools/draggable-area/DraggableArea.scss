@@ -31,7 +31,7 @@
     }
 
     &__header {
-        @apply flex flex-wrap gap-y-sm gap-x-xsm;
+        @apply flex flex-wrap gap-y-xmd gap-x-xsm;
 
         &:before {
             @apply h-xsm w-full;
@@ -45,8 +45,8 @@
     }
 
     &__active-zone {
-        @apply flex-[2];
-        background: red;
+        @apply flex-[2] m-none p-none;
+        background: yellow;
     }
 
 }

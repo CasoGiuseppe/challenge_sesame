@@ -79,8 +79,15 @@ const { id } = defineProps({
 
 const dragged = ref<boolean>(false); 
 const isDragged = computed(():boolean => dragged.value) 
+const customEmits = defineEmits(['drag-init', 'drag-stop']);
 
-const handleDragStart = () => dragged.value = true;
-const handleDragEnd = () => dragged.value = false
+const handleDragStart = () => {
+  dragged.value = true;
+  customEmits('drag-init', { id });
+}
+const handleDragEnd = () => {
+  dragged.value = false;
+  customEmits('drag-stop', { id });
+}
 </script>
 <style src="./CardData.scss" lang="scss"></style>
