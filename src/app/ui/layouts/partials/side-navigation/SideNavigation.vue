@@ -1,5 +1,5 @@
 <template>
-    <section class="main-navigation">
+    <section class="side-navigation">
         <ResponsivePanel id="navigationPanel">
             <template #header>
                 <FakeLogo>
@@ -84,4 +84,4 @@ watch(route, (to):void => {
 }, {flush: 'pre', immediate: true, deep: true})
 
 </script>
-<style src="./MainNavigation.scss" lang="scss"></style>
+<style src="./SideNavigation.scss" lang="scss"></style>

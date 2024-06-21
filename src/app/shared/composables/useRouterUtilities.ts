@@ -26,9 +26,9 @@ export default function useRouterUtilities(): IRouterUtilities {
   };
   
   /**
-   * A function to retrieve routes based on their type.
+   * A function to retrieve routes from the Vue Router based on their type.
    * @param { string } type - The type of routes to retrieve. Defaults to 'default'.
-   * @returns { IRouterNavigation[] } An array of IRouterNavigation objects, each containing the route's name, translation, and family.
+   * @returns { RouteRecordRaw[] } An array of RouteRecordRaw objects that match the specified type.
    */
   const getRoutesByType = ({ type = 'default' }: { type?: string }): RouteRecordRaw[] => {    
     return router.getRoutes()

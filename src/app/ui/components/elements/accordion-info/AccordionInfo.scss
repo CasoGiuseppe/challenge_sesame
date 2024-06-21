@@ -25,7 +25,7 @@
         @apply flex items-center justify-center m-none gap-sm pt-xmd pr-sm;
         @apply text-sm text-logo-300 uppercase;
         @apply outline-none cursor-pointer rounded-xsm;
-        @apply transition-all duration-[var(--animationTime)];
+        @apply transition-all duration-[var(--outAnimationTime)] ease-out;
 
         &::after {
             @apply inline-block p-xsm ml-auto right-sm;
