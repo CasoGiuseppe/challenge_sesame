@@ -2,8 +2,23 @@ import type { Meta, StoryObj } from "@storybook/vue3"
 import DraggableArea from "@app/ui/components/tools/draggable-area/DraggableArea.vue"
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
 import CardData from "@app/ui/components/elements/card-data/CardData.vue"
-import { Areas } from "@app/ui/components/tools/draggable-area/types"
+import { Areas, type ICardItem } from "@app/ui/components/tools/draggable-area/types"
 import { action } from "@storybook/addon-actions"
+
+const cards = [
+    {
+        id: '1',
+        title: 'card title 1',
+        content: 'card content 1',
+        footer: 'card footer 1',
+    },
+    {
+        id: '2',
+        title: 'card title 2',
+        content: 'card content 2',
+        footer: 'card footer 2',
+    }
+] as ICardItem[];
 
 const meta = {
     title: "Tools/Draggable Area",
@@ -12,10 +27,12 @@ const meta = {
     argTypes: {
         id: { control: "text" },
         area: { control: "select", options: Object.values(Areas) },
+        cards: { control: "object" },
     },
     args: {
         id: "defaultID",
         area: Areas.NEW,
+        cards
     }
 } satisfies Meta<typeof DraggableArea>
 
@@ -46,6 +63,13 @@ const Templates: Story = {
                     >
                         <template #icon><BaseIcon name="IconBriefCase"/></template>
                         <template #title>title</template>
+                        <template #items="{ property: { id, title, content, footer } }">
+                            <CardData :id="id" draggable>
+                                <template #title>{{ title }}</template>
+                                <template #content>{{ content }}</template>
+                                <template #footer>{{ footer }}</template>
+                            </CardData>
+                        </template>
                     </DraggableArea>
                 </section>
             </Suspense>

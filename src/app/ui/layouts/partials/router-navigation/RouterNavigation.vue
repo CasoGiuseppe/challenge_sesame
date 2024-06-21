@@ -9,7 +9,7 @@
         class="router-navigation"
     >
         <li 
-            v-for="({to, translation, family }, index) of list"
+            v-for="({to, translation, family }, index) of routes"
             :key="to"
             :style="{ 'transitionDelay': `${index * 0.02}s` }"
         >
@@ -21,13 +21,13 @@
     </template>
 </template>
 <script setup lang="ts">
-import { computed, type PropType } from "vue";
-import type { UniqueId } from '@app/ui/types';
-import type { IRouterNavigation } from "@/app/shared/composables/types";
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
-import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
+import { computed, type PropType } from "vue"
+import type { UniqueId } from '@app/ui/types'
+import type { IRouterNavigation } from "@/app/shared/composables/types"
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
+import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
 
-const { list } = defineProps({
+const { routes } = defineProps({
     /**
      * Set the unique id of the navigation tool
      */
@@ -39,12 +39,12 @@ const { list } = defineProps({
     /**
      * Set the list of navigation items
      */
-     list: {
+     routes: {
         type: Array as PropType<Array<IRouterNavigation>>,
         default: () => []
     },
 })
 
-const ensureListIsNotEmpty = computed(() => list.length > 0)
+const ensureListIsNotEmpty = computed(() => routes.length > 0)
 </script>
 <style src="./RouterNavigation.scss" lang="scss"></style>

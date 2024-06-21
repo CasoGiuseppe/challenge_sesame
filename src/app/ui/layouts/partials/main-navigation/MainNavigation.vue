@@ -28,7 +28,7 @@
                             <template #content>
                                 <RouterNavigation
                                     id="mainNavigation"
-                                    :list="getRoutesByType({})"
+                                    :routes="getRoutesByType({})"
                                 >
                                     <template #navigation="{ property: { to, family } }">
                                         <BaseItemMenu

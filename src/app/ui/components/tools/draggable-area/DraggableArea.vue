@@ -13,25 +13,38 @@
                 <slot name="title" />
             </h3>
         </header>
-        <ul
-          :id="id"
-          @dragover="handleDragOver"
-          @dragenter="handleDragEnter"
-          @dragleave="handleDragLeave"
-          @drop="handleDrop"
-          class="draggable-area__active-zone"
+        <TransitionIs
+            group
+            tag="ul"
+            :id="id"
+            :type="Types.FROMLEFT"
+            :easing="Easing.ELASTIC"
+            :timing="Timing.NORMAL"
+            @dragover="handleDragOver"
+            @dragenter="handleDragEnter"
+            @dragleave="handleDragLeave"
+            @drop="handleDrop"
+            class="draggable-area__active-zone"
         >
-          
-      </ul>
+          <li
+            :key="id"
+            v-for="({ id, title, content, footer }, index) of cards"
+            :style="{ transitionDelay: `${index * 0.05}s` }"
+          >
+            <slot :property="{ id, title, content, footer }" name="items"/>
+          </li>
+        </TransitionIs>
     </section>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types'
 import { ref, type PropType } from 'vue'
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator'
-import { Areas } from './types'
+import { Areas, type ICardItem } from './types'
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
+import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
 
-defineProps({
+const { cards } = defineProps({
   /**
    * Set the unique id of the ui dragArea
    */
@@ -48,6 +61,14 @@ defineProps({
     default: Areas.NEW,
     validator: (prop: Areas) =>
       ensureValueCollectionExists({ collection: Areas, value: prop })
+  },
+
+  /**
+   * Set the list of card items
+   */
+    cards: {
+      type: Array as PropType<Array<ICardItem>>,
+      default: () => []
   },
 })
 
@@ -76,6 +97,5 @@ const handleDrop = (payload: Event) => {
   customEmits('drop-end', { id })
 
 }
-
 </script>
 <style src="./DraggableArea.scss" lang="scss"></style>
