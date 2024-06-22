@@ -1,8 +1,6 @@
 .menu-shell {
     $mennushell: &;
-    --custom-padding: calc(var(--spacing-30) - 1px);
-
-    @apply flex p-none m-none;
+    @apply flex p-none;
 
     &[aria-orientation="vertical"] {
         @apply flex-col;

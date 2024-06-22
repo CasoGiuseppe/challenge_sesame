@@ -29,6 +29,7 @@
                                 <MenuShell
                                     id="mainNavigation"
                                     :routes="routesNavigation"
+                                    :customStyle="{ paddingLeft : '7px' }"
                                 >
                                     <template #navigation="{ property: { id, to, family } }">
                                         <BaseItemMenu

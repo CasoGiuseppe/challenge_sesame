@@ -6,8 +6,9 @@
         :type="animation"
         :easing="Easing.ELASTIC"
         :timing="Timing.NORMAL"
-        class="menu-shell"
         :aria-orientation="orientation"
+        class="menu-shell"
+        :style="customStyle"
     >
         <li 
             v-for="(route, index) of routes"
@@ -27,7 +28,7 @@ import type { UniqueId } from '@app/ui/types'
 import type { IRouterNavigation } from "@/app/shared/composables/types"
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
 import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
-import { Orientation } from "./types"
+import { Orientation, type Style } from "./types"
 import { ensureValueCollectionExists } from "@app/ui/validators/useCustomValidator"
 
 const { routes } = defineProps({
@@ -71,6 +72,13 @@ const { routes } = defineProps({
      tag: {
         type: String as PropType<string>,
         default: 'menu'
+    },
+
+     /**
+     * Set custom style properties
+     */
+     customStyle: {
+        type: Object as PropType<Style>,
     },
 })
 
