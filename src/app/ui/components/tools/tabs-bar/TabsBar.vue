@@ -1,5 +1,11 @@
 <template>
-  <menu
+  <section
+    class="tab-bar"
+    data-testID="ui-tabs-test"
+  >
+    <slot />
+  </section>
+  <!-- <menu
     :class="['tabs-bar', tabs.length > 0 ? '' : 'tabs-bar--is-empty']"
     aria-orientation="horizontal"
     data-testID="ui-tabs-test"
@@ -18,7 +24,7 @@
         v-for="({ id, label }, index) of tabs"
         :style="{ transitionDelay: `${index * 0.05}s` }"
       >
-        <!-- @slot Tab: slot scope to fill element -->
+        
         <slot :property="{
             id,
             label
@@ -26,7 +32,7 @@
       </li>
     </TransitionIs>
     <template v-else> No tabs was found </template>
-  </menu>
+  </menu> -->
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types';

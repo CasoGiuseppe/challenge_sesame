@@ -1,3 +1,3 @@
-export interface DomainRoutes {
-    router: any
+export interface DynamicImportPath {
+    path: any
 }

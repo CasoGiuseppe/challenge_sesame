@@ -2,7 +2,15 @@
     $routernavigation: &;
     --custom-padding: calc(var(--spacing-30) - 1px);
 
-    @apply pl-[var(--custom-padding)];
+    @apply flex pl-[var(--custom-padding)];
+
+    &[aria-orientation="vertical"] {
+        @apply flex-col;
+    }
+
+    &[aria-orientation="horizontal"] {
+        @apply flex-row;
+    }
 
     &--has {
         &-warning {

@@ -3,10 +3,11 @@
         v-if="ensureListIsNotEmpty"
         group
         tag="menu"
-        :type="Types.FROMLEFT"
+        :type="animation"
         :easing="Easing.ELASTIC"
         :timing="Timing.NORMAL"
         class="router-navigation"
+        :aria-orientation="orientation"
     >
         <li 
             v-for="(route, index) of routes"
@@ -26,6 +27,8 @@ import type { UniqueId } from '@app/ui/types'
 import type { IRouterNavigation } from "@/app/shared/composables/types"
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
 import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
+import { Orientation } from "./types"
+import { ensureValueCollectionExists } from "@app/ui/validators/useCustomValidator"
 
 const { routes } = defineProps({
     /**
@@ -42,6 +45,24 @@ const { routes } = defineProps({
      routes: {
         type: Array as PropType<Array<IRouterNavigation>>,
         default: () => []
+    },
+
+    /**
+     * Set the orientation menu [horizontal, vertical]
+     */
+    orientation: {
+        type: String as PropType<Orientation>,
+        default: Orientation.VERTICAL,
+        validator: (prop: Orientation) => ensureValueCollectionExists({ collection: Orientation, value: prop })
+    },
+
+    /**
+     * Set the animation type [TransitionIs type]
+     */
+     animation: {
+        type: String as PropType<Types>,
+        default: Types.FROMLEFT,
+        validator: (prop: Types) => ensureValueCollectionExists({ collection: Types, value: prop })
     },
 })
 

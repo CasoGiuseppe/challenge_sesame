@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router';
 
 export default [{
     path: 'applicants',
-    meta: { family: 'recruitment'},
+    meta: { family: 'recruitment', type: 'recruitment'},
     name: 'applicants',
     components: {
       default: () => import(/* webpackChunkName: "ApplicantsBoard" */ '@modules/applicants/presentation/ui/applicants-board/ApplicantsBoard.vue'),

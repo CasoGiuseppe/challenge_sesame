@@ -1,12 +1,12 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-import type { DomainRoutes } from './interfaces'
+import type { DynamicImportPath } from './interfaces'
 import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 
 const { loadExternalsRouters } = useRouterUtilities();
 
-const domainsRouters = <DomainRoutes[]>[
-  { router: import('@modules/applicants/presentation/router') },
-  { router: import('@modules/positions/presentation/router') }
+const routes = <DynamicImportPath[]>[
+  { path: import('@/modules/applicants/presentation/router') },
+  { path: import('@/modules/positions/presentation/router') }
 ]
 
 const router = createRouter({
@@ -31,7 +31,7 @@ const router = createRouter({
           },
 
           children: [
-            ...((await loadExternalsRouters({ collection: domainsRouters })) as RouteRecordRaw[]),
+            ...((await loadExternalsRouters({ collection: routes })) as RouteRecordRaw[]),
           ]
         },
 

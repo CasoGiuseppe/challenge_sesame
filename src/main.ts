@@ -1,7 +1,7 @@
 import { createApp, defineAsyncComponent } from 'vue';
 import router from '@app/router';
 import pinia from '@app/shared/stores/pinia';
-import i18n from '@app/translation';
+import { i18n } from '@app/translation';
 import ClickOutside from "@app/ui/directive/clickOutside";
 
 import "@assets/index.scss";

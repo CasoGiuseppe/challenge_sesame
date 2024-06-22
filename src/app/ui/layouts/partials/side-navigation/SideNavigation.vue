@@ -32,10 +32,10 @@
                                 >
                                     <template #navigation="{ property: { id, to, family } }">
                                         <BaseItemMenu
-                                            :id="id?.toString()"
+                                            :id="id"
                                             :to="{ name: to as string}"
                                             :is="Is.ROUTERLINK"
-                                            :selected="routeFamily === family"
+                                            :selected="currentRoute === family"
                                         >{{ translate({key: `MENU.navigation.${family}` }) }}</BaseItemMenu>
                                     </template>
                                 </RouterNavigation>
@@ -62,25 +62,23 @@ import useTranslation from '@app/shared/composables/useTranslation';
 import { useRoute } from "vue-router"
 import type { IRouterNavigation } from "@app/shared/composables/types"
 
-const route = useRoute()
 const { translate } = useTranslation();
+const route = useRoute()
+const currentRoute = ref<string | unknown>()
 
-const routeFamily = ref<string | unknown>()
 const { getRoutesByType } = useRouterUtilities();
 const routesNavigation = computed(():IRouterNavigation[] => {
-    return getRoutesByType({}).map(({name, meta}) => {
-        const { translation, family } = meta || {}
+    return getRoutesByType({}).map(({name, meta: { family } = {}}) => {
         return {
-            id: name,
+            id: name?.toString() as string,
             to: name,
-            translation,
             family
         }
     })
 })
 
-watch(route, (to):void => {
-    routeFamily.value = to.meta?.family
+watch(route, ({ meta: { family }}):void => {
+    currentRoute.value = family
 }, {flush: 'pre', immediate: true, deep: true})
 
 </script>
