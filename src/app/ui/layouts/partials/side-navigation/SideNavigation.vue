@@ -26,7 +26,7 @@
                                 {{ translate({key: 'MENU.sections.name' }) }}
                             </template>
                             <template #content>
-                                <RouterNavigation
+                                <MenuShell
                                     id="mainNavigation"
                                     :routes="routesNavigation"
                                 >
@@ -38,7 +38,7 @@
                                             :selected="currentRoute === family"
                                         >{{ translate({key: `MENU.navigation.${family}` }) }}</BaseItemMenu>
                                     </template>
-                                </RouterNavigation>
+                                </MenuShell>
                             </template>
                         </AccordionInfo>
                     </template>
@@ -54,7 +54,7 @@ import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionI
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
 import BaseItemMenu from "@app/ui/components/base/base-item-menu/BaseItemMenu.vue"
 import FakeLogo from "@app/ui/layouts/fakes/FakeLogo.vue"
-import RouterNavigation from "@app/ui/layouts/partials/router-navigation/RouterNavigation.vue"
+import MenuShell from "@app/ui/components/tools/menu-shell/MenuShell.vue"
 import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 import { Sizes } from "@app/ui/components/base/base-icon//types"
 import { Is } from '@app/ui/components/abstracts/component-is/types';

@@ -2,7 +2,7 @@
   <section class="position-board">
     <TabsShell>
       <template #default>
-        <RouterNavigation
+        <MenuShell
             id="tabsNavigation"
             :routes="routesNavigation"
             :orientation="Orientation.HORIZONTAL"
@@ -18,7 +18,7 @@
                     {{ translate({key: `MENU.navigation.${id}` }) }}
                 </BaseTab>
             </template>
-        </RouterNavigation>
+        </MenuShell>
       </template>
     </TabsShell>
   </section>
@@ -27,8 +27,8 @@
 import { watch, ref, computed } from "vue"
 import TabsShell from "@app/ui/components/tools/tabs-shell/TabsShell.vue"
 import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
-import RouterNavigation from "@app/ui/layouts/partials/router-navigation/RouterNavigation.vue"
-import { Orientation } from "@app/ui/layouts/partials/router-navigation/types"
+import MenuShell from "@app/ui/components/tools/menu-shell/MenuShell.vue"
+import { Orientation } from "@app/ui/components/tools/menu-shell/types"
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { Types } from '@app/ui/components/abstracts/transition-is/types';
 import { useRoute } from "vue-router";
@@ -55,4 +55,4 @@ const currentRoute = ref<string | unknown>()
 watch(route, ({ name }):void => {
   currentRoute.value = name
 }, {flush: 'pre', immediate: true, deep: true})
-</script>
+</script>@/app/ui/components/tools/create-menu-shell/types

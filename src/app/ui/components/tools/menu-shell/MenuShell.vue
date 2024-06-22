@@ -2,11 +2,11 @@
     <TransitionIs
         v-if="ensureListIsNotEmpty"
         group
-        tag="menu"
+        :tag="tag"
         :type="animation"
         :easing="Easing.ELASTIC"
         :timing="Timing.NORMAL"
-        class="router-navigation"
+        class="menu-shell"
         :aria-orientation="orientation"
     >
         <li 
@@ -18,7 +18,7 @@
         </li>
     </TransitionIs>
     <template v-else>
-        <p class="router-navigation--has-warning">no items was found</p>
+        <p class="menu-shell--has-warning">no items was found</p>
     </template>
 </template>
 <script setup lang="ts">
@@ -64,8 +64,16 @@ const { routes } = defineProps({
         default: Types.FROMLEFT,
         validator: (prop: Types) => ensureValueCollectionExists({ collection: Types, value: prop })
     },
+
+    /**
+     * Set transition list tag type
+     */
+     tag: {
+        type: String as PropType<string>,
+        default: 'menu'
+    },
 })
 
 const ensureListIsNotEmpty = computed(() => routes.length > 0)
 </script>
-<style src="./RouterNavigation.scss" lang="scss"></style>
+<style src="./MenuShell.scss" lang="scss"></style>
