@@ -31,9 +31,11 @@ import MenuShell from "@app/ui/components/tools/menu-shell/MenuShell.vue"
 import { Orientation } from "@app/ui/components/tools/menu-shell/types"
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { Types } from '@app/ui/components/abstracts/transition-is/types';
+import type { IRouterNavigation } from "@app/shared/composables/types"
+
 import { useRoute } from "vue-router";
 import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
-import type { IRouterNavigation } from "@app/shared/composables/types"
+
 import useTranslation from '@app/shared/composables/useTranslation';
 
 const { translate } = useTranslation();

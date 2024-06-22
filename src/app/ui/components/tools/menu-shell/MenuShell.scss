@@ -2,7 +2,7 @@
     $mennushell: &;
     --custom-padding: calc(var(--spacing-30) - 1px);
 
-    @apply flex pl-[var(--custom-padding)];
+    @apply flex p-none m-none;
 
     &[aria-orientation="vertical"] {
         @apply flex-col;
