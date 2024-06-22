@@ -1,10 +1,12 @@
 <template>
   <section class="position-board">
-    <TabsBar>
+    <TabsShell>
       <template #default>
         <RouterNavigation
             id="tabsNavigation"
             :routes="routesNavigation"
+            :orientation="Orientation.HORIZONTAL"
+            :animation="Types.FROMBOTTOM"
         >
             <template #navigation="{ property: { id, to, family } }">
                 <BaseTab
@@ -18,19 +20,22 @@
             </template>
         </RouterNavigation>
       </template>
-    </TabsBar>
+    </TabsShell>
   </section>
 </template>
 <script setup lang="ts">
 import { watch, ref, computed } from "vue"
-import TabsBar from "@app/ui/components/tools/tabs-bar/TabsBar.vue"
+import TabsShell from "@app/ui/components/tools/tabs-shell/TabsShell.vue"
 import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
 import RouterNavigation from "@app/ui/layouts/partials/router-navigation/RouterNavigation.vue"
+import { Orientation } from "@app/ui/layouts/partials/router-navigation/types"
 import { Is } from '@app/ui/components/abstracts/component-is/types';
+import { Types } from '@app/ui/components/abstracts/transition-is/types';
 import { useRoute } from "vue-router";
 import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 import type { IRouterNavigation } from "@app/shared/composables/types"
 import useTranslation from '@app/shared/composables/useTranslation';
+
 const { translate } = useTranslation();
 
 const route = useRoute()

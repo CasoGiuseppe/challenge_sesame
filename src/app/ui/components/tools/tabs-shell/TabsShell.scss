@@ -1,0 +1,11 @@
+.tabs-shell {
+    @apply relative flex relative box-border overflow-hidden;
+    @apply font-default;
+    padding: 0 24px;
+
+    &:after {
+        @apply absolute bottom-none left-none w-full h-[1px];
+        @apply content-[''];
+        @apply bg-neutral-200;
+    }
+}

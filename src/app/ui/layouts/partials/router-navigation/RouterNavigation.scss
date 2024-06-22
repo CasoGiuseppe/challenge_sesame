@@ -9,7 +9,7 @@
     }
 
     &[aria-orientation="horizontal"] {
-        @apply flex-row;
+        @apply flex-row gap-xxxlg;
     }
 
     &--has {

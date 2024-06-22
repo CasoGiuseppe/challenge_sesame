@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
-import TabsBar from "@/app/ui/components/tools/tabs-bar/TabsBar.vue";
+import TabsBar from "@/app/ui/components/tools/tabs-shell/TabsShell.vue";
 import { ref } from "vue";
 import { vueRouter } from "storybook-vue3-router"
 
@@ -9,17 +9,16 @@ const tabsList = [
     { id: 'tab2', label: 'Tab 2',},
     { id: 'tab3', label: 'Tab 3',}
 ]
+
 const meta = {
     title: "Tools/Tabs Bar",
     component: TabsBar,
     tags: ["autodocs"],
     argTypes: {
         id: { control: "text" },
-        tabs: { control: "object" }
     },
     args: {
         id: "TabsBarID",
-        tabs: tabsList
     }
 } satisfies Meta<typeof TabsBar>
 

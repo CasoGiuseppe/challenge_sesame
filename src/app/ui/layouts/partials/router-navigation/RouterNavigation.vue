@@ -12,7 +12,7 @@
         <li 
             v-for="(route, index) of routes"
             :key="route.id"
-            :style="{ 'transitionDelay': `${index * 0.02}s` }"
+            :style="{ 'transitionDelay': `${index * 0.15}s` }"
         >
             <slot :property="route" name="navigation"/>
         </li>

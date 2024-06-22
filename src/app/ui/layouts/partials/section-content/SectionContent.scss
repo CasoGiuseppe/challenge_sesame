@@ -1,6 +1,6 @@
 .section-content {
     $sectioncontent: &;
 
-    @apply flex-[2] px-md pb-md;
+    @apply flex-[2] px-md py-md;
     @apply bg-neutral-100 rounded-xlg shadow-light-center
 }

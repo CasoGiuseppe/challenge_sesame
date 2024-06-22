@@ -5,8 +5,8 @@ import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 const { loadExternalsRouters } = useRouterUtilities();
 
 const routes = <DynamicImportPath[]>[
-  { path: import('@/modules/applicants/presentation/router') },
-  { path: import('@/modules/positions/presentation/router') }
+  { path: import('@/modules/positions/presentation/router') },
+  { path: import('@/modules/applicants/presentation/router') }
 ]
 
 const router = createRouter({
