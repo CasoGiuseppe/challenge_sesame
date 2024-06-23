@@ -136,6 +136,6 @@
     scrollbar-width: thin;
 
     > * {
-        @apply snap-center
+        @apply snap-start
     }
 }

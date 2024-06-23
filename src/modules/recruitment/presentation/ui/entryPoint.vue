@@ -23,13 +23,16 @@
     </TabsShell>
 
     <section class="entry-point__board">
-      <RouterView v-slot="{ Component }">
+      <RouterView v-slot="{ Component, route: { path } }">
           <TransitionIs
-              :type="transitionType.FROMBOTTOM"
-              :easing="Easing.ELASTIC"
-              :timing="Timing.FAST"
+            :type="transitionType.FROMBOTTOM"
+            :easing="Easing.OUT"
+            :timing="Timing.FAST"
           >
-              <component :is="Component" />
+              <component
+                :is="Component"
+                :key="path"
+              />
           </TransitionIs>
       </RouterView>
     </section>

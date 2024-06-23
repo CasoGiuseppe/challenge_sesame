@@ -124,7 +124,7 @@ export default {
         spinner: 'spinner var(--slowAnimationTime) linear infinite',
         'slide-from-left': 'slide-from-left var(--outAnimationTime) var(--ease-out)',
         'slide-from-right': 'slide-from-right var(--outAnimationTime) var(--ease-out)',
-        'slide-from-center': 'slide-from-center var(--outAnimationTime) var(--ease-out)',
+        'slide-from-center': 'slide-from-center var(--outAnimationTime) var(--ease-elastic)',
       },
 
       keyframes: {
@@ -155,7 +155,7 @@ export default {
         'slide-from-center': {
           '0%': {
             opacity: '0',
-            transform: 'translateY(20%)'
+            transform: 'translateY(10%)'
           },
           '100%': {
               opacity: '1',
