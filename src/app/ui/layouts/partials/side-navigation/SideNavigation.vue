@@ -83,4 +83,4 @@ watch(route, ({ meta: { family }}):void => {
 }, {flush: 'pre', immediate: true, deep: true})
 
 </script>
-<style src="./SideNavigation.scss" lang="scss"></style>
+<style src="./SideNavigation.scss" lang="scss" scoped></style>

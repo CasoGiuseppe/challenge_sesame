@@ -27,4 +27,4 @@ defineProps({
   },
 })
 </script>
-<style src="./UserIdentity.scss" lang="scss"></style>
+<style src="./UserIdentity.scss" lang="scss" scoped></style>

@@ -21,4 +21,4 @@ defineProps({
   },
 });
 </script>
-<style src="./TabsShell.scss" lang="scss"></style>
+<style src="./TabsShell.scss" lang="scss" scoped></style>

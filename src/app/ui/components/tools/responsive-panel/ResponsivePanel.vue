@@ -42,4 +42,4 @@ defineProps({
 const open = ref<boolean>(false)
 const displayPanel = ():void => { open.value =! open.value }
 </script>
-<style src="./ResponsivePanel.scss" lang="scss"></style>
+<style src="./ResponsivePanel.scss" lang="scss" scoped></style>

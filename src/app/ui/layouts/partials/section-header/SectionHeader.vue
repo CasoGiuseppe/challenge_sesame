@@ -36,4 +36,4 @@ watch(route, (to):void => {
     routeTitle.value = to.meta?.family as string
 }, {flush: 'pre', immediate: true, deep: true})
 </script>
-<style src="./SectionHeader.scss" lang="scss"></style>
+<style src="./SectionHeader.scss" lang="scss" scoped></style>

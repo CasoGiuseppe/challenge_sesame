@@ -4,4 +4,4 @@
         <figcaption class="error-state__message"><slot>Fail</slot></figcaption>
     </figure>
 </template>
-<style src="./ErrorState.scss" lang="scss"></style>
+<style src="./ErrorState.scss" lang="scss" scoped></style>

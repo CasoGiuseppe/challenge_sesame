@@ -99,4 +99,4 @@ const handleDrop = (payload: Event) => {
   customEmits('drop-end', { id });
 };
 </script>
-<style src="./DraggableArea.scss" lang="scss"></style>
+<style src="./DraggableArea.scss" lang="scss" scoped></style>

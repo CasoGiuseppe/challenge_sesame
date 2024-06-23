@@ -48,4 +48,4 @@ const { name } = defineProps({
 
 const asyncIcon = await create({ component: `elements/icons/${name}` })
 </script>
-<style src="./BaseIcon.scss" lang="scss"></style>
+<style src="./BaseIcon.scss" lang="scss" scoped></style>

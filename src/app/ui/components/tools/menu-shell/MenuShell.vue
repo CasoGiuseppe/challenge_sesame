@@ -84,4 +84,4 @@ const { routes } = defineProps({
 
 const ensureListIsNotEmpty = computed(() => routes.length > 0)
 </script>
-<style src="./MenuShell.scss" lang="scss"></style>
+<style src="./MenuShell.scss" lang="scss" scoped></style>

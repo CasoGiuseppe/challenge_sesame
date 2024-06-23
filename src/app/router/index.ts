@@ -2,7 +2,8 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
 
 const routes = <DynamicImportPath[]>[
-  { path: import('@/modules/recruitment/router') },
+  { path: import('@/modules/recruitment/presentation/router') },
+  { path: import('@/modules/fake/presentation/router') },
 ]
 
 const router = createRouter({
@@ -27,15 +28,6 @@ const router = createRouter({
 
           children: [
             ...((await loadExternalsResources({ collection: routes })) as RouteRecordRaw[]),
-
-            {
-              path: 'fake',
-              name: 'fake',
-              meta: { type: 'default', family: 'fake' },
-              components: {
-                default: () => import(/* webpackChunkName: "FakePage" */ '@app/ui/layouts/fakes/FakePage.vue'),
-              },
-            },
           ]
         },
 

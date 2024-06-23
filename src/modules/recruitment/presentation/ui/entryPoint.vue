@@ -74,3 +74,4 @@ watch(route, ({ name }):void => {
   currentRoute.value = name
 }, {flush: 'pre', immediate: true, deep: true})
 </script>
+<style src="./EntryPoint.scss" lang="scss" scoped></style>

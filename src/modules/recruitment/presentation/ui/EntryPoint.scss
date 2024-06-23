@@ -1,0 +1,5 @@
+.entry-point {
+    $entrypoint: &;
+
+    @apply flex flex-col gap-md
+}

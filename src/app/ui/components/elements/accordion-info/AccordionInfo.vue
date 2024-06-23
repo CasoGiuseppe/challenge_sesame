@@ -71,4 +71,4 @@ defineProps({
   }
 });
 </script>
-<style src="./AccordionInfo.scss" lang="scss"></style>
+<style src="./AccordionInfo.scss" lang="scss" scoped></style>

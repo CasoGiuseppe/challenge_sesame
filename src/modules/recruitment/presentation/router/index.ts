@@ -13,7 +13,7 @@ export default [
         name: 'recruitment',
         redirect: { name: 'positions' },
         components: {
-          default: () => import(/* webpackChunkName: "RecritmentEntryPoint" */ '@modules/recruitment/presentation/ui/entryPoint.vue'),
+          default: () => import(/* webpackChunkName: "RecritmentEntryPoint" */ '@modules/recruitment/presentation/ui/EntryPoint.vue'),
         },
 
         children: [

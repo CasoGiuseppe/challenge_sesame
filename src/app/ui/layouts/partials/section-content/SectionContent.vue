@@ -18,4 +18,4 @@
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 </script>
-<style src="./SectionContent.scss" lang="scss"></style>
+<style src="./SectionContent.scss" lang="scss" scoped></style>

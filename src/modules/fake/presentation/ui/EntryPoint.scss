@@ -1,0 +1,6 @@
+.entry-point {
+    $entrypoint: &;
+
+    @apply flex items-center justify-center h-full;
+    @apply text-xlg font-medium text-variant-100
+}

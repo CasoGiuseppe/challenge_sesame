@@ -90,4 +90,4 @@ const handleDragEnd = () => {
   customEmits('drag-stop', { id });
 }
 </script>
-<style src="./CardData.scss" lang="scss"></style>
+<style src="./CardData.scss" lang="scss" scoped></style>

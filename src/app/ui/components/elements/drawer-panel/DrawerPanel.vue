@@ -98,4 +98,4 @@ watch(
     { immediate: true }
 )
 </script>
-<style src="./DrawerPanel.scss" lang="scss"></style>
+<style src="./DrawerPanel.scss" lang="scss" scoped></style>

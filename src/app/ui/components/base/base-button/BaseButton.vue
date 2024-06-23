@@ -115,4 +115,4 @@ const handleEmitClick = () => {
   customEmits('send')
 };
 </script>
-<style src="./BaseButton.scss" lang="scss"></style>
+<style src="./BaseButton.scss" lang="scss" scoped></style>

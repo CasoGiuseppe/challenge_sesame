@@ -54,7 +54,7 @@ const { type, group } = defineProps({
 
 const isNotAGroup = computed(() => !group)
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 @include create-animation(
   $name: 'from-top',
   $from: translateY(-50%),
@@ -91,4 +91,4 @@ const isNotAGroup = computed(() => !group)
   $ease: v-bind(easing)
 );
 </style>
-<style src="./TransitionIs.scss" lang="scss"></style>
+<style src="./TransitionIs.scss" lang="scss" scoped></style>
