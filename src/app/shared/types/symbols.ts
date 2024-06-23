@@ -3,6 +3,6 @@ import type { ITranslation } from '@/app/shared/composables/interfaces/ITranslat
 import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
 import type { IRouterUtilities } from '@app/shared/composables/interfaces/IRouterUtilities';
 
-export const keyUseTranslation = Symbol() as InjectionKey<ITranslation>;
+export const keyUseTranslations = Symbol() as InjectionKey<ITranslation>;
 export const keyUseAsyncComponent= Symbol() as InjectionKey<IAsyncComponent>
 export const keyUseRouterUtilities = Symbol() as InjectionKey<IRouterUtilities>

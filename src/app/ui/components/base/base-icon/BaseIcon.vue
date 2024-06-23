@@ -10,13 +10,15 @@
   </picture>
 </template>
 <script setup lang="ts">
-import { type PropType } from 'vue';
+import { inject, type PropType } from 'vue';
 import type { UniqueId } from '@app/ui/types';
 import { Sizes } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
-import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
+import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
+import { keyUseAsyncComponent } from "@app/shared/types/symbols"
 
-const { create } = useAsyncComponent();
+const { create } = inject<IAsyncComponent>(keyUseAsyncComponent) as IAsyncComponent;
+
 const { name } = defineProps({
   /**
    * Set the unique id of the ui button
