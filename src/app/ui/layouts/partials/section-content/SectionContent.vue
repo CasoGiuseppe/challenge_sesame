@@ -12,13 +12,6 @@
                 />
             </TransitionIs>
         </RouterView>
-
-        <RouterView
-            v-slot="{ Component }"
-            name="aside"
-        >
-            <component :is="Component"/>
-        </RouterView>
     </section>
 </template>
 <script setup lang="ts">
