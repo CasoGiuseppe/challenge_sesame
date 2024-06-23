@@ -22,6 +22,10 @@
       </template>
     </TabsShell>
 
+    <RouterView v-slot="{ Component }">
+      <component :is="Component" />
+    </RouterView>
+
     <RouterView v-slot="{ Component }" name="aside">
       <component :is="Component" />
     </RouterView>

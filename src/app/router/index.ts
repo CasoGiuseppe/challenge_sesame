@@ -6,8 +6,6 @@ const { loadExternalsResources } = useRouterUtilities();
 
 const routes = <DynamicImportPath[]>[
   { path: import('@/modules/recruitment/router') },
-  // { path: import('@/modules/positions/presentation/router') },
-  // { path: import('@/modules/applicants/presentation/router') }
 ]
 
 const router = createRouter({
@@ -38,8 +36,6 @@ const router = createRouter({
               name: 'fake',
               meta: { type: 'default', family: 'fake' },
               components: {
-                // aside: () => import(/* webpackChunkName: "SideNavigation" */ '@app/ui/layouts/partials/side-navigation/SideNavigation.vue'),
-                // header: () => import(/* webpackChunkName: "HeaderTitle" */ '@app/ui/layouts/partials/section-header/SectionHeader.vue'),
                 default: () => import(/* webpackChunkName: "FakePage" */ '@app/ui/layouts/fakes/FakePage.vue'),
               },
             },
