@@ -23,7 +23,13 @@
     </TabsShell>
 
     <RouterView v-slot="{ Component }">
-      <component :is="Component" />
+        <TransitionIs
+            :type="transitionType.FROMBOTTOM"
+            :easing="Easing.ELASTIC"
+            :timing="Timing.FAST"
+        >
+            <component :is="Component" />
+        </TransitionIs>
     </RouterView>
 
     <RouterView v-slot="{ Component }" name="aside">
@@ -36,7 +42,9 @@ import { watch, ref, computed } from "vue"
 import TabsShell from "@app/ui/components/tools/tabs-shell/TabsShell.vue"
 import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
 import MenuShell from "@app/ui/components/tools/menu-shell/MenuShell.vue"
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 
+import { Types as transitionType , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import { Orientation } from "@app/ui/components/tools/menu-shell/types"
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { Types } from '@app/ui/components/abstracts/transition-is/types';
