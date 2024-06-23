@@ -10,14 +10,13 @@
   </picture>
 </template>
 <script setup lang="ts">
-import { inject, type PropType } from 'vue';
+import { type PropType } from 'vue';
 import type { UniqueId } from '@app/ui/types';
 import { Sizes } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
-import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
-import { keyUseAsyncComponent } from "@app/shared/types/symbols"
+import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
 
-const { create } = inject<IAsyncComponent>(keyUseAsyncComponent) as IAsyncComponent;
+const { create } = useAsyncComponent();
 
 const { name } = defineProps({
   /**
@@ -48,4 +47,4 @@ const { name } = defineProps({
 
 const asyncIcon = await create({ component: `elements/icons/${name}` })
 </script>
-<style src="./BaseIcon.scss" lang="scss" scoped></style>
+<style src="./BaseIcon.scss" lang="scss"></style>

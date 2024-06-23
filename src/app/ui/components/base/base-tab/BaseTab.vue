@@ -51,4 +51,4 @@ const emits = defineEmits(['send']);
 const handleEmitClick = () => emits('send', { id });
 </script>
 
-<style src="./BaseTab.scss" lang="scss" scoped></style>
+<style src="./BaseTab.scss" lang="scss"></style>

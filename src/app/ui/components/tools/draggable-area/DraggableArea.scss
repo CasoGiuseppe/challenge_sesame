@@ -45,9 +45,8 @@
     }
 
     &__active-zone {
-        @apply flex flex-col flex-[2] m-none px-md gap-sm overflow-auto scroll-smooth;
-        scrollbar-color: var(--color-area-200, #000) transparent;
-        scrollbar-width: thin;
+        @include create-snap-scroll;
+        @apply flex flex-col flex-[2] m-none px-md gap-sm;
     }
 
 }

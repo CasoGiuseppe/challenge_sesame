@@ -180,4 +180,4 @@ watch(
     }
 )
 </script>
-<style src="./BaseInput.scss" lang="scss" scoped></style>
+<style src="./BaseInput.scss" lang="scss"></style>

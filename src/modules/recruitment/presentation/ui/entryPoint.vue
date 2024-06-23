@@ -22,15 +22,17 @@
       </template>
     </TabsShell>
 
-    <RouterView v-slot="{ Component }">
-        <TransitionIs
-            :type="transitionType.FROMBOTTOM"
-            :easing="Easing.ELASTIC"
-            :timing="Timing.FAST"
-        >
-            <component :is="Component" />
-        </TransitionIs>
-    </RouterView>
+    <section class="entry-point__board">
+      <RouterView v-slot="{ Component }">
+          <TransitionIs
+              :type="transitionType.FROMBOTTOM"
+              :easing="Easing.ELASTIC"
+              :timing="Timing.FAST"
+          >
+              <component :is="Component" />
+          </TransitionIs>
+      </RouterView>
+    </section>
 
     <RouterView v-slot="{ Component }" name="aside">
       <component :is="Component" />

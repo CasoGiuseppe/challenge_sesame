@@ -1,5 +1,9 @@
 .entry-point {
     $entrypoint: &;
 
-    @apply flex flex-col gap-md
+    @apply flex flex-col gap-md h-full;
+
+    &__board {
+        @apply flex-[2];
+    }
 }

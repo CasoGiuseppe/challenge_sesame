@@ -91,4 +91,4 @@ const isNotAGroup = computed(() => !group)
   $ease: v-bind(easing)
 );
 </style>
-<style src="./TransitionIs.scss" lang="scss" scoped></style>
+<style src="./TransitionIs.scss" lang="scss"></style>

@@ -129,3 +129,13 @@
         }
     }
 }
+
+@mixin create-snap-scroll {
+    @apply overflow-auto scroll-smooth snap-x snap-mandatory;
+    scrollbar-color: var(--color-area-200, #000) transparent;
+    scrollbar-width: thin;
+
+    > * {
+        @apply snap-center
+    }
+}

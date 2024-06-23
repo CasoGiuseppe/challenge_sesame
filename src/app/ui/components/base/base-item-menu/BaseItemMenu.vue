@@ -75,4 +75,4 @@ const handleEmitClick = () => {
   emits('send', { id })
 };
 </script>
-<style src="./BaseItemMenu.scss" lang="scss" scoped></style>
+<style src="./BaseItemMenu.scss" lang="scss"></style>

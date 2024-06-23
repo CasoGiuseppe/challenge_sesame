@@ -29,4 +29,4 @@ const { is } = defineProps({
 })
 const isInternalLink = computed(() => is === Is.ROUTERLINK )
 </script>
-<style src="./ComponentIs.scss" lang="scss" scoped></style>
+<style src="./ComponentIs.scss" lang="scss"></style>
