@@ -5,6 +5,11 @@ import { i18n } from '@app/translation';
 import ClickOutside from "@app/ui/directive/clickOutside";
 
 import "@assets/index.scss";
+import {
+  keyUseTranslation,
+  keyUseAsyncComponent,
+  keyUseRouterUtilities
+} from "@app/shared/types/symbols";
 
 // create lazy APP
 const app = createApp(defineAsyncComponent(() => import('@app/ui/layouts/App.vue')));

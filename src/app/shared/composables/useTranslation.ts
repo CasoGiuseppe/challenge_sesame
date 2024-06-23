@@ -1,5 +1,5 @@
 import { useI18n } from 'vue-i18n';
-import type { ITranslation } from './interfaces/ITranslation.interface';
+import type { ITranslation } from './interfaces/ITranslation';
 import { i18n } from '@app/translation';
 
 export default function useTranslation(): ITranslation {
