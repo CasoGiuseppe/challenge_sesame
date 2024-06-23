@@ -1,8 +1,5 @@
 import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
-import type { DynamicImportPath } from './interfaces'
-import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
-
-const { loadExternalsResources } = useRouterUtilities();
+import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
 
 const routes = <DynamicImportPath[]>[
   { path: import('@/modules/recruitment/router') },

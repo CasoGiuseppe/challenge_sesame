@@ -1,8 +1,5 @@
-import type { DynamicImportPath } from "@app/router/interfaces";
 import type { RouteRecordRaw } from "vue-router";
-import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
-
-const { loadExternalsResources } = useRouterUtilities();
+import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
 
 const routes = <DynamicImportPath[]>[
    { path: import('@/modules/recruitment/modules/positions/presentation/router') },

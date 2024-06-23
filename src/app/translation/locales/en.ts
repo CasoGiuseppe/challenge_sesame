@@ -1,7 +1,5 @@
 
-import type { DynamicImportPath } from '@/app/router/interfaces';
-import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
-const { loadExternalsResources } = useRouterUtilities();
+import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
 
 const translations = <DynamicImportPath[]>[
   { path: import('@/modules/recruitment/modules/positions/presentation/translations/locales/es.json') },

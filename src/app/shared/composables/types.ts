@@ -6,3 +6,7 @@ export type IRouterNavigation = {
     translation?: string | unknown,
     family?: string | unknown
 }
+
+export interface DynamicImportPath {
+    path: any
+}
