@@ -11,7 +11,7 @@ export default function useRouterUtilities(): IRouterUtilities {
    * @param { Array } collection - An array of DomainRoutes objects, each containing a router property.
    * @returns { Promise<any[]> }A Promise that resolves to an array of RouteRecordRaw objects or an empty array in case of an error.
    */
-  const loadExternalsRouters = async ({ collection }: { collection: DynamicImportPath[]; }): Promise<any[]> => {
+  const loadExternalsResources = async ({ collection }: { collection: DynamicImportPath[]; }): Promise<any[]> => {
     try {
       const importAll = await Promise.all(
         collection.map(async (child) => {
@@ -35,7 +35,7 @@ export default function useRouterUtilities(): IRouterUtilities {
   }
 
   return {
-    loadExternalsRouters,
+    loadExternalsResources,
     getRoutesByType
   };
 }

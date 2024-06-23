@@ -1,3 +1,3 @@
 <template>
-    entry point
+    <section>entry point</section>
 </template>
