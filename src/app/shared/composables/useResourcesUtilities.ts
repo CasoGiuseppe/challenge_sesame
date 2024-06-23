@@ -11,7 +11,8 @@ export default function useResourcesUtilities(): IResourcesUtilities {
     try {
       const importAll = await Promise.all(
         collection.map(async (child) => {
-          return (await child.path).default;
+          const res = (await child.path).default;
+          return typeof res === 'function' ? res() : res;
         })
       );
       return importAll.flat(1);

@@ -1,6 +1,6 @@
 .menu-shell {
     $mennushell: &;
-    @apply flex p-none;
+    @apply flex p-none m-none;
 
     &[aria-orientation="vertical"] {
         @apply flex-col;

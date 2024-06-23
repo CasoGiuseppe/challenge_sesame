@@ -5,19 +5,13 @@
       :dirty="dirty"
       class="base-input"
     >
-      <TransitionIs
-        :type="transType.FROMLEFT"
-        :easing="Easing.ELASTIC"
-        :timing="Timing.FAST"
-      >
-        <!-- @slot Icon: slot to show icon if is necessary -->
-        <slot name="icon" v-if="!loading">
-            <BaseInput
-              v-if="isSearchType"
-              name="IconSearch"
-            />
-        </slot>
-      </TransitionIs>
+      <!-- @slot Icon: slot to show icon if is necessary -->
+      <slot name="icon" v-if="!loading">
+          <BaseInput
+            v-if="isSearchType"
+            name="IconSearch"
+          />
+      </slot>
       <input
         data-testID="ui-input"
         :aria-disabled="readonly"

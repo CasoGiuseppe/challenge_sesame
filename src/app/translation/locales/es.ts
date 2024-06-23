@@ -1,26 +1,26 @@
 import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
 
 const translations = <DynamicImportPath[]>[
-  { path: import('@/modules/recruitment/modules/positions/presentation/translations/locales/es.json') },
-  { path: import('@/modules/recruitment/modules/applicants/presentation/translations/locales/es.json') }
+  { path: import('@modules/recruitment/presentation/translation/es') },
+  { path: import('@modules/fake/presentation/translation/es') }
 ]
 
 export default async () => {
   return {
-    "message": "Hola! desde { name}",
-    "MENU": {
-      "role": {
-        "admin": "Administrador"
-      },
-      "sections": {
-        "name": "Talento"
-      },
-      "navigation": {
-        "recruitment": "Reclutamiento",
-        "fake": "Sección fake",
-
-        ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
+    "FORM": {
+      "placeholder": {
+        "search": "Buscar"
       }
-    }
+    },
+    "ACCION": {
+      "add": "Añadir candidato"
+    },
+    "ROLES": {
+      "admin": "Administrator"
+    },
+    "AREAS": {
+      "talent": "Talento"
+    },
+    ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
   }
 }

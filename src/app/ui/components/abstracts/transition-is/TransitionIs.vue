@@ -8,6 +8,7 @@
   >
     <slot />
   </Transition>
+  
   <TransitionGroup
     v-else
     :name="type"

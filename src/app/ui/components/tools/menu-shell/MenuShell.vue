@@ -7,13 +7,13 @@
         :easing="Easing.ELASTIC"
         :timing="Timing.NORMAL"
         :aria-orientation="orientation"
-        class="menu-shell"
         :style="customStyle"
+        class="menu-shell"
     >
         <li 
             v-for="(route, index) of routes"
             :key="route.id"
-            :style="{ 'transitionDelay': `${index * 0.15}s` }"
+            :style="{ 'transitionDelay': `${index * 2.15}s` }"
         >
             <slot :property="route" name="navigation"/>
         </li>

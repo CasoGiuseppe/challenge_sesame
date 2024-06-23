@@ -12,7 +12,7 @@
                 :key="routeTitle as string ?? 'titleKey'"
                 class="section-header__title"
             >
-                {{ translate({key: `MENU.navigation.${routeTitle}` }) }}
+                {{ translate({key: `${(routeTitle as string).toUpperCase()}.area` }) }}
             </h2>
         </TransitionIs>
         <UserIdentity id="userIdentity">

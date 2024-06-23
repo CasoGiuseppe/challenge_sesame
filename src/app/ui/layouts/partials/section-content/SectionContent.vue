@@ -1,16 +1,10 @@
 <template>
     <section class="section-content">
         <RouterView v-slot="{ Component, route: { meta: { family } } }">
-            <TransitionIs
-                :type="Types.FROMBOTTOM"
-                :easing="Easing.ELASTIC"
-                :timing="Timing.FAST"
-            >
-                <component
-                    :is="Component"
-                    :key="family"
-                />
-            </TransitionIs>
+            <component
+                :is="Component"
+                :key="family"
+            />
         </RouterView>
     </section>
 </template>

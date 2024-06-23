@@ -1,7 +1,7 @@
 .base-button {
     $basebutton: &;
 
-    @apply inline-flex items-center gap-sm justify-between relative;
+    @apply inline-flex items-center gap-sm justify-between relative m-none;
     @apply text-neutral-100 font-default bg-neutral-300;
     @apply transition-all duration-[var(--animationTime)] ease-out;
 

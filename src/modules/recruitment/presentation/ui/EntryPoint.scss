@@ -6,4 +6,14 @@
     &__board {
         @apply flex-[2];
     }
+
+    &__form {
+        @apply flex items-center justify-between;
+
+        > * {
+            &:is(.base-input) {
+                @apply min-w-[300px]
+            }
+        }
+    }
 }

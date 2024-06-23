@@ -1,6 +1,6 @@
 <template>
-  <section class="entry-point">
-    <TabsShell>
+  <section class="entry-point" :key="currentRoute as string">
+    <TabsShell >
       <template #default>
         <MenuShell
           id="tabsNavigation"
@@ -15,12 +15,29 @@
               :to="{ name: to as string}"
               :selected="id === currentRoute"
             >
-              {{ translate({ key: `MENU.navigation.${id}` }) }}
+              {{ translate({ key: `${(family as string).toUpperCase()}.MENU.${id}` }) }}
             </BaseTab>
           </template>
         </MenuShell>
       </template>
     </TabsShell>
+    
+    <section class="entry-point__form">
+      <BaseInput
+          id="searchInput"
+          :type="inputTypes.SEARCH"
+          :placeholder="translate({ key: `FORM.placeholder.search` })"
+          pattern="^[a-zA-Z0-9 ]+$"
+      />
+      <BaseButton
+        id="addApplicant"
+        :type="buttonTypes.PRIMARY"
+        :size="Sizes.SMALL"
+        :is="Is.ROUTERLINK" 
+      >
+          <template #default>{{ translate({ key: `ACCION.add` }) }}</template>
+      </BaseButton>
+    </section>
 
     <section class="entry-point__board">
       <RouterView v-slot="{ Component, route: { path } }">
@@ -48,7 +65,11 @@ import TabsShell from "@app/ui/components/tools/tabs-shell/TabsShell.vue"
 import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
 import MenuShell from "@app/ui/components/tools/menu-shell/MenuShell.vue"
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
+import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue";
 
+import { Types as buttonTypes, Sizes } from "@app/ui/components/base/base-button/types"
+import { Types as inputTypes } from "@app/ui/components/base/base-input/types"
 import { Types as transitionType , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import { Orientation } from "@app/ui/components/tools/menu-shell/types"
 import { Is } from '@app/ui/components/abstracts/component-is/types';

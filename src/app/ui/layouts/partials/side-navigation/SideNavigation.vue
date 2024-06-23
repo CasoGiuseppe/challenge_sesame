@@ -9,7 +9,7 @@
             <template #body>
                 <AccordionInfo open>
                     <template #summary>
-                        {{ translate({key: 'MENU.role.admin' }) }}
+                        {{ translate({key: 'ROLES.admin' }) }}
                     </template>
                     <template #content>
                         <AccordionInfo
@@ -23,7 +23,7 @@
                                     name="IconRate"
                                     :size="Sizes.M"
                                 />
-                                {{ translate({key: 'MENU.sections.name' }) }}
+                                {{ translate({key: 'AREAS.talent' }) }}
                             </template>
                             <template #content>
                                 <MenuShell
@@ -37,7 +37,7 @@
                                             :to="{ name: to as string}"
                                             :is="Is.ROUTERLINK"
                                             :selected="currentRoute === family"
-                                        >{{ translate({key: `MENU.navigation.${family}` }) }}</BaseItemMenu>
+                                        >{{ translate({key: `${(family as string).toUpperCase()}.area` }) }}</BaseItemMenu>
                                     </template>
                                 </MenuShell>
                             </template>
