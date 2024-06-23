@@ -4,8 +4,8 @@ import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 const { loadExternalsResources } = useRouterUtilities();
 
 const translations = <DynamicImportPath[]>[
-  { path: import('@/modules/positions/presentation/translations/locales/es.json') },
-  { path: import('@/modules/applicants/presentation/translations/locales/es.json') }
+  { path: import('@/modules/recruitment/modules/positions/presentation/translations/locales/es.json') },
+  { path: import('@/modules/recruitment/modules/applicants/presentation/translations/locales/es.json') }
 ]
 
 export default async () => {

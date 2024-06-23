@@ -5,8 +5,8 @@ import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 const { loadExternalsResources } = useRouterUtilities();
 
 const routes = <DynamicImportPath[]>[
-   { path: import('@/modules/positions/presentation/router') },
-   { path: import('@/modules/applicants/presentation/router') }
+   { path: import('@/modules/recruitment/modules/positions/presentation/router') },
+   { path: import('@/modules/recruitment/modules/applicants/presentation/router') }
 ]
 
 export default [

@@ -6,7 +6,7 @@ export default [
         meta: { family: 'recruitment', type: 'recruitment'},
         name: 'positions',
         components: {
-          default: () => import(/* webpackChunkName: "PositionsBoard" */ '@modules/positions/presentation/ui/positions-board/PositionsBoards.vue'),
+          default: () => import(/* webpackChunkName: "PositionsBoard" */ '@modules/recruitment/modules/positions/presentation/ui/positions-board/PositionsBoards.vue'),
           aside: () => import(/* webpackChunkName: "Panel" */ '@app/ui/layouts/partials/section-panel/SectionPanel.vue'),
         },
         children: [
@@ -15,7 +15,7 @@ export default [
             meta: { family: 'recruitment'},
             name: 'createPosition',
             components: {
-              panel: () => import(/* webpackChunkName: "CreatePosition" */ '@modules/positions/presentation/ui/create-position/CreatePosition.vue'),
+              panel: () => import(/* webpackChunkName: "CreatePosition" */ '@modules/recruitment/modules/positions/presentation/ui/create-position/CreatePosition.vue'),
             }
           },
         ]

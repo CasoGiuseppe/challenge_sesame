@@ -5,7 +5,7 @@ export default [{
     meta: { family: 'recruitment', type: 'recruitment'},
     name: 'applicants',
     components: {
-      default: () => import(/* webpackChunkName: "ApplicantsBoard" */ '@modules/applicants/presentation/ui/applicants-board/ApplicantsBoard.vue'),
+      default: () => import(/* webpackChunkName: "ApplicantsBoard" */ '@modules/recruitment/modules/applicants/presentation/ui/applicants-board/ApplicantsBoard.vue'),
       aside: () => import(/* webpackChunkName: "Panel" */ '@app/ui/layouts/partials/section-panel/SectionPanel.vue'),
     },
     children: [
@@ -14,7 +14,7 @@ export default [{
         meta: { family: 'recruitment'},
         name: 'createApplicant',
         components: {
-          panel: () => import(/* webpackChunkName: "CreateApplicant" */ '@modules/applicants/presentation/ui/create-applicant/CreateApplicant.vue'),
+          panel: () => import(/* webpackChunkName: "CreateApplicant" */ '@modules/recruitment/modules/applicants/presentation/ui/create-applicant/CreateApplicant.vue'),
         }
       },
     ]
