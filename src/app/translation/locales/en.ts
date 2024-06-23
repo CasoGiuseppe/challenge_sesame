@@ -10,7 +10,6 @@ const translations = <DynamicImportPath[]>[
 
 export default async () => {
   return {
-    "message": "Hello from { name}",
     "MENU": {
       "role": {
         "admin": "Administrator"
