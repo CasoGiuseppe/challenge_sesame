@@ -1,6 +1,6 @@
 .drawer-panel {
     $drawerpanel: &;
-    --out-transition: 100%;
+    --out-transition: 110%;
 
     @apply p-none h-screen;
     @apply outline-none border-none rounded-sm;
@@ -15,6 +15,7 @@
 
     &::backdrop {
         @apply bg-logo-600 opacity-70;
+        @apply transition-transform duration-[--animationTime]
     }
 
     &--is {
@@ -42,6 +43,10 @@
     &[out=true] {
         @apply animate-none;
         transform: translateX(calc(var(--out-transition)));
+
+        &::backdrop {
+            opacity: 0;
+        }
     }
 
     
@@ -54,7 +59,7 @@
             }
 
             &[out='true'] {
-                --out-transition: -100%
+                --out-transition: -110%
             }
         }
 

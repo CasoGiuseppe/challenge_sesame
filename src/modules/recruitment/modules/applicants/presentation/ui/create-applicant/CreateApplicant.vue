@@ -6,7 +6,9 @@
         :open="open"
         @close="close"
     >
-        <template #header>title</template>
+        <template #header>
+            {{ translate({ key: `${(family as string).toUpperCase()}.FORM.ADD.title` }) }}
+        </template>
         <template #body>body</template>
     </DrawerPanel>
 </template>
@@ -14,13 +16,19 @@
 import { onMounted, ref } from "vue"
 import DrawerPanel from "@app/ui/components/elements/drawer-panel/DrawerPanel.vue"
 import { Types, Position } from "@app/ui/components/elements/drawer-panel/types"
-import { useRouter } from "vue-router";
+import { useRouter, useRoute } from "vue-router";
+import useTranslation from "@app/shared/composables/useTranslation";
+const { translate } = useTranslation();
 
 const router = useRouter()
+const route = useRoute()
+
 const open = ref<boolean>(false)
+const family = ref<string>(route.meta.family as string)
 const close = () => {
     open.value = false
     router.push({ name: 'applicants' })
 }
+
 onMounted(() => open.value = true)
 </script>

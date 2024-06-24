@@ -9,9 +9,7 @@ export default async () => {
   return {
     "RECRUITMENT": {
       "area": "Reclutamiento",
-      "MENU": {
-        ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
-      }
+      ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
     },
   }
 }

@@ -15,7 +15,7 @@
               :to="{ name: to as string}"
               :selected="(currentRoute as string).includes(id)"
             >
-              {{ translate({ key: `${(family as string).toUpperCase()}.MENU.${id}` }) }}
+              {{ translate({ key: `${(family as string).toUpperCase()}.${id}` }) }}
             </BaseTab>
           </template>
         </MenuShell>
