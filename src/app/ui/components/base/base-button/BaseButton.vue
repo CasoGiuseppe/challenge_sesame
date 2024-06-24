@@ -9,6 +9,7 @@
     :aria-loading="loading"
     :is="is"
     :loading="loading"
+    :to="to"
     :class="[
       'base-button',
       `base-button--is-${type}`,

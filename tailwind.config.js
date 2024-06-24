@@ -63,6 +63,7 @@ export default {
         300: 'var(--color-background-300, #000)'
       },
       neutral: {
+        400: 'var(--color-neutral-400, #000)',
         300: 'var(--color-neutral-300, #000)',
         200: 'var(--color-neutral-200, #000)',
         100: 'var(--color-neutral-100, #000)'
@@ -125,6 +126,7 @@ export default {
         'slide-from-left': 'slide-from-left var(--outAnimationTime) var(--ease-out)',
         'slide-from-right': 'slide-from-right var(--outAnimationTime) var(--ease-out)',
         'slide-from-center': 'slide-from-center var(--outAnimationTime) var(--ease-elastic)',
+        'from-opacity': 'opacity var(--outAnimationTime) linear',
       },
 
       keyframes: {
@@ -161,7 +163,15 @@ export default {
               opacity: '1',
               transform: 'translateY(0)'
           }
-        }
+        },
+        'opacity': {
+          '0%': {
+            opacity: '0',
+          },
+          '100%': {
+              opacity: '1',
+          }
+        },
       },
 
       transitionTimingFunction: {

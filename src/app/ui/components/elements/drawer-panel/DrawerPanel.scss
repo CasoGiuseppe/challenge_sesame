@@ -2,36 +2,39 @@
     $drawerpanel: &;
     --out-transition: 100%;
 
-    @apply p-none h-screen max-h-full min-w-[50vw];
-    @apply outline-none border-none;
+    @apply p-none h-lvh max-h-[95%] min-w-[50vw];
+    @apply outline-none border-none rounded-sm;
     @apply transition-transform duration-[var(--animationTime)] ease-out;
+    @apply shadow-light-center;
+
+    &::backdrop {
+        @apply bg-logo-600 opacity-70;
+    }
 
     &--is {
         &-center {
             @apply inset-x-none inset-y-none max-h-none h-fit;
-            @apply shadow-light-center rounded-sm
+            @apply shadow-light-center
         }
 
         &-left {
-            @apply left-none right-auto;
-            @apply shadow-light-right rounded-r-sm;
+            @apply left-[var(--spacing-40)] right-auto;
         }
 
         &-right {
-            @apply right-none left-auto;
-            @apply shadow-light-left rounded-l-sm;;
+            @apply right-[var(--spacing-40)] left-auto;
         }
     }
 
     &[out=true] {
         @apply animate-none;
-        transform: translateX(var(--out-transition));
+        transform: translateX(calc(var(--out-transition)));
     }
 
     
     &[open]{
         @apply flex;
-        
+
         &#{$drawerpanel}--is-left {
             &:not([out='true']) {
                 @apply animate-slide-from-left
@@ -68,11 +71,11 @@
 
     &__title {
         @apply m-none p-none flex gap-sm; 
-        @apply font-default font-regular text-lg text-logo-500;
+        @apply font-default font-bold text-lg uppercase text-logo-500;
     }
 
     &__close {
-        @apply mr-none ml-auto flex justify-center relative w-md aspect-square;
+        @apply mr-none ml-auto flex justify-center relative w-lg aspect-square;
         @apply bg-default-none border-none cursor-pointer outline-none rounded-xsm;
         @apply transition-colors duration-[var(--animationTime)];
         

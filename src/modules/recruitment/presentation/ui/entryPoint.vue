@@ -13,7 +13,7 @@
               :id="id"
               :is="Is.ROUTERLINK"
               :to="{ name: to as string}"
-              :selected="id === currentRoute"
+              :selected="(currentRoute as string).includes(id)"
             >
               {{ translate({ key: `${(family as string).toUpperCase()}.MENU.${id}` }) }}
             </BaseTab>
@@ -33,7 +33,8 @@
         id="addApplicant"
         :type="buttonTypes.PRIMARY"
         :size="Sizes.SMALL"
-        :is="Is.ROUTERLINK" 
+        :is="Is.ROUTERLINK"
+        :to="{ name: 'createApplicant' }"
       >
           <template #default>{{ translate({ key: `ACCION.add` }) }}</template>
       </BaseButton>
@@ -96,8 +97,8 @@ const currentRoute = ref<string | unknown>()
     })
 })
 
-watch(route, ({ name }):void => {
-  currentRoute.value = name
+watch(route, ({ path }):void => {
+  currentRoute.value = path
 }, {flush: 'pre', immediate: true, deep: true})
 </script>
 <style src="./EntryPoint.scss" lang="scss" scoped></style>
