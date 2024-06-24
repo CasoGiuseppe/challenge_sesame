@@ -1,3 +1,4 @@
 :root {
-    --max-layout: 90rem
+    --max-layout: #{px2rem(1440)};
+    --max-drawer: #{px2rem(350)};
 }

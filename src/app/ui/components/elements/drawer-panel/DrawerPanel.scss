@@ -2,10 +2,16 @@
     $drawerpanel: &;
     --out-transition: 100%;
 
-    @apply p-none h-lvh max-h-[95%] min-w-[50vw];
+    @apply p-none h-screen;
     @apply outline-none border-none rounded-sm;
-    @apply transition-transform duration-[var(--animationTime)] ease-out;
+    @apply transition-transform duration-[var(--outAnimationTime)] ease-out;
     @apply shadow-light-center;
+    width: max(10vw, var(--max-drawer));
+
+    @screen phone {
+        @apply max-h-full;
+        width: max(10vw, 100vw);
+    }
 
     &::backdrop {
         @apply bg-logo-600 opacity-70;
@@ -14,15 +20,22 @@
     &--is {
         &-center {
             @apply inset-x-none inset-y-none max-h-none h-fit;
-            @apply shadow-light-center
         }
 
         &-left {
-            @apply left-[var(--spacing-40)] right-auto;
+            inset: 0 auto 0 var(--spacing-50);
+
+            @screen phone {
+                @apply inset-none
+            }
         }
 
         &-right {
-            @apply right-[var(--spacing-40)] left-auto;
+            inset: 0 var(--spacing-50) 0 auto;
+
+            @screen phone {
+                @apply inset-none
+            }
         }
     }
 

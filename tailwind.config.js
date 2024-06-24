@@ -23,7 +23,8 @@ export default {
       xlg: 'var(--spacing-70, 1rem)', // 32
       xxlg: 'var(--spacing-80, 1rem)', // 40
       xxxlg: 'var(--spacing-90, 1rem)', // 48
-      'max-layout': 'var(--max-layout)' // 1440
+      'max-layout': 'var(--max-layout)', // 1440
+      'max-drawer': 'var(--max-drawer)' // 300
     },
 
     borderRadius: {

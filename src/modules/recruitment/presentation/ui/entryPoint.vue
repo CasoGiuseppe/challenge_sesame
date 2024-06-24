@@ -41,7 +41,7 @@
     </section>
 
     <section class="entry-point__board">
-      <RouterView v-slot="{ Component, route: { path } }">
+      <RouterView v-slot="{ Component, route: { meta: { family } } }">
           <TransitionIs
             :type="transitionType.FROMBOTTOM"
             :easing="Easing.OUT"
@@ -49,7 +49,7 @@
           >
               <component
                 :is="Component"
-                :key="path"
+                :key="family"
               />
           </TransitionIs>
       </RouterView>
