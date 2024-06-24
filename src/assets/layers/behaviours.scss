@@ -8,7 +8,11 @@
     }
 
     &__content {
-      @apply flex flex-1 flex-col px-lg pt-sm pb-lg gap-md
+      @apply flex flex-1 flex-col p-sm gap-md;
+
+      @screen tablet-pt {
+        @apply px-lg pt-sm pb-lg;
+      }
     }
   }
 }

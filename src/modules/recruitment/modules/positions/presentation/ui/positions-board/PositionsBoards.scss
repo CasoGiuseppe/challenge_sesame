@@ -6,5 +6,9 @@
 
     .positions-boards__col {
         @apply flex-[300px] flex-shrink-0 flex-grow-0;
+
+        @screen phone {
+            @apply flex-grow flex-shrink min-w-full
+        }
     }
 }

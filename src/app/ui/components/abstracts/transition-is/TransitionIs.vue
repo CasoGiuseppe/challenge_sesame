@@ -57,6 +57,15 @@ const isNotAGroup = computed(() => !group)
 </script>
 <style lang="scss">
 @include create-animation(
+  $name: 'opacity',
+  $from: translateY(0),
+  $to: translateY(0),
+  $duration: v-bind(timing),
+  $duration-out: var(--outAnimationTime),
+  $ease: v-bind(easing)
+);
+
+@include create-animation(
   $name: 'from-top',
   $from: translateY(-50%),
   $to: translateY(-50%),
