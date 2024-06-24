@@ -55,7 +55,7 @@ const { type, group } = defineProps({
 
 const isNotAGroup = computed(() => !group)
 </script>
-<style lang="scss" scoped>
+<style lang="scss">
 @include create-animation(
   $name: 'from-top',
   $from: translateY(-50%),

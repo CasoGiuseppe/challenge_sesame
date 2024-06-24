@@ -1,5 +1,5 @@
 <template>
-  <section class="entry-point" :key="currentRoute as string">
+  <section class="entry-point">
     <TabsShell >
       <template #default>
         <MenuShell

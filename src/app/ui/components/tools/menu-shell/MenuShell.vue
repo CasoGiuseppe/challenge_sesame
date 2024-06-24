@@ -13,7 +13,7 @@
         <li 
             v-for="(route, index) of routes"
             :key="route.id"
-            :style="{ 'transitionDelay': `${index * 2.15}s` }"
+            :style="{ 'transitionDelay': `${index * .15}s` }"
         >
             <slot :property="route" name="navigation"/>
         </li>
@@ -71,7 +71,7 @@ const { routes } = defineProps({
      */
      tag: {
         type: String as PropType<string>,
-        default: 'menu'
+        default: 'ul'
     },
 
      /**
@@ -84,4 +84,4 @@ const { routes } = defineProps({
 
 const ensureListIsNotEmpty = computed(() => routes.length > 0)
 </script>
-<style src="./MenuShell.scss" lang="scss" scoped></style>
+<style src="./MenuShell.scss" lang="scss"></style>

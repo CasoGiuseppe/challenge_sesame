@@ -1,10 +1,17 @@
 <template>
-  <ul class="positions-boards">
+  <TransitionIs
+      group
+      tag="ul"
+      :type="Types.FROMBOTTOM"
+      :easing="Easing.ELASTIC"
+      :timing="Timing.FAST"
+      class="positions-boards"
+  >
     <li
       v-for="index in 4"
       class="positions-boards__col"
       :key="index"
-      :style="{ 'animationDelay': `${index * .2}s` }"
+      :style="{ 'transitionDelay': `${index * .2}s` }"
     >
       <DraggableArea
         :area="Areas.INTERVIEW"
@@ -12,7 +19,7 @@
         <template #title>title</template>
       </DraggableArea>
     </li>
-  </ul>
+  </TransitionIs>
 </template>
 <script setup lang="ts">
 import DraggableArea from "@app/ui/components/tools/draggable-area/DraggableArea.vue"
