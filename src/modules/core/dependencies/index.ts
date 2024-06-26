@@ -1,6 +1,6 @@
 import { useRouter } from "vue-router"
 import { VacancyStateRepository } from "@modules/recruitment/modules/positions/data/repository/VacancyStateRepository"
-import { GetVacancyStateUseCase } from "@modules/recruitment/modules/positions/domain/application/use-cases/GetVacancyStateUseCase"
+import { GetVacancyByIdUseCase } from "@modules/recruitment/modules/positions/domain/application/use-cases/GetVacancyByIdUseCase"
 import { VacancyBloc } from "@modules/recruitment/modules/positions/presentation/bloc"
 import { HTTPServiceProvider } from "../providers/http/http.provide"
 
@@ -8,11 +8,11 @@ const provideVacancyPloc = () => {
     const router = useRouter()
 
     const vacancyStateRepository = new VacancyStateRepository(new HTTPServiceProvider())
-    const getVacancyStateUseCase = new GetVacancyStateUseCase(vacancyStateRepository)
+    const getVacancyByIdUseCase = new GetVacancyByIdUseCase(vacancyStateRepository)
 
     return new VacancyBloc({
         router,
-        getVacancyStateUseCase
+        getVacancyByIdUseCase
     })
 }
 

@@ -4,5 +4,5 @@ import type { IVacancyID } from "@modules/recruitment/modules/positions/data/mod
 import type { VacancyState } from "../Vacancy";
 
 export interface IVacancyRepository {
-    getVacancyState({ vacancyId }: { vacancyId: IVacancyID }): Promise<Either<DataExceptions, VacancyState[]>>
+    getVacancyStatusById({ vacancyId }: { vacancyId: IVacancyID }): Promise<Either<DataExceptions, VacancyState[]>>
 }

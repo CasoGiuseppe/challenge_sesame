@@ -3,6 +3,6 @@ import type { Either } from "@modules/core/domain/Either";
 import type { IVacancyID } from "@modules/recruitment/modules/positions/data/models";
 import type { Applicant } from "../Applicant";
 
-export interface IApplicant {
+export interface IApplicantRepository {
     getApplicantByVacancy({ vacancyId }: { vacancyId: IVacancyID }): Promise<Either<DataExceptions, Applicant[]>>
 }
