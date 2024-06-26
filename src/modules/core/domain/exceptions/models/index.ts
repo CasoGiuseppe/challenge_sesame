@@ -11,19 +11,10 @@ export interface Unauthorized {
   error: UnauthorizedRequest;
 }
 
-export interface NotFound {
-  kind: "NotFound";
-  error: Error;
-}
-
-export interface ServerError {
-  kind: "ServerError";
-  error: ServerError;
-}
 
 export interface UnexpectedError {
   kind: "UnexpectedError";
   error: Error;
 }
 
-export type DataExceptions = UnexpectedError | BadRequest | NotFound | ServerError | Unauthorized
+export type DataExceptions = UnexpectedError | BadRequest |  Unauthorized
