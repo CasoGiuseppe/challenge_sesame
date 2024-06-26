@@ -14,7 +14,7 @@
     }
 
     &::backdrop {
-        @apply bg-logo-600 opacity-70;
+        @apply bg-neutral-400 opacity-75;
         @apply transition-transform duration-[--animationTime]
     }
 
