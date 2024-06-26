@@ -1,2 +1,11 @@
-import { ErrorsKind } from "./errorsKind";
-export class BaseRepository {}
+import type { DataExceptions } from "../domain/exceptions/models";
+import type { IHttpRequestService } from "../providers/providerName/http/interfaces/http.repository";
+import Errors from "./exceptions";
+export class BaseRepository {
+    constructor(public readonly client: IHttpRequestService) {};
+
+    handleErrors(error: Error | any): DataExceptions  {
+        const { code, status } = error;
+        return Errors(code)[status as keyof typeof Errors ?? '500'];
+    }
+}
