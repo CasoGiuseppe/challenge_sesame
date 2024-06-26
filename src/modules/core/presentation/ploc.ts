@@ -18,6 +18,11 @@ export class Ploc<T> {
                 console.log('router.push', 'Bad Request')
                 break;
             
+            case 'Unauthorized':
+                exception = (error as Extract<DataExceptions, { kind: "Unauthorized"}>).error.message
+                console.log('router.push', 'Unauthorized')
+                break;
+            
             case 'NotFound':
                 exception = (error as Extract<DataExceptions, { kind: "NotFound"}>).error.message
                 console.log('router.push', 'Not Found')

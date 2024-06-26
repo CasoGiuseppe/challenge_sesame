@@ -13,5 +13,6 @@ import { onMounted } from 'vue';
 
 onMounted(() => {
   const ploc = dependencies.provideVacancyPloc()
+  ploc.getVacancyStateList('e5d90a95-ec3f-4a15-b884-bbea519f1e05')
 })
 </script>

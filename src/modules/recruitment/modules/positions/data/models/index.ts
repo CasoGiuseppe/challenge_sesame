@@ -7,3 +7,17 @@ export interface IVacancyStateDTOResponse extends IVacancyState{
     updatedAt: string;
     vacancyId: string
 }
+
+export interface IVacancyServiceDTO {
+    data: IVacancyStateDTOResponse[]
+}
+
+export interface IVacancyServiceError {
+    error: IVacancyServiceErrorState
+}
+
+export interface IVacancyServiceErrorState {
+    status: number;
+    message: string;
+    errors: string;
+}
