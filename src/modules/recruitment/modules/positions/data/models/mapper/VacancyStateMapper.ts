@@ -1,8 +1,7 @@
 import type { IVacancyStateDTOResponse } from ".."
 import { VacancyState } from "@modules/recruitment/modules/positions/domain/core/Vacancy"
 
-export class VacancySateResponseMapper {
-  constructor(){}
+export class VacancySateResponseMap {
   public static fromJson ( response: any ): IVacancyStateDTOResponse[] {
     return response.data
   }

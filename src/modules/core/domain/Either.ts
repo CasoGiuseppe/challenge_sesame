@@ -23,24 +23,24 @@ export class Either<L, R> {
     }
 
     map<T>(fn: (r: R) => T): Either<L, T> {
-        return this.flatMap(r => Either.right(fn(r)));
+        return this.flatMap(r => Either.success(fn(r)));
     }
 
     flatMap<T>(fn: (right: R) => Either<L, T>): Either<L, T> {
         return this.fold(
-            leftValue => Either.left(leftValue),
+            leftValue => Either.fail(leftValue),
             rightValue => fn(rightValue)
         );
     }
 
     mapLeft<T>(fn: (l: L) => T): Either<T, R> {
-        return this.flatMapLeft(l => Either.left(fn(l)));
+        return this.flatMapLeft(l => Either.fail(fn(l)));
     }
 
     flatMapLeft<T>(fn: (left: L) => Either<T, R>): Either<T, R> {
         return this.fold(
             leftValue => fn(leftValue),
-            rightValue => Either.right(rightValue)
+            rightValue => Either.success(rightValue)
         );
     }
 
@@ -81,11 +81,11 @@ export class Either<L, R> {
         );
     }
 
-    static left<L, R>(value: L) {
+    static fail<L, R>(value: L) {
         return new Either<L, R>({ kind: "left", leftValue: value });
     }
 
-    static right<L, R>(value: R) {
+    static success<L, R>(value: R) {
         return new Either<L, R>({ kind: "right", rightValue: value });
     }
 }
