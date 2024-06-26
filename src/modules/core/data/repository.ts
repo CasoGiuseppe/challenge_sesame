@@ -1,5 +1,5 @@
 import type { DataExceptions } from "../domain/exceptions/models";
-import type { IHttpRequestService } from "../providers/providerName/http/interfaces/http.repository";
+import type { IHttpRequestService } from "../providers/http/interfaces/http.repository";
 import Errors from "./exceptions";
 export class BaseRepository {
     constructor(public readonly client: IHttpRequestService) {};

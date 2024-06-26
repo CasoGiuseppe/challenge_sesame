@@ -11,4 +11,8 @@ export class VacancyState extends Entity<IVacancyState>{
     const { id: positionID, name, companyId } = props;
     return new VacancyState({ id: positionID, name, companyId}, id)
   }
+
+  get getProps() {
+    return this.props;
+  }
 }
