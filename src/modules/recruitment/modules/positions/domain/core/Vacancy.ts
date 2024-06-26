@@ -7,7 +7,7 @@ export class VacancyState extends Entity<IVacancyState>{
     super(props, id);
   }
 
-  public static createPosition ({ id, props}: {id?: UniqueEntityID, props: IVacancyState}): VacancyState{
+  public static createVacancy ({ id, props}: {id?: UniqueEntityID, props: IVacancyState}): VacancyState{
     const { id: positionID, name, companyId } = props;
     return new VacancyState({ id: positionID, name, companyId}, id)
   }
