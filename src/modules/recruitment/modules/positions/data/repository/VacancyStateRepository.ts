@@ -13,10 +13,10 @@ export class VacancyStateRepository extends BaseRepository implements IVacancyRe
         super(client);
     }
 
-    async getVacancyState({ id }: { id: IVacancyID }): Promise<Either<DataExceptions, VacancyState[]>> {
+    async getVacancyState({ vacancyId }: { vacancyId: IVacancyID }): Promise<Either<DataExceptions, VacancyState[]>> {
         try {
             const response = await this.client.get<IVacancyServiceDTO | IVacancyServiceError>({
-                url: `${NetworkConstants.BASE_API_PORT}${NetworkConstants.BASE_API_NAMESPACE}/v1/candidate-status/${id}`,
+                url: `${NetworkConstants.BASE_API_PORT}${NetworkConstants.BASE_API_NAMESPACE}/candidate-status/${vacancyId}`,
                 options: NetworkConstants.BASE_API_OPTIONS
             })
             

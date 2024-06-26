@@ -9,6 +9,6 @@ export class GetVacancyStateUseCase {
     private positionRepository: IVacancyRepository
   ){}
   async execute(code: IVacancyID): Promise<Either<DataExceptions, VacancyState[]>>{
-    return this.positionRepository.getVacancyState({ id: code })
+    return this.positionRepository.getVacancyState({ vacancyId: code })
   }
 }
