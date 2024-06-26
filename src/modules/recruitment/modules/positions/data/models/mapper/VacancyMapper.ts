@@ -1,7 +1,8 @@
+import { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID"
 import type { IVacancyDataResponse } from ".."
 import { VacancyState } from "@modules/recruitment/modules/positions/domain/core/Vacancy"
 
-export class VacancySateResponseMap {
+export class VacancyMapper {
   public static fromJson ( response: any ): IVacancyDataResponse[] {
     return response.data
   }
@@ -14,7 +15,8 @@ export class VacancySateResponseMap {
         id: raw.id,
         name: raw.name,
         companyId: raw.companyId,
-      }
+      },
+      id: new UniqueEntityID(raw.id),
     })
   }
 }

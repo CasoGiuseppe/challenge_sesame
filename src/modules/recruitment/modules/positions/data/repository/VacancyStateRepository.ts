@@ -6,7 +6,7 @@ import type { IVacancyRepository } from "@modules/recruitment/modules/positions/
 import type { VacancyState } from "../../domain/core/Vacancy";
 import type { IVacancyID, IVacancyDataResponse, IVacancyRootDTO, IVacancyServiceError } from "../models";
 import { NetworkConstants } from "@/modules/core/utilities/networkConstants";
-import { VacancySateResponseMap } from "../models/mapper/VacancyStateMapper";
+import { VacancyMapper } from "../models/mapper/VacancyMapper";
 
 export class VacancyStateRepository extends BaseRepository implements IVacancyRepository {
     constructor(client: IHttpRequestService){
@@ -26,9 +26,9 @@ export class VacancyStateRepository extends BaseRepository implements IVacancyRe
             }
 
             return Either.success(
-                VacancySateResponseMap
+                VacancyMapper
                     .fromJson(response)
-                    .map((vacancy: IVacancyDataResponse) => VacancySateResponseMap.toDomain(vacancy))
+                    .map((vacancy: IVacancyDataResponse) => VacancyMapper.toDomain(vacancy))
             )
         } catch (err) {
             return Either.fail(this.handleErrors(err))

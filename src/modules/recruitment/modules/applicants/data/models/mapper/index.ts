@@ -1,9 +1,9 @@
 export interface IApplicantDTOResponse {
-  data: IApplicantData
+  data: IApplicantDataResponse
   meta: IApplicantMeta
 }
 
-export interface IApplicantData {
+export interface IApplicantDataResponse {
   id: string
   companyId: string
   vacancy: IAPPlicantVacancy
