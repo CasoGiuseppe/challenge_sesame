@@ -1,4 +1,4 @@
-import { DataTypeIsDenied } from "../../../presentation/exceptions/DataTypeIsDenied";
+import { DataTypeIsDenied } from "../../exceptions/DataTypeIsDenied";
 
 export type PrimitivesTypes = string | number | boolean | Date;
 type Optional<T> = T | undefined | null;
@@ -8,6 +8,7 @@ export abstract class ValueObject<T extends PrimitivesTypes> {
 
   constructor(value: T) {
     this.value = value;
+    this.ensureValueIsDefined(value)
   }
 
   toString(): string {

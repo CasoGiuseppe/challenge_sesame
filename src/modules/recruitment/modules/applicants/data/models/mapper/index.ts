@@ -1,5 +1,5 @@
 export interface IApplicantDTOResponse {
-  data: IApplicantDataResponse
+  data: IApplicantDataResponse[]
   meta: IApplicantMeta
 }
 

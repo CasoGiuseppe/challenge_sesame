@@ -1,5 +1,5 @@
-import type { BadApiRequest } from "@modules/core/data/exceptions/BadApiRequest";
-import type { UnauthorizedRequest } from "@modules/core/data/exceptions/UnauthorizedRequest";
+import type { BadApiRequest } from "@/modules/core/guards/exceptions/BadApiRequest";
+import type { UnauthorizedRequest } from "@/modules/core/guards/exceptions/UnauthorizedRequest";
 
 export interface BadRequest {
   kind: "BadRequest";

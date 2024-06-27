@@ -10,4 +10,8 @@ export class UniqueEntityID {
   public equals(id: UniqueEntityID):boolean {
     return this.id === id
   }
+
+  get toID(): UniqueEntityID {
+    return this.id
+  }
 }

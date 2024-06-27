@@ -6,7 +6,8 @@ import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 import type { IApplicantRepository } from "../../domain/core/repository/IApplicant";
 import type { Applicant } from "../../domain/core/Applicant";
 import type { IVacancyID } from "../../../positions/data/models";
-import type { IApplicantDTOResponse } from "../models/mapper";
+import type { IApplicantDataResponse, IApplicantDTOResponse } from "../models/mapper";
+import { ApplicantMapper } from "../models/mapper/ApplicantMapper";
 
 export class ApplicantRepository extends BaseRepository implements IApplicantRepository {
     constructor(client: IHttpRequestService){
@@ -23,7 +24,11 @@ export class ApplicantRepository extends BaseRepository implements IApplicantRep
                 params: (statusId ? { statusId } : {})
             })
 
-            console.log(response)
+            return Either.success(
+                ApplicantMapper
+                    .fromJson(response)
+                    .map((applicant: IApplicantDataResponse) => ApplicantMapper.toDomain(applicant))
+            )
         } catch (err) {
             return Either.fail(this.handleErrors(err))
         }
