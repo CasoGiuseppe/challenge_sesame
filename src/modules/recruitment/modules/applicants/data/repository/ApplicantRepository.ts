@@ -8,7 +8,7 @@ import { Applicant } from "../../domain/core/Applicant";
 import type { IVacancyID } from "../../../positions/data/models";
 import type { IApplicantDataResponse, IApplicantDTOResponse, IApplicantPostData } from "../models/mapper";
 import { ApplicantMapper, CreateApplicantMapper } from "../models/mapper/ApplicantMapper";
-import type { IPostApplicant } from "../../domain/core/entity";
+import type { ISendApplicant } from "../../domain/core/entity";
 
 export class ApplicantRepository extends BaseRepository implements IApplicantRepository {
     constructor(client: IHttpRequestService){
@@ -33,7 +33,7 @@ export class ApplicantRepository extends BaseRepository implements IApplicantRep
         }
     }
 
-    async createNewApplicant({ firstName, lastName, vacancyId, statusId }: IPostApplicant): Promise<Either<DataExceptions, Applicant>>
+    async createNewApplicant({ firstName, lastName, vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>>
     {
         try {
             const response = await this.client.post<IApplicantDTOResponse, IApplicantPostData>({
@@ -55,6 +55,24 @@ export class ApplicantRepository extends BaseRepository implements IApplicantRep
         }
     }
 
-    async changeApplicantStatus({ employeeId, firstName, lastName, vacancyId, statusId }: IPostApplicant): Promise<Either<DataExceptions, Applicant>> {
+    async changeApplicantStatus({ employeeId, firstName, lastName, vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>> {
+        try {
+            const response = await this.client.put<IApplicantDTOResponse, IApplicantPostData>({
+                url: `${NetworkConstants.BASE_API_PORT}${NetworkConstants.BASE_API_NAMESPACE}/candidates/${employeeId}`,
+                body: {
+                    firstName,
+                    lastName,
+                    vacancyId,
+                    statusId,
+                },
+                options: NetworkConstants.BASE_API_OPTIONS
+            })
+
+            return Either.success(
+                ApplicantMapper.toDomain(CreateApplicantMapper.fromJson(response))
+            )
+        } catch (err) {
+            return Either.fail(this.handleErrors(err))
+        }
     }
 }
