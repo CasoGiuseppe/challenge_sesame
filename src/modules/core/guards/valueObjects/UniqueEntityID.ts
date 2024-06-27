@@ -1,4 +1,4 @@
-import { UUID } from "../../providers/Uuid-v4/Uuid";
+import { UUID } from "@modules/core/providers/Uuid-v4/Uuid";
 
 export class UniqueEntityID {
   private id: UniqueEntityID;

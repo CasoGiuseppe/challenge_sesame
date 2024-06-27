@@ -1,5 +1,5 @@
 import type { Router } from "vue-router";
-import type { DataExceptions } from "../domain/exceptions/models";
+import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 
 export class Ploc<T> {
     public router: Router;

@@ -1,5 +1,6 @@
-import { CustomErrorClass } from "@/modules/core/presentation/exceptions/CustomErrorClass";
-import { StringValueObject } from "@/modules/core/guards/valueObjects/abstracts/StringValueObject";
+
+import { DataTypeIsDenied } from "@modules/core/guards/exceptions/DataTypeIsDenied";
+import { StringValueObject } from "@modules/core/guards/valueObjects/abstracts/StringValueObject";
 
 export class EntityTypeValueObject extends StringValueObject {
   constructor(value: string) {
@@ -8,6 +9,6 @@ export class EntityTypeValueObject extends StringValueObject {
   }
 
   private ensureValueIsCorrect(value: string): void {
-    if(value !== 'test') throw new CustomErrorClass()
+    if(value !== 'test') throw new DataTypeIsDenied('')
   }
 }

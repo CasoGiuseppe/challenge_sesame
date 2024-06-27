@@ -1,4 +1,4 @@
-import { Entity } from "@/modules/core/guards/Entity";
+import { Entity } from "@modules/core/guards/Entity";
 import type { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID";
 import type { IApplicant } from "./entity";
 

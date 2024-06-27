@@ -1,5 +1,5 @@
 import type { IApplicantDataResponse } from "."
-import { Applicant } from "@/modules/applicant/domain/core/Applicant"
+import { Applicant } from "@modules/applicant/domain/core/Applicant"
 import { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID"
 
 export class ApplicantMapper {

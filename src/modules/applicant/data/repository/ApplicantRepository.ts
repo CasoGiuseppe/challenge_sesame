@@ -3,12 +3,12 @@ import { Either } from "@modules/core/domain/Either";
 import type { IHttpRequestService } from "@modules/core/providers/http/interfaces/http.repository";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
-import type { IApplicantRepository } from "../../domain/core/repository/IApplicant";
-import { Applicant } from "../../domain/core/Applicant";
-import type { IVacancyID } from "../../../vacancy/data/models";
-import type { IApplicantDataResponse, IApplicantDTOResponse, IApplicantPostData } from "../models/mapper";
-import { ApplicantMapper, CreateApplicantMapper } from "../models/mapper/ApplicantMapper";
-import type { ISendApplicant } from "../../domain/core/entity";
+import type { IApplicantRepository } from "@modules/applicant/domain/core/repository/IApplicant";
+import { Applicant } from "@modules/applicant/domain/core/Applicant";
+import type { IVacancyID } from "@modules/vacancy/data/models";
+import type { IApplicantDataResponse, IApplicantDTOResponse, IApplicantPostData } from "@modules/applicant/data/models/mapper";
+import { ApplicantMapper, CreateApplicantMapper } from "@modules/applicant/data/models/mapper/ApplicantMapper";
+import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
 
 export class ApplicantRepository extends BaseRepository implements IApplicantRepository {
     constructor(client: IHttpRequestService){

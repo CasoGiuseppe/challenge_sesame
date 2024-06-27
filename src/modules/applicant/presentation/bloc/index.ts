@@ -1,11 +1,11 @@
 import type { Router } from "vue-router";
 import { Ploc } from "@modules/core/presentation/ploc";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
-import type { GetApplicantsByVacancyIdUseCase } from "../../domain/application/use-cases/GetApplicantsByVacancyId";
-import type { IVacancyID } from "../../../vacancy/data/models";
-import type { CreateNewApplicantUseCase } from "../../domain/application/use-cases/CreateNewApplicant";
-import type { ISendApplicant } from "../../domain/core/entity";
-import type { ChangeApplicantStatusUseCase } from "../../domain/application/use-cases/ChangeApplicantStatus";
+import type { GetApplicantsByVacancyIdUseCase } from "@modules/applicant/domain/application/use-cases/GetApplicantsByVacancyId";
+import type { IVacancyID } from "@modules/vacancy/data/models";
+import type { CreateNewApplicantUseCase } from "@modules/applicant/domain/application/use-cases/CreateNewApplicant";
+import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
+import type { ChangeApplicantStatusUseCase } from "@modules/applicant/domain/application/use-cases/ChangeApplicantStatus";
 
 export class ApplicantBloc extends Ploc<undefined> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
