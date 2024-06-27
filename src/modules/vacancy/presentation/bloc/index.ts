@@ -4,6 +4,7 @@ import type { GetVacancyByIdUseCase } from "@modules/vacancy/domain/application/
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { IVacancyID } from "@modules/vacancy/data/models";
 import type { VacancyResponseStore } from "@modules/vacancy/presentation/store/vacancy";
+import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 
 export class VacancyBloc extends Ploc<VacancyResponseStore> {
     private readonly getVacancyById: GetVacancyByIdUseCase
@@ -20,7 +21,7 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
         this.getVacancyById = getVacancyById
     }
 
-    getVacancyByID = async(vacancyId: IVacancyID): Promise<void> => {
+    getVacancyByID = async(vacancyId: IVacancyID = NetworkConstants.BASE_API_VACANCY_ID): Promise<void> => {
         this.store.setLoadingState({ value: true})
         const vacancyResult = await this.getVacancyById.execute(vacancyId)
         this.store.setLoadingState({ value: false})

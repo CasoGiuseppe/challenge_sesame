@@ -1,4 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
+import { dependencies } from '@modules/core/dependencies';
 
 export default [
     {
@@ -9,6 +10,12 @@ export default [
           default: () => import(/* webpackChunkName: "PositionsBoard" */ '@modules/vacancy/presentation/ui/positions-board/PositionsBoards.vue'),
           aside: () => import(/* webpackChunkName: "Panel" */ '@app/ui/layouts/partials/section-panel/SectionPanel.vue'),
         },
+
+        beforeEnter: async () => {
+          const vacancy = dependencies.provideVacancyPloc()
+          vacancy.getVacancyByID()
+        },
+
         children: [
           {
             path: 'create',
