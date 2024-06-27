@@ -3,7 +3,7 @@ import { loadExternalsResources, type DynamicImportPath } from "@app/router/util
 
 const routes = <DynamicImportPath[]>[
    { path: import('@/modules/recruitment/modules/vacancy/presentation/router') },
-   { path: import('@/modules/recruitment/modules/applicants/presentation/router') }
+   { path: import('@/modules/recruitment/modules/applicant/presentation/router') }
 ]
 
 export default [
