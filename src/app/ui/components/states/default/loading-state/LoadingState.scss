@@ -1,5 +1,5 @@
 .loading-state {
-    @include crate-spinner(
+    @include create-spinner(
         $borderColor: var(--color-logo-600),
         $borderBColor: var(--color-logo-300)
     );

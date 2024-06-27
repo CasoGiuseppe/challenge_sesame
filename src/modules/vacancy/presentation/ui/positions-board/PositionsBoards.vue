@@ -1,5 +1,8 @@
 <template>
-  <LoadingIs :state="getLoadingState">
+  <LoadingIs
+    :state="getLoadingState"
+    :message="translate({key: `RECRUITMENT.BOARD.loading`})"
+  >
     <TransitionIs
         group
         tag="ul"
@@ -31,7 +34,9 @@ import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionI
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
+import useTranslation from '@app/shared/composables/useTranslation';
 
 const { getLoadingState } = storeToRefs(useVacancyStore)
+const { translate } = useTranslation();
 </script>
 <style src="./PositionsBoards.scss" lang="scss" scoped></style>

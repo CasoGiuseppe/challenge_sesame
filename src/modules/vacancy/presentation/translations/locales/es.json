@@ -1,3 +1,6 @@
 {
-  "positions": "Vacantes"
+  "positions": "Vacantes",
+  "BOARD": {
+    "loading": "El tablero de vacantes está por llegar..."
+  }
 }

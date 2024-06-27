@@ -1,3 +1,6 @@
 {
-  "positions": "Positions"
+  "positions": "Positions",
+  "BOARD": {
+    "loading": "The vacancy board is coming..."
+  }
 }

@@ -1,0 +1,13 @@
+.loading-is {
+    @include create-spinner(
+        $size: var(--spacing-70),
+        $borderColor: var(--color-neutral-300),
+        $borderBColor: var(--color-logo-600)
+    );
+
+    @apply flex items-center justify-center min-h-full flex-col;
+
+    &:before {
+        @apply content-[attr(data-message)]
+    }
+}

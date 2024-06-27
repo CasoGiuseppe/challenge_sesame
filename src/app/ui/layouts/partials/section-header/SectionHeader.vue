@@ -19,11 +19,11 @@
 </template>
 <script setup lang="ts">
 import { watch, ref } from "vue"
+import { useRoute } from "vue-router";
 import UserIdentity from "@app/ui/components/elements/user-identity/UserIdentity.vue"
 import useTranslation from '@app/shared/composables/useTranslation';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
 import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
-import { useRoute } from "vue-router";
 
 const { translate } = useTranslation();
 const route = useRoute()

@@ -40,7 +40,7 @@
     }
 
     &[loading=true] {
-        @include crate-spinner(
+        @include create-spinner(
             $borderColor: var(--color-neutral-100),
             $borderBColor: var(--color-outline)
         );
