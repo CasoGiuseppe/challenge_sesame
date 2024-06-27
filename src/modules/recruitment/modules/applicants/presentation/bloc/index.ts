@@ -2,7 +2,7 @@ import type { Router } from "vue-router";
 import { Ploc } from "@modules/core/presentation/ploc";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { GetApplicantsByVacancyIdUseCase } from "../../domain/application/use-cases/GetApplicantsByVacancyId";
-import type { IVacancyID } from "../../../positions/data/models";
+import type { IVacancyID } from "../../../vacancy/data/models";
 import type { CreateNewApplicantUseCase } from "../../domain/application/use-cases/CreateNewApplicant";
 import type { ISendApplicant } from "../../domain/core/entity";
 import type { ChangeApplicantStatusUseCase } from "../../domain/application/use-cases/ChangeApplicantStatus";

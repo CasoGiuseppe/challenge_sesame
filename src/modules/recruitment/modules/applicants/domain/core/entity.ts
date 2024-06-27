@@ -1,4 +1,4 @@
-import type { IVacancyID } from "../../../positions/data/models";
+import type { IVacancyID } from "../../../vacancy/data/models";
 
 export interface IApplicant extends ISendApplicant{
     createBy: string;

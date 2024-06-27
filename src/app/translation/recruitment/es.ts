@@ -1,7 +1,7 @@
 import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
 
 const translations = <DynamicImportPath[]>[
-  { path: import('@modules/recruitment/modules/positions/presentation/translations/locales/es.json') },
+  { path: import('@/modules/recruitment/modules/vacancy/presentation/translations/locales/es.json') },
   { path: import('@modules/recruitment/modules/applicants/presentation/translations/locales/es.json') }
 ]
 

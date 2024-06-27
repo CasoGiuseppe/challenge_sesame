@@ -2,7 +2,7 @@ import { BaseRepository } from "@/modules/core/data/repository";
 import { Either } from "@/modules/core/domain/Either";
 import type { DataExceptions } from "@/modules/core/domain/exceptions/models";
 import type { IHttpRequestService } from "@/modules/core/providers/http/interfaces/http.repository";
-import type { IVacancyRepository } from "@modules/recruitment/modules/positions/domain/core/repository/IVacancyRepository";
+import type { IVacancyRepository } from "@/modules/recruitment/modules/vacancy/domain/core/repository/IVacancyRepository";
 import type { VacancyState } from "../../domain/core/Vacancy";
 import type { IVacancyID, IVacancyDataResponse, IVacancyRootDTO, IVacancyServiceError } from "../models";
 import { NetworkConstants } from "@/modules/core/utilities/networkConstants";

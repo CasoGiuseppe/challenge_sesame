@@ -1,4 +1,4 @@
-import type { IVacancyID } from "@modules/recruitment/modules/positions/data/models"
+import type { IVacancyID } from "@/modules/recruitment/modules/vacancy/data/models"
 
 export interface IApplicantDTOResponse {
   data: IApplicantDataResponse[] | IApplicantDataResponse

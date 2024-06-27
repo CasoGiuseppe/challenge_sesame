@@ -1,6 +1,6 @@
 import type { Router } from "vue-router";
 import { Ploc } from "@modules/core/presentation/ploc";
-import type { GetVacancyByIdUseCase } from "@/modules/recruitment/modules/positions/domain/application/use-cases/GetVacancyByIdUseCase";
+import type { GetVacancyByIdUseCase } from "@/modules/recruitment/modules/vacancy/domain/application/use-cases/GetVacancyByIdUseCase";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { IVacancyID } from "../../data/models";
 

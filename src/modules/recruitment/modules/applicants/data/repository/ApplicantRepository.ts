@@ -5,7 +5,7 @@ import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 import type { IApplicantRepository } from "../../domain/core/repository/IApplicant";
 import { Applicant } from "../../domain/core/Applicant";
-import type { IVacancyID } from "../../../positions/data/models";
+import type { IVacancyID } from "../../../vacancy/data/models";
 import type { IApplicantDataResponse, IApplicantDTOResponse, IApplicantPostData } from "../models/mapper";
 import { ApplicantMapper, CreateApplicantMapper } from "../models/mapper/ApplicantMapper";
 import type { ISendApplicant } from "../../domain/core/entity";
