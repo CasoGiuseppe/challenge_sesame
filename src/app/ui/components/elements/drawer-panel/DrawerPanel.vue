@@ -94,7 +94,7 @@ const isDrawer = computed(():boolean => props.is === Types.DRAWER)
 
 watch(
     () => props.open,
-    (v: any) => props.open ? show() : null,
+    () => props.open ? show() : null,
     { immediate: true }
 )
 </script>

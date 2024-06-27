@@ -2,7 +2,6 @@ import type { Meta, StoryObj } from "@storybook/vue3"
 import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionInfo.vue"
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
 import BaseItemMenu from "@app/ui/components/base/base-item-menu/BaseItemMenu.vue"
-import { Sizes } from "@app/ui/components/base/base-icon/types"
 
 const meta = {
     title: "Elements/Accordion Info",

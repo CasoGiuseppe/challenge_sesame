@@ -5,7 +5,6 @@
     :open="open"
     aria-labelledby="accordion-summary"
     aria-describedby="accordion-content"
-    data-testid="ui-accordion"
     :class="[
       'accordion-info',
       customColor ? 'accordion-info--has-color' : ''

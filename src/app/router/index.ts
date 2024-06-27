@@ -37,7 +37,7 @@ const router = createRouter({
           path: '/:pathMatch(.*)*',
           components: {
             default: () =>
-              import(/* webpackChunkName: "State404" */ '@app/ui/layouts/status/status-404/Status404.vue')
+              import(/* webpackChunkName: "State404" */ '@app/ui/layouts/status/status-not-found/StatusNotFound.vue')
           }
         }
       ],

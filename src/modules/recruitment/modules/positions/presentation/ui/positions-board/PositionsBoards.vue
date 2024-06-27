@@ -27,6 +27,5 @@ import { Areas } from "@app/ui/components/tools/draggable-area/types"
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 
-const Enter = () => console.log("Enter");
 </script>
 <style src="./PositionsBoards.scss" lang="scss" scoped></style>
