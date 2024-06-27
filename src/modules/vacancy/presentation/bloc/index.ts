@@ -6,6 +6,10 @@ import type { IVacancyID } from "@modules/vacancy/data/models";
 import type { VacancyResponseStore } from "@modules/vacancy/presentation/store/vacancy";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 
+function timeout(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export class VacancyBloc extends Ploc<VacancyResponseStore> {
     private readonly getVacancyById: GetVacancyByIdUseCase
     constructor({
@@ -23,8 +27,9 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
 
     getVacancyByID = async(vacancyId: IVacancyID = NetworkConstants.BASE_API_VACANCY_ID): Promise<void> => {
         this.store.setLoadingState({ value: true})
+        await timeout(2000)  // simulate delay
         const vacancyResult = await this.getVacancyById.execute(vacancyId)
-        // this.store.setLoadingState({ value: false})
+        this.store.setLoadingState({ value: false})
 
         vacancyResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 

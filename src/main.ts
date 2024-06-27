@@ -22,7 +22,7 @@ app
 .use(router)
 .use(i18n)
 .use(pinia);
-
+app.config.warnHandler = () => null;
 
 router.isReady().then(() => {
   app.mount('#app')
