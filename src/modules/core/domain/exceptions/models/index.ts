@@ -1,6 +1,7 @@
 import type { UnprocessableContent } from "@modules/core/guards/exceptions/UnprocessableContent";
 import type { BadApiRequest } from "@modules/core/guards/exceptions/BadApiRequest";
 import type { UnauthorizedRequest } from "@modules/core/guards/exceptions/UnauthorizedRequest";
+import type { WrongPathRequest } from "@modules/core/guards/exceptions/WrongPathRequest";
 
 export interface BadRequest {
   kind: "BadRequest";
@@ -22,4 +23,9 @@ export interface UnprocessableRequest {
   error: UnprocessableContent;
 }
 
-export type DataExceptions = UnexpectedError | BadRequest |  Unauthorized | UnprocessableRequest
+export interface WrongPath {
+  kind: "WrongPathRequest";
+  error: WrongPathRequest;
+}
+
+export type DataExceptions = UnexpectedError | BadRequest |  Unauthorized | UnprocessableRequest | WrongPath

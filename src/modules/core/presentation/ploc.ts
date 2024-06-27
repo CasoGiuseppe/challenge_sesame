@@ -27,6 +27,11 @@ export class Ploc<T> {
                 exception = (error as Extract<DataExceptions, { kind: "Unauthorized"}>).error.message
                 console.log('router.push', 'Unauthorized')
                 break;
+
+            case 'WrongPathRequest':
+                exception = (error as Extract<DataExceptions, { kind: "WrongPathRequest"}>).error.message
+                console.log('router.push', 'WrongPathRequest')
+                break;
             
             case 'UnexpectedError':
                 exception = (error as Extract<DataExceptions, { kind: "UnexpectedError"}>).error.message
