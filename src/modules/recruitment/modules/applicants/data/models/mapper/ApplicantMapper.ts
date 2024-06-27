@@ -17,6 +17,7 @@ export class ApplicantMapper {
         lastName: raw.lastName,
         createdAt: new Date(raw.createdAt),
         createBy: raw.vacancy.name,
+        statusId: raw.statusId
       },
       id: new UniqueEntityID(raw.employeeId),
     })

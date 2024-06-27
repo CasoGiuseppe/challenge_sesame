@@ -4,23 +4,29 @@ import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { GetApplicantsByVacancyIdUseCase } from "../../domain/application/use-cases/GetApplicantsByVacancyId";
 import type { IVacancyID } from "../../../positions/data/models";
 import type { CreateNewApplicantUseCase } from "../../domain/application/use-cases/CreateNewApplicant";
+import type { ISendApplicant } from "../../domain/core/entity";
+import type { ChangeApplicantStatusUseCase } from "../../domain/application/use-cases/ChangeApplicantStatus";
 
 export class ApplicantBloc extends Ploc<undefined> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
     private readonly createNewApplicant: CreateNewApplicantUseCase;
+    private readonly changeApplicantStatus: ChangeApplicantStatusUseCase;
 
     constructor({
         router,
         getApplicantsByVacancyId,
-        createNewApplicant
+        createNewApplicant,
+        changeApplicantStatus
     }: {
         router: Router;
         getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
         createNewApplicant: CreateNewApplicantUseCase;
+        changeApplicantStatus: ChangeApplicantStatusUseCase;
     }){
         super({ router })
         this.getApplicantsByVacancyId = getApplicantsByVacancyId;
         this.createNewApplicant = createNewApplicant;
+        this.changeApplicantStatus = changeApplicantStatus;
     }
 
     getApplicantsByID = async({vacancyId, statusId}: {vacancyId: IVacancyID, statusId?: string}): Promise<void> => {
@@ -32,15 +38,21 @@ export class ApplicantBloc extends Ploc<undefined> {
         )
     }
 
-    createApplicant = async(
-        { firstName, lastName, vacancyId, statusId }:
-        { firstName:string, lastName: string, vacancyId: IVacancyID, statusId: string }
-    ): Promise<void> => {
+    addNewApplicant = async({ firstName, lastName, vacancyId, statusId }: ISendApplicant): Promise<void> => {
         const newApplicant = await this.createNewApplicant.execute({ firstName, lastName, vacancyId, statusId })
         
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: any) => { console.log('new applicant', response) }
+        )
+    }
+
+    changeApplicantArea = async({ employeeId, firstName, lastName, vacancyId, statusId }: ISendApplicant) => {
+        const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, vacancyId, statusId })
+
+        changedApplicant.fold(
+            (error: DataExceptions) => { console.log(this.handleError(error)) }, 
+            (response: any) => { console.log('change applicant', response) }
         )
     }
 }

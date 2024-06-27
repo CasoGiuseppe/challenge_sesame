@@ -6,6 +6,7 @@ import { VacancyBloc } from "@modules/recruitment/modules/positions/presentation
 import { ApplicantBloc } from "@modules/recruitment/modules/applicants/presentation/bloc"
 import { CreateNewApplicantUseCase } from "@modules/recruitment/modules/applicants/domain/application/use-cases/CreateNewApplicant"
 import { GetApplicantsByVacancyIdUseCase } from "@modules/recruitment/modules/applicants/domain/application/use-cases/GetApplicantsByVacancyId"
+import { ChangeApplicantStatusUseCase } from "@modules/recruitment/modules/applicants/domain/application/use-cases/ChangeApplicantStatus"
 import { HTTPServiceProvider } from "../providers/http/http.provide"
 
 const provideVacancyPloc = () => {
@@ -26,10 +27,12 @@ const provideApplicantPloc = () => {
     const applicantRepository = new ApplicantRepository(new HTTPServiceProvider())
     const getApplicantsByVacancyId = new GetApplicantsByVacancyIdUseCase(applicantRepository)
     const createNewApplicant = new CreateNewApplicantUseCase(applicantRepository)
+    const changeApplicantStatus = new ChangeApplicantStatusUseCase(applicantRepository)
     return new ApplicantBloc({
         router,
         getApplicantsByVacancyId,
-        createNewApplicant
+        createNewApplicant,
+        changeApplicantStatus
     })
 }
 

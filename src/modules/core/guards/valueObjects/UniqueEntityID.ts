@@ -11,7 +11,7 @@ export class UniqueEntityID {
     return this.id === id
   }
 
-  get toID(): UniqueEntityID {
-    return this.id
+  get toID(): string {
+    return this.id.toString()
   }
 }

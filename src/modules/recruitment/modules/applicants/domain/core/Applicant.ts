@@ -7,7 +7,7 @@ export class Applicant extends Entity<IApplicant>{
     super(props, id);
   }
   public static createApplicant ({ id, props}: {id?: UniqueEntityID, props: IApplicant}): Applicant{
-    const { employeeId, firstName, lastName, createBy, createdAt } = props;
-    return new Applicant({ employeeId, firstName, lastName, createBy, createdAt }, id)
+    const { employeeId, firstName, lastName, createBy, createdAt, statusId } = props;
+    return new Applicant({ employeeId, firstName, lastName, createBy, createdAt, statusId }, id)
   }
 }

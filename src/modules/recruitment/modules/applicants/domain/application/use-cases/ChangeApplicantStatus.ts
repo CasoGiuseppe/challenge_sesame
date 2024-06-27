@@ -1,4 +1,3 @@
-import type { IVacancyID } from "@modules/recruitment/modules/positions/data/models";
 import type { Either } from "@modules/core/domain/Either";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { IApplicantRepository } from "../../core/repository/IApplicant";
@@ -10,7 +9,7 @@ export class ChangeApplicantStatusUseCase {
         private applciantRepository: IApplicantRepository
       ){}
 
-    async execute({firstName, lastName, vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>>{
-        return this.applciantRepository.createNewApplicant({ vacancyId, statusId, firstName, lastName })
+    async execute({ employeeId, firstName, lastName, vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>>{
+        return this.applciantRepository.changeApplicantStatus({ employeeId, firstName, lastName, vacancyId, statusId })
     }
 }
