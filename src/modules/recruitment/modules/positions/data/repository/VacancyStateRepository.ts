@@ -17,13 +17,8 @@ export class VacancyStateRepository extends BaseRepository implements IVacancyRe
         try {
             const response = await this.client.get<IVacancyRootDTO | IVacancyServiceError>({
                 url: `${NetworkConstants.BASE_API_PORT}${NetworkConstants.BASE_API_NAMESPACE}/candidate-status/${vacancyId}`,
-                options: NetworkConstants.BASE_API_OPTIONS
+                // options: NetworkConstants.BASE_API_OPTIONS
             })
-            
-            if(response.hasOwnProperty('error')) {
-                const { error : { status, message }} = response as IVacancyServiceError
-                return Either.fail(this.handleErrors({ status, code: message })) 
-            }
 
             return Either.success(
                 VacancyMapper

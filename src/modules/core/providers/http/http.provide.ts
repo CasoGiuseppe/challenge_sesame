@@ -1,4 +1,5 @@
 import type { IHttpRequestService } from "./interfaces/http.repository";
+import * as interceptor from './interceptor';
 
 const controller = new AbortController()
 const signal = controller.signal;

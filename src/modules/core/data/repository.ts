@@ -5,7 +5,7 @@ export class BaseRepository {
     constructor(public readonly client: IHttpRequestService) {};
 
     handleErrors(error: Error | any): DataExceptions  {
-        const { code, status } = error;
-        return Errors(code)[status as keyof typeof Errors ?? '500'];
+        const { status } = error;
+        return Errors(status)[status as keyof typeof Errors ?? '500'];
     }
 }
