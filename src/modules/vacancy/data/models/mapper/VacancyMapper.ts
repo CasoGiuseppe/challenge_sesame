@@ -1,6 +1,6 @@
 import { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID"
 import type { IVacancyDataResponse } from ".."
-import { VacancyState } from "@/modules/vacancy/domain/core/Vacancy"
+import { VacancyState } from "@modules/vacancy/domain/core/Vacancy"
 
 export class VacancyMapper {
   public static fromJson ( response: any ): IVacancyDataResponse[] {

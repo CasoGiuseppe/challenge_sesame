@@ -1,4 +1,4 @@
-import type { IVacancyState } from "../../domain/core/entity";
+import type { IVacancyState } from "@modules/vacancy/domain/core/entity";
 
 export type IVacancyID = string
 export interface IVacancyDataResponse extends IVacancyState{

@@ -1,4 +1,4 @@
-import { Entity } from "@/modules/core/guards/Entity";
+import { Entity } from "@modules/core/guards/Entity";
 import { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID";
 import type { IVacancyState } from "./entity";
 
