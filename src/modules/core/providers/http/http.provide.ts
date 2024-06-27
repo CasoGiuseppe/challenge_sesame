@@ -20,4 +20,15 @@ export class HTTPServiceProvider implements IHttpRequestService {
 
     return await send.json()
   }
+
+  async put<Response, Data>({ url, body, options }: {url: string, body?: Data, options?: Record<string, string>}): Promise<Response> {
+    const send = await fetch(`${url}`, { 
+      method: 'PUT',
+      body: JSON.stringify(body),
+      headers: new Headers(options),
+      signal
+    });
+
+    return await send.json()
+  }
 }
