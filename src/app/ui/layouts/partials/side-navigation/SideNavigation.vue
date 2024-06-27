@@ -54,7 +54,7 @@ import ResponsivePanel from "@app/ui/components/tools/responsive-panel/Responsiv
 import AccordionInfo from "@app/ui/components/elements/accordion-info/AccordionInfo.vue"
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue"
 import BaseItemMenu from "@app/ui/components/base/base-item-menu/BaseItemMenu.vue"
-import FakeLogo from "@app/ui/layouts/fakes/FakeLogo.vue"
+import FakeLogo from "@app/ui/elements/fakes/FakeLogo.vue"
 import MenuShell from "@app/ui/components/tools/menu-shell/MenuShell.vue"
 import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 import { Sizes } from "@app/ui/components/base/base-icon//types"
