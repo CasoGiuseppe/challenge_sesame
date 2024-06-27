@@ -5,4 +5,8 @@ import type { Applicant } from "../Applicant";
 
 export interface IApplicantRepository {
     getApplicantByVacancy({ vacancyId, statusId }: { vacancyId: IVacancyID, statusId?: string }): Promise<Either<DataExceptions, Applicant[]>>
+    createNewApplicant(
+        { vacancyId, statusId, firstName, lastName}:
+        { vacancyId: IVacancyID, statusId?: string, firstName: string, lastName: string }
+    ): Promise<Either<DataExceptions, Applicant>>
 }
