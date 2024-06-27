@@ -6,7 +6,7 @@ export default [
         meta: { family: 'fake', type: 'default'},
         name: 'fake',
         components: {
-          default: () => import(/* webpackChunkName: "FakeEntryPoint" */ '@modules/fake/presentation/ui/EntryPoint.vue'),
+          default: () => import(/* webpackChunkName: "FakeEntryPoint" */ '@app/ui/modules/fake/EntryPoint.vue'),
         },
     }
 ] as RouteRecordRaw[]

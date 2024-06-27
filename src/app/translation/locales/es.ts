@@ -1,8 +1,8 @@
 import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
 
 const translations = <DynamicImportPath[]>[
-  { path: import('@modules/recruitment/presentation/translation/es') },
-  { path: import('@modules/fake/presentation/translation/es') }
+  { path: import('../recruitment/es') },
+  { path: import('../fake/es') }
 ]
 
 export default async () => {

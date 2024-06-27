@@ -1,7 +1,5 @@
 {
-  "MENU": {
-    "applicants": "Applicants"
-  },
+  "applicants": "Applicants",
   "FORM": {
     "ADD": {
       "title": "Create new applicant" 
