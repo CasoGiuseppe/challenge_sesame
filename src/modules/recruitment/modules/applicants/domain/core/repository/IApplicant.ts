@@ -4,5 +4,5 @@ import type { IVacancyID } from "@modules/recruitment/modules/positions/data/mod
 import type { Applicant } from "../Applicant";
 
 export interface IApplicantRepository {
-    getApplicantByVacancy({ vacancyId }: { vacancyId: IVacancyID }): Promise<Either<DataExceptions, Applicant[]>>
+    getApplicantByVacancy({ vacancyId, statusId }: { vacancyId: IVacancyID, statusId?: string }): Promise<Either<DataExceptions, Applicant[]>>
 }

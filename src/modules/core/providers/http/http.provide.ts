@@ -5,14 +5,15 @@ const signal = controller.signal;
 export class HTTPServiceProvider implements IHttpRequestService {
   async get<Response>(
     { url, params, options = {}}: {url: string, params?: Record<string, string>, options?: Record<string, string>}): Promise<Response> {
-    const send = await fetch(`${url}?${new URLSearchParams(params)}`, { headers: options });
+    const send = await fetch(`${url}?${new URLSearchParams(params)}`, { headers: new Headers(options) });
     return  await send.json()
   }
 
-  async post<Response, Data>(url: string, body: Data): Promise<Response> {
+  async post<Response, Data>(url: string, body: Data, options?: Record<string, string>): Promise<Response> {
     const send = await fetch(`${url}`, { 
       method: 'POST',
       body: JSON.stringify(body),
+      headers: new Headers(options),
       signal
     });
 
