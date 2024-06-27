@@ -10,10 +10,8 @@ export class CreateNewApplicantUseCase {
       ){}
 
     async execute(
-        vacancyId: IVacancyID,
-        statusId: string,
-        firstName: string,
-        lastName: string
+        {firstName, lastName, vacancyId, statusId }:
+        {firstName: string, lastName: string, vacancyId: IVacancyID, statusId: string}
     ): Promise<Either<DataExceptions, Applicant>>{
         return this.applciantRepository.createNewApplicant({ vacancyId, statusId, firstName, lastName })
     }

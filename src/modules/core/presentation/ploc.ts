@@ -17,6 +17,11 @@ export class Ploc<T> {
                 exception = (error as Extract<DataExceptions, { kind: "BadRequest"}>).error.message
                 console.log('router.push', 'Bad Request')
                 break;
+
+            case 'UnprocessableRequest':
+                exception = (error as Extract<DataExceptions, { kind: "UnprocessableRequest"}>).error.message
+                console.log('router.push', 'Unprocessable Content')
+                break;
             
             case 'Unauthorized':
                 exception = (error as Extract<DataExceptions, { kind: "Unauthorized"}>).error.message

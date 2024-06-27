@@ -23,21 +23,24 @@ export class ApplicantBloc extends Ploc<undefined> {
         this.createNewApplicant = createNewApplicant;
     }
 
-    getApplicationByID = async(vacancyId: IVacancyID, statusId?: string): Promise<void> => {
+    getApplicantsByID = async(vacancyId: IVacancyID, statusId?: string): Promise<void> => {
         const applicantResult = await this.getApplicantsByVacancyId.execute(vacancyId, statusId)
 
         applicantResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
-            (response: any) => { console.log(response) }
+            (response: any) => { console.log('applicants', response) }
         )
     }
 
-    createApplicant = async(vacancyId: IVacancyID, statusId: string, firstName: string, lastName: string): Promise<void> => {
-        const newApplicant = await this.createNewApplicant.execute(vacancyId, statusId, firstName, lastName)
+    createApplicant = async(
+        { firstName, lastName, vacancyId, statusId }:
+        { firstName:string, lastName: string, vacancyId: IVacancyID, statusId: string }
+    ): Promise<void> => {
+        const newApplicant = await this.createNewApplicant.execute({ firstName, lastName, vacancyId, statusId })
         
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
-            (response: any) => { console.log(response) }
+            (response: any) => { console.log('new applicant', response) }
         )
     }
 }
