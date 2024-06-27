@@ -22,3 +22,9 @@ export class ApplicantMapper {
     })
   }
 }
+
+export class CreateApplicantMapper {
+  public static fromJson ( response: any ): IApplicantDataResponse {
+    return response.data
+  }
+}

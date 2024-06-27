@@ -10,7 +10,7 @@ export class HTTPServiceProvider implements IHttpRequestService {
     return  await send.json()
   }
 
-  async post<Response, Data>(url: string, body: Data, options?: Record<string, string>): Promise<Response> {
+  async post<Response, Data>({ url, body, options }: {url: string, body?: Data, options?: Record<string, string>}): Promise<Response> {
     const send = await fetch(`${url}`, { 
       method: 'POST',
       body: JSON.stringify(body),

@@ -4,18 +4,16 @@ import type { IHttpRequestService } from "@modules/core/providers/http/interface
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 import type { IApplicantRepository } from "../../domain/core/repository/IApplicant";
-import type { Applicant } from "../../domain/core/Applicant";
+import { Applicant } from "../../domain/core/Applicant";
 import type { IVacancyID } from "../../../positions/data/models";
-import type { IApplicantDataResponse, IApplicantDTOResponse } from "../models/mapper";
-import { ApplicantMapper } from "../models/mapper/ApplicantMapper";
+import type { IApplicantDataResponse, IApplicantDTOResponse, IApplicantPostData } from "../models/mapper";
+import { ApplicantMapper, CreateApplicantMapper } from "../models/mapper/ApplicantMapper";
 
 export class ApplicantRepository extends BaseRepository implements IApplicantRepository {
     constructor(client: IHttpRequestService){
         super(client);
     }
-
-    // Promise<Either<DataExceptions, Applicant[]>>
-    async getApplicantByVacancy({ vacancyId, statusId }: { vacancyId: IVacancyID, statusId?: string }): Promise<any> {
+    async getApplicantByVacancy({ vacancyId, statusId }: { vacancyId: IVacancyID, statusId?: string }):Promise<Either<DataExceptions, Applicant[]>> {
 
         try {
             const response = await this.client.get<IApplicantDTOResponse>({
@@ -28,6 +26,30 @@ export class ApplicantRepository extends BaseRepository implements IApplicantRep
                 ApplicantMapper
                     .fromJson(response)
                     .map((applicant: IApplicantDataResponse) => ApplicantMapper.toDomain(applicant))
+            )
+        } catch (err) {
+            return Either.fail(this.handleErrors(err))
+        }
+    }
+
+    async createNewApplicant(
+        { vacancyId, statusId, firstName, lastName }:
+        { vacancyId: IVacancyID; statusId: string; firstName: string; lastName: string; }): Promise<Either<DataExceptions, Applicant>>
+    {
+        try {
+            const response = await this.client.post<IApplicantDTOResponse, IApplicantPostData>({
+                url: `${NetworkConstants.BASE_API_PORT}${NetworkConstants.BASE_API_NAMESPACE}/candidates`,
+                body: {
+                    firstName,
+                    lastName,
+                    vacancyId,
+                    statusId,
+                },
+                options: NetworkConstants.BASE_API_OPTIONS
+            })
+
+            return Either.success(
+                ApplicantMapper.toDomain(CreateApplicantMapper.fromJson(response))
             )
         } catch (err) {
             return Either.fail(this.handleErrors(err))

@@ -1,5 +1,7 @@
+import type { IVacancyID } from "@modules/recruitment/modules/positions/data/models"
+
 export interface IApplicantDTOResponse {
-  data: IApplicantDataResponse[]
+  data: IApplicantDataResponse[] | IApplicantDataResponse
   meta: IApplicantMeta
 }
 
@@ -93,4 +95,11 @@ export interface IApplicantMeta {
   lastPage: number
   total: number
   perPage: number
+}
+
+export interface IApplicantPostData {
+  firstName: string,
+  lastName: string,
+  vacancyId: IVacancyID
+  statusId: string,
 }
