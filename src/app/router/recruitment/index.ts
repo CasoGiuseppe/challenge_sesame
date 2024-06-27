@@ -2,8 +2,8 @@ import type { RouteRecordRaw } from "vue-router";
 import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
 
 const routes = <DynamicImportPath[]>[
-   { path: import('@/modules/recruitment/modules/vacancy/presentation/router') },
-   { path: import('@/modules/recruitment/modules/applicant/presentation/router') }
+   { path: import('@/modules/vacancy/presentation/router') },
+   { path: import('@/modules/applicant/presentation/router') }
 ]
 
 export default [
