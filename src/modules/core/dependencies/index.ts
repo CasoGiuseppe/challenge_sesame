@@ -8,11 +8,11 @@ const provideVacancyPloc = () => {
     const router = useRouter()
 
     const vacancyStateRepository = new VacancyStateRepository(new HTTPServiceProvider())
-    const getVacancyByIdUseCase = new GetVacancyByIdUseCase(vacancyStateRepository)
+    const getVacancyById = new GetVacancyByIdUseCase(vacancyStateRepository)
 
     return new VacancyBloc({
         router,
-        getVacancyByIdUseCase
+        getVacancyById
     })
 }
 

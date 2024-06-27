@@ -5,20 +5,20 @@ import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { IVacancyID } from "../../data/models";
 
 export class VacancyBloc extends Ploc<undefined> {
-    private readonly getVacancyByIdUseCase: GetVacancyByIdUseCase
+    private readonly getVacancyById: GetVacancyByIdUseCase
     constructor({
         router,
-        getVacancyByIdUseCase
+        getVacancyById
     }: {
         router: Router;
-        getVacancyByIdUseCase: GetVacancyByIdUseCase;
+        getVacancyById: GetVacancyByIdUseCase;
     }){
         super({ router })
-        this.getVacancyByIdUseCase = getVacancyByIdUseCase
+        this.getVacancyById = getVacancyById
     }
 
-    getVacancyById = async(vacancyId: IVacancyID): Promise<void> => {
-        const vacancyResult = await this.getVacancyByIdUseCase.execute(vacancyId)
+    getVacancyByID = async(vacancyId: IVacancyID): Promise<void> => {
+        const vacancyResult = await this.getVacancyById.execute(vacancyId)
 
         vacancyResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
