@@ -2,9 +2,11 @@ import type { Router } from "vue-router";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 
 export class Ploc<T> {
+    public store: T;
     public router: Router;
 
-    constructor({ router }: { router: Router }) {
+    constructor({ store, router }: { store: T, router: Router }) {
+        this.store = store
         this.router = router;
     }
 
