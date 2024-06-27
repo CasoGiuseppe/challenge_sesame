@@ -12,7 +12,7 @@ export class ApplicantMapper {
   public static toDomain(raw: IApplicantDataResponse): Applicant {
     return Applicant.createApplicant({
       props: {
-        employeeId: new UniqueEntityID(raw.employeeId).toID,
+        employeeId: new UniqueEntityID(raw.id).toID,
         firstName: raw.firstName,
         lastName: raw.lastName,
         createdAt: new Date(raw.createdAt),

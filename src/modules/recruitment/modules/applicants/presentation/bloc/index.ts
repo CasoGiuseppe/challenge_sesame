@@ -23,8 +23,8 @@ export class ApplicantBloc extends Ploc<undefined> {
         this.createNewApplicant = createNewApplicant;
     }
 
-    getApplicantsByID = async(vacancyId: IVacancyID, statusId?: string): Promise<void> => {
-        const applicantResult = await this.getApplicantsByVacancyId.execute(vacancyId, statusId)
+    getApplicantsByID = async({vacancyId, statusId}: {vacancyId: IVacancyID, statusId?: string}): Promise<void> => {
+        const applicantResult = await this.getApplicantsByVacancyId.execute({vacancyId, statusId})
 
         applicantResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 

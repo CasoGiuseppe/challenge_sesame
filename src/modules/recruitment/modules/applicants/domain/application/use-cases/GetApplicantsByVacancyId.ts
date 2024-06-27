@@ -8,7 +8,7 @@ export class GetApplicantsByVacancyIdUseCase {
   constructor(
     private applciantRepository: IApplicantRepository
   ){}
-  async execute(vacancyId: IVacancyID, statusId?: string): Promise<Either<DataExceptions, Applicant[]>>{
+  async execute({ vacancyId, statusId }: { vacancyId: IVacancyID, statusId?: string }): Promise<Either<DataExceptions, Applicant[]>>{
     return this.applciantRepository.getApplicantByVacancy({ vacancyId, statusId })
   }
 }

@@ -100,6 +100,6 @@ export interface IApplicantMeta {
 export interface IApplicantPostData {
   firstName: string,
   lastName: string,
-  vacancyId: IVacancyID
-  statusId: string,
+  vacancyId?: IVacancyID
+  statusId?: string,
 }
