@@ -18,8 +18,6 @@
         @apply bg-neutral-200
     }
 
-    --color-success-100
-
     &[area='new'] {
         @apply text-area-400
     }
@@ -41,7 +39,7 @@
     }
 
     &__header {
-        @apply flex flex-wrap gap-y-xmd gap-x-xsm px-md;
+        @apply flex flex-wrap gap-y-xmd gap-x-xsm px-md items-center;
 
         &:before {
             @apply h-xsm w-full;

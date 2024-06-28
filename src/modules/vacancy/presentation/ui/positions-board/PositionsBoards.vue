@@ -22,6 +22,12 @@
           :area="Areas[name.toUpperCase() as keyof typeof Areas]"
         >
           <template #title>{{ translate({key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}`}) }}</template>
+          <template #icon>
+            <BaseIcon
+              :size="Sizes.L"
+              :name="iconMapper[Areas[name.toUpperCase() as keyof typeof Areas]]"
+            />
+          </template>
         </DraggableArea>
       </li>
     </TransitionIs>
@@ -36,6 +42,16 @@ import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-i
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
 import useTranslation from '@app/shared/composables/useTranslation';
+import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
+import { Sizes } from '@app/ui/components/base/base-icon/types';
+
+const iconMapper = {
+  [Areas.NEW]: 'IconInbox',
+  [Areas.ACCEPTED]: 'IconCheck',
+  [Areas.INTERVIEW]: 'IconUser',
+  [Areas.SELECTED]: 'IconConfetti',
+  [Areas.DISCARDED]: 'IconError'
+}
 
 const { getLoadingState, savedVacancyAreas } = storeToRefs(useVacancyStore)
 const { translate } = useTranslation();
