@@ -27,7 +27,7 @@ const open = ref<boolean>(false)
 const family = ref<string>(route.meta.family as string)
 const close = () => {
     open.value = false
-    router.push({ name: 'applicants' })
+    router.back()
 }
 
 onMounted(() => open.value = true)

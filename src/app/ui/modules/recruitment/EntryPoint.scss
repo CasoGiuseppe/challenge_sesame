@@ -5,6 +5,14 @@
 
     &__board {
         @apply flex-[2];
+
+        @include create-animation(
+            $name: 'from-top',
+            $from: translateY(-50%),
+            $to: translateY(-50%),
+            $duration: .4s,
+            $duration-out: var(--outAnimationTime),
+        );
     }
 
     &__form {

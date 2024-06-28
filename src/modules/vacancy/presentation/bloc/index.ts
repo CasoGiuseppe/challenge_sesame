@@ -5,10 +5,8 @@ import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { IVacancyID } from "@modules/vacancy/data/models";
 import type { VacancyResponseStore } from "@modules/vacancy/presentation/store/vacancy";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
+import { timeout } from "@app/shared/utilities";
 
-function timeout(ms: number) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
 
 export class VacancyBloc extends Ploc<VacancyResponseStore> {
     private readonly getVacancyById: GetVacancyByIdUseCase

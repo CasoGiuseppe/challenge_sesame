@@ -5,6 +5,7 @@
     mode="out-in"
     appear
     class="transition-is"
+    @after-enter="removeBehaviour"
   >
     <slot />
   </Transition>
@@ -54,6 +55,10 @@ const { type, group } = defineProps({
 });
 
 const isNotAGroup = computed(() => !group)
+const removeBehaviour = (el:Element) => {
+  el.classList.remove('transition-is')
+  el.removeAttribute('style')
+}
 </script>
 <style lang="scss">
 @include create-animation(
