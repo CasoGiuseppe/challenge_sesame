@@ -1,6 +1,13 @@
 {
   "positions": "Positions",
   "BOARD": {
-    "loading": "The vacancy board is coming..."
+    "loading": "The vacancy board is coming...",
+    "AREAS": {
+      "new": "New",
+      "accepted": "Accepted",
+      "interview": "Interview",
+      "selected": "Hired",
+      "discarded": "Not selected"
+    } 
   }
 }

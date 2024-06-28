@@ -87,6 +87,8 @@ export default {
       area: {
         100: 'var(--color-area-100, #000)',
         200: 'var(--color-area-200, #000)',
+        300: 'var(--color-area-300, #000)',
+        400: 'var(--color-success-100, #000)',
       }
     },
 

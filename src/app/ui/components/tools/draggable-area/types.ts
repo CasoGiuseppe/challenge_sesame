@@ -1,8 +1,9 @@
 export enum Areas {
     NEW = 'new',
+    ACCEPTED = 'accepted',
     INTERVIEW = 'interview',
-    HIRED = 'hired',
-    FAILED = 'failed',
+    SELECTED = 'selected',
+    DISCARDED = 'discarded',
 }
 
 export type ICardItem = {

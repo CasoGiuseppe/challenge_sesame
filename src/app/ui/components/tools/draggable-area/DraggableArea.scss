@@ -18,15 +18,25 @@
         @apply bg-neutral-200
     }
 
+    --color-success-100
+
+    &[area='new'] {
+        @apply text-area-400
+    }
+
     &[area='interview'] {
         @apply text-area-100
     }
 
-    &[area='hired'] {
+    &[area='accepted'] {
+        @apply text-area-300
+    }
+
+    &[area='selected'] {
         @apply text-area-200
     }
 
-    &[area='failed'] {
+    &[area='discarded'] {
         @apply text-warning-100
     }
 
