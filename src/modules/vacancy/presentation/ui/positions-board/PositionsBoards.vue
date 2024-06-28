@@ -12,15 +12,15 @@
         class="positions-boards"
     >
       <li
-        v-for="index in 4"
+        v-for="({id, name}, index) in savedVacancyAreas"
         class="positions-boards__col"
-        :key="index"
+        :key="id"
         :style="{ 'transitionDelay': `${index * .2}s` }"
       >
         <DraggableArea
           :area="Areas.INTERVIEW"
         >
-          <template #title>title</template>
+          <template #title>{{ name }}</template>
         </DraggableArea>
       </li>
     </TransitionIs>
@@ -36,7 +36,7 @@ import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
 import useTranslation from '@app/shared/composables/useTranslation';
 
-const { getLoadingState } = storeToRefs(useVacancyStore)
+const { getLoadingState, savedVacancyAreas } = storeToRefs(useVacancyStore)
 const { translate } = useTranslation();
 </script>
 <style src="./PositionsBoards.scss" lang="scss" scoped></style>

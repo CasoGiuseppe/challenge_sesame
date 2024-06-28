@@ -9,7 +9,7 @@ export class VacancyMapper {
 
   public static toPersistence (vacancy: VacancyState): IVacancyPersistenceData {
     return {
-      id: vacancy.getProps.id.toID,
+      id: new UniqueEntityID(vacancy.getProps.id).toID,
       name: vacancy.getProps.name,
     }
   }

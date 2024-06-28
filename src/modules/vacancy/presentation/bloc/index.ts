@@ -26,6 +26,8 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
     }
 
     getVacancyByID = async(vacancyId: IVacancyID = NetworkConstants.BASE_API_VACANCY_ID): Promise<void> => {
+        if(this.store.vacancyAreasAreSaved) return;
+        
         this.store.setLoadingState({ value: true})
         await timeout(2000)  // simulate delay
         const vacancyResult = await this.getVacancyById.execute(vacancyId)
@@ -34,6 +36,7 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
         vacancyResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: any) => { response.map((vacancy: VacancyState) => {
+                console.log(VacancyMapper.toPersistence(vacancy))
                 this.store.setVacancyAreas({ area: VacancyMapper.toPersistence(vacancy) })
             }) }
         )

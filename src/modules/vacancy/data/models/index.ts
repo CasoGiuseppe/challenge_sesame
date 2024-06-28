@@ -1,3 +1,4 @@
+import type { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID";
 import type { IVacancyState } from "@modules/vacancy/domain/core/entity";
 
 export type IVacancyID = string
