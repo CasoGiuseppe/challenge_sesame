@@ -13,7 +13,7 @@ export const useVacancyResponse = defineStore('useVacancyResponse', () => {
   const getLoadingState = computed((): boolean => state.loading);
   const savedVacancyAreas = computed((): IVacancyPersistenceData[] => state.areas);
   const vacancyAreasAreSaved = computed((): boolean => savedVacancyAreas.value.length > 0);
-  const mapVacancyIDs = computed((): string[] => state.areas.map((area: IVacancyPersistenceData) => area.id));
+  const getLoadingStateByArea= computed(() => (id: string) => state.areas.find((area: IVacancyPersistenceData) => area.id === id)?.loading);
 
   return {
     state,
@@ -23,7 +23,7 @@ export const useVacancyResponse = defineStore('useVacancyResponse', () => {
     getLoadingState,
     vacancyAreasAreSaved,
     savedVacancyAreas,
-    mapVacancyIDs
+    getLoadingStateByArea
   };
 });
 

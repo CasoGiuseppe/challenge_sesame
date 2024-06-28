@@ -6,6 +6,7 @@ import type { IVacancyID } from "@modules/vacancy/data/models";
 import type { CreateNewApplicantUseCase } from "@modules/applicant/domain/application/use-cases/CreateNewApplicant";
 import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
 import type { ChangeApplicantStatusUseCase } from "@modules/applicant/domain/application/use-cases/ChangeApplicantStatus";
+import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 
 export class ApplicantBloc extends Ploc<undefined> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
@@ -29,7 +30,7 @@ export class ApplicantBloc extends Ploc<undefined> {
         this.changeApplicantStatus = changeApplicantStatus;
     }
 
-    getApplicantsByID = async({vacancyId, statusId}: {vacancyId: IVacancyID, statusId?: string}): Promise<void> => {
+    getApplicantsByID = async({vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId}: {vacancyId?: IVacancyID, statusId?: string}): Promise<void> => {
         const applicantResult = await this.getApplicantsByVacancyId.execute({vacancyId, statusId})
 
         applicantResult.fold(

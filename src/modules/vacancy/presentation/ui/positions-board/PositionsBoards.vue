@@ -14,7 +14,11 @@
         :key="id"
         :style="{ transitionDelay: `${index * 0.2}s` }"
       >
-        <DraggableArea :id="id" :area="Areas[name.toUpperCase() as keyof typeof Areas]">
+        <DraggableArea
+          :id="id"
+          :area="Areas[name.toUpperCase() as keyof typeof Areas]"
+          @load="loadArea"
+        >
           <template #title>{{
             translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
           }}</template>
@@ -30,7 +34,6 @@
   </LoadingIs>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import DraggableArea from '@app/ui/components/tools/draggable-area/DraggableArea.vue';
 import { Areas } from '@app/ui/components/tools/draggable-area/types';
@@ -41,6 +44,7 @@ import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
 import useTranslation from '@app/shared/composables/useTranslation';
 import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import { Sizes } from '@app/ui/components/base/base-icon/types';
+import { dependencies } from '@modules/core/dependencies';
 
 const iconMapper = {
   [Areas.NEW]: 'IconInbox',
@@ -50,8 +54,12 @@ const iconMapper = {
   [Areas.DISCARDED]: 'IconError'
 };
 
-const { getLoadingState, savedVacancyAreas, mapVacancyIDs } = storeToRefs(useVacancyStore);
+const { getLoadingState, savedVacancyAreas } = storeToRefs(useVacancyStore);
 const { translate } = useTranslation();
 
+const loadArea = ({ id }: { id: string }) => {
+  const applicant = dependencies.provideApplicantPloc()
+  applicant.getApplicantsByID({ statusId: id })
+}
 </script>
 <style src="./PositionsBoards.scss" lang="scss" scoped></style>
