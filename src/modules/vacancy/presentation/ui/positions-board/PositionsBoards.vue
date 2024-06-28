@@ -18,6 +18,7 @@
         :style="{ 'transitionDelay': `${index * .2}s` }"
       >
         <DraggableArea
+          :id="id"
           :area="Areas[name.toUpperCase() as keyof typeof Areas]"
         >
           <template #title>{{ translate({key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}`}) }}</template>
