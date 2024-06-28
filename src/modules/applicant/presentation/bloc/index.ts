@@ -7,24 +7,27 @@ import type { CreateNewApplicantUseCase } from "@modules/applicant/domain/applic
 import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
 import type { ChangeApplicantStatusUseCase } from "@modules/applicant/domain/application/use-cases/ChangeApplicantStatus";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
+import type { ApplicantResponseStore } from "../store";
 
-export class ApplicantBloc extends Ploc<undefined> {
+export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
     private readonly createNewApplicant: CreateNewApplicantUseCase;
     private readonly changeApplicantStatus: ChangeApplicantStatusUseCase;
 
     constructor({
+        store,
         router,
         getApplicantsByVacancyId,
         createNewApplicant,
         changeApplicantStatus
     }: {
+        store: ApplicantResponseStore
         router: Router;
         getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
         createNewApplicant: CreateNewApplicantUseCase;
         changeApplicantStatus: ChangeApplicantStatusUseCase;
     }){
-        super({ router })
+        super({ store, router })
         this.getApplicantsByVacancyId = getApplicantsByVacancyId;
         this.createNewApplicant = createNewApplicant;
         this.changeApplicantStatus = changeApplicantStatus;
