@@ -21,3 +21,8 @@ export interface IVacancyServiceErrorState {
     message: string;
     errors: string;
 }
+
+export interface IVacancyPersistenceData {
+    id: string;
+    name: string;
+}

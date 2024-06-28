@@ -6,6 +6,8 @@ import type { IVacancyID } from "@modules/vacancy/data/models";
 import type { VacancyResponseStore } from "@modules/vacancy/presentation/store/vacancy";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 import { timeout } from "@app/shared/utilities";
+import { VacancyState } from "@modules/vacancy/domain/core/Vacancy";
+import { VacancyMapper } from "@modules/vacancy/data/models/mapper/VacancyMapper";
 
 
 export class VacancyBloc extends Ploc<VacancyResponseStore> {
@@ -31,7 +33,9 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
 
         vacancyResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
-            (response: any) => { console.log(response) }
+            (response: any) => { response.map((vacancy: VacancyState) => {
+                this.store.setVacancyAreas({ area: VacancyMapper.toPersistence(vacancy) })
+            }) }
         )
     }
 }
