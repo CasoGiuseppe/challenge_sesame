@@ -26,4 +26,5 @@ export interface IVacancyServiceErrorState {
 export interface IVacancyPersistenceData {
     id: string;
     name: string;
+    loading: boolean;
 }

@@ -41,13 +41,13 @@
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { ref, type PropType } from 'vue';
+import { onMounted, ref, type PropType } from 'vue';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 import { Areas, type ICardItem } from './types';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 
-const { cards } = defineProps({
+const { cards, id } = defineProps({
   /**
    * Set the unique id of the ui dragArea
    */
@@ -74,7 +74,7 @@ const { cards } = defineProps({
   }
 });
 
-const customEmits = defineEmits(['drag-enter', 'drag-leave', 'drop-end', 'drag-over']);
+const customEmits = defineEmits(['drag-enter', 'drag-leave', 'drop-end', 'drag-over', 'load']);
 const dragging = ref<boolean>(false);
 const handleDragOver = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
@@ -98,5 +98,7 @@ const handleDrop = (payload: Event) => {
   const { id } = payload.target as HTMLInputElement;
   customEmits('drop-end', { id });
 };
+
+onMounted(() => customEmits('load', { id }))
 </script>
 <style src="./DraggableArea.scss" lang="scss" scoped></style>

@@ -11,6 +11,7 @@ export class VacancyMapper {
     return {
       id: new UniqueEntityID(vacancy.getProps.id).toID,
       name: vacancy.getProps.name,
+      loading: false,
     }
   }
 

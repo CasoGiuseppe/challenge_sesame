@@ -36,7 +36,6 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
         vacancyResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: any) => { response.map((vacancy: VacancyState) => {
-                console.log(VacancyMapper.toPersistence(vacancy))
                 this.store.setVacancyAreas({ area: VacancyMapper.toPersistence(vacancy) })
             }) }
         )
