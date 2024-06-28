@@ -2,6 +2,7 @@
   <section
     :area="area"
     :dragging="dragging"
+    :id="id"
     class="draggable-area"
   >
     <header
@@ -18,7 +19,6 @@
     <TransitionIs
       group
       tag="ul"
-      :id="id"
       :type="Types.FROMLEFT"
       :easing="Easing.ELASTIC"
       :timing="Timing.NORMAL"
