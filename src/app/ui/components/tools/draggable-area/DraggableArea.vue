@@ -18,6 +18,7 @@
     </header>
     <LoadingIs
       :state="loading"
+      :is="Is.LAYER"
       :message="translate({ key: `RECRUITMENT.BOARD.AREAS.loading` })"
     >
       <TransitionIs
@@ -53,6 +54,7 @@ import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionI
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
 import useTranslation from '@app/shared/composables/useTranslation';
+import { Is } from '@app/ui/components/abstracts/loading-is/types';
 
 const { cards, id } = defineProps({
   /**
