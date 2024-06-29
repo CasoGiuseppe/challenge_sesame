@@ -87,7 +87,7 @@ const { cards, id } = defineProps({
    */
    loading: {
     type: Boolean as PropType<Boolean>,
-    default: true
+    default: false
   },
 });
 

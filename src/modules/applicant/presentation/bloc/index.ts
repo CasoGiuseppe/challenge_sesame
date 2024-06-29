@@ -10,7 +10,7 @@ import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 import type { Applicant } from "@modules/applicant/domain/core/Applicant";
 import { ApplicantMapper } from "@modules/applicant/data/models/mapper/ApplicantMapper";
 import type { ApplicantResponseStore } from "../store/applicant";
-
+import { timeout } from "@app/shared/utilities";
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
     private readonly createNewApplicant: CreateNewApplicantUseCase;
@@ -36,8 +36,11 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     }
 
     getApplicantsByID = async({vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId}: {vacancyId?: IVacancyID, statusId?: string} = {}): Promise<void> => {
+        this.store.setLoadingState({ value: true})
+        await timeout(2000)  // simulate delay
         const applicantResult = await this.getApplicantsByVacancyId.execute({vacancyId, statusId})
-
+        this.store.setLoadingState({ value: false})
+        
         applicantResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: Applicant[]) => {

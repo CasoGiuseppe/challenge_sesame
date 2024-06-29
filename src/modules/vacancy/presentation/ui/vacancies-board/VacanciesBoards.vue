@@ -1,6 +1,6 @@
 <template>
   <LoadingIs
-    :state="getLoadingState"
+    :state="isVacancyLoad"
     :message="translate({ key: `RECRUITMENT.BOARD.loading` })"
   >
     <TransitionIs
@@ -20,6 +20,7 @@
         <DraggableArea
           :id="id"
           :area="Areas[name.toUpperCase() as keyof typeof Areas]"
+          :loading="isApplicantLoad"
         >
           <template #title>{{
             translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
@@ -41,11 +42,12 @@ import DraggableArea from '@app/ui/components/tools/draggable-area/DraggableArea
 import { Areas } from '@app/ui/components/tools/draggable-area/types';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
-import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
 import useTranslation from '@app/shared/composables/useTranslation';
 import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import { Sizes } from '@app/ui/components/base/base-icon/types';
+import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
+import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 
 const iconMapper = {
   [Areas.NEW]: 'IconInbox',
@@ -55,7 +57,8 @@ const iconMapper = {
   [Areas.DISCARDED]: 'IconError'
 };
 
-const { getLoadingState, savedVacancyAreas } = storeToRefs(useVacancyStore);
+const { isLoading: isVacancyLoad, savedVacancyAreas } = storeToRefs(useVacancyStore);
+const { isLoading: isApplicantLoad } = storeToRefs(useApplicantStore)
 const { translate } = useTranslation();
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>
