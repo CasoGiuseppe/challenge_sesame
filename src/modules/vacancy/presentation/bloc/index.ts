@@ -30,7 +30,7 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
         if(this.store.vacancyAreasAreSaved) return;
         
         this.store.setLoadingState({ value: true})
-        await timeout(2000)  // simulate delay
+        await timeout()  // simulate delay
         const vacancyResult = await this.getVacancyById.execute(vacancyId)
         this.store.setLoadingState({ value: false})
 

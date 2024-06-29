@@ -37,7 +37,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
 
     getApplicantsByID = async({vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId}: {vacancyId?: IVacancyID, statusId?: string} = {}): Promise<void> => {
         this.store.setLoadingState({ value: true})
-        await timeout(2000)  // simulate delay
+        await timeout()  // simulate delay
         const applicantResult = await this.getApplicantsByVacancyId.execute({vacancyId, statusId})
         this.store.setLoadingState({ value: false})
         

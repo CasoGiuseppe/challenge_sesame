@@ -1,4 +1,9 @@
 <template>
+  <TransitionIs
+    :type="Types.OPACITY"
+    :easing="Easing.OUT"
+    :timing="Timing.FAST"
+  >
     <section
         v-if="state"
         class="loading-is"
@@ -6,11 +11,14 @@
         :data-message="message"
     />
     <slot v-else />
+  </TransitionIs>
 </template>
 <script setup lang="ts">
 import { type PropType } from 'vue';
 import { Is } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
+import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 
 defineProps({
   /**
