@@ -13,7 +13,7 @@ export const generateUUID = ():string => {
  * @param {number} ms - The number of milliseconds to wait before resolving the Promise.
  * @returns A Promise that resolves after the specified number of milliseconds.`
  */
-export const timeout = (ms: number = randomTiming(600, 1500)) => new Promise(resolve => setTimeout(resolve, ms));
+export const timeout = (ms: number = randomTiming(1100, 1800)) => new Promise(resolve => setTimeout(resolve, ms));
 
 /**
  * Generates a random number within the specified range (inclusive).
