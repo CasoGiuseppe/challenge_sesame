@@ -5,7 +5,7 @@ import { vacancyStore } from './model';
 import type { IVacancyPersistenceData } from '@modules/vacancy/data/models';
 
 export const useVacancyResponse = defineStore('useVacancyResponse', () => {
-  const state = reactive<IVancancyStore>(vacancyStore);
+  const state = reactive<IVancancyStore>(structuredClone(vacancyStore));
 
   const setLoadingState = ({ value }: { value: boolean }) => (state.loading = value);
   const setVacancyAreas = ({ area }: { area: IVacancyPersistenceData }) => (state.areas = [...state.areas, area]);

@@ -9,7 +9,7 @@ import type { ChangeApplicantStatusUseCase } from "@modules/applicant/domain/app
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 import type { Applicant } from "@modules/applicant/domain/core/Applicant";
 import { ApplicantMapper } from "@modules/applicant/data/models/mapper/ApplicantMapper";
-import type { ApplicantResponseStore } from "../store";
+import type { ApplicantResponseStore } from "../store/applicant";
 
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
