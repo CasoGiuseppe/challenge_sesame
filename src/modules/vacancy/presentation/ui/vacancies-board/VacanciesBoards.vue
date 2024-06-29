@@ -1,16 +1,19 @@
 <template>
-  <LoadingIs :state="getLoadingState" :message="translate({ key: `RECRUITMENT.BOARD.loading` })">
+  <LoadingIs
+    :state="getLoadingState"
+    :message="translate({ key: `RECRUITMENT.BOARD.loading` })"
+  >
     <TransitionIs
       group
       tag="ul"
       :type="Types.FROMBOTTOM"
       :easing="Easing.ELASTIC"
       :timing="Timing.FAST"
-      class="positions-boards"
+      class="vacancies-boards"
     >
       <li
         v-for="({ id, name }, index) in savedVacancyAreas"
-        class="positions-boards__col"
+        class="vacancies-boards__col"
         :key="id"
         :style="{ transitionDelay: `${index * 0.2}s` }"
       >
@@ -55,4 +58,4 @@ const iconMapper = {
 const { getLoadingState, savedVacancyAreas } = storeToRefs(useVacancyStore);
 const { translate } = useTranslation();
 </script>
-<style src="./PositionsBoards.scss" lang="scss" scoped></style>
+<style src="./VacanciesBoards.scss" lang="scss" scoped></style>

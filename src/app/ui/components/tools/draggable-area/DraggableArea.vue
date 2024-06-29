@@ -16,27 +16,32 @@
         <slot name="title" />
       </h3>
     </header>
-    <TransitionIs
-      group
-      tag="ul"
-      :type="Types.FROMLEFT"
-      :easing="Easing.ELASTIC"
-      :timing="Timing.NORMAL"
-      @dragover="handleDragOver"
-      @dragenter="handleDragEnter"
-      @dragleave="handleDragLeave"
-      @drop="handleDrop"
-      class="draggable-area__active-zone"
+    <LoadingIs
+      :state="true"
+      message="load"
     >
-      <li
-        :key="id"
-        v-for="({ id, title, content, footer }, index) of cards"
-        :style="{ transitionDelay: `${index * 0.05}s` }"
+      <TransitionIs
+        group
+        tag="ul"
+        :type="Types.FROMLEFT"
+        :easing="Easing.ELASTIC"
+        :timing="Timing.NORMAL"
+        @dragover="handleDragOver"
+        @dragenter="handleDragEnter"
+        @dragleave="handleDragLeave"
+        @drop="handleDrop"
+        class="draggable-area__active-zone"
       >
-        <!-- @slot Items: slot-scope to show cards -->
-        <slot :property="{ id, title, content, footer }" name="items" />
-      </li>
-    </TransitionIs>
+        <li
+          :key="id"
+          v-for="({ id, title, content, footer }, index) of cards"
+          :style="{ transitionDelay: `${index * 0.05}s` }"
+        >
+          <!-- @slot Items: slot-scope to show cards -->
+          <slot :property="{ id, title, content, footer }" name="items" />
+        </li>
+      </TransitionIs>
+    </LoadingIs>
   </section>
 </template>
 <script setup lang="ts">
@@ -46,6 +51,7 @@ import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidat
 import { Areas, type ICardItem } from './types';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
+import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
 
 const { cards, id } = defineProps({
   /**

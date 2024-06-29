@@ -1,10 +1,10 @@
-.positions-boards {
-    $positionboards: &;
+.vacancies-boards {
+    $vacanciesboards: &;
 
     @include create-snap-scroll;
     @apply flex h-full gap-xmd overflow-y-hidden;
 
-    .positions-boards__col {
+    &__col {
         @apply flex-[300px] flex-shrink-0 flex-grow-0;
 
         @screen phone {

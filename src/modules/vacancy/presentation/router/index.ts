@@ -7,7 +7,7 @@ export default [
         meta: { family: 'recruitment', type: 'recruitment'},
         name: 'positions',
         components: {
-          default: () => import(/* webpackChunkName: "PositionsBoard" */ '@modules/vacancy/presentation/ui/positions-board/PositionsBoards.vue'),
+          default: () => import(/* webpackChunkName: "VacanciesBoard" */ '@modules/vacancy/presentation/ui/vacancies-board/VacanciesBoards.vue'),
           aside: () => import(/* webpackChunkName: "Panel" */ '@app/ui/layouts/partials/section-panel/SectionPanel.vue'),
         },
 
