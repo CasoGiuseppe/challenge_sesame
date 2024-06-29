@@ -7,6 +7,7 @@ import type { CreateNewApplicantUseCase } from "@modules/applicant/domain/applic
 import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
 import type { ChangeApplicantStatusUseCase } from "@modules/applicant/domain/application/use-cases/ChangeApplicantStatus";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
+import type { Applicant } from "@modules/applicant/domain/core/Applicant";
 import type { ApplicantResponseStore } from "../store";
 
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
@@ -33,30 +34,30 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         this.changeApplicantStatus = changeApplicantStatus;
     }
 
-    getApplicantsByID = async({vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId}: {vacancyId?: IVacancyID, statusId?: string}): Promise<void> => {
+    getApplicantsByID = async({vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId}: {vacancyId?: IVacancyID, statusId?: string} = {}): Promise<void> => {
         const applicantResult = await this.getApplicantsByVacancyId.execute({vacancyId, statusId})
 
         applicantResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
-            (response: any) => { console.log('applicants', response) }
+            (response: Applicant[]) => { console.log('applicants', response) }
         )
     }
 
-    addNewApplicant = async({ firstName, lastName, vacancyId, statusId }: ISendApplicant): Promise<void> => {
+    addNewApplicant = async({ firstName, lastName, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant): Promise<void> => {
         const newApplicant = await this.createNewApplicant.execute({ firstName, lastName, vacancyId, statusId })
         
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
-            (response: any) => { console.log('new applicant', response) }
+            (response: Applicant) => { console.log('new applicant', response) }
         )
     }
 
-    changeApplicantArea = async({ employeeId, firstName, lastName, vacancyId, statusId }: ISendApplicant) => {
+    changeApplicantArea = async({ employeeId, firstName, lastName, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant) => {
         const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, vacancyId, statusId })
 
         changedApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
-            (response: any) => { console.log('change applicant', response) }
+            (response: Applicant) => { console.log('change applicant', response) }
         )
     }
 }

@@ -17,7 +17,6 @@
         <DraggableArea
           :id="id"
           :area="Areas[name.toUpperCase() as keyof typeof Areas]"
-          @load="loadArea"
         >
           <template #title>{{
             translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
@@ -56,10 +55,5 @@ const iconMapper = {
 
 const { getLoadingState, savedVacancyAreas } = storeToRefs(useVacancyStore);
 const { translate } = useTranslation();
-
-const loadArea = ({ id }: { id: string }) => {
-  const applicant = dependencies.provideApplicantPloc()
-  applicant.getApplicantsByID({ statusId: id })
-}
 </script>
 <style src="./PositionsBoards.scss" lang="scss" scoped></style>

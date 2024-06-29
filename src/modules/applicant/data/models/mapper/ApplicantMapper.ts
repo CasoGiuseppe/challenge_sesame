@@ -7,7 +7,14 @@ export class ApplicantMapper {
     return response.data
   }
 
-  public static toPersistance () {}
+  public static toPersistance (applicant: Applicant) {
+    return {
+      name: applicant.getCompleteName,
+      createAt: applicant.getCreationDate,
+      creator: applicant.getCreatedBy,
+      status: applicant.getStatus
+    }
+  }
 
   public static toDomain(raw: IApplicantDataResponse): Applicant {
     return Applicant.createApplicant({
