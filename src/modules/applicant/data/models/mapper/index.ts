@@ -103,3 +103,10 @@ export interface IApplicantPostData {
   vacancyId?: IVacancyID
   statusId?: string,
 }
+
+export interface IApplicantPersistenceData {
+  name: string;
+  createAt: string;
+  creator: string;
+  areaID: string | undefined;
+}

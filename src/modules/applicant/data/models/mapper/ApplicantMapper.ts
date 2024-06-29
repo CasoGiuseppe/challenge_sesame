@@ -1,4 +1,4 @@
-import type { IApplicantDataResponse } from "."
+import type { IApplicantDataResponse, IApplicantPersistenceData } from "."
 import { Applicant } from "@modules/applicant/domain/core/Applicant"
 import { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID"
 
@@ -7,12 +7,12 @@ export class ApplicantMapper {
     return response.data
   }
 
-  public static toPersistance (applicant: Applicant) {
+  public static toPersistance (applicant: Applicant): IApplicantPersistenceData {
     return {
       name: applicant.getCompleteName,
-      createAt: applicant.getCreationDate,
+      createAt: applicant.getCreationDate.toLocaleDateString("es-ES"),
       creator: applicant.getCreatedBy,
-      status: applicant.getStatus
+      areaID: applicant.getStatus
     }
   }
 

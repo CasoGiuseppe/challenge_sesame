@@ -8,6 +8,7 @@ import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
 import type { ChangeApplicantStatusUseCase } from "@modules/applicant/domain/application/use-cases/ChangeApplicantStatus";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 import type { Applicant } from "@modules/applicant/domain/core/Applicant";
+import { ApplicantMapper } from "@modules/applicant/data/models/mapper/ApplicantMapper";
 import type { ApplicantResponseStore } from "../store";
 
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
@@ -39,7 +40,9 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
 
         applicantResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
-            (response: Applicant[]) => { console.log('applicants', response) }
+            (response: Applicant[]) => {
+                response.map((applicant: Applicant) => console.log(ApplicantMapper.toPersistance(applicant)))
+            }
         )
     }
 
