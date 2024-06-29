@@ -1,6 +1,6 @@
-import type { IApplicantStore } from "../interfaces/IApplicantStore";
+import type { IApplicantStoreModel } from "../interfaces/IApplicantStore";
 
-export const applicantStore: IApplicantStore = {
+export const applicantStore: IApplicantStoreModel = {
     loading: false,
     applicants: []
 }

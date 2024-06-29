@@ -1,6 +1,6 @@
 import type { IApplicantPersistenceData } from "@modules/applicant/data/models/mapper";
 
-export interface IApplicantStore {         
+export interface IApplicantStoreModel {         
     loading: boolean;
     applicants: IApplicantPersistenceData[]
 }

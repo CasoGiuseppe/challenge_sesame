@@ -1,6 +1,6 @@
-import type { IVancancyStore } from "../interfaces/IVancancyStore";
+import type { IVancancyStoreModel } from "../interfaces/IVancancyStore";
 
-export const vacancyStore: IVancancyStore = {
+export const vacancyStore: IVancancyStoreModel = {
     loading: false,
     areas: []
 }

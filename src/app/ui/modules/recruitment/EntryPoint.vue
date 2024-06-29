@@ -73,6 +73,7 @@
   import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
   import useTranslation from '@app/shared/composables/useTranslation';
   import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
+  import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 
   const { translate } = useTranslation();
   
@@ -90,10 +91,12 @@
       })
   })
   
+  const { isLoading: isVacancyLoad } = storeToRefs(useVacancyStore);
   const { isLoading: isApplicantLoad } = storeToRefs(useApplicantStore)
   const loadingMapper = reactive<{ states: { [key: string]: ComputedRef<boolean> } }>({
     states: {
-      applicants: computed(() => isApplicantLoad.value)
+      applicants: computed(() => isApplicantLoad.value),
+      positions: computed(() => isVacancyLoad.value)
     }
   })
 
