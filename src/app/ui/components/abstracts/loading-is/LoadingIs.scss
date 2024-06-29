@@ -1,13 +1,29 @@
 .loading-is {
+    --spinner-bg-color: var(--color-logo-600);
+    --spinner-color: var(--color-neutral-300);
+
     @include create-spinner(
         $size: var(--spacing-70),
-        $borderColor: var(--color-neutral-300),
-        $borderBColor: var(--color-logo-600)
+        $borderColor: var(--spinner-color),
+        $borderBColor: var(--spinner-bg-color)
     );
 
-    @apply flex items-center justify-center min-h-full flex-col;
+    @apply flex items-center justify-center min-h-full flex-col gap-md;
 
     &:before {
-        @apply content-[attr(data-message)]
+        @apply content-[attr(data-message)];
+        @apply text-center text-xsm text-logo-600 font-regular;
+    }
+
+    &[type="layer"]{
+        --spinner-bg-color: var(--color-neutral-300);
+        --spinner-color: var(--color-logo-400);
+        
+        @apply absolute inset-none;
+        @apply bg-default-layer;
+
+        &::before {
+            @apply text-neutral-100
+        }
     }
 }

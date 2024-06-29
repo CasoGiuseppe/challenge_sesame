@@ -17,8 +17,8 @@
       </h3>
     </header>
     <LoadingIs
-      :state="true"
-      message="load"
+      :state="loading"
+      :message="translate({ key: `RECRUITMENT.BOARD.AREAS.loading` })"
     >
       <TransitionIs
         group
@@ -52,6 +52,7 @@ import { Areas, type ICardItem } from './types';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
+import useTranslation from '@app/shared/composables/useTranslation';
 
 const { cards, id } = defineProps({
   /**
@@ -77,7 +78,15 @@ const { cards, id } = defineProps({
   cards: {
     type: Array as PropType<Array<ICardItem>>,
     default: () => []
-  }
+  },
+
+  /**
+   * Set loading state
+   */
+   loading: {
+    type: Boolean as PropType<Boolean>,
+    default: true
+  },
 });
 
 const customEmits = defineEmits(['drag-enter', 'drag-leave', 'drop-end', 'drag-over', 'load']);
@@ -105,6 +114,7 @@ const handleDrop = (payload: Event) => {
   customEmits('drop-end', { id });
 };
 
+const { translate } = useTranslation();
 onMounted(() => customEmits('load', { id }))
 </script>
 <style src="./DraggableArea.scss" lang="scss" scoped></style>

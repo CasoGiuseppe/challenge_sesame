@@ -21,6 +21,9 @@ import { Is } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 const { is } = defineProps({
+    /**
+     * Set the component type [button, router-link]
+     */
     is: {
         type: String as PropType<Is>,
         default: Is.BUTTON,

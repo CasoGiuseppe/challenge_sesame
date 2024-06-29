@@ -1,7 +1,7 @@
 .draggable-area {
     $draggablearea: &;
 
-    @apply flex flex-col gap-xmd py-md border-[1px] border-background-200 border-solid h-full w-full box-border;
+    @apply flex flex-col gap-xmd py-md border-[1px] border-background-200 border-solid h-full w-full box-border relative overflow-hidden;
     @apply rounded-md;
     @apply font-default text-logo-600;
     @apply transition-colors duration-[var(--animationTime)];

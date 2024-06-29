@@ -27,6 +27,9 @@ import { Types, Easing, Timing } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 const { type, group } = defineProps({
+  /**
+   * Set the type of custom animation [from-bottom, from-left, from-right, from-top]
+   */
   type: {
     type: String as PropType<Types>,
     default: Types.FROMBOTTOM,
@@ -34,11 +37,17 @@ const { type, group } = defineProps({
       ensureValueCollectionExists({ collection: Types, value: prop })
   },
 
+  /**
+   * Set if transition handle a group of elements
+   */
   group: {
     type: Boolean as PropType<boolean>,
     default: false
   },
 
+  /**
+   * Set easing type
+   */
   easing: {
     type: String as PropType<Easing>,
     default: Easing.OUT,
@@ -46,6 +55,9 @@ const { type, group } = defineProps({
       ensureValueCollectionExists({ collection: Easing, value: prop })
   },
 
+  /**
+   * Set the animation velocity
+   */
   timing: {
     type: String as PropType<Timing>,
     default: Timing.NORMAL,

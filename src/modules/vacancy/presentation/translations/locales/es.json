@@ -1,6 +1,14 @@
 {
   "positions": "Vacantes",
   "BOARD": {
-    "loading": "El tablero de vacantes está por llegar..."
+    "loading": "El tablero de vacantes está por llegar...",
+    "AREAS": {
+      "new": "Nuevo",
+      "accepted": "Aceptado",
+      "interview": "Entrevista",
+      "selected": "Contratado",
+      "discarded": "No seleccionado",
+      "loading": "Estamos actualizando los estados de los candidatos de la vacante"
+    } 
   }
 }

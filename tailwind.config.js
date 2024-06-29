@@ -74,6 +74,7 @@ export default {
         drawer: 'hsla(224, 45%, 22%, .3)',
         outline: 'var(--color-outline, #000)',
         none: 'transparent',
+        layer: 'var(--color-layer, #000)'
       },
       warning: {
         100: 'var(--color-warning-100, #000)',
