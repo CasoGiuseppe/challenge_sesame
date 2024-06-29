@@ -41,7 +41,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         applicantResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: Applicant[]) => {
-                response.map((applicant: Applicant) => console.log(ApplicantMapper.toPersistance(applicant)))
+                response.map((applicant: Applicant) => this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(applicant) }))
             }
         )
     }

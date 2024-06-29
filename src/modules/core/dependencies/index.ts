@@ -9,6 +9,7 @@ import { GetApplicantsByVacancyIdUseCase } from "@modules/applicant/domain/appli
 import { ChangeApplicantStatusUseCase } from "@modules/applicant/domain/application/use-cases/ChangeApplicantStatus"
 import { HTTPServiceProvider } from "@modules/core/providers/http/http.provide"
 import { useVacancyStore } from "@modules/vacancy/presentation/store/vacancy"
+import { useApplicantStore } from "@/modules/applicant/presentation/store/applicant"
 
 const provideVacancyPloc = () => {
     const router = useRouter()
@@ -25,13 +26,14 @@ const provideVacancyPloc = () => {
 
 const provideApplicantPloc = () => {
     const router = useRouter()
-
+    const store = useApplicantStore
     const applicantRepository = new ApplicantRepository(new HTTPServiceProvider())
     const getApplicantsByVacancyId = new GetApplicantsByVacancyIdUseCase(applicantRepository)
     const createNewApplicant = new CreateNewApplicantUseCase(applicantRepository)
     const changeApplicantStatus = new ChangeApplicantStatusUseCase(applicantRepository)
     return new ApplicantBloc({
         router,
+        store,
         getApplicantsByVacancyId,
         createNewApplicant,
         changeApplicantStatus
