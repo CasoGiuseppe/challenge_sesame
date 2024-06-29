@@ -36,6 +36,8 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     }
 
     getApplicantsByID = async({vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId}: {vacancyId?: IVacancyID, statusId?: string} = {}): Promise<void> => {
+        if(this.store.applicantsAlreadyExists) return;
+        
         this.store.setLoadingState({ value: true})
         await timeout()  // simulate delay
         const applicantResult = await this.getApplicantsByVacancyId.execute({vacancyId, statusId})

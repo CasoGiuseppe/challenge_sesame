@@ -10,6 +10,8 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const setLoadingState = ({ value }: { value: boolean }) => (state.loading = value);
   const setApplicants = ({ applicant }: { applicant: IApplicantPersistenceData }) => (state.applicants = [...state.applicants, applicant]);
 
+  const savedApplicants = computed((): IApplicantPersistenceData[] => state.applicants);
+  const applicantsAlreadyExists = computed((): boolean => savedApplicants.value.length > 0);
   const isLoading = computed((): boolean => state.loading);
   
   return {
@@ -18,7 +20,8 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
     setLoadingState,
     setApplicants,
     
-    isLoading
+    isLoading,
+    applicantsAlreadyExists
   }
 })
 
