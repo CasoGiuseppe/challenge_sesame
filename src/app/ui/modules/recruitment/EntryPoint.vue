@@ -65,7 +65,6 @@
   
   import { Types as buttonTypes, Sizes } from "@app/ui/components/base/base-button/types"
   import { Types as inputTypes } from "@app/ui/components/base/base-input/types"
-  import { Types as transitionType , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
   import { Orientation } from "@app/ui/components/tools/menu-shell/types"
   import { Is } from '@app/ui/components/abstracts/component-is/types';
   import { Types } from '@app/ui/components/abstracts/transition-is/types';

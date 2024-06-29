@@ -11,12 +11,14 @@ const meta = {
         id: { control: "text" },
         is: { control: "select", options: Object.values(Is) },
         selected: { control: "radio", options: [true, false] },
+        loading: { control: "radio", options: [true, false] },
         default: { control: "text" }
     },
     args: {
         id: "defaultID",
         is: Is.BUTTON,
         selected: false,
+        loading: false,
         default: 'Candidatos'
     }
 } satisfies Meta<typeof BaseTab>

@@ -4,6 +4,8 @@
     :is="is"
     :aria-current="selected"
     :selected="selected"
+    :loading="loading"
+    :disabled="loading"
     class="base-tab"
     data-testID="ui-tab-test"
     @click="handleEmitClick"
@@ -39,12 +41,20 @@ const { id } = defineProps({
   },
 
   /**
-     * Handle selected state
-     */
-     selected: {
-        type: Boolean as PropType<boolean>,
-        default: false
-    }
+   * Handle selected state
+   */
+    selected: {
+      type: Boolean as PropType<boolean>,
+      default: false
+  },
+
+  /**
+   * Handle loading state
+   */
+   loading: {
+      type: Boolean as PropType<boolean>,
+      default: false
+  }
 });
 
 const emits = defineEmits(['send']);

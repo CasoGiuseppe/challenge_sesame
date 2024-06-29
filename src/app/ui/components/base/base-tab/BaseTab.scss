@@ -1,5 +1,5 @@
 .base-tab {
-    @apply inline-flex py-sm relative;
+    @apply inline-flex py-sm relative items-center justify-center gap-sm;
     @apply font-default text-neutral-300 text-md font-regular;
     @apply rounded-xsm select-none;
     @apply transition-all duration-[var(--animationTime)] ease-elastic;
@@ -12,9 +12,22 @@
         @apply pointer-events-none;
         @apply font-bold text-variant-100;
 
-        &::after {
+        &::before {
             @apply py-[2px]
         }
+    }
+
+    &[loading = true] {
+        @include create-spinner(
+            $size: var(--spacing-50),
+            $borderColor: var(--color-neutral-300),
+            $borderBColor: var(--color-logo-600)
+        );
+    }
+
+    &[disabled = true],
+    &:disabled {
+        @apply pointer-events-none
     }
 
     &:focus-visible {
@@ -30,7 +43,7 @@
         }
     }
 
-    &::after {
+    &::before {
         @apply absolute bottom-none w-full inset-x-none inset-y-auto;
         @apply content-[''] bg-variant-100 rounded-t-xxsm;
         @apply transition-spacing duration-[var(--animationTime)]
