@@ -43,7 +43,6 @@ import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
 import useTranslation from '@app/shared/composables/useTranslation';
 import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import { Sizes } from '@app/ui/components/base/base-icon/types';
-import { dependencies } from '@modules/core/dependencies';
 
 const iconMapper = {
   [Areas.NEW]: 'IconInbox',

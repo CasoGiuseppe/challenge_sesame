@@ -59,7 +59,6 @@
   import TabsShell from "@app/ui/components/tools/tabs-shell/TabsShell.vue"
   import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
   import MenuShell from "@app/ui/components/tools/menu-shell/MenuShell.vue"
-  import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
   import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
   import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue";
   

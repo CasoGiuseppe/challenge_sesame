@@ -8,9 +8,7 @@
   </RouterView>
 </template>
 <script setup lang="ts">
-import { dependencies } from '@/modules/core/dependencies';
 import { onMounted } from 'vue';
-
 onMounted(async () => {
   // const vacancy = dependencies.provideVacancyPloc()
   // const applicants = dependencies.provideApplicantPloc()
