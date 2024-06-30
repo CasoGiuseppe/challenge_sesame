@@ -1,7 +1,7 @@
 .vacancies-boards {
     $vacanciesboards: &;
 
-    @include create-snap-scroll;
+    @include create-snap-scroll($direction: 'x');
     @apply flex h-full gap-xmd overflow-y-hidden;
 
     &__col {
