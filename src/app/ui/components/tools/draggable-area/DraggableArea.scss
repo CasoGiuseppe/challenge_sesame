@@ -56,6 +56,16 @@
         @include create-snap-scroll($direction: 'y');
         @apply overflow-x-hidden;
         @apply flex flex-col flex-[2] m-none px-md gap-sm;
+
+        &--is {
+            &-empty {
+                @apply items-center justify-center
+            }
+        }
+    }
+
+    &__fallback {
+        @apply text-neutral-400 text-sm
     }
 
 }

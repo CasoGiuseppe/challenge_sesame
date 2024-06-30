@@ -24,16 +24,20 @@
       <TransitionIs
         group
         tag="ul"
-        :type="Types.FROMLEFT"
-        :easing="Easing.ELASTIC"
+        :type="ensureCardsExist ? Types.FROMLEFT : Types.OPACITY"
+        :easing="ensureCardsExist ? Easing.ELASTIC: Easing.OUT"
         :timing="Timing.NORMAL"
         @dragover="handleDragOver"
         @dragenter="handleDragEnter"
         @dragleave="handleDragLeave"
         @drop="handleDrop"
-        class="draggable-area__active-zone"
+        :class="[
+          'draggable-area__active-zone',
+          ensureCardsExist ? '' : 'draggable-area__active-zone--is-empty'
+        ]"
       >
         <li
+          v-if="ensureCardsExist"
           :key="id"
           v-for="({ id, title, content, footer }, index) of cards"
           :style="{ transitionDelay: `${index * 0.05}s` }"
@@ -41,22 +45,27 @@
           <!-- @slot Items: slot-scope to show cards -->
           <slot :property="{ id, title, content, footer }" name="items" />
         </li>
+        <li
+          v-else
+          class="draggable-area__fallback"
+        >
+          <slot name="fallback">No items was found</slot>
+        </li>
       </TransitionIs>
     </LoadingIs>
   </section>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { onMounted, ref, type PropType } from 'vue';
+import { computed, onMounted, ref, type PropType } from 'vue';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 import { Areas, type ICardItem } from './types';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
-import useTranslation from '@app/shared/composables/useTranslation';
 import { Is } from '@app/ui/components/abstracts/loading-is/types';
 
-const { cards, id } = defineProps({
+const props = defineProps({
   /**
    * Set the unique id of the ui dragArea
    */
@@ -124,7 +133,7 @@ const handleDrop = (payload: Event) => {
   customEmits('drop-end', { id });
 };
 
-const { translate } = useTranslation();
-onMounted(() => customEmits('load', { id }))
+const ensureCardsExist = computed(() => props.cards.length > 0)
+onMounted(() => customEmits('load', { id: props.id }))
 </script>
 <style src="./DraggableArea.scss" lang="scss" scoped></style>
