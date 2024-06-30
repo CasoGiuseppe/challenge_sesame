@@ -21,6 +21,7 @@
           :id="id"
           :area="Areas[name.toUpperCase() as keyof typeof Areas]"
           :loading="isApplicantLoad"
+          :cards="cardContentMapped(id)"
         >
           <template #title>{{
             translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
@@ -30,6 +31,13 @@
               :size="Sizes.L"
               :name="iconMapper[Areas[name.toUpperCase() as keyof typeof Areas]]"
             />
+          </template>
+          <template #items="{ property: { id, title, content } }">
+              <CardData :id="id" draggable>
+                  <template #title>{{ title }}</template>
+                  <template #content>{{ content }}</template>
+                  <!-- <template #footer>{{ footer }}</template> -->
+              </CardData>
           </template>
         </DraggableArea>
       </li>
@@ -48,6 +56,8 @@ import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import { Sizes } from '@app/ui/components/base/base-icon/types';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
+import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
+import CardData from "@app/ui/components/elements/card-data/CardData.vue";
 
 const iconMapper = {
   [Areas.NEW]: 'IconInbox',
@@ -58,7 +68,16 @@ const iconMapper = {
 };
 
 const { isLoading: isVacancyLoad, savedVacancyAreas } = storeToRefs(useVacancyStore);
-const { isLoading: isApplicantLoad } = storeToRefs(useApplicantStore)
+const { isLoading: isApplicantLoad, filterdApplicantsByArea } = storeToRefs(useApplicantStore)
 const { translate } = useTranslation();
+const cardContentMapped = (id: string) => {
+  return filterdApplicantsByArea.value(id).map(({areaID, name, creator}: IApplicantPersistenceData) => {
+    return {
+      id: areaID,
+      title: name,
+      content: creator,
+    }
+  })
+}
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>

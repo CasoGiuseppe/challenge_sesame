@@ -4,6 +4,7 @@
         <template #default>
           <MenuShell
             id="tabsNavigation"
+            tag="menu"
             :routes="routesNavigation"
             :orientation="Orientation.HORIZONTAL"
             :animation="Types.FROMBOTTOM"

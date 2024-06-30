@@ -4,7 +4,7 @@
     @apply flex flex-col gap-md h-full;
 
     &__board {
-        @apply flex-[2];
+        @apply flex-[2] overflow-hidden;
 
         @include create-animation(
             $name: 'from-top',

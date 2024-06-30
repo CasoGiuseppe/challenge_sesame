@@ -28,6 +28,7 @@
                             <template #content>
                                 <MenuShell
                                     id="mainNavigation"
+                                    tag="menu"
                                     :routes="routesNavigation"
                                     :customStyle="{ paddingLeft : '7px' }"
                                 >

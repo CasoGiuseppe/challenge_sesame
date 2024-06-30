@@ -7,8 +7,8 @@ export enum Areas {
 }
 
 export type ICardItem = {
-    id: string,
+    id: string | undefined,
     title: string,
     content: string,
-    footer: string,
+    footer?: string,
 }

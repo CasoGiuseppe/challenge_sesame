@@ -19,7 +19,7 @@
         --spinner-bg-color: var(--color-neutral-300);
         --spinner-color: var(--color-logo-400);
         
-        @apply absolute inset-none;
+        @apply absolute inset-none p-sm;
         @apply bg-default-layer;
 
         &::before {

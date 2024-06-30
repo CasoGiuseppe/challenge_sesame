@@ -13,6 +13,7 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const savedApplicants = computed((): IApplicantPersistenceData[] => state.applicants);
   const applicantsAlreadyExists = computed((): boolean => savedApplicants.value.length > 0);
   const isLoading = computed((): boolean => state.loading);
+  const filterdApplicantsByArea = computed(() => (area: string) => state.applicants.filter((applicant: IApplicantPersistenceData) => applicant.areaID === area))
   
   return {
     state,
@@ -21,7 +22,8 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
     setApplicants,
     
     isLoading,
-    applicantsAlreadyExists
+    applicantsAlreadyExists,
+    filterdApplicantsByArea
   }
 })
 
