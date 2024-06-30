@@ -40,7 +40,7 @@
               :type="buttonTypes.SECONDARY"
               :size="buttonSizes.SMALL"
               :is="Is.ROUTERLINK"
-              :to="{ name: 'createApplicant' }"
+              :to="{ name: 'createApplicant', params: { area: id } }"
             >
               <template #default>{{ translate({ key: `ACCION.add` }) }}</template>
             </BaseButton>

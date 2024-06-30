@@ -9,7 +9,8 @@ export enum Sizes {
 }
 
 export type RouterTo = {
-    path?: string
-    name?: string
-    query?: { [key: string]: string }
+    path?: string,
+    name?: string,
+    query?: { [key: string]: string },
+    params?: { [key: string]: string }
 }

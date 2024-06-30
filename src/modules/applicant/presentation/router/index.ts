@@ -10,7 +10,7 @@ export default [{
     },
     children: [
       {
-        path: 'create',
+        path: 'create/:area?',
         meta: { family: 'recruitment'},
         name: 'createApplicant',
         components: {
