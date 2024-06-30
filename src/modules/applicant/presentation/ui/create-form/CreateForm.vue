@@ -36,7 +36,6 @@
         :type="buttonTypes.PRIMARY"
         :size="Sizes.DEFAULT"
         :disabled="isDisabled"
-        :loading="true"
       >
           <template #default>{{ translate({ key: `RECRUITMENT.FORM.ADD.action` }) }}</template>
       </BaseButton>

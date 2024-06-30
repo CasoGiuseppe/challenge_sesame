@@ -4,6 +4,13 @@
     @apply flex flex-col items-end gap-sm;
 
     &__description {
-        @apply text-sm
+        @apply text-sm;
+        
+        &::v-deep {
+            + * {
+                @apply mt-md
+            }
+        }
+        
     }
 }
