@@ -12,13 +12,13 @@
         <slot name="description" />
       </p>
       <BaseInput
-        v-for="{ id, proxy, placeholder, icon } of form.fields"
+        v-for="{ id, proxy, placeholder, pattern, icon } of form.fields"
         :id="id"
         :type="Types.TEXT"
         :proxy-value="proxy"
         :placeholder="placeholder"
         required
-        pattern="^[a-zA-Z0-9 ]+$"
+        :pattern="pattern"
         fullsize
         @update:modelValue="updateValue"
         @invalid="setValidation"
@@ -43,6 +43,7 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive } from "vue";
+import { useRoute } from "vue-router";
 import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue";
 import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue";
@@ -50,8 +51,10 @@ import { Types as buttonTypes, Sizes } from "@app/ui/components/base/base-button
 import { Types } from "@app/ui/components/base/base-input/types";
 import type { IForm, IFormField } from "./types";
 import useTranslation from '@app/shared/composables/useTranslation';
+import { dependencies } from '@modules/core/dependencies';
 
 const { translate } = useTranslation();
+const route = useRoute();
 
 const errorsKind = {
   validation: `${translate({key: 'FORM.errors.validation' })}`,
@@ -63,6 +66,7 @@ const form = reactive<IForm>({ fields: [
       id: "firstName",
       validation: { mode: '', invalid: true,  },
       proxy: '',
+      pattern: '^[a-zA-Z0-9 ]+$',
       placeholder: `${translate({key: 'FORM.placeholder.firstname' })}`,
       icon: 'IconUser'
   },
@@ -70,6 +74,7 @@ const form = reactive<IForm>({ fields: [
       id: "lastName",
       validation: { mode: '', invalid: true,  },
       proxy: '',
+      pattern: '^[a-zA-Z0-9 ]+$',
       placeholder: `${translate({key: 'FORM.placeholder.lastname' })}`,
       icon: 'IconUser'
   },
@@ -77,6 +82,7 @@ const form = reactive<IForm>({ fields: [
     id: "email",
     validation: { mode: '', invalid: true,  },
     proxy: '',
+    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
     placeholder: `${translate({key: 'FORM.placeholder.email' })}`,
     icon: 'IconMail'
   }
@@ -114,6 +120,14 @@ const setValidation = ({id, mode, value}: {id: string, mode: string, value: bool
   field.validation.invalid = value
 }
 
-const sendCreation = () => console.log("Creation")
+const sendCreation = () => {
+  const applicants = dependencies.provideApplicantPloc()
+  applicants.createApplicant({
+    ...(currentField.value('firstName') && {firstName: currentField.value('firstName')?.proxy}),
+    ...(currentField.value('lastName') && {lastName: currentField.value('lastName')?.proxy}),
+    ...(currentField.value('email') && {email: currentField.value('email')?.proxy}),
+    statusId: route.params.area as string
+  });
+}
 </script>
 <style src="./CreateForm.scss" lang="scss" scoped></style>

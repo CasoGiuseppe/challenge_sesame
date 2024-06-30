@@ -6,6 +6,7 @@ export interface IFormField {
     id: string,
     validation: IFormValidation,
     proxy: string,
+    pattern: RegExp | string,
     placeholder: string,
     icon: string
 }
