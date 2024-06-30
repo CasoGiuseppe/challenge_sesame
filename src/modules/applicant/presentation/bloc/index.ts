@@ -51,8 +51,8 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         )
     }
 
-    addNewApplicant = async({ firstName, lastName, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant): Promise<void> => {
-        const newApplicant = await this.createNewApplicant.execute({ firstName, lastName, vacancyId, statusId })
+    createApplicant = async({ firstName, lastName, email, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant): Promise<void> => {
+        const newApplicant = await this.createNewApplicant.execute({ firstName, lastName, email, vacancyId, statusId })
         
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
@@ -60,8 +60,8 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         )
     }
 
-    changeApplicantArea = async({ employeeId, firstName, lastName, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant) => {
-        const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, vacancyId, statusId })
+    changeApplicantArea = async({ employeeId, firstName, lastName, email, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant) => {
+        const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, email, vacancyId, statusId })
 
         changedApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 

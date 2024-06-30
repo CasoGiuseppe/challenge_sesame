@@ -5,12 +5,11 @@
 
     &__description {
         @apply text-sm;
-        
+
         &::v-deep {
             + * {
                 @apply mt-md
             }
         }
-        
     }
 }

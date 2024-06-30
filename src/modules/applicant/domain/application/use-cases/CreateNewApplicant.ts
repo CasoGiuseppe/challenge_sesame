@@ -9,7 +9,7 @@ export class CreateNewApplicantUseCase {
         private applciantRepository: IApplicantRepository
       ){}
 
-    async execute({firstName, lastName, vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>>{
-        return this.applciantRepository.createNewApplicant({ vacancyId, statusId, firstName, lastName })
+    async execute({firstName, lastName, email, vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>>{
+        return this.applciantRepository.createNewApplicant({ firstName, lastName, email, statusId, vacancyId })
     }
 }

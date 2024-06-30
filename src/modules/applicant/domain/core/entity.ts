@@ -9,6 +9,7 @@ export interface ISendApplicant {
     employeeId?: string;
     firstName: string;
     lastName: string;
+    email: string;
     vacancyId?: IVacancyID;
     statusId?: string;
 }
