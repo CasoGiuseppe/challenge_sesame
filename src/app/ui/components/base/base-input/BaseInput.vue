@@ -7,7 +7,7 @@
     >
       <!-- @slot Icon: slot to show icon if is necessary -->
       <slot name="icon" v-if="!loading">
-          <BaseInput
+          <BaseIcon
             v-if="isSearchType"
             name="IconSearch"
           />
@@ -50,7 +50,7 @@ import type { UniqueId } from '@/app/ui/types';
 import { computed, ref, watch, type PropType } from 'vue';
 import { Types } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
-import BaseInput from '@app/ui/components/base/base-icon/BaseIcon.vue';
+import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types as transType, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 

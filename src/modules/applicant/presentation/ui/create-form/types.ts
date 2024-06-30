@@ -6,7 +6,8 @@ export interface IFormField {
     id: string,
     validation: IFormValidation,
     proxy: string,
-    placeholder: string
+    placeholder: string,
+    icon: string
 }
 
 export interface IFormValidation {
