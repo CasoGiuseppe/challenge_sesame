@@ -9,8 +9,15 @@ export default async () => {
   return {
     "FORM": {
       "placeholder": {
-        "search": "Buscar"
-      }
+        "search": "Buscar",
+        "firstname": "Nombre",
+        "lastname": "Apellido",
+        "email": "Correo electrónico",
+      },
+      "errors": {
+        "validation": "El valor introducido no cumple con la validación",
+        "required": "El campo necesita de un valor porqué es obligatorio"
+      } 
     },
     "ACCION": {
       "add": "Añadir",
