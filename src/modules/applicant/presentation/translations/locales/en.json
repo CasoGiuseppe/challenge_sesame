@@ -2,7 +2,8 @@
   "applicants": "Applicants",
   "FORM": {
     "ADD": {
-      "title": "Create new applicant" 
+      "title": "Create new applicant",
+      "action": "Add applicant"
     }
   }
 }

@@ -9,12 +9,15 @@
         <template #header>
             {{ translate({ key: `${(family as string).toUpperCase()}.FORM.ADD.title` }) }}
         </template>
-        <template #body>body</template>
+        <template #body>
+            <CreateForm></CreateForm>
+        </template>
     </DrawerPanel>
 </template>
 <script setup lang="ts">
 import { onMounted, ref } from "vue"
 import DrawerPanel from "@app/ui/components/elements/drawer-panel/DrawerPanel.vue"
+import CreateForm from "@modules/applicant/presentation/ui/create-form/CreateForm.vue"
 import { Types, Position } from "@app/ui/components/elements/drawer-panel/types"
 import { useRouter, useRoute } from "vue-router";
 import useTranslation from "@app/shared/composables/useTranslation";

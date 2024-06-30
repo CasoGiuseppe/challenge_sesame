@@ -15,7 +15,7 @@ export default async () => {
     },
     "ACCION": {
       "add": "Add one",
-      "addApplicant": "Add applicant"
+      "create": "Create"
     },
     "ROLES": {
       "admin": "Administrator"

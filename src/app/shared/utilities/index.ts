@@ -22,3 +22,14 @@ export const timeout = (ms: number = randomTiming(1100, 1800)) => new Promise(re
  * @returns {number} - A random number within the specified range.
  */
 export const randomTiming = (min: number, max: number): number => Math.random() * (max - min) + min;
+
+/**
+ * Creates a new array from the input collection, ensuring that each item has a unique value based on the specified key.
+ * If no key is provided, it defaults to using the 'id' property.
+ *
+ * @param {any[]} collection - The input collection from which to create the unique array.
+ * @param {string} key - The key to use for determining uniqueness.
+ *
+ * @returns {any[]} - A new array containing only the unique items from the input collection.
+ */
+export const uniqueArray = ({ collection, key="id" }: { collection: any[], key?: string }) => Object.values(collection.reduce((o, t) => ({ ...o, [t[key]]: t }), {}))

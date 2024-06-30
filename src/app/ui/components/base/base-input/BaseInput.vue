@@ -56,7 +56,7 @@ import { Types as transType, Easing, Timing } from '@app/ui/components/abstracts
 
 const value = defineModel("proxyValue")
 const dirty = ref<boolean>(false)
-const { type, loading, pattern, minLength, required } = defineProps({
+const { type, loading, pattern, minLength, required, id } = defineProps({
   /**
    * Set the unique id of the ui input
    */
@@ -149,17 +149,17 @@ const changeValue = (payload: Event): void => {
 const invalidModel = (value: string): void => {
     if (!pattern) return
     if (value.length === 0) {
-        customEmits("invalid", { mode: "validation", value: false })
+        customEmits("invalid", { id, mode: "validation", value: false })
         return
     }
     const re = new RegExp(pattern)
-    customEmits("invalid", { mode: "validation", value: [!re.test(value), value.length < minLength].some(
+    customEmits("invalid", { id, mode: "validation", value: [!re.test(value), value.length < minLength].some(
         (value) => value
     ) })
 }
 
 const requiredModel = (state: boolean) => {
-    if (required) customEmits("invalid", { mode: "required", value: state })
+    if (required) customEmits("invalid", {id,  mode: "required", value: state })
 }
 
 const isSearchType = computed<boolean>(() =>  type === Types.SEARCH)

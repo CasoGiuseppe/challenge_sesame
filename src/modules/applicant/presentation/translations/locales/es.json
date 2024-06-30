@@ -2,7 +2,8 @@
   "applicants": "Candidatos",
   "FORM": {
     "ADD": {
-      "title": "Crea un nuevo candidato" 
+      "title": "Crea un nuevo candidato",
+      "action": "Añadir candidato"
     }
   }
 }
