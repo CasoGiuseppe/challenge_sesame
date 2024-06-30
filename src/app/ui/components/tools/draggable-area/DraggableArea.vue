@@ -19,7 +19,7 @@
     <LoadingIs
       :state="loading"
       :is="Is.LAYER"
-      :message="translate({ key: `RECRUITMENT.BOARD.AREAS.loading` })"
+      :message="loadMessage"
     >
       <TransitionIs
         group
@@ -88,6 +88,14 @@ const { cards, id } = defineProps({
    loading: {
     type: Boolean as PropType<Boolean>,
     default: false
+  },
+
+  /**
+   * Set load message
+   */
+   loadMessage: {
+    type: String as PropType<String>,
+    default: 'loading...'
   },
 });
 

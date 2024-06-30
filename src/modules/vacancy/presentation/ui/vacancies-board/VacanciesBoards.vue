@@ -22,6 +22,7 @@
           :area="Areas[name.toUpperCase() as keyof typeof Areas]"
           :loading="isApplicantLoad"
           :cards="cardContentMapped(id)"
+          :load-message="translate({ key: `RECRUITMENT.BOARD.AREAS.loading` })"
         >
           <template #title>{{
             translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
