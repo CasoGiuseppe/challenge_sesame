@@ -5,12 +5,13 @@
         :aria-disabled="isDisabled"
         @submit.prevent="sendCreation"
     >
-      {{ validation }}
+      {{ form.fields }}
       <BaseInput
-        id="firstName"
+        v-for="{id, proxy, placeholder} of form.fields"
+        :id="id"
         :type="Types.TEXT"
-        :proxy-value="firstName"
-        placeholder="firstname"
+        :proxy-value="proxy"
+        :placeholder="placeholder"
         required
         pattern="^[a-zA-Z0-9 ]+$"
         @update:modelValue="updateValue"
@@ -21,25 +22,32 @@
     </form>
 </template>
 <script setup lang="ts">
-import { computed, reactive, ref } from "vue";
+import { computed, reactive } from "vue";
 import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
 import { Types } from "@app/ui/components/base/base-input/types";
 import { uniqueArray } from "@app/shared/utilities";
 
 
-const validation = reactive<Record<string, any>>({ values: [] })
+const form = reactive<Record<string, any>>({ fields: [
+  { id: "firstName", validation: { mode: '', invalid: true,  }, proxy: '', placeholder: 'First Name'},
+  { id: "lastName", validation: { mode: '', invalid: true,  }, proxy: '', placeholder: 'Last Name'},
+  { id: "email", validation: { mode: '', invalid: true,  }, proxy: '', placeholder: 'Email'}
+]})
+
 const isDisabled = computed(() => {
   // const validation = []
   // return validation.some((value: boolean) => value)
   return false
 })
-const firstName = ref<string>();
 
-const updateValue = (value: string): void => { firstName.value = value };
-const sendCreation = () => console.log("Creation")
+const updateValue = ({ id, value }: {  id: string, value: string }): void => { form.fields.find((field: any) => field.id === id).proxy = value };
 const setInvalid = ({id, mode, value}: {id: string, mode: string, value: string}): void => {
-  validation.values = uniqueArray({ collection: [...validation.values, { id, mode, value}]})
+  const field = form.fields.find((field: any) => field.id === id)
+  field.validation.mode = mode
+  field.validation.invalid = value
 }
+const sendCreation = () => console.log("Creation")
+  // validation.values = uniqueArray({ collection: [...validation.values, { id, mode, value}]})
 
 
 </script>

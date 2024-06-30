@@ -59,7 +59,7 @@ const Templates: Story = {
         `,
         methods: {
             change: action('change'),
-            update(value: string): void {
+            update({ id, value }: { id: string, value: string }): void {
                 updateArgs({ ...args, proxyValue: value })
             },
             setInvalid({mode, value}: {mode: string, value: string}): void {

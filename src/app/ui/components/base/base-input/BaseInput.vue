@@ -133,17 +133,17 @@ const updateValue = (payload: Event): void => {
     const { value } = payload.target as HTMLInputElement
     if(value.length === 0) {
       dirty.value = false
-      customEmits("update:modelValue", value)
+      customEmits("update:modelValue", { id, value })
       return
     }
 
     dirty.value === false ? (dirty.value = true) : null
-    customEmits("update:modelValue", value)
+    customEmits("update:modelValue", { id, value })
 }
 
 const changeValue = (payload: Event): void => {
     const { value } = payload.target as HTMLInputElement
-    customEmits("change", value)
+    customEmits("change", { id, value })
 }
 
 const invalidModel = (value: string): void => {
