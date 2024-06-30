@@ -14,6 +14,7 @@
       'base-button',
       `base-button--is-${type}`,
       `base-button--is-${size}`,
+      `${fullsize ? `base-button--is-fullsize` : ''}`
     ]"
     data-testID="ui-button-test"
     @click="handleEmitClick"
@@ -103,7 +104,15 @@ const props = defineProps({
   to: {
     type: Object as PropType<RouterTo>,
     default: () => ({ path: '/' })
-  }
+  },
+
+  /**
+   * Set the fullsize width button state
+   */
+   fullsize: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
 });
 
 const fallback = ref<string>('Please wait');

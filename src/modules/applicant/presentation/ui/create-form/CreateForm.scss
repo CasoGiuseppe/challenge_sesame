@@ -1,0 +1,9 @@
+.create-form {
+    $createform: &;
+
+    @apply flex flex-col items-end gap-sm;
+
+    &__description {
+        @apply text-sm
+    }
+}

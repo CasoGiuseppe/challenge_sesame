@@ -10,7 +10,11 @@
             {{ translate({ key: `${(family as string).toUpperCase()}.FORM.ADD.title` }) }}
         </template>
         <template #body>
-            <CreateForm></CreateForm>
+            <CreateForm>
+                <template #description>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                </template>
+            </CreateForm>
         </template>
     </DrawerPanel>
 </template>

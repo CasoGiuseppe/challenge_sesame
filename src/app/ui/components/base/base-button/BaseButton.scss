@@ -93,5 +93,9 @@
             @apply text-logo-600 border-logo-600 border-[1px] border-solid;
             border-style: solid;
         }
+
+        &-fullsize {
+            @apply w-full
+        }
     }
 }

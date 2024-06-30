@@ -3,7 +3,10 @@
       :id="id"
       :loading="loading"
       :dirty="dirty"
-      class="base-input"
+      :class="[
+        'base-input',
+        `${fullsize ? 'base-input--is-fullsize' : ''}`
+      ]"
     >
       <!-- @slot Icon: slot to show icon if is necessary -->
       <slot name="icon" v-if="!loading">
@@ -125,6 +128,14 @@ const { type, loading, pattern, minLength, required, id } = defineProps({
     minLength: {
       type: Number as PropType<number>,
       default: 0
+  },
+
+  /**
+   * Set the fullsize width button state
+   */
+   fullsize: {
+    type: Boolean as PropType<boolean>,
+    default: false
   },
 });
 

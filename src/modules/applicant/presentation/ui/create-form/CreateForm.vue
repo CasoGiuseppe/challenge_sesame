@@ -5,14 +5,21 @@
         :aria-disabled="isDisabled"
         @submit.prevent="sendCreation"
     >
+      <p
+        v-if="$slots['description']"
+        class="create-form__description"
+      >
+        <slot name="description" />
+      </p>
       <BaseInput
-        v-for="{id, proxy, placeholder, icon, validation: { invalid }} of form.fields"
+        v-for="{ id, proxy, placeholder, icon } of form.fields"
         :id="id"
         :type="Types.TEXT"
         :proxy-value="proxy"
         :placeholder="placeholder"
         required
         pattern="^[a-zA-Z0-9 ]+$"
+        fullsize
         @update:modelValue="updateValue"
         @invalid="setValidation"
       >
@@ -20,17 +27,27 @@
             <BaseIcon :name="icon" />
           </template>
           <template
-            v-if="invalid"
+            v-if="isInvalid(id)"
             #message
           >{{ userError(id) }}</template>
       </BaseInput>
-
+      <BaseButton
+        id="createApplicant"
+        :type="buttonTypes.PRIMARY"
+        :size="Sizes.DEFAULT"
+        :disabled="isDisabled"
+        :loading="true"
+      >
+          <template #default>{{ translate({ key: `RECRUITMENT.FORM.ADD.action` }) }}</template>
+      </BaseButton>
     </form>
 </template>
 <script setup lang="ts">
 import { computed, reactive } from "vue";
 import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue";
+import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue";
+import { Types as buttonTypes, Sizes } from "@app/ui/components/base/base-button/types"
 import { Types } from "@app/ui/components/base/base-input/types";
 import type { IForm, IFormField } from "./types";
 import useTranslation from '@app/shared/composables/useTranslation';
@@ -73,6 +90,12 @@ const isDisabled = computed(() => {
   return validation.some((value: boolean) => value)
 })
 
+const isInvalid = computed(() => (id: string) => {
+  const field = currentField.value(id)
+  if(!field) return false; 
+  return field.validation.invalid && field.validation.mode !== '';
+})
+
 const userError = computed(() => (id: string) => {
   const field = currentField.value(id)
   if(!field) return false; 
@@ -93,5 +116,5 @@ const setValidation = ({id, mode, value}: {id: string, mode: string, value: bool
 }
 
 const sendCreation = () => console.log("Creation")
-
 </script>
+<style src="./CreateForm.scss" lang="scss" scoped></style>
