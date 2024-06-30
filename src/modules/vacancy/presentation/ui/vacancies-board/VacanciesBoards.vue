@@ -33,6 +33,18 @@
               :name="iconMapper[Areas[name.toUpperCase() as keyof typeof Areas]]"
             />
           </template>
+          <template #fallback>
+            <span>{{ translate({ key: `RECRUITMENT.BOARD.AREAS.fallback`, options: { area: translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` }) } }) }}</span>
+            <BaseButton
+              id="addApplicant"
+              :type="buttonTypes.SECONDARY"
+              :size="buttonSizes.SMALL"
+              :is="Is.ROUTERLINK"
+              :to="{ name: 'createApplicant' }"
+            >
+              <template #default>{{ translate({ key: `ACCION.add` }) }}</template>
+            </BaseButton>
+          </template>
           <template #items="{ property: { id, title, content } }">
               <CardData :id="id" draggable>
                   <template #title>{{ title }}</template>
@@ -59,6 +71,9 @@ import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
 import CardData from "@app/ui/components/elements/card-data/CardData.vue";
+import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue";
+import { Types as buttonTypes, Sizes as buttonSizes } from "@app/ui/components/base/base-button/types";
+import { Is } from '@app/ui/components/abstracts/component-is/types';
 
 const iconMapper = {
   [Areas.NEW]: 'IconInbox',

@@ -81,6 +81,8 @@
             &:not(:disabled) {
                 @apply bg-logo-600
             }
+
+            @apply border-none
         }
 
         &-secondary {
@@ -88,7 +90,8 @@
                 @apply bg-neutral-100
             }
 
-            @apply text-logo-600 border-logo-600 border-[1px] border-solid
+            @apply text-logo-600 border-logo-600 border-[1px] border-solid;
+            border-style: solid;
         }
     }
 }

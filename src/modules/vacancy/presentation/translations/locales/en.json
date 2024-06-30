@@ -8,7 +8,8 @@
       "interview": "Interview",
       "selected": "Hired",
       "discarded": "Not selected",
-      "loading": "We are updating the statuses of the vacancy candidates"
+      "loading": "We are updating the statuses of the vacancy candidates",
+      "fallback": "No candidates found for the { area } area"
     } 
   }
 }

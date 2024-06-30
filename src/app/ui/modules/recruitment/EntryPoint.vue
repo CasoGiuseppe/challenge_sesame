@@ -38,7 +38,7 @@
           :is="Is.ROUTERLINK"
           :to="{ name: 'createApplicant' }"
         >
-            <template #default>{{ translate({ key: `ACCION.add` }) }}</template>
+            <template #default>{{ translate({ key: `ACCION.addApplicant` }) }}</template>
         </BaseButton>
       </section>
   

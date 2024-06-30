@@ -2,7 +2,7 @@
     @apply p-none no-underline;
 
     &:is(button) {
-        @apply bg-default-none border-none outline-none select-none; // reset
+        @apply bg-default-none outline-none select-none; // reset
     }
     
 }

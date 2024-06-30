@@ -65,7 +65,8 @@
     }
 
     &__fallback {
-        @apply text-neutral-400 text-sm
+        @apply flex justify-between gap-sm flex-col items-center;
+        @apply text-neutral-400 text-sm;
     }
 
 }

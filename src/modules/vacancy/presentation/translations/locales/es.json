@@ -8,7 +8,8 @@
       "interview": "Entrevista",
       "selected": "Contratado",
       "discarded": "No seleccionado",
-      "loading": "Estamos actualizando los estados de los candidatos de la vacante"
+      "loading": "Estamos actualizando los estados de los candidatos de la vacante",
+      "fallback": "No se han encotrados candidatos para el área { area }"
     } 
   }
 }
