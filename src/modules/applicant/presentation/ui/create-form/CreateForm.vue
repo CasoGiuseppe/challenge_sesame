@@ -5,7 +5,7 @@
         :aria-disabled="isDisabled"
         @submit.prevent="sendCreation"
     >
-      {{ form.fields }}
+      {{ isDisabled }}
       <BaseInput
         v-for="{id, proxy, placeholder} of form.fields"
         :id="id"
@@ -19,30 +19,35 @@
       >
           <!-- <template #message v-if="args.message !== null">{{ args.message }}</template> -->
       </BaseInput>
+
     </form>
 </template>
 <script setup lang="ts">
 import { computed, reactive } from "vue";
 import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
 import { Types } from "@app/ui/components/base/base-input/types";
-import { uniqueArray } from "@app/shared/utilities";
+import type { IForm, IFormField } from "./types";
 
-
-const form = reactive<Record<string, any>>({ fields: [
+const form = reactive<IForm>({ fields: [
   { id: "firstName", validation: { mode: '', invalid: true,  }, proxy: '', placeholder: 'First Name'},
   { id: "lastName", validation: { mode: '', invalid: true,  }, proxy: '', placeholder: 'Last Name'},
   { id: "email", validation: { mode: '', invalid: true,  }, proxy: '', placeholder: 'Email'}
 ]})
 
 const isDisabled = computed(() => {
-  // const validation = []
-  // return validation.some((value: boolean) => value)
-  return false
+  const validation = form.fields.map((field: IFormField) => field.validation.invalid)
+  return validation.some((value: boolean) => value)
 })
 
-const updateValue = ({ id, value }: {  id: string, value: string }): void => { form.fields.find((field: any) => field.id === id).proxy = value };
-const setInvalid = ({id, mode, value}: {id: string, mode: string, value: string}): void => {
-  const field = form.fields.find((field: any) => field.id === id)
+const updateValue = ({ id, value }: {  id: string, value: string }): void => {
+  const field = form.fields.find((field: IFormField) => field.id === id);
+  if(!field) return; 
+  field.proxy = value
+};
+
+const setInvalid = ({id, mode, value}: {id: string, mode: string, value: boolean}): void => {
+  const field = form.fields.find((field: IFormField) => field.id === id)
+  if(!field) return; 
   field.validation.mode = mode
   field.validation.invalid = value
 }
