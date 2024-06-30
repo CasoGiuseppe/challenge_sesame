@@ -12,9 +12,9 @@
         <slot name="description" />
       </p>
       <BaseInput
-        v-for="{ id, proxy, placeholder, pattern, icon } of form.fields"
+        v-for="{ id, type, proxy, placeholder, pattern, icon } of form.fields"
         :id="id"
-        :type="Types.TEXT"
+        :type="type"
         :proxy-value="proxy"
         :placeholder="placeholder"
         required
@@ -61,9 +61,11 @@ const errorsKind = {
   required: `${translate({key: 'FORM.errors.required' })}`,
 }
 
+
 const form = reactive<IForm>({ fields: [
   {
       id: "firstName",
+      type: Types.TEXT,
       validation: { mode: '', invalid: true,  },
       proxy: '',
       pattern: '^[a-zA-Z0-9 ]+$',
@@ -72,6 +74,7 @@ const form = reactive<IForm>({ fields: [
   },
   {
       id: "lastName",
+      type: Types.TEXT,
       validation: { mode: '', invalid: true,  },
       proxy: '',
       pattern: '^[a-zA-Z0-9 ]+$',
@@ -80,9 +83,10 @@ const form = reactive<IForm>({ fields: [
   },
   {
     id: "email",
+    type: Types.EMAIL,
     validation: { mode: '', invalid: true,  },
     proxy: '',
-    pattern: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+    pattern: '^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$',
     placeholder: `${translate({key: 'FORM.placeholder.email' })}`,
     icon: 'IconMail'
   }

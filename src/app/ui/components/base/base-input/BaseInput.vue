@@ -139,6 +139,13 @@ const { type, loading, pattern, minLength, required, id } = defineProps({
   },
 });
 
+// const mailRegEx = '^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$'.split('\\');
+
+// const filterPattern = computed(() => {
+//   if (!pattern) return 
+//   return type === Types.EMAIL ? 
+// })
+
 const customEmits = defineEmits(["update:modelValue", "change", "invalid"])
 const updateValue = (payload: Event): void => {
     const { value } = payload.target as HTMLInputElement

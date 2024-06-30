@@ -1,4 +1,5 @@
 export enum Types {
     TEXT = 'text',
-    SEARCH = 'search'
+    SEARCH = 'search',
+    EMAIL = 'email',
   }
