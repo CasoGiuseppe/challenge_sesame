@@ -10,10 +10,12 @@
 <script setup lang="ts">
 import {onMounted, provide } from 'vue';
 
-import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
-import useTranslation from '@app/shared/composables/useTranslation';
-import useResourcesUtilities from '@app/shared/composables/useResourcesUtilities';
-import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
+import {
+  useAsyncComponent,
+  useTranslation,
+  useResourcesUtilities,
+  useRouterUtilities
+} from '@app/shared/composables'
 
 import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
 import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
