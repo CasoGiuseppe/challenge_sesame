@@ -88,7 +88,7 @@ const form = reactive<IForm>({ fields: [
     type: Types.EMAIL,
     validation: { mode: '', invalid: true,  },
     proxy: '',
-    pattern: '^\\w+@[a-zA-Z_]+?\\.[a-zA-Z]{2,3}$',
+    pattern: '^[\\w%\\+\\-]+(\\.[\\w%\\+\\-]+)*@[\\w%\\+\\-]+(\\.[\\w%\\+\\-]+)+$',
     placeholder: `${translate({key: 'FORM.placeholder.email' })}`,
     icon: 'IconMail'
   }

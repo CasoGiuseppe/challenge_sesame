@@ -1,6 +1,6 @@
 import type { RouteRecordRaw } from 'vue-router';
 
-export default [{
+export default {
     path: 'applicants',
     meta: { family: 'recruitment', type: 'recruitment'},
     name: 'applicants',
@@ -18,4 +18,4 @@ export default [{
         }
       },
     ]
-  }] as RouteRecordRaw[]
+  } as RouteRecordRaw

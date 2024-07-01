@@ -6,6 +6,11 @@ import ClickOutside from "@app/ui/directive/clickOutside";
 import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
 import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
 
+import recruitment from "@app/router/recruitment"
+import fake from "@app/router/fake"
+import vacancy from '@modules/vacancy/presentation/router';
+import applicant from '@modules/applicant/presentation/router';
+
 import "@assets/index.scss";
 import {
   keyUseAsyncComponent,
@@ -25,6 +30,12 @@ app
 app.config.warnHandler = () => null;
 
 router.isReady().then(() => {
+  router.addRoute('app', recruitment)
+  router.addRoute('app', fake)
+  router.addRoute('recruitment', vacancy)
+  router.addRoute('recruitment', applicant)
+  // router.replace({ name: 'recruitment' })
+
   app.mount('#app')
 });
 

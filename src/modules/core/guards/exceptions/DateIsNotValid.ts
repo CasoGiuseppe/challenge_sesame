@@ -3,7 +3,7 @@ export class DateIncorrectFormat extends Error {
       public readonly value: string,
       public readonly message: string,
     ) {
-      super();
+      super(message);
       this.name = 'ValidationDateError'
     }
   }

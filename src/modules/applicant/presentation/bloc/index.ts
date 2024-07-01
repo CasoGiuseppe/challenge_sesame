@@ -1,4 +1,5 @@
-import type { Router } from "vue-router";
+import router from "@app/router/index"
+import { useRouter, type Router } from "vue-router";
 import { Ploc } from "@modules/core/presentation/ploc";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { GetApplicantsByVacancyIdUseCase } from "@modules/applicant/domain/application/use-cases/GetApplicantsByVacancyId";
@@ -56,7 +57,10 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
-            (response: Applicant) => { console.log('new applicant', response) }
+            (response: Applicant) => {
+                this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
+                this.router.push({ name: 'positions' })
+            }
         )
     }
 

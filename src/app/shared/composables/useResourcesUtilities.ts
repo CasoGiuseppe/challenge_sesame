@@ -5,7 +5,7 @@ export default function useResourcesUtilities(): IResourcesUtilities {
      /**
    * A function to load external Vue Router configurations asynchronously.
    * @param { Array } collection - An array of DomainRoutes objects, each containing a router property.
-   * @returns { Promise<any[]> }A Promise that resolves to an array of RouteRecordRaw objects or an empty array in case of an error.
+   * @returns { Promise<any[]> } - A Promise that resolves to an array of RouteRecordRaw objects or an empty array in case of an error.
    */
   const loadExternalsResources = async ({ collection }: { collection: DynamicImportPath[]; }): Promise<any[]> => {
     try {

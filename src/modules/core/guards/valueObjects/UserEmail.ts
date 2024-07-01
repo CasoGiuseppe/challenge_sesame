@@ -8,7 +8,7 @@ export class UserEmail extends StringValueObject {
     }
 
     private ensureCorrectValueFormat(value: string): void {
-        const testValueFormat = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/.test(value)
+        const testValueFormat = /^[\w%\+\-]+(\.[\w%\+\-]+)*@[\w%\+\-]+(\.[\w%\+\-]+)+$/.test(value)
         if(!testValueFormat) throw new EmailIncorrectFormat(value, `Provided email ${value} has not correct format`)
     }
 }

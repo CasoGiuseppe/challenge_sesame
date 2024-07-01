@@ -3,7 +3,7 @@ export class EmailIncorrectFormat extends Error {
       public readonly value: string,
       public readonly message: string
     ) {
-      super();
+      super(message);
       this.name = 'ValidationEmailError'
     }
   }

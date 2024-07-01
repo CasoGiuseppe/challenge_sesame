@@ -57,8 +57,9 @@
     </section>
   </template>
   <script setup lang="ts">
-  import { watch, ref, computed, reactive, type ComputedRef } from "vue"
+  import { watch, ref, computed, reactive, type ComputedRef, onBeforeMount } from "vue"
   import { storeToRefs } from 'pinia';
+  import { useRoute } from "vue-router";
   import TabsShell from "@app/ui/components/tools/tabs-shell/TabsShell.vue"
   import BaseTab from "@app/ui/components/base/base-tab/BaseTab.vue"
   import MenuShell from "@app/ui/components/tools/menu-shell/MenuShell.vue"
@@ -70,12 +71,11 @@
   import { Is } from '@app/ui/components/abstracts/component-is/types';
   import { Types } from '@app/ui/components/abstracts/transition-is/types';
   import type { IRouterNavigation } from "@app/shared/composables/types"
-  import { useRoute } from "vue-router";
   import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
   import useTranslation from '@app/shared/composables/useTranslation';
   import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
   import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
-
+  
   const { translate } = useTranslation();
   
   const route = useRoute()
@@ -104,6 +104,6 @@
   watch(route, ({ path }):void => {
     currentRoute.value = path
   }, {flush: 'pre', immediate: true, deep: true})
-  </script>
-  <style src="./EntryPoint.scss" lang="scss" scoped></style>
+</script>
+<style src="./EntryPoint.scss" lang="scss" scoped></style>
   

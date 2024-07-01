@@ -1,4 +1,4 @@
-import { useRouter } from "vue-router"
+import { useRouter, type Router } from "vue-router"
 import { VacancyStateRepository } from "@modules/vacancy/data/repository/VacancyStateRepository"
 import { GetVacancyByIdUseCase } from "@modules/vacancy/domain/application/use-cases/GetVacancyByIdUseCase"
 import { ApplicantRepository } from "@modules/applicant/data/repository/ApplicantRepository"
@@ -18,8 +18,8 @@ const provideVacancyPloc = () => {
     const getVacancyById = new GetVacancyByIdUseCase(vacancyStateRepository)
 
     return new VacancyBloc({
-        store,
         router,
+        store,
         getVacancyById
     })
 }
