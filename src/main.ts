@@ -31,11 +31,10 @@ app.config.warnHandler = () => null;
 
 router.isReady().then(() => {
   router.addRoute('app', recruitment)
-  router.addRoute('app', fake)
   router.addRoute('recruitment', vacancy)
   router.addRoute('recruitment', applicant)
-  // router.replace({ name: 'recruitment' })
 
+  router.addRoute('app', fake)
   app.mount('#app')
 });
 

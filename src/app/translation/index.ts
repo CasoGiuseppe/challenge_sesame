@@ -16,5 +16,3 @@ export const i18n = await createI18n({
       en: await createTranslationEn()
     }
   });
-
-  console.log(i18n.global.messages.value)

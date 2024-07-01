@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router';
 import { dependencies } from '@modules/core/dependencies';
 
 export default {
-    path: 'positions',
+    path: 'positions/:area?',
     meta: { family: 'recruitment', type: 'recruitment'},
     name: 'positions',
     components: {

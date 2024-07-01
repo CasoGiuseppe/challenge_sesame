@@ -63,7 +63,6 @@ describe('BaseItemMenu component tests', () => {
 
     it('Should emit "send" could have a correct property on reset click', async () => {
       $wrapper.trigger('click')
-      console.log()
       expect($wrapper.emitted()).toHaveProperty('send')
     })
   })

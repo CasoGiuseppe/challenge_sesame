@@ -89,7 +89,7 @@
               to: name,
               family
           }
-      })
+      }).reverse()
   })
   
   const { isLoading: isVacancyLoad } = storeToRefs(useVacancyStore);

@@ -63,7 +63,6 @@ const Templates: Story = {
                 updateArgs({ ...args, proxyValue: value })
             },
             setInvalid({mode, value}: {mode: string, value: string}): void {
-                console.log(mode, value)
                 updateArgs({ ...args, message: value
                     ? ERRORS[mode as keyof typeof ERRORS]
                     : null })
