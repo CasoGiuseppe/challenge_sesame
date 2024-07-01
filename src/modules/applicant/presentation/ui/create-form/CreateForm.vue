@@ -20,6 +20,7 @@
         :placeholder="placeholder"
         required
         :pattern="pattern"
+        :min="3"
         fullsize
         @update:modelValue="updateValue"
         @invalid="setValidation"

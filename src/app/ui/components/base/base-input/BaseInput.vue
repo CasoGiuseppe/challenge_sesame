@@ -25,6 +25,7 @@
         :pattern="pattern"
         :placeholder="placeholder"
         :required="required"
+        :minlength="min"
         v-model.lazy="value"
         autocomplete="one-time-code"
         class="base-input__field"
@@ -59,7 +60,7 @@ import { Types as transType, Easing, Timing } from '@app/ui/components/abstracts
 
 const value = defineModel("proxyValue")
 const dirty = ref<boolean>(false)
-const { type, loading, pattern, minLength, required, id } = defineProps({
+const { type, loading, pattern, min, required, id } = defineProps({
   /**
    * Set the unique id of the ui input
    */
@@ -137,14 +138,15 @@ const { type, loading, pattern, minLength, required, id } = defineProps({
     type: Boolean as PropType<boolean>,
     default: false
   },
+
+   /**
+     * Set min input length value
+     */
+     min: {
+        type: Number as PropType<number>,
+        default: 0
+    },
 });
-
-// const mailRegEx = '^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$'.split('\\');
-
-// const filterPattern = computed(() => {
-//   if (!pattern) return 
-//   return type === Types.EMAIL ? 
-// })
 
 const customEmits = defineEmits(["update:modelValue", "change", "invalid"])
 const updateValue = (payload: Event): void => {
@@ -171,7 +173,7 @@ const invalidModel = (value: string): void => {
         return
     }
     const re = new RegExp(pattern)
-    customEmits("invalid", { id, mode: "validation", value: [!re.test(value), value.length < minLength].some(
+    customEmits("invalid", { id, mode: "validation", value: [!re.test(value), value.length < min].some(
         (value) => value
     ) })
 }
