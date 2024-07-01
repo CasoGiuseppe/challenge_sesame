@@ -24,9 +24,9 @@
 </template>
 <script setup lang="ts">
 import { computed, type PropType } from "vue"
+import { TransitionIs } from '@app/ui/components/index';
 import type { UniqueId } from '@app/ui/types'
 import type { IRouterNavigation } from "@/app/shared/composables/types"
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
 import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
 import { Orientation, type Style } from "./types"
 import { ensureValueCollectionExists } from "@app/ui/validators/useCustomValidator"

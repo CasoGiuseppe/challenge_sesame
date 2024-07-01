@@ -38,12 +38,11 @@
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
 import { computed, ref, type PropType } from 'vue';
+import { ComponentIs, TransitionIs } from '@app/ui/components/index';
+import { Is } from '@app/ui/components/abstracts/component-is/types';
+import { Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import { Sizes, Types, type RouterTo } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
-import { Is } from '@app/ui/components/abstracts/component-is/types';
-import ComponentIs from '@app/ui/components/abstracts/component-is/ComponentIs.vue';
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
-import { Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 
 const props = defineProps({
   /**

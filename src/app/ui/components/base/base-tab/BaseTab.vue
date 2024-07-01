@@ -16,8 +16,8 @@
 </template>
 <script setup lang="ts">
 import { computed, type ComputedRef, type PropType } from 'vue';
+import { ComponentIs } from '@app/ui/components/index';
 import type { UniqueId } from '@app/ui/types';
-import ComponentIs from '@app/ui/components/abstracts/component-is/ComponentIs.vue';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 

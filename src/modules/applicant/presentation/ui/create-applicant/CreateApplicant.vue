@@ -21,10 +21,10 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref, inject } from 'vue';
-import DrawerPanel from '@app/ui/components/elements/drawer-panel/DrawerPanel.vue';
+import { useRouter, useRoute } from 'vue-router';
+import { DrawerPanel } from '@app/ui/components/index';
 import CreateForm from '@modules/applicant/presentation/ui/create-form/CreateForm.vue';
 import { Types, Position } from '@app/ui/components/elements/drawer-panel/types';
-import { useRouter, useRoute } from 'vue-router';
 import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
 import { keyUseTranslations } from '@app/shared/types/symbols';
 

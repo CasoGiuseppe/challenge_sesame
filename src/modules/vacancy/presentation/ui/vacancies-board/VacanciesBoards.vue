@@ -79,23 +79,28 @@
 import { inject } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
-import DraggableArea from '@app/ui/components/tools/draggable-area/DraggableArea.vue';
+
+import {
+  DraggableArea,
+  TransitionIs,
+  LoadingIs,
+  BaseIcon,
+  CardData,
+  BaseButton
+} from '@app/ui/components/index';
+
 import { Areas } from '@app/ui/components/tools/draggable-area/types';
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
-import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
-import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import { Sizes } from '@app/ui/components/base/base-icon/types';
-import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
-import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
-import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
-import CardData from '@app/ui/components/elements/card-data/CardData.vue';
-import BaseButton from '@app/ui/components/base/base-button/BaseButton.vue';
 import {
   Types as buttonTypes,
   Sizes as buttonSizes
 } from '@app/ui/components/base/base-button/types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
+
+import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
+import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
+import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
 import { compareDates } from '@app/shared/utilities';
 import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
 import { keyUseTranslations } from '@app/shared/types/symbols';

@@ -47,12 +47,14 @@
 <script setup lang="ts">
 import { computed, ref, watch, inject } from 'vue';
 import { useRoute } from 'vue-router';
-import ResponsivePanel from '@app/ui/components/tools/responsive-panel/ResponsivePanel.vue';
-import AccordionInfo from '@app/ui/components/elements/accordion-info/AccordionInfo.vue';
-import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
-import BaseItemMenu from '@app/ui/components/base/base-item-menu/BaseItemMenu.vue';
-import FakeLogo from '@app/ui/elements/fakes/FakeLogo.vue';
-import MenuShell from '@app/ui/components/tools/menu-shell/MenuShell.vue';
+import {
+  ResponsivePanel,
+  AccordionInfo,
+  BaseIcon,
+  BaseItemMenu,
+  FakeLogo,
+  MenuShell
+} from '@app/ui/components/index';
 import { Sizes } from '@app/ui/components/base/base-icon//types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import type { IRouterNavigation } from '@app/shared/composables/types';

@@ -20,8 +20,7 @@
 <script setup lang="ts">
 import { watch, ref, inject } from 'vue';
 import { useRoute } from 'vue-router';
-import UserIdentity from '@app/ui/components/elements/user-identity/UserIdentity.vue';
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { TransitionIs, UserIdentity } from '@app/ui/components/index';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
 import { keyUseTranslations } from '@app/shared/types/symbols';

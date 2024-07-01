@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
 import { type PropType } from 'vue';
-import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
+import { BaseIcon } from '@app/ui/components/index';
 import { Sizes } from '@app/ui/components/base/base-icon/types';
 
 defineProps({

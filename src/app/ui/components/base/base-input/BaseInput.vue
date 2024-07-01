@@ -52,11 +52,10 @@
 <script setup lang="ts">
 import type { UniqueId } from '@/app/ui/types';
 import { computed, ref, watch, type PropType } from 'vue';
+import { TransitionIs, BaseIcon } from '@app/ui/components/index';
 import { Types } from './types';
-import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
-import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types as transType, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
+import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 const value = defineModel("proxyValue")
 const dirty = ref<boolean>(false)

@@ -42,7 +42,7 @@
 </template>
 <script setup lang="ts">
 import { onBeforeMount, ref } from "vue"
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue'
+import { TransitionIs } from '@app/ui/components/index';
 import { Types , Easing, Timing } from '@app/ui/components/abstracts/transition-is/types'
 import { generateUUID } from "@app/shared/utilities"
 

@@ -59,11 +59,10 @@
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
 import { computed, onMounted, ref, type PropType } from 'vue';
-import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
+import { LoadingIs, TransitionIs } from '@app/ui/components/index';
 import { Areas, type ICardItem } from './types';
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
-import LoadingIs from '@app/ui/components/abstracts/loading-is/LoadingIs.vue';
+import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 import { Is } from '@app/ui/components/abstracts/loading-is/types';
 
 const props = defineProps({

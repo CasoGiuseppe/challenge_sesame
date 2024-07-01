@@ -16,9 +16,9 @@
 <script setup lang="ts">
 import { type PropType } from 'vue';
 import { Is } from './types';
-import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
-import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
+import { TransitionIs } from '@app/ui/components/index';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
+import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
 
 defineProps({
   /**

@@ -49,12 +49,13 @@
 import { computed, reactive, inject } from "vue";
 import { storeToRefs } from 'pinia';
 import { useRoute } from "vue-router";
-import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
-import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue";
-import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue";
+
+import { BaseInput, BaseIcon, BaseButton } from '@app/ui/components/index';
+
 import { Types as buttonTypes, Sizes } from "@app/ui/components/base/base-button/types"
 import { Types } from "@app/ui/components/base/base-input/types";
 import type { IForm, IFormField } from "./types";
+
 import { dependencies } from '@modules/core/dependencies';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';

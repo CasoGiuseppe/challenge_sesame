@@ -57,11 +57,13 @@
 import { watch, ref, computed, reactive, type ComputedRef, inject } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
-import TabsShell from '@app/ui/components/tools/tabs-shell/TabsShell.vue';
-import BaseTab from '@app/ui/components/base/base-tab/BaseTab.vue';
-import MenuShell from '@app/ui/components/tools/menu-shell/MenuShell.vue';
-import BaseInput from '@app/ui/components/base/base-input/BaseInput.vue';
-import BaseButton from '@app/ui/components/base/base-button/BaseButton.vue';
+import {
+  BaseButton,
+  TabsShell,
+  BaseTab,
+  MenuShell,
+  BaseInput
+} from '@app/ui/components/index';
 import { Types as buttonTypes, Sizes } from '@app/ui/components/base/base-button/types';
 import { Types as inputTypes } from '@app/ui/components/base/base-input/types';
 import { Orientation } from '@app/ui/components/tools/menu-shell/types';
