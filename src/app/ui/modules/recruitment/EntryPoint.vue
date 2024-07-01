@@ -72,8 +72,10 @@ import { Types } from '@app/ui/components/abstracts/transition-is/types';
 import type { IRouterNavigation } from '@app/shared/composables/types';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
-import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
-import type { IRouterUtilities } from '@app/shared/composables/interfaces/IRouterUtilities';
+import {
+  type ITranslation,
+  type IRouterUtilities
+} from '@app/shared/composables'
 import { keyUseTranslations, keyUseRouterUtilities } from '@app/shared/types/symbols';
 
 const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;

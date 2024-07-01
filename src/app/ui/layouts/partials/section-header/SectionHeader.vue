@@ -22,7 +22,7 @@ import { watch, ref, inject } from 'vue';
 import { useRoute } from 'vue-router';
 import { TransitionIs, UserIdentity } from '@app/ui/components/index';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
-import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
+import { type ITranslation } from '@app/shared/composables'
 import { keyUseTranslations } from '@app/shared/types/symbols';
 
 const route = useRoute();

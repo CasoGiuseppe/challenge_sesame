@@ -59,7 +59,7 @@ import type { IForm, IFormField } from "./types";
 import { dependencies } from '@modules/core/dependencies';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
-import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
+import { type ITranslation } from '@app/shared/composables';
 import { keyUseTranslations } from '@app/shared/types/symbols';
 
 const { isCreated } = storeToRefs(useApplicantStore)

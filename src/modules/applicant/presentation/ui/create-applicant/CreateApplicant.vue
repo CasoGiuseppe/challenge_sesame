@@ -25,7 +25,7 @@ import { useRouter, useRoute } from 'vue-router';
 import { DrawerPanel } from '@app/ui/components/index';
 import CreateForm from '@modules/applicant/presentation/ui/create-form/CreateForm.vue';
 import { Types, Position } from '@app/ui/components/elements/drawer-panel/types';
-import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
+import { type ITranslation } from '@app/shared/composables';
 import { keyUseTranslations } from '@app/shared/types/symbols';
 
 const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;

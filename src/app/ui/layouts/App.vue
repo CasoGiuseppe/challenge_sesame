@@ -14,13 +14,12 @@ import {
   useAsyncComponent,
   useTranslation,
   useResourcesUtilities,
-  useRouterUtilities
+  useRouterUtilities,
+  type IAsyncComponent,
+  type ITranslation,
+  type IResourcesUtilities,
+  type IRouterUtilities
 } from '@app/shared/composables'
-
-import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
-import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
-import type { IResourcesUtilities } from '@app/shared/composables/interfaces/IResourcesUtilities';
-import type { IRouterUtilities } from '@app/shared/composables/interfaces/IRouterUtilities';
 
 import {
   keyUseAsyncComponent,

@@ -102,7 +102,7 @@ import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
 import { compareDates } from '@app/shared/utilities';
-import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
+import { type ITranslation } from '@app/shared/composables'
 import { keyUseTranslations } from '@app/shared/types/symbols';
 
 const iconMapper = {
