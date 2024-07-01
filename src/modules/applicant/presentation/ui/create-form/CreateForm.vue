@@ -58,8 +58,11 @@ import type { IForm, IFormField } from "./types";
 import useTranslation from '@app/shared/composables/useTranslation';
 import { dependencies } from '@modules/core/dependencies';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
+import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 
 const { isCreated } = storeToRefs(useApplicantStore)
+const { defaultStatusID } = storeToRefs(useVacancyStore)
+
 const { translate } = useTranslation();
 const route = useRoute();
 
@@ -67,7 +70,6 @@ const errorsKind = {
   validation: `${translate({key: 'FORM.errors.validation' })}`,
   required: `${translate({key: 'FORM.errors.required' })}`,
 }
-
 
 const form = reactive<IForm>({ fields: [
   {
@@ -139,7 +141,7 @@ const sendCreation = () => {
     firstName: currentField.value('firstName')?.proxy ?? 'test',
     lastName: currentField.value('lastName')?.proxy ?? 'test',
     ...(currentField.value('email') && {email: currentField.value('email')?.proxy}),
-    statusId: route.params.area as string
+    statusId: route.params.area as string ?? defaultStatusID.value
   });
 }
 </script>

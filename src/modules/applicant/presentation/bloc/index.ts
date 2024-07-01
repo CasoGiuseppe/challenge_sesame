@@ -52,7 +52,6 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     }
 
     createApplicant = async({ firstName, lastName, email, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant): Promise<void> => {
-
         this.store.waitForCreation({ value: true })
         await timeout()  // simulate delay
         const newApplicant = await this.createNewApplicant.execute({ firstName, lastName, email, vacancyId, statusId })
