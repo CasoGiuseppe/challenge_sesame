@@ -8,6 +8,6 @@ export class UserDate extends DateValueObject {
     }
 
     private ensureValueIsDateInstance(value: any): void{
-        if(isNaN(Date.parse(value))) throw new DateIncorrectFormat(value)
+        if(isNaN(Date.parse(value))) throw new DateIncorrectFormat(value, `Provided date ${value} has not a correct format`)
     } 
 }

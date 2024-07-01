@@ -4,17 +4,18 @@ import type { IApplicantRepository } from "@modules/applicant/domain/core/reposi
 import type { Applicant } from "@modules/applicant/domain/core/Applicant";
 import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
 import { UserName } from "@modules/core/guards/valueObjects/UserName";
+import { UserEmail } from "@modules/core/guards/valueObjects/UserEmail";
 
 export class CreateNewApplicantUseCase {
     constructor(
         private applciantRepository: IApplicantRepository
       ){}
 
-    async execute({firstName, lastName, email, vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>>{
+    async execute({firstName, lastName, email = '', vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>>{
         return this.applciantRepository.createNewApplicant({
             firstName: new UserName(firstName).toString(),
             lastName: new UserName(lastName).toString(),
-            email,
+            email: new UserEmail(email).toString(),
             statusId,
             vacancyId
         })

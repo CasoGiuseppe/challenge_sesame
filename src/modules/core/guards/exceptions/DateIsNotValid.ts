@@ -1,9 +1,9 @@
 export class DateIncorrectFormat extends Error {
     constructor(
       public readonly value: string,
+      public readonly message: string,
     ) {
       super();
       this.name = 'ValidationDateError'
-      this.message = `Provided date ${value} has not a correct format`
     }
   }
