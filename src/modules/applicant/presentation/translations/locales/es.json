@@ -7,6 +7,7 @@
     }
   },
   "INFO": {
-    "createBy": "Añadido por { user }"
+    "createBy": "Añadido por { user }",
+    "today": "Hoy"
   }
 }

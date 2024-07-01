@@ -53,7 +53,7 @@
                   <template #content>{{ translate({ key: `RECRUITMENT.INFO.createBy`, options: { user: content} }) }}</template>
                   <template #footer>
                     <BaseIcon name="IconClock" />
-                    {{ footer }}
+                    {{ compareDates({ input: footer as string }) ? translate({ key: `RECRUITMENT.INFO.today` }) : footer }}
                   </template>
               </CardData>
           </template>
@@ -80,6 +80,7 @@ import CardData from "@app/ui/components/elements/card-data/CardData.vue";
 import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue";
 import { Types as buttonTypes, Sizes as buttonSizes } from "@app/ui/components/base/base-button/types";
 import { Is } from '@app/ui/components/abstracts/component-is/types';
+import { compareDates } from '@app/shared/utilities';
 
 const iconMapper = {
   [Areas.NEW]: 'IconInbox',

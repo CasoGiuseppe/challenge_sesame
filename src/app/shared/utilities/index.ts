@@ -29,7 +29,17 @@ export const randomTiming = (min: number, max: number): number => Math.random() 
  *
  * @param {any[]} collection - The input collection from which to create the unique array.
  * @param {string} key - The key to use for determining uniqueness.
- *
  * @returns {any[]} - A new array containing only the unique items from the input collection.
  */
 export const uniqueArray = ({ collection, key="id" }: { collection: any[], key?: string }) => Object.values(collection.reduce((o, t) => ({ ...o, [t[key]]: t }), {}))
+
+/**
+ * Compares the input date with the current date, ignoring time.
+ *
+ * @param {string} input - The date string to compare. It should be in a format that can be parsed by the Date constructor.
+ * @returns {boolean} - Returns true if the input date is the same as the current date (ignoring time), otherwise false.
+ */
+export const compareDates = ({ input }: { input: string }) => {
+  const today = new Date()
+  return input === today.toLocaleDateString("es-ES")
+}
