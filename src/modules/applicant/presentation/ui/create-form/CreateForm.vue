@@ -13,6 +13,7 @@
       </p>
       <BaseInput
         v-for="{ id, type, proxy, placeholder, pattern, icon } of form.fields"
+        :key="id"
         :id="id"
         :type="type"
         :proxy-value="proxy"
@@ -125,10 +126,12 @@ const setValidation = ({id, mode, value}: {id: string, mode: string, value: bool
 }
 
 const sendCreation = () => {
+  if(isDisabled.value) return;
+  
   const applicants = dependencies.provideApplicantPloc()
   applicants.createApplicant({
-    ...(currentField.value('firstName') && {firstName: currentField.value('firstName')?.proxy}),
-    ...(currentField.value('lastName') && {lastName: currentField.value('lastName')?.proxy}),
+    firstName: currentField.value('firstName')?.proxy ?? 'test',
+    lastName: currentField.value('lastName')?.proxy ?? 'test',
     ...(currentField.value('email') && {email: currentField.value('email')?.proxy}),
     statusId: route.params.area as string
   });

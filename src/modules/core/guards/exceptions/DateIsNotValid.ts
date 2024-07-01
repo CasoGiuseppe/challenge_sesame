@@ -4,6 +4,6 @@ export class DateIncorrectFormat extends Error {
     ) {
       super();
       this.name = 'ValidationDateError'
-      this.message = `Provided date ${value} is not a correct format`
+      this.message = `Provided date ${value} has not a correct format`
     }
   }

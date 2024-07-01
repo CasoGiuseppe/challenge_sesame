@@ -36,15 +36,16 @@
           ensureCardsExist ? '' : 'draggable-area__active-zone--is-empty'
         ]"
       >
-        <li
-          v-if="ensureCardsExist"
-          :key="id"
-          v-for="({ id, title, content, footer }, index) of cards"
-          :style="{ transitionDelay: `${index * 0.05}s` }"
-        >
-          <!-- @slot Items: slot-scope to show cards -->
-          <slot :property="{ id, title, content, footer }" name="items" />
-        </li>
+        <template v-if="ensureCardsExist">
+          <li
+            :key="id"
+            v-for="({ id, title, content, footer }, index) of cards"
+            :style="{ transitionDelay: `${index * 0.05}s` }"
+          >
+            <!-- @slot Items: slot-scope to show cards -->
+            <slot :property="{ id, title, content, footer }" name="items" />
+          </li>
+        </template>
         <li
           v-else
           class="draggable-area__fallback"
