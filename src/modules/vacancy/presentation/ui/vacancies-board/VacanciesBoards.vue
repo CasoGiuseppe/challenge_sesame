@@ -10,10 +10,12 @@
       :easing="Easing.ELASTIC"
       :timing="Timing.FAST"
       class="vacancies-boards"
+      @enter="scrollIntoView"
     >
       <li
         v-for="({ id, name }, index) in savedVacancyAreas"
         class="vacancies-boards__col"
+        :id="id"
         :key="id"
         :style="{ transitionDelay: `${index * 0.2}s` }"
       >
@@ -58,7 +60,9 @@
   </LoadingIs>
 </template>
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
+import { useRoute } from "vue-router";
 import DraggableArea from '@app/ui/components/tools/draggable-area/DraggableArea.vue';
 import { Areas } from '@app/ui/components/tools/draggable-area/types';
 import TransitionIs from '@app/ui/components/abstracts/transition-is/TransitionIs.vue';
@@ -83,6 +87,7 @@ const iconMapper = {
   [Areas.DISCARDED]: 'IconError'
 };
 
+const route = useRoute()
 const { isLoading: isVacancyLoad, savedVacancyAreas } = storeToRefs(useVacancyStore);
 const { isLoading: isApplicantLoad, filterdApplicantsByArea } = storeToRefs(useApplicantStore)
 const { translate } = useTranslation();
@@ -95,5 +100,20 @@ const cardContentMapped = (id: string) => {
     }
   })
 }
+
+const scrollIntoView = ({ el }: { el: Element }) => {
+  const area = route?.params?.area
+  if(!area) return
+  const panelID = el.getAttribute('id')
+  if(area === panelID) el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })
+}
+// onMounted(() => {
+
+//   const route = useRoute()
+//   const area = route?.params?.area
+//   if(!area) return
+//   const vacancy = document.getElementById(area as string)
+//   vacancy?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
+// })
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>

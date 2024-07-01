@@ -17,6 +17,8 @@
     mode="out-in"
     appear
     class="transition-is"
+    @after-enter="afterEnter"
+    @before-enter="beforeEnter"
   >
     <slot />
   </TransitionGroup>
@@ -71,6 +73,10 @@ const removeBehaviour = (el:Element) => {
   el.classList.remove('transition-is')
   el.removeAttribute('style')
 }
+
+const emits = defineEmits(['enter', 'before']);
+const afterEnter = (el:Element) => emits('enter', { el: el })
+const beforeEnter = (el: Element) => emits('before', { el: el })
 </script>
 <style lang="scss">
 @include create-animation(
