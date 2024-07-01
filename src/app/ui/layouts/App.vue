@@ -8,8 +8,22 @@
   </RouterView>
 </template>
 <script setup lang="ts">
-import {onMounted } from 'vue';
+import {onMounted, provide } from 'vue';
+
+import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
+import useTranslation from '@app/shared/composables/useTranslation';
+
+import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
+import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
+
+import { keyUseAsyncComponent, keyUseTranslations } from "@app/shared/types/symbols";
 // import { dependencies } from '@modules/core/dependencies'
+
+const { create } = useAsyncComponent();
+const { translate, setNewTranslationLocale } = useTranslation();
+
+provide<IAsyncComponent>(keyUseAsyncComponent, { create });
+provide<ITranslation>(keyUseTranslations, { translate, setNewTranslationLocale });
 
 onMounted(async () => {
   // const vacancy = dependencies.provideVacancyPloc()

@@ -3,21 +3,11 @@ import router from '@app/router';
 import pinia from '@app/shared/stores/pinia';
 import { i18n } from '@app/translation';
 import ClickOutside from "@app/ui/directive/clickOutside";
-import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
-import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
-
 import recruitment from "@app/router/recruitment"
 import fake from "@app/router/fake"
 import vacancy from '@modules/vacancy/presentation/router';
 import applicant from '@modules/applicant/presentation/router';
-
 import "@assets/index.scss";
-import {
-  keyUseAsyncComponent,
-} from "@app/shared/types/symbols";
-
-// composable instances
-const { create } = useAsyncComponent();
 
 // create lazy APP
 const app = createApp(defineAsyncComponent(() => import('@app/ui/layouts/App.vue')));
@@ -37,5 +27,3 @@ router.isReady().then(() => {
   router.addRoute('app', fake)
   app.mount('#app')
 });
-
-app.provide<IAsyncComponent>(keyUseAsyncComponent, { create });

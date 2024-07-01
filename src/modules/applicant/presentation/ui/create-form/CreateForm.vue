@@ -46,7 +46,7 @@
     </form>
 </template>
 <script setup lang="ts">
-import { computed, reactive } from "vue";
+import { computed, reactive, inject } from "vue";
 import { storeToRefs } from 'pinia';
 import { useRoute } from "vue-router";
 import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
@@ -55,15 +55,15 @@ import BaseButton from "@app/ui/components/base/base-button/BaseButton.vue";
 import { Types as buttonTypes, Sizes } from "@app/ui/components/base/base-button/types"
 import { Types } from "@app/ui/components/base/base-input/types";
 import type { IForm, IFormField } from "./types";
-import useTranslation from '@app/shared/composables/useTranslation';
 import { dependencies } from '@modules/core/dependencies';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
+import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
+import { keyUseTranslations } from '@app/shared/types/symbols';
 
 const { isCreated } = storeToRefs(useApplicantStore)
 const { defaultStatusID } = storeToRefs(useVacancyStore)
-
-const { translate } = useTranslation();
+const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
 const route = useRoute();
 
 const errorsKind = {
