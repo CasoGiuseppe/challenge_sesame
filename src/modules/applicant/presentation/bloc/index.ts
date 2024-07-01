@@ -62,7 +62,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: Applicant) => {
                 this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
-                this.router.push({ name: 'positions' })
+                this.router.push({ name: 'positions', params: { area: response.getStatus} })
             }
         )
     }
