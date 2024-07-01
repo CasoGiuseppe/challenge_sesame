@@ -7,21 +7,25 @@ import { applicantStore } from './model';
 export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const state = reactive<IApplicantStoreModel>(structuredClone(applicantStore));
 
-  const setLoadingState = ({ value }: { value: boolean }) => (state.loading = value);
+  const waitForApplicants = ({ value }: { value: boolean }) => (state.loading = value);
+  const waitForCreation = ({ value }: { value: boolean }) => (state.creation = value);
   const setApplicants = ({ applicant }: { applicant: IApplicantPersistenceData }) => (state.applicants = [...state.applicants, applicant]);
 
   const savedApplicants = computed((): IApplicantPersistenceData[] => state.applicants);
   const applicantsAlreadyExists = computed((): boolean => savedApplicants.value.length > 0);
   const isLoading = computed((): boolean => state.loading);
+  const isCreated = computed((): boolean => state.creation);
   const filterdApplicantsByArea = computed(() => (area: string) => state.applicants.filter((applicant: IApplicantPersistenceData) => applicant.areaID === area))
   
   return {
     state,
 
-    setLoadingState,
+    waitForApplicants,
+    waitForCreation,
     setApplicants,
     
     isLoading,
+    isCreated,
     applicantsAlreadyExists,
     filterdApplicantsByArea
   }

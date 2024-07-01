@@ -1,5 +1,4 @@
-import router from "@app/router/index"
-import { useRouter, type Router } from "vue-router";
+import { type Router } from "vue-router";
 import { Ploc } from "@modules/core/presentation/ploc";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { GetApplicantsByVacancyIdUseCase } from "@modules/applicant/domain/application/use-cases/GetApplicantsByVacancyId";
@@ -39,10 +38,10 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     getApplicantsByID = async({vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId}: {vacancyId?: IVacancyID, statusId?: string} = {}): Promise<void> => {
         if(this.store.applicantsAlreadyExists) return;
         
-        this.store.setLoadingState({ value: true})
+        this.store.waitForApplicants({ value: true})
         await timeout()  // simulate delay
         const applicantResult = await this.getApplicantsByVacancyId.execute({vacancyId, statusId})
-        this.store.setLoadingState({ value: false})
+        this.store.waitForApplicants({ value: false})
         
         applicantResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
@@ -53,8 +52,12 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     }
 
     createApplicant = async({ firstName, lastName, email, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant): Promise<void> => {
+
+        this.store.waitForCreation({ value: true })
+        await timeout()  // simulate delay
         const newApplicant = await this.createNewApplicant.execute({ firstName, lastName, email, vacancyId, statusId })
-        
+        this.store.waitForCreation({ value: false })
+
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: Applicant) => {

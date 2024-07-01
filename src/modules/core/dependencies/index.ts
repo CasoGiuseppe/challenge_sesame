@@ -1,4 +1,4 @@
-import { useRouter, type Router } from "vue-router"
+import appRouter from '@app/router';
 import { VacancyStateRepository } from "@modules/vacancy/data/repository/VacancyStateRepository"
 import { GetVacancyByIdUseCase } from "@modules/vacancy/domain/application/use-cases/GetVacancyByIdUseCase"
 import { ApplicantRepository } from "@modules/applicant/data/repository/ApplicantRepository"
@@ -12,7 +12,7 @@ import { useVacancyStore } from "@modules/vacancy/presentation/store/vacancy"
 import { useApplicantStore } from "@/modules/applicant/presentation/store/applicant"
 
 const provideVacancyPloc = () => {
-    const router = useRouter()
+    const router = appRouter
     const store = useVacancyStore
     const vacancyStateRepository = new VacancyStateRepository(new HTTPServiceProvider())
     const getVacancyById = new GetVacancyByIdUseCase(vacancyStateRepository)
@@ -25,7 +25,7 @@ const provideVacancyPloc = () => {
 }
 
 const provideApplicantPloc = () => {
-    const router = useRouter()
+    const router = appRouter
     const store = useApplicantStore
     const applicantRepository = new ApplicantRepository(new HTTPServiceProvider())
     const getApplicantsByVacancyId = new GetApplicantsByVacancyIdUseCase(applicantRepository)

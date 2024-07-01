@@ -29,10 +29,10 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
     getVacancyByID = async(vacancyId: IVacancyID = NetworkConstants.BASE_API_VACANCY_ID): Promise<void> => {
         if(this.store.vacancyAreasAlreadyExists) return;
         
-        this.store.setLoadingState({ value: true})
+        this.store.waitForVacancy({ value: true})
         await timeout()  // simulate delay
         const vacancyResult = await this.getVacancyById.execute(vacancyId)
-        this.store.setLoadingState({ value: false})
+        this.store.waitForVacancy({ value: false})
 
         vacancyResult.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 

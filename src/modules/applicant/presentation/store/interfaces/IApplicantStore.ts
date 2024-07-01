@@ -2,5 +2,6 @@ import type { IApplicantPersistenceData } from "@modules/applicant/data/models/m
 
 export interface IApplicantStoreModel {         
     loading: boolean;
+    creation: boolean;
     applicants: IApplicantPersistenceData[]
 }
