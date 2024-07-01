@@ -70,10 +70,10 @@ const currentRoute = ref<string | unknown>()
 
 const { getRoutesByType } = useRouterUtilities();
 const routesNavigation = computed(():IRouterNavigation[] => {
-    return getRoutesByType({}).map(({name, meta: { family } = {}}) => {
+    return getRoutesByType({}).map(({name, meta: { family, to: redirect } = {}}) => {
         return {
             id: name?.toString() as string,
-            to: name,
+            to: redirect as string ?? name,
             family
         }
     })
