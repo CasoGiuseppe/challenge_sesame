@@ -5,5 +5,8 @@
       "title": "Create new applicant",
       "action": "Add applicant"
     }
+  },
+  "INFO": {
+    "createBy": "Added by { user }"
   }
 }

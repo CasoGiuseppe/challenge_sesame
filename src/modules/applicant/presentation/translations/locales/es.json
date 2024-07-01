@@ -5,5 +5,8 @@
       "title": "Crea un nuevo candidato",
       "action": "Añadir candidato"
     }
+  },
+  "INFO": {
+    "createBy": "Añadido por { user }"
   }
 }

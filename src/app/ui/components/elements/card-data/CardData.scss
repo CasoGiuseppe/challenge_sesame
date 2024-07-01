@@ -29,7 +29,7 @@
     }
 
     &__footer {
-        @apply flex gap-xsm;
+        @apply flex gap-xsm items-center;
         @apply text-logo-300
     }
 

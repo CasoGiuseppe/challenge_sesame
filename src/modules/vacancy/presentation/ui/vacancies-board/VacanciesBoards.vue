@@ -47,11 +47,14 @@
               <template #default>{{ translate({ key: `ACCION.add` }) }}</template>
             </BaseButton>
           </template>
-          <template #items="{ property: { id, title, content } }">
+          <template #items="{ property: { id, title, content, footer } }">
               <CardData :id="id" draggable>
                   <template #title>{{ title }}</template>
-                  <template #content>{{ content }}</template>
-                  <!-- <template #footer>{{ footer }}</template> -->
+                  <template #content>{{ translate({ key: `RECRUITMENT.INFO.createBy`, options: { user: content} }) }}</template>
+                  <template #footer>
+                    <BaseIcon name="IconClock" />
+                    {{ footer }}
+                  </template>
               </CardData>
           </template>
         </DraggableArea>
@@ -60,7 +63,6 @@
   </LoadingIs>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute } from "vue-router";
 import DraggableArea from '@app/ui/components/tools/draggable-area/DraggableArea.vue';
@@ -92,11 +94,12 @@ const { isLoading: isVacancyLoad, savedVacancyAreas } = storeToRefs(useVacancySt
 const { isLoading: isApplicantLoad, filterdApplicantsByArea } = storeToRefs(useApplicantStore)
 const { translate } = useTranslation();
 const cardContentMapped = (id: string) => {
-  return filterdApplicantsByArea.value(id).map(({areaID, name, creator}: IApplicantPersistenceData) => {
+  return filterdApplicantsByArea.value(id).map(({areaID, name, creator, createAt}: IApplicantPersistenceData) => {
     return {
       id: areaID,
       title: name,
       content: creator,
+      footer: createAt,
     }
   })
 }
@@ -107,13 +110,5 @@ const scrollIntoView = ({ el }: { el: Element }) => {
   const panelID = el.getAttribute('id')
   if(area === panelID) el.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" })
 }
-// onMounted(() => {
-
-//   const route = useRoute()
-//   const area = route?.params?.area
-//   if(!area) return
-//   const vacancy = document.getElementById(area as string)
-//   vacancy?.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" })
-// })
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>
