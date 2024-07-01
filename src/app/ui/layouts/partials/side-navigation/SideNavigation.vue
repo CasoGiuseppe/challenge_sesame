@@ -53,18 +53,19 @@ import BaseIcon from '@app/ui/components/base/base-icon/BaseIcon.vue';
 import BaseItemMenu from '@app/ui/components/base/base-item-menu/BaseItemMenu.vue';
 import FakeLogo from '@app/ui/elements/fakes/FakeLogo.vue';
 import MenuShell from '@app/ui/components/tools/menu-shell/MenuShell.vue';
-import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 import { Sizes } from '@app/ui/components/base/base-icon//types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import type { IRouterNavigation } from '@app/shared/composables/types';
 import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
-import { keyUseTranslations } from '@app/shared/types/symbols';
+import type { IRouterUtilities } from '@app/shared/composables/interfaces/IRouterUtilities';
+import { keyUseTranslations, keyUseRouterUtilities } from '@app/shared/types/symbols';
 
 const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
+const { getRoutesByType } = inject<IRouterUtilities>(keyUseRouterUtilities) as IRouterUtilities;
+
 const route = useRoute();
 const currentRoute = ref<string | unknown>();
 
-const { getRoutesByType } = useRouterUtilities();
 const routesNavigation = computed((): IRouterNavigation[] => {
   return getRoutesByType({}).map(({ name, meta: { family, to: redirect } = {} }) => {
     return {

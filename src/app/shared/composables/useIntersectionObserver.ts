@@ -1,7 +1,7 @@
 import type {
     IIntersectionObserver,
     ICreateObserver
-} from './interfaces/useIntersectionObserver';
+} from './interfaces/IIntersectionObserver';
 
 const config = {
     root: document.body,

@@ -12,18 +12,31 @@ import {onMounted, provide } from 'vue';
 
 import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
 import useTranslation from '@app/shared/composables/useTranslation';
+import useResourcesUtilities from '@app/shared/composables/useResourcesUtilities';
+import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 
 import type { IAsyncComponent } from '@app/shared/composables/interfaces/IAsyncComponent';
 import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
+import type { IResourcesUtilities } from '@app/shared/composables/interfaces/IResourcesUtilities';
+import type { IRouterUtilities } from '@app/shared/composables/interfaces/IRouterUtilities';
 
-import { keyUseAsyncComponent, keyUseTranslations } from "@app/shared/types/symbols";
+import {
+  keyUseAsyncComponent,
+  keyUseTranslations,
+  keyUseResourcesUtilities,
+  keyUseRouterUtilities
+} from "@app/shared/types/symbols";
 // import { dependencies } from '@modules/core/dependencies'
 
 const { create } = useAsyncComponent();
 const { translate, setNewTranslationLocale } = useTranslation();
+const { loadExternalsResources } = useResourcesUtilities();
+const { getRoutesByType } = useRouterUtilities();
 
 provide<IAsyncComponent>(keyUseAsyncComponent, { create });
 provide<ITranslation>(keyUseTranslations, { translate, setNewTranslationLocale });
+provide<IResourcesUtilities>(keyUseResourcesUtilities, { loadExternalsResources });
+provide<IRouterUtilities>(keyUseRouterUtilities, { getRoutesByType });
 
 onMounted(async () => {
   // const vacancy = dependencies.provideVacancyPloc()

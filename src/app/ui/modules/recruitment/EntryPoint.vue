@@ -68,16 +68,16 @@ import { Orientation } from '@app/ui/components/tools/menu-shell/types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { Types } from '@app/ui/components/abstracts/transition-is/types';
 import type { IRouterNavigation } from '@app/shared/composables/types';
-import useRouterUtilities from '@app/shared/composables/useRouterUtilities';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import type { ITranslation } from '@app/shared/composables/interfaces/ITranslation';
-import { keyUseTranslations } from '@app/shared/types/symbols';
+import type { IRouterUtilities } from '@app/shared/composables/interfaces/IRouterUtilities';
+import { keyUseTranslations, keyUseRouterUtilities } from '@app/shared/types/symbols';
 
 const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
+const { getRoutesByType } = inject<IRouterUtilities>(keyUseRouterUtilities) as IRouterUtilities;
 
 const route = useRoute();
-const { getRoutesByType } = useRouterUtilities();
 
 const currentRoute = ref<string | unknown>();
 const routesNavigation = computed((): IRouterNavigation[] => {
@@ -103,9 +103,7 @@ const loadingMapper = reactive<{ states: { [key: string]: ComputedRef<boolean> }
 
 watch(
   route,
-  ({ path }): void => {
-    currentRoute.value = path;
-  },
+  ({ path }): void => { currentRoute.value = path },
   { flush: 'pre', immediate: true, deep: true }
 );
 </script>
