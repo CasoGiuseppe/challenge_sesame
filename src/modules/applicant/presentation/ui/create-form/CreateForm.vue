@@ -18,9 +18,10 @@
         :type="type"
         :proxy-value="proxy"
         :placeholder="placeholder"
-        required
         :pattern="pattern"
         :min="3"
+        :readonly="isCreated"
+        required
         fullsize
         @update:modelValue="updateValue"
         @invalid="setValidation"
@@ -38,6 +39,7 @@
         :type="buttonTypes.PRIMARY"
         :size="Sizes.DEFAULT"
         :disabled="isDisabled"
+        :loading="isCreated"
       >
           <template #default>{{ translate({ key: `ACCION.create` }) }}</template>
       </BaseButton>
@@ -45,6 +47,7 @@
 </template>
 <script setup lang="ts">
 import { computed, reactive } from "vue";
+import { storeToRefs } from 'pinia';
 import { useRoute } from "vue-router";
 import BaseInput from "@app/ui/components/base/base-input/BaseInput.vue";
 import BaseIcon from "@app/ui/components/base/base-icon/BaseIcon.vue";
@@ -54,7 +57,9 @@ import { Types } from "@app/ui/components/base/base-input/types";
 import type { IForm, IFormField } from "./types";
 import useTranslation from '@app/shared/composables/useTranslation';
 import { dependencies } from '@modules/core/dependencies';
+import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 
+const { isCreated } = storeToRefs(useApplicantStore)
 const { translate } = useTranslation();
 const route = useRoute();
 
