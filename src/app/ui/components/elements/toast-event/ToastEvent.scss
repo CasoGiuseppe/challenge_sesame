@@ -1,11 +1,11 @@
 .toast-event {
-    @apply p-sm relative flex overflow-hidden pl-md;
-    @apply bg-neutral-100 shadow-light-center rounded-xsm;
+    @apply p-sm relative flex overflow-hidden;
+    @apply bg-neutral-100 shadow-light-left rounded-xsm;
     @apply text-neutral-100 font-default text-sm;
 
     &:is(dialog) {
         @apply border-none fixed;
-        inset: 10% 2% auto auto
+        inset: 2% 2% auto auto
     }
 
     &--is {
