@@ -9,7 +9,6 @@
 
   <!-- Notification -->
   <TransitionIs
-    v-if="hasEventsToShow"
     group
     :type="Types.FROMRIGHT"
     :easing="Easing.ELASTIC"
@@ -19,7 +18,7 @@
       v-for="{ type, id, mode } of emittedEventsDetails"
       :id="id"
       :type="ToastType[type.toUpperCase() as keyof typeof ToastType]"
-    > {{ mode }} </ToastEvent>
+    > {{ translate({ key: `EVENTS.${mode}` }) }}</ToastEvent>
   </TransitionIs>
 </template>
 <script setup lang="ts">

@@ -29,6 +29,11 @@ export default async () => {
     "AREAS": {
       "talent": "Talento"
     },
+
+    "EVENTS": {
+      "creation": "El candidato se ha creado correctamente"
+    },
+    
     ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
   }
 }

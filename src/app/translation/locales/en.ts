@@ -30,6 +30,10 @@ export default async () => {
     "AREAS": {
       "talent": "Talent"
     },
+
+    "EVENTS": {
+      "creation": "The candidate has been created successfully"
+    },
     ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
   }
 }
