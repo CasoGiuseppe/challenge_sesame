@@ -18,7 +18,7 @@ const router = createRouter({
           name: 'welcome',
           components: {
             content: () =>
-              import(/* webpackChunkName: "Welcome" */ '@app/ui/modules/welcome/EntryPoint.vue')
+              import(/* webpackChunkName: "Welcome" */ '@app/ui/modules/welcome-page/EntryPoint.vue')
           }
         },
         {

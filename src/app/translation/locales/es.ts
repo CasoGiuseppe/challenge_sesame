@@ -36,6 +36,11 @@ export default async () => {
     "ERRORS": {
       "generic": "OPS! Se ha producido un error, vuelve a intentarlo"
     },
+    "WELCOME": {
+      "title": "Bienvenido a Sesame HR System",
+      "message": "Esta es una aplicación de muestra para demostrar la funcionalidad de Sesame HR System.",
+      "action": "Empezar"
+    },
     
     ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
   }

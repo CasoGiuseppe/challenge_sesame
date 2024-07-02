@@ -3,25 +3,26 @@
     <h2 v-if="errorCode" class="service-error__code">{{ errorCode }}</h2>
     <p>{{ translate({ key: 'ERRORS.generic' }) }}</p>
     <BaseButton
-      id="addApplicant"
+      id="back"
       :type="Types.PRIMARY"
       :size="Sizes.SMALL"
       :is="Is.ROUTERLINK"
       :to="{ name: 'welcome' }"
     >
-      <template #default>{{ translate({ key: `ACCION.backToStart` }) }}</template>
+      <template #default>{{ translate({ key: 'ACCION.backToStart' }) }}</template>
     </BaseButton>
   </section>
 </template>
 <script setup lang="ts">
-import { watch, ref } from 'vue';
+import { watch, ref, inject } from 'vue';
 import { useRoute } from 'vue-router';
-import { useTranslation } from '@app/shared/composables';
+import type { ITranslation } from '@app/shared/composables';
+import { keyUseTranslations } from '@app/shared/types/symbols';
 import { BaseButton } from '@app/ui/components';
 import { Types, Sizes } from '@app/ui/components/base/base-button/types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 
-const { translate } = useTranslation();
+const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
 const route = useRoute();
 const errorCode = ref<string | unknown>(undefined);
 watch(
