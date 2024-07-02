@@ -9,14 +9,22 @@ export const useGlobalEventsStates = defineStore('useGlobalEventsStates', () => 
     const setEmittedEventState = ({ type, id, mode }: { type: string, id: string, mode: string }) => {
       state.events = [...state.events, { type, id, mode }]
     };
+    const removeEventByID = ({ id }: { id: string }) => {
+      console.log(id)
+      state.events = state.events.filter((event) => { event.id !== id })
+    };
 
     const emittedEventsDetails = computed((): IEventPropsModel[] => state.events);
     const hasEventsToShow = computed((): boolean => emittedEventsDetails.value.length > 0);
 
     return {
-        setEmittedEventState,
-        emittedEventsDetails,
-        hasEventsToShow
+      state,
+
+      setEmittedEventState,
+      removeEventByID,
+
+      emittedEventsDetails,
+      hasEventsToShow
     }
 })
 

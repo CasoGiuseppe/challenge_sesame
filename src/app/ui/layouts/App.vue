@@ -9,6 +9,7 @@
 
   <!-- Notification -->
   <TransitionIs
+    v-if="hasEventsToShow"
     group
     :type="Types.FROMRIGHT"
     :easing="Easing.ELASTIC"
@@ -18,6 +19,8 @@
       v-for="{ type, id, mode } of emittedEventsDetails"
       :id="id"
       :type="ToastType[type.toUpperCase() as keyof typeof ToastType]"
+      :timer="{ active: true, duration: 3500 }"
+      @close="removeToast"
     > {{ translate({ key: `EVENTS.${mode}` }) }}</ToastEvent>
   </TransitionIs>
 </template>
@@ -57,6 +60,8 @@ provide<IResourcesUtilities>(keyUseResourcesUtilities, { loadExternalsResources 
 provide<IRouterUtilities>(keyUseRouterUtilities, { getRoutesByType });
 
 const { hasEventsToShow, emittedEventsDetails } = storeToRefs(useGlobalEventsStore);
+const { removeEventByID } = useGlobalEventsStore;
+const removeToast = ({ id }: { id: string }) => removeEventByID({ id });
 
 onMounted(async () => {
   // const vacancy = dependencies.provideVacancyPloc()
