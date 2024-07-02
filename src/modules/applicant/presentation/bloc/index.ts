@@ -72,9 +72,10 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
                 this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
             (response: Applicant) => {
+                const { name } = ApplicantMapper.toPersistance(response)
                 this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
                 this.router.push({ name: 'positions', params: { area: response.getStatus} })
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: 'The candidate has been created successfully' })
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: `The candidate ${name} has been created successfully` })
             }
         )
     }
