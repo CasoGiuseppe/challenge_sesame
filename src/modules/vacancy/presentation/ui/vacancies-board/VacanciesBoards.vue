@@ -10,7 +10,6 @@
       :easing="Easing.ELASTIC"
       :timing="Timing.FAST"
       class="vacancies-boards"
-      @enter="scrollIntoView"
     >
       <li
         v-for="({ id, name }, index) in savedVacancyAreas"
@@ -76,7 +75,7 @@
   </LoadingIs>
 </template>
 <script setup lang="ts">
-import { inject } from 'vue';
+import { inject, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 
@@ -130,11 +129,12 @@ const cardContentMapped = (id: string) => {
     });
 };
 
-const scrollIntoView = ({ el }: { el: Element }) => {
+const scrollIntoView = () => {
   const area = route?.params?.area;
   if (!area) return;
-  const panelID = el.getAttribute('id');
-  if (area === panelID) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  document.getElementById(area as string)?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
 };
+
+onMounted(() => scrollIntoView())
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>

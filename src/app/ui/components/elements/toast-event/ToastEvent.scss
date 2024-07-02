@@ -16,5 +16,10 @@
         &-error {
             @apply bg-warning-100;
         }
+
+        &-exit {
+            @apply animate-slide-from-right;
+            animation-direction: reverse;
+        }
     }
 }

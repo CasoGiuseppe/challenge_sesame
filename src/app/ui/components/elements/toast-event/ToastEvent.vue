@@ -1,12 +1,14 @@
 <template>
   <component
+    ref="toast"
     :is="tag"
     :class="[
-        'toast-event',
-        `toast-event--is-${type}`,
+      'toast-event',
+      `toast-event--is-${type}`,
+      `${exit ? 'toast-event--is-exit': ''}`
     ]"
     data-testID="ui-toast-message"
->
+  >
     <section class="toast-event__body">
       <!-- @slot Default: slot to show toast body -->
       <slot />
@@ -54,6 +56,8 @@ const { timer, id } = defineProps({
   }
 });
 
+const exit = ref<boolean>(false);
+const toast = ref<HTMLElement | null>(null);
 const timeout = ref<ReturnType<typeof setTimeout> | null>(null);
 const emits = defineEmits(['close']);
 const startTimer = () => {
@@ -61,7 +65,12 @@ const startTimer = () => {
   timeout.value = setTimeout(() => handleClose(), timer.duration);
 };
 
-const handleClose = () => emits('close', { id });
+const handleClose = () => {
+  if (!toast.value) return;
+  exit.value = true;
+  toast.value.addEventListener('animationend', () => emits('close', { id }))
+};
+
 onMounted(() => startTimer());
 onUnmounted(() => {
   if (timeout.value) clearTimeout(timeout.value);
