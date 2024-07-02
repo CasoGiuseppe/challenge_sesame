@@ -9,3 +9,8 @@ export interface IContdown {
     active: boolean
     duration: number
 }
+
+export enum Tags {
+    DIALOG = 'dialog',
+    ASIDE = 'aside',
+}

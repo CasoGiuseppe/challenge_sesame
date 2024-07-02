@@ -1,0 +1,20 @@
+.toast-event {
+    @apply p-sm relative flex overflow-hidden pl-md;
+    @apply bg-neutral-100 shadow-light-center rounded-xsm;
+    @apply text-neutral-100 font-default text-sm;
+
+    &:is(dialog) {
+        @apply border-none fixed;
+        inset: 10% 2% auto auto
+    }
+
+    &--is {
+        &-success {
+            @apply bg-success-100;
+        }
+
+        &-error {
+            @apply bg-warning-100;
+        }
+    }
+}
