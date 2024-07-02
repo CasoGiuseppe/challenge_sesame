@@ -11,6 +11,11 @@ import type { Applicant } from "@modules/applicant/domain/core/Applicant";
 import { ApplicantMapper } from "@modules/applicant/data/models/mapper/ApplicantMapper";
 import type { ApplicantResponseStore } from "../store/applicant";
 import { timeout } from "@app/shared/utilities";
+import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
+import { keyUseEventSuccess } from "@app/shared/types/symbols";
+import type { EventCallback } from "@app/shared/utilities/EventsModel/types";
+
+const successHandler:EventCallback = ({ value }: { value: string}) => console.log(value)
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
     private readonly createNewApplicant: CreateNewApplicantUseCase;
@@ -19,17 +24,19 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     constructor({
         store,
         router,
+        eventEmitter,
         getApplicantsByVacancyId,
         createNewApplicant,
         changeApplicantStatus
     }: {
         store: ApplicantResponseStore
         router: Router;
+        eventEmitter: IEventEmitter;
         getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
         createNewApplicant: CreateNewApplicantUseCase;
         changeApplicantStatus: ChangeApplicantStatusUseCase;
     }){
-        super({ store, router })
+        super({ store, router, eventEmitter });
         this.getApplicantsByVacancyId = getApplicantsByVacancyId;
         this.createNewApplicant = createNewApplicant;
         this.changeApplicantStatus = changeApplicantStatus;
@@ -60,8 +67,10 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: Applicant) => {
+                this.eventEmitter.subscribe(keyUseEventSuccess.toString(), successHandler)
                 this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
                 this.router.push({ name: 'positions', params: { area: response.getStatus} })
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { value: 'success' })
             }
         )
     }

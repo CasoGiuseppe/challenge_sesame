@@ -1,13 +1,16 @@
 import type { Router } from "vue-router";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
+import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
 
 export class Ploc<T> {
     public store: T;
     public router: Router;
+    public eventEmitter: IEventEmitter;
 
-    constructor({ store, router }: { store: T, router: Router }) {
+    constructor({ store, router, eventEmitter }: { store: T, router: Router, eventEmitter: IEventEmitter }) {
         this.store = store
         this.router = router;
+        this.eventEmitter = eventEmitter;
     }
 
     handleError(error: DataExceptions): string  {

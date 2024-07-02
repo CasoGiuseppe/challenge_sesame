@@ -1,6 +1,7 @@
+import type { IEventEmitter } from "./interfaces/IEventEmitter";
 import type { EventCallback } from "./types";
 
-export class EventEmitter {
+export class EventEmitter implements IEventEmitter {
     private events: Record<string, EventCallback[]>;
     constructor() {
       this.events = {};
