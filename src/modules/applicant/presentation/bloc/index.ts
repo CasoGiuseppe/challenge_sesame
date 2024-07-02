@@ -52,7 +52,9 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         this.store.waitForApplicants({ value: false})
         
         applicantResult.fold(
-            (error: DataExceptions) => { console.log(this.handleError(error)) }, 
+            (error: DataExceptions) => {
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
+            }, 
             (response: Applicant[]) => {
                 response.map((applicant: Applicant) => this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(applicant) }))
             }
@@ -66,11 +68,13 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         this.store.waitForCreation({ value: false })
 
         newApplicant.fold(
-            (error: DataExceptions) => { console.log(this.handleError(error)) }, 
+            (error: DataExceptions) => {
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
+            }, 
             (response: Applicant) => {
                 this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
                 this.router.push({ name: 'positions', params: { area: response.getStatus} })
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: 'creation' })
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: 'The candidate has been created successfully' })
             }
         )
     }
@@ -79,7 +83,9 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, email, vacancyId, statusId })
 
         changedApplicant.fold(
-            (error: DataExceptions) => { console.log(this.handleError(error)) }, 
+            (error: DataExceptions) => {
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
+            }, 
             (response: Applicant) => { console.log('change applicant', response) }
         )
     }

@@ -15,15 +15,21 @@ import { useGlobalEventsStore } from '@app/shared/stores/global-events/globalEve
 import { keyUseEventSuccess } from "@app/shared/types/symbols";
 import { useTranslation } from '@app/shared/composables';
 
+const eventEmitter = new EventEmitter();
+const global = useGlobalEventsStore;
+
 const provideVacancyPloc = () => {
   const router = appRouter;
   const store = useVacancyStore;
   const vacancyStateRepository = new VacancyStateRepository(new HTTPServiceProvider());
   const getVacancyById = new GetVacancyByIdUseCase(vacancyStateRepository);
 
+  eventEmitter.subscribe(keyUseEventSuccess.toString(), global.setEmittedEventState);
+
   return new VacancyBloc({
     router,
     store,
+    eventEmitter,
     getVacancyById
   });
 };
@@ -31,13 +37,11 @@ const provideVacancyPloc = () => {
 const provideApplicantPloc = () => {
   const router = appRouter;
   const store = useApplicantStore;
-  const global = useGlobalEventsStore;
   const applicantRepository = new ApplicantRepository(new HTTPServiceProvider());
   const getApplicantsByVacancyId = new GetApplicantsByVacancyIdUseCase(applicantRepository);
   const createNewApplicant = new CreateNewApplicantUseCase(applicantRepository);
   const changeApplicantStatus = new ChangeApplicantStatusUseCase(applicantRepository);
   
-  const eventEmitter = new EventEmitter();
   eventEmitter.subscribe(keyUseEventSuccess.toString(), global.setEmittedEventState);
 
   return new ApplicantBloc({

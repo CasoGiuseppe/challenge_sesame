@@ -21,7 +21,7 @@
       :type="ToastType[type.toUpperCase() as keyof typeof ToastType]"
       :timer="{ active: true, duration: 3500 }"
       @close="removeToast"
-    > {{ translate({ key: `EVENTS.${translation}` }) }}</ToastEvent>
+    > {{ translation }}</ToastEvent>
   </TransitionIs>
 </template>
 <script setup lang="ts">
