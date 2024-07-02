@@ -15,6 +15,7 @@ import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces
 import { keyUseEventSuccess } from "@app/shared/types/symbols";
 import type { EventCallback } from "@app/shared/utilities/EventsModel/types";
 import type { GlobalEventsStore } from "@app/shared/stores/global-events/globalEvents";
+import { UUID } from "@modules/core/providers/Uuid-v4/Uuid";
 
 const successHandler:EventCallback = ({ value }: { value: string}) => console.log(value)
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
@@ -70,10 +71,10 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: Applicant) => {
-                this.eventEmitter.subscribe(keyUseEventSuccess.toString(), this.global.setSuccessEvent)
+                this.eventEmitter.subscribe(keyUseEventSuccess.toString(), this.global.setEmittedEventState)
                 this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
                 this.router.push({ name: 'positions', params: { area: response.getStatus} })
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { value: 'success' })
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), mode: 'creation' })
             }
         )
     }

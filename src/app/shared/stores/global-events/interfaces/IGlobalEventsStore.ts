@@ -1,4 +1,9 @@
 export interface IGlobalEventsStoreModel {         
-    success: string[];
-    exception: string[];
+    events: IEventPropsModel[];
+}
+
+export interface IEventPropsModel {
+    type: string;
+    id: string;
+    mode: string;
 }
