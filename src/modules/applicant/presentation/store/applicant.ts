@@ -35,4 +35,4 @@ export const useApplicantStore = useApplicantResponse();
 export type ApplicantResponseStore = Omit<
   ReturnType<typeof useApplicantResponse>,
   keyof ReturnType<typeof defineStore>
->;
+>

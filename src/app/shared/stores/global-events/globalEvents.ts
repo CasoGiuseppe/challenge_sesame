@@ -20,3 +20,9 @@ export const useGlobalEventsStates = defineStore('useGlobalEventsStates', () => 
         emittedException
     }
 })
+
+export const useGlobalEventsStore = useGlobalEventsStates();
+export type GlobalEventsStore = Omit<
+  ReturnType<typeof useGlobalEventsStates>,
+  keyof ReturnType<typeof defineStore>
+>;
