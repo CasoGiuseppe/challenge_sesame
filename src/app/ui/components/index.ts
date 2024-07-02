@@ -17,6 +17,7 @@ import MenuShell from './tools/menu-shell/MenuShell.vue';
 import ResponsivePanel from './tools/responsive-panel/ResponsivePanel.vue';
 import TabsShell from './tools/tabs-shell/TabsShell.vue';
 import FakeLogo from '../elements/fakes/FakeLogo.vue';
+import ToastEvent from './elements/toast-event/ToastEvent.vue';
 
 export {
     BaseButton,
@@ -37,5 +38,6 @@ export {
     MenuShell,
     ResponsivePanel,
     TabsShell,
-    FakeLogo
+    FakeLogo,
+    ToastEvent
 }

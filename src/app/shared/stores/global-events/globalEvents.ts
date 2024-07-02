@@ -11,10 +11,12 @@ export const useGlobalEventsStates = defineStore('useGlobalEventsStates', () => 
     };
 
     const emittedEventsState = computed((): IEventPropsModel[] => state.events);
+    const hasEventsToShow = computed((): boolean => emittedEventsState.value.length > 0);
 
     return {
         setEmittedEventState,
         emittedEventsState,
+        hasEventsToShow
     }
 })
 

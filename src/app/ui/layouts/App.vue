@@ -6,10 +6,20 @@
       </template>
     </Suspense>
   </RouterView>
+
+  <!-- Notification -->
+  <ToastEvent v-if="hasEventsToShow">
+    evento
+  </ToastEvent>
 </template>
 <script setup lang="ts">
 import {onMounted, provide } from 'vue';
-
+import { storeToRefs } from 'pinia';
+import { useGlobalEventsStore } from '@app/shared/stores/global-events/globalEvents';
+import {
+  ToastEvent,
+  TransitionIs
+} from '@app/ui/components';
 import {
   useAsyncComponent,
   useTranslation,
@@ -20,7 +30,6 @@ import {
   type IResourcesUtilities,
   type IRouterUtilities
 } from '@app/shared/composables'
-
 import {
   keyUseAsyncComponent,
   keyUseTranslations,
@@ -38,6 +47,8 @@ provide<IAsyncComponent>(keyUseAsyncComponent, { create });
 provide<ITranslation>(keyUseTranslations, { translate, setNewTranslationLocale });
 provide<IResourcesUtilities>(keyUseResourcesUtilities, { loadExternalsResources });
 provide<IRouterUtilities>(keyUseRouterUtilities, { getRoutesByType });
+
+const { hasEventsToShow } = storeToRefs(useGlobalEventsStore);
 
 onMounted(async () => {
   // const vacancy = dependencies.provideVacancyPloc()
