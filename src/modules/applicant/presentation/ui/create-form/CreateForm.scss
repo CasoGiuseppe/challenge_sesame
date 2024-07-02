@@ -3,6 +3,12 @@
 
     @apply flex flex-col items-end gap-sm;
 
+    * {
+        &:last-child{
+            @apply mt-md
+        }
+    }
+    
     &__description {
         @apply text-sm;
 

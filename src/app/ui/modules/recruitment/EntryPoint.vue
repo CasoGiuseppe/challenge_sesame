@@ -36,6 +36,7 @@
         :type="buttonTypes.PRIMARY"
         :size="Sizes.SMALL"
         :is="Is.ROUTERLINK"
+        :disabled="disableAddButton"
         :to="{ name: 'createApplicant' }"
       >
         <template #default>{{ translate({ key: `RECRUITMENT.FORM.ADD.action` }) }}</template>
@@ -104,6 +105,10 @@ const loadingMapper = reactive<{ states: { [key: string]: ComputedRef<boolean> }
     positions: computed(() => isVacancyLoad.value)
   }
 });
+
+const disableAddButton = computed(() => {
+  return [isVacancyLoad.value, isApplicantLoad.value].some((state: boolean) => state === true)
+})
 
 watch(
   route,

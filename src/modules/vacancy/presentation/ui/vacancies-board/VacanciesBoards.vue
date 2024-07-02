@@ -102,7 +102,7 @@ import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
 import { compareDates } from '@app/shared/utilities';
-import { type ITranslation } from '@app/shared/composables'
+import { type ITranslation } from '@app/shared/composables';
 import { keyUseTranslations } from '@app/shared/types/symbols';
 
 const iconMapper = {
@@ -134,8 +134,7 @@ const scrollIntoView = ({ el }: { el: Element }) => {
   const area = route?.params?.area;
   if (!area) return;
   const panelID = el.getAttribute('id');
-  if (area === panelID)
-    el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  if (area === panelID) el.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
 };
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>

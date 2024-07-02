@@ -65,7 +65,15 @@ const { type, group } = defineProps({
     default: Timing.NORMAL,
     validator: (prop: Timing) =>
       ensureValueCollectionExists({ collection: Timing, value: prop })
-  }
+  },
+
+  /**
+   * Set delay type
+   */
+   delay: {
+    type: String as PropType<String>,
+    default: '0s',
+  },
 });
 
 const isNotAGroup = computed(() => !group)
@@ -85,7 +93,8 @@ const beforeEnter = (el: Element) => emits('before', { el: el })
   $to: translateY(0),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
-  $ease: v-bind(easing)
+  $ease: v-bind(easing),
+  $delay: v-bind(delay)
 );
 
 @include create-animation(
@@ -94,7 +103,8 @@ const beforeEnter = (el: Element) => emits('before', { el: el })
   $to: translateY(-50%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
-  $ease: v-bind(easing)
+  $ease: v-bind(easing),
+  $delay: v-bind(delay)
 );
 
 @include create-animation(
@@ -103,7 +113,8 @@ const beforeEnter = (el: Element) => emits('before', { el: el })
   $to: translateY(20%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
-  $ease: v-bind(easing)
+  $ease: v-bind(easing),
+  $delay: v-bind(delay)
 );
 
 @include create-animation(
@@ -112,7 +123,8 @@ const beforeEnter = (el: Element) => emits('before', { el: el })
   $to: translateX(-50%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
-  $ease: v-bind(easing)
+  $ease: v-bind(easing),
+  $delay: v-bind(delay)
 );
 
 @include create-animation(
@@ -121,7 +133,8 @@ const beforeEnter = (el: Element) => emits('before', { el: el })
   $to: translateX(50%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
-  $ease: v-bind(easing)
+  $ease: v-bind(easing),
+  $delay: v-bind(delay)
 );
 </style>
 <style src="./TransitionIs.scss" lang="scss"></style>

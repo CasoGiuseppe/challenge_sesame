@@ -41,7 +41,7 @@
         :disabled="isDisabled"
         :loading="isCreated"
       >
-          <template #default>{{ translate({ key: `ACCION.create` }) }}</template>
+          <template #default>{{ translate({ key: `${isCreated ? 'ACCION.loading' : 'ACCION.create'}` }) }}</template>
       </BaseButton>
     </form>
 </template>

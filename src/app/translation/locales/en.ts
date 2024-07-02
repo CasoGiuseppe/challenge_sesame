@@ -22,8 +22,9 @@ export default async () => {
     },
     "ACCION": {
       "add": "Add one",
-      "create": "Create",
+      "create": "Create a new applicant",
       "backToStart": "Back to Start",
+      "loading": "We are processing..."
     },
     "ROLES": {
       "admin": "Administrator"
