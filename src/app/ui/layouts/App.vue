@@ -16,12 +16,12 @@
     :timing="Timing.NORMAL"
   >
     <ToastEvent
-      v-for="{ type, id, mode } of emittedEventsDetails"
+      v-for="{ type, id, translation } of emittedEventsDetails"
       :id="id"
       :type="ToastType[type.toUpperCase() as keyof typeof ToastType]"
       :timer="{ active: true, duration: 3500 }"
       @close="removeToast"
-    > {{ translate({ key: `EVENTS.${mode}` }) }}</ToastEvent>
+    > {{ translate({ key: `EVENTS.${translation}` }) }}</ToastEvent>
   </TransitionIs>
 </template>
 <script setup lang="ts">

@@ -6,19 +6,13 @@ import type { GlobalEventsStore } from "@app/shared/stores/global-events/globalE
 export class Ploc<T> {
     public store: T;
     public router: Router;
-    public eventEmitter: IEventEmitter;
-    public global: GlobalEventsStore;
-
+    
     constructor({
         store,
         router,
-        eventEmitter,
-        global
-    }: { store: T, router: Router, eventEmitter: IEventEmitter, global: GlobalEventsStore }) {
+    }: { store: T, router: Router }) {
         this.store = store
-        this.router = router;
-        this.eventEmitter = eventEmitter;
-        this.global = global;
+        this.router = router;    
     }
 
     handleError(error: DataExceptions): string  {
@@ -28,27 +22,25 @@ export class Ploc<T> {
         switch( kind ) {
             case 'BadRequest':
                 exception = (error as Extract<DataExceptions, { kind: "BadRequest"}>).error.message
-                console.log('router.push', 'Bad Request')
                 break;
 
             case 'UnprocessableRequest':
                 exception = (error as Extract<DataExceptions, { kind: "UnprocessableRequest"}>).error.message
-                console.log('router.push', 'Unprocessable Content')
                 break;
             
             case 'Unauthorized':
                 exception = (error as Extract<DataExceptions, { kind: "Unauthorized"}>).error.message
-                console.log('router.push', 'Unauthorized')
                 break;
 
             case 'WrongPathRequest':
                 exception = (error as Extract<DataExceptions, { kind: "WrongPathRequest"}>).error.message
-                console.log('router.push', 'WrongPathRequest')
                 break;
             
             case 'UnexpectedError':
                 exception = (error as Extract<DataExceptions, { kind: "UnexpectedError"}>).error.message
-                console.log('router.push', 'Unexpected Error')
+                break;
+            default:
+                exception = 'An unexpected error occurred. Please try again later.'
         }
 
         return exception

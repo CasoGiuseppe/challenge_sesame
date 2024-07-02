@@ -13,19 +13,18 @@ import type { ApplicantResponseStore } from "../store/applicant";
 import { timeout } from "@app/shared/utilities";
 import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
 import { keyUseEventSuccess } from "@app/shared/types/symbols";
-import type { GlobalEventsStore } from "@app/shared/stores/global-events/globalEvents";
 import { UUID } from "@modules/core/providers/Uuid-v4/Uuid";
 
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
     private readonly createNewApplicant: CreateNewApplicantUseCase;
     private readonly changeApplicantStatus: ChangeApplicantStatusUseCase;
+    private readonly eventEmitter: IEventEmitter;
 
     constructor({
         store,
         router,
         eventEmitter,
-        global,
         getApplicantsByVacancyId,
         createNewApplicant,
         changeApplicantStatus
@@ -33,15 +32,15 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         store: ApplicantResponseStore
         router: Router;
         eventEmitter: IEventEmitter;
-        global: GlobalEventsStore;
         getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
         createNewApplicant: CreateNewApplicantUseCase;
         changeApplicantStatus: ChangeApplicantStatusUseCase;
     }){
-        super({ store, router, eventEmitter, global });
+        super({ store, router });
         this.getApplicantsByVacancyId = getApplicantsByVacancyId;
         this.createNewApplicant = createNewApplicant;
         this.changeApplicantStatus = changeApplicantStatus;
+        this.eventEmitter = eventEmitter;
     }
 
     getApplicantsByID = async({vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId}: {vacancyId?: IVacancyID, statusId?: string} = {}): Promise<void> => {
@@ -69,10 +68,9 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         newApplicant.fold(
             (error: DataExceptions) => { console.log(this.handleError(error)) }, 
             (response: Applicant) => {
-                this.eventEmitter.subscribe(keyUseEventSuccess.toString(), this.global.setEmittedEventState)
                 this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
                 this.router.push({ name: 'positions', params: { area: response.getStatus} })
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), mode: 'creation' })
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: 'creation' })
             }
         )
     }

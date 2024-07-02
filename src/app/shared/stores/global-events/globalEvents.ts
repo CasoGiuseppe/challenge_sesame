@@ -6,8 +6,8 @@ import type { IEventPropsModel, IGlobalEventsStoreModel } from './interfaces/IGl
 export const useGlobalEventsStates = defineStore('useGlobalEventsStates', () => {
     const state = reactive<IGlobalEventsStoreModel>(structuredClone(globalStore));
 
-    const setEmittedEventState = ({ type, id, mode }: { type: string, id: string, mode: string }) => {
-      state.events = [...state.events, { type, id, mode }]
+    const setEmittedEventState = ({ type, id, translation }: { type: string, id: string, translation: string }) => {
+      state.events = [...state.events, { type, id, translation }]
     };
     const removeEventByID = ({ id }: { id: string }) => {
       console.log(id)

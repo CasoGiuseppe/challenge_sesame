@@ -5,5 +5,5 @@ export interface IGlobalEventsStoreModel {
 export interface IEventPropsModel {
     type: string;
     id: string;
-    mode: string;
+    translation: string;
 }
