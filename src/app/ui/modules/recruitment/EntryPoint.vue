@@ -63,7 +63,7 @@ import {
   BaseTab,
   MenuShell,
   BaseInput
-} from '@app/ui/components/index';
+} from '@app/ui/components';
 import { Types as buttonTypes, Sizes } from '@app/ui/components/base/base-button/types';
 import { Types as inputTypes } from '@app/ui/components/base/base-input/types';
 import { Orientation } from '@app/ui/components/tools/menu-shell/types';

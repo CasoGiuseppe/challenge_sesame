@@ -10,7 +10,6 @@ export const useGlobalEventsStates = defineStore('useGlobalEventsStates', () => 
       state.events = [...state.events, { type, id, translation }]
     };
     const removeEventByID = ({ id }: { id: string }) => {
-      console.log(id)
       state.events = state.events.filter((event) => { event.id !== id })
     };
 

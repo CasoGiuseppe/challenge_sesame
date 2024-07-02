@@ -22,7 +22,8 @@ export default async () => {
     },
     "ACCION": {
       "add": "Add one",
-      "create": "Create"
+      "create": "Create",
+      "backToStart": "Back to Start",
     },
     "ROLES": {
       "admin": "Administrator"
@@ -33,6 +34,10 @@ export default async () => {
 
     "EVENTS": {
       "creation": "The candidate has been created successfully"
+    },
+
+    "ERRORS": {
+      "generic": "OPS! An error occurred, please try again"
     },
     ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
   }

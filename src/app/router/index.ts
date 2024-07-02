@@ -37,9 +37,17 @@ const router = createRouter({
               import(
                 /* webpackChunkName: "ContentBody" */ '@app/ui/layouts/partials/section-content/SectionContent.vue'
               )
-          }
+          },
         },
 
+        {
+          path: 'error/:code?',
+          name: 'error',
+          components: {
+            content: () =>
+              import(/* webpackChunkName: "ErrorPage" */ '@app/ui/layouts/status/status-service-error/StatusServiceError.vue')
+          }
+        },
         {
           path: '/:pathMatch(.*)*',
           components: {
