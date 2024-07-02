@@ -1,10 +1,10 @@
 import { defineStore } from 'pinia';
 import { computed, reactive } from 'vue';
 import { globalStore } from './model';
-import type { IGlobalStoreModel } from './interfaces/IGlobalStore';
+import type { IGlobalEventsStoreModel } from './interfaces/IGlobalEventsStore';
 
-export const useGlobalStates = defineStore('useGlobalStates', () => {
-    const state = reactive<IGlobalStoreModel>(structuredClone(globalStore));
+export const useGlobalEventsStates = defineStore('useGlobalEventsStates', () => {
+    const state = reactive<IGlobalEventsStoreModel>(structuredClone(globalStore));
 
     const setSuccessEvent = ({ value }: { value: string }) => (state.success = [...state.success, value]);
     const setExceptionEvent = ({ value }: { value: string }) => (state.exception = [...state.exception, value]);
