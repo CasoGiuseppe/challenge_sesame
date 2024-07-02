@@ -13,11 +13,9 @@ import type { ApplicantResponseStore } from "../store/applicant";
 import { timeout } from "@app/shared/utilities";
 import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
 import { keyUseEventSuccess } from "@app/shared/types/symbols";
-import type { EventCallback } from "@app/shared/utilities/EventsModel/types";
 import type { GlobalEventsStore } from "@app/shared/stores/global-events/globalEvents";
 import { UUID } from "@modules/core/providers/Uuid-v4/Uuid";
 
-const successHandler:EventCallback = ({ value }: { value: string}) => console.log(value)
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
     private readonly createNewApplicant: CreateNewApplicantUseCase;
