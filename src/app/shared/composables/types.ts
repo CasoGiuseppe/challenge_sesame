@@ -1,12 +1,12 @@
-import type { RouteRecordName } from "vue-router";
+import type { RouteRecordName } from 'vue-router';
 
 export type IRouterNavigation = {
-    id: string,
-    to?: RouteRecordName |undefined,
-    translation?: string |unknown,
-    family?: string | unknown
-}
+  id: string;
+  to?: RouteRecordName | undefined;
+  translation?: string | unknown;
+  family?: string | unknown;
+};
 
 export interface DynamicImportPath {
-    path: any
+  path: any;
 }

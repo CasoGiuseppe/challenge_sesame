@@ -8,12 +8,12 @@ import type { IResourcesUtilities } from '@app/shared/composables/interfaces/IRe
 import type { IRouterUtilities } from '@app/shared/composables/interfaces/IRouterUtilities';
 
 export {
-    useAsyncComponent,
-    useTranslation,
-    useResourcesUtilities,
-    useRouterUtilities,
-    type IAsyncComponent,
-    type ITranslation,
-    type IResourcesUtilities,
-    type IRouterUtilities,
-}
+  useAsyncComponent,
+  useTranslation,
+  useResourcesUtilities,
+  useRouterUtilities,
+  type IAsyncComponent,
+  type ITranslation,
+  type IResourcesUtilities,
+  type IRouterUtilities
+};

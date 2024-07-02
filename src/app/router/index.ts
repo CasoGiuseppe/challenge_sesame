@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,41 +7,56 @@ const router = createRouter({
       path: '/',
       name: 'root',
       redirect: { name: 'welcome' },
-      component: () => import(/* webpackChunkName: "RootLayout" */ '@app/ui/layouts/skeleton-root/SkeletonRoot.vue'),
+      component: () =>
+        import(
+          /* webpackChunkName: "RootLayout" */ '@app/ui/layouts/skeleton-root/SkeletonRoot.vue'
+        ),
 
       children: [
         {
           path: 'welcome',
           name: 'welcome',
           components: {
-            content: () => import(/* webpackChunkName: "Welcome" */ '@app/ui/modules/welcome/EntryPoint.vue'),
-          },
+            content: () =>
+              import(/* webpackChunkName: "Welcome" */ '@app/ui/modules/welcome/EntryPoint.vue')
+          }
         },
         {
           path: 'app',
           name: 'app',
           components: {
-            aside: () => import(/* webpackChunkName: "SideNavigation" */ '@app/ui/layouts/partials/side-navigation/SideNavigation.vue'),
-            header: () => import(/* webpackChunkName: "HeaderTitle" */ '@app/ui/layouts/partials/section-header/SectionHeader.vue'),
-            content: () => import(/* webpackChunkName: "ContentBody" */ '@app/ui/layouts/partials/section-content/SectionContent.vue'),
-          },
+            aside: () =>
+              import(
+                /* webpackChunkName: "SideNavigation" */ '@app/ui/layouts/partials/side-navigation/SideNavigation.vue'
+              ),
+            header: () =>
+              import(
+                /* webpackChunkName: "HeaderTitle" */ '@app/ui/layouts/partials/section-header/SectionHeader.vue'
+              ),
+            content: () =>
+              import(
+                /* webpackChunkName: "ContentBody" */ '@app/ui/layouts/partials/section-content/SectionContent.vue'
+              )
+          }
         },
 
         {
           path: '/:pathMatch(.*)*',
           components: {
             default: () =>
-              import(/* webpackChunkName: "State404" */ '@app/ui/layouts/status/status-not-found/StatusNotFound.vue')
+              import(
+                /* webpackChunkName: "State404" */ '@app/ui/layouts/status/status-not-found/StatusNotFound.vue'
+              )
           }
         }
-      ],
-    }    
+      ]
+    }
   ],
   strict: true
-})
+});
 
 router.beforeEach((to, from) => {
-  if(!to.name) return { path: '/welcome' }
-})
+  if (!to.name) return { path: '/welcome' };
+});
 
-export default router
+export default router;
