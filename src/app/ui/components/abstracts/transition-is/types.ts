@@ -12,6 +12,7 @@ export enum Easing {
 }
 
 export enum Timing {
+    NONE = '0s',
     FAST = '.5s',
     NORMAL = '.8s'
 }

@@ -51,6 +51,7 @@
         <li
           v-else
           class="draggable-area__fallback"
+          :style="{ transitionDuration: '0s' }"
         >
           <slot name="fallback">No items was found</slot>
         </li>
