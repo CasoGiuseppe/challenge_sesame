@@ -3,12 +3,7 @@
     ref="dragArea"
     :area="area"
     :dragging="dragging"
-    :id="id"
     class="draggable-area"
-    @dragover="handleDragOver"
-    @dragenter="handleDragEnter"
-    @dragleave="handleDragLeave"
-    @drop="handleDrop"
   >
     <header
       v-if="$slots['title']"
@@ -29,13 +24,19 @@
       <TransitionIs
         group
         tag="ul"
+        :id="id"
         :type="ensureCardsExist ? Types.FROMLEFT : Types.OPACITY"
         :easing="ensureCardsExist ? Easing.ELASTIC: Easing.OUT"
         :timing="Timing.NORMAL"
+        :data-draggable-area="id"
         :class="[
           'draggable-area__active-zone',
           ensureCardsExist ? '' : 'draggable-area__active-zone--is-empty'
         ]"
+        @dragover="handleDragOver"
+        @dragenter="handleDragEnter"
+        @dragleave="handleDragLeave"
+        @drop="handleDrop"
       >
         <template v-if="ensureCardsExist">
           <li
@@ -121,7 +122,9 @@ const handleDragOver = (payload: Event): void => {
 
 const handleDragEnter = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
-  if(dragArea.value !== payload.target) return
+  const area = document.querySelector(`[data-draggable-area="${id}"]`);
+  if(area !== payload.target) return
+  console.log(dragArea.value)
   customEmits('drag-enter', { id });
 };
 

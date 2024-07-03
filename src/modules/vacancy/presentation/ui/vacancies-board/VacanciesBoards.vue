@@ -24,6 +24,7 @@
           :loading="isApplicantLoad"
           :cards="cardContentMapped(id)"
           :load-message="translate({ key: `RECRUITMENT.BOARD.AREAS.loading` })"
+          @drag-enter="dragEnter"
         >
           <template #title>{{
             translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
@@ -54,6 +55,7 @@
             </BaseButton>
           </template>
           <template #items="{ property: { id, title, content, footer } }">
+            {{ id }}
             <CardData
               :id="id"
               draggable
@@ -119,6 +121,8 @@ const route = useRoute();
 const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
 const { isLoading: isVacancyLoad, savedVacancyAreas } = storeToRefs(useVacancyStore);
 const { isLoading: isApplicantLoad, filterdApplicantsByArea } = storeToRefs(useApplicantStore);
+const { setDraggingID } = useVacancyStore;
+
 const cardContentMapped = (id: string) => {
   return filterdApplicantsByArea
     .value(id)
@@ -132,11 +136,13 @@ const cardContentMapped = (id: string) => {
     });
 };
 
-const scrollIntoView = () => {
+const scrollIntoView = ():void => {
   const area = route?.params?.area;
   if (!area) return;
   document.getElementById(area as string)?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
 };
+
+const dragEnter = ({ id }: { id: string }): void => setDraggingID({id})
 
 onMounted(() => scrollIntoView())
 </script>
