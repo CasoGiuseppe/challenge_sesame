@@ -7,15 +7,14 @@ import { applicantStore } from './model';
 export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const state = reactive<IApplicantStoreModel>(structuredClone(applicantStore));
 
-  const waitForApplicants = ({ value }: { value: boolean }) => (state.loading = value);
-  const waitForCreation = ({ value }: { value: boolean }) => (state.creation = value);
-  const setApplicants = ({ applicant }: { applicant: IApplicantPersistenceData }) =>
-    (state.applicants = [...state.applicants, applicant]);
-  const setApplicantNewArea = ({ employeID, areaID }: { employeID: string; areaID: string }) => {
-    state.applicants = state.applicants.map((applicant: IApplicantPersistenceData) => {
-      if (applicant.employeeID === employeID) applicant.areaID = areaID;
-      return applicant;
-    });
+  const waitForApplicants = ({ value }: { value: boolean }):void => { state.loading = value };
+  const waitForCreation = ({ value }: { value: boolean }):void => { state.creation = value };
+  const setApplicants = ({ applicant }: { applicant: IApplicantPersistenceData }): void => { state.applicants = [...state.applicants, applicant] };
+  const setApplicantNewArea = ({ applicant }: { applicant: IApplicantPersistenceData }): void => {
+    const { employeeID } = applicant
+    state.applicants = state.applicants.filter((applicant:IApplicantPersistenceData) => applicant.employeeID !== employeeID);
+    console.log(employeeID)
+    setApplicants({ applicant })
   };
 
   const savedApplicants = computed((): IApplicantPersistenceData[] => state.applicants);

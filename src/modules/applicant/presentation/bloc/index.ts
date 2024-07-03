@@ -72,22 +72,24 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
                 this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
             (response: Applicant) => {
-                const { name } = ApplicantMapper.toPersistance(response)
+                const { firstName, lastName } = ApplicantMapper.toPersistance(response)
                 this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
                 this.router.push({ name: 'positions', params: { area: response.getStatus} })
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: `The candidate ${name} has been created successfully` })
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: `The candidate ${firstName} ${lastName} has been created successfully` })
             }
         )
     }
 
-    changeApplicantArea = async({ employeeId, firstName, lastName, email, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant) => {
-        const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, email, vacancyId, statusId })
+    changeApplicantArea = async({ employeeId, firstName, lastName, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant) => {
+        const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, vacancyId, statusId })
 
         changedApplicant.fold(
             (error: DataExceptions) => {
                 this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
-            (response: Applicant) => { console.log('change applicant', response) }
+            (response: Applicant) => {
+                this.store.setApplicantNewArea({ applicant: ApplicantMapper.toPersistance(response) })
+            }
         )
     }
 }

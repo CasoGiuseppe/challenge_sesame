@@ -85,7 +85,6 @@ import {
   CardData,
   BaseButton
 } from '@app/ui/components/index';
-
 import { Areas } from '@app/ui/components/tools/draggable-area/types';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
 import { Sizes } from '@app/ui/components/base/base-icon/types';
@@ -94,13 +93,13 @@ import {
   Sizes as buttonSizes
 } from '@app/ui/components/base/base-button/types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
-
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
 import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
 import { compareDates } from '@app/shared/utilities';
 import { type ITranslation } from '@app/shared/composables';
 import { keyUseTranslations } from '@app/shared/types/symbols';
+import { dependencies } from "@/modules/core/dependencies";
 
 const iconMapper = {
   [Areas.NEW]: 'IconInbox',
@@ -142,16 +141,19 @@ const scrollIntoView = (): void => {
 };
 
 const moveApplicantToNewArea = ({ evt, area }: { evt: DragEvent; area: string }): void => {
-  const employeeID = evt.dataTransfer?.getData('applicantID') as string
+  const employeID = evt.dataTransfer?.getData('applicantID') as string
 
-  if(!employeeID) return;
+  if(!employeID) return;
   if(!area) return;
 
-  setApplicantNewArea({
-    employeID: employeeID,
-    areaID: area
-  });
-  const { firstName } = returnApplicantById.value(employeeID) || {};
+  const { firstName, lastName } = returnApplicantById.value(employeID) || {};
+  const applicants = dependencies.provideApplicantPloc()
+  applicants.changeApplicantArea({
+    employeeId: employeID,
+    firstName: firstName as string,
+    lastName: lastName as string,
+    statusId: area,
+  })
 };
 onMounted(() => scrollIntoView());
 </script>

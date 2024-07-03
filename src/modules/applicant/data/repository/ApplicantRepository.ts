@@ -56,14 +56,13 @@ export class ApplicantRepository extends BaseRepository implements IApplicantRep
         }
     }
 
-    async changeApplicantStatus({ employeeId, firstName, lastName, email = '', vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>> {
+    async changeApplicantStatus({ employeeId, firstName, lastName, vacancyId, statusId }: ISendApplicant): Promise<Either<DataExceptions, Applicant>> {
         try {
             const response = await this.client.put<IApplicantDTOResponse, IApplicantPostData>({
                 url: `${NetworkConstants.BASE_API_PORT}${NetworkConstants.BASE_API_NAMESPACE}/candidates/${employeeId}`,
                 body: {
                     firstName,
                     lastName,
-                    email,
                     vacancyId,
                     statusId,
                 },
