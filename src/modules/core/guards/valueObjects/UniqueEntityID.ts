@@ -7,7 +7,7 @@ export class UniqueEntityID {
     this.id = id ?? UUID.generate()
   }
 
-  public equals(id: UniqueEntityID):boolean {
+  public equals(id: UniqueEntityID | null | undefined | string):boolean {
     return this.id === id
   }
 
