@@ -2,7 +2,10 @@
   <aside class="language-handle">
     <slot />
     <ul class="language-handle__locales">
-      <li v-for="({ id, label }, index) of locales">
+      <li
+        :key="id"
+        v-for="{ id, label } of locales"
+      >
         <!-- @slot Language: slot-scope to show languages -->
         <slot :property="{ id, label }" name="locales" />
       </li>

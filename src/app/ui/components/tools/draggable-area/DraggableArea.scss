@@ -62,6 +62,14 @@
                 @apply items-center
             }
         }
+
+        @media(hover) {
+            &:not(#{$draggablearea}--is-empty) {
+                &:hover {
+                    @apply cursor-ns-resize
+                }
+            }
+        }
     }
 
     &__fallback {

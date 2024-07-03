@@ -2,7 +2,13 @@
     $vacanciesboards: &;
 
     @include create-snap-scroll($direction: 'x');
-    @apply flex h-full gap-xmd overflow-y-hidden scroll-smooth;
+    @apply flex h-full gap-xmd scroll-smooth;
+
+    @media(hover) {
+        &:hover {
+            @apply cursor-grab
+        }
+    }
 
     &__col {
         @apply flex-[18.75rem] flex-shrink-0 flex-grow-0;

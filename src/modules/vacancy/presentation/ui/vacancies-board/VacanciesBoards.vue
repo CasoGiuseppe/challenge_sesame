@@ -1,10 +1,13 @@
 <template>
-  <LoadingIs :state="isVacancyLoad" :message="translate({ key: `RECRUITMENT.BOARD.loading` })">
+  <LoadingIs
+    :state="isVacancyLoad"
+    :message="translate({ key: `RECRUITMENT.BOARD.loading` })"
+  >
     <TransitionIs
       group
       tag="ul"
       :type="Types.FROMBOTTOM"
-      :easing="Easing.ELASTIC"
+      :easing="Easing.OUT"
       :timing="Timing.FAST"
       class="vacancies-boards"
     >
@@ -75,7 +78,7 @@
   </LoadingIs>
 </template>
 <script setup lang="ts">
-import { inject, onMounted } from 'vue';
+import { inject, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 import {

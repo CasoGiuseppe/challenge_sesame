@@ -10,7 +10,8 @@ export const useGlobalEventsStates = defineStore('useGlobalEventsStates', () => 
       state.events = [...state.events, { type, id, translation }]
     };
     const removeEventByID = ({ id }: { id: string }) => {
-      state.events = state.events.filter((event) => { event.id !== id })
+      const nodeToRemove = state.events.findIndex(key => key.id === id)
+      state.events.splice(nodeToRemove, 1)
     };
 
     const emittedEventsDetails = computed((): IEventPropsModel[] => state.events);

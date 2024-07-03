@@ -6,7 +6,6 @@
       </template>
     </Suspense>
   </RouterView>
-
   <!-- Notification -->
   <TransitionIs
     v-if="hasEventsToShow"
@@ -20,7 +19,7 @@
       :id="id"
       :key="id"
       :type="ToastType[type.toUpperCase() as keyof typeof ToastType]"
-      :timer="{ active: true, duration: 3500 }"
+      :timer="{ active: true, duration: 8500 }"
       @close="removeToast"
     > {{ translation }}</ToastEvent>
   </TransitionIs>

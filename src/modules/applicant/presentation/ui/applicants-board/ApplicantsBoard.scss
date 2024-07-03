@@ -1,0 +1,9 @@
+.applicants-boards {
+    $applicantsboards: &;
+
+    @apply flex flex-wrap gap-xmd;
+
+    &__item {
+        @apply flex-[25%]
+    }
+}

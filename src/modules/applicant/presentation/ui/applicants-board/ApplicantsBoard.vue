@@ -1,19 +1,22 @@
 <template>
-  <LoadingIs :state="isApplicantLoad" :message="translate({ key: `RECRUITMENT.BOARD.loading` })">
+  <LoadingIs
+    :state="isApplicantLoad"
+    :message="translate({ key: `RECRUITMENT.BOARD.loading` })"
+  >
     <TransitionIs
       group
       tag="ul"
-      :type="Types.OPACITY"
+      :type="Types.FROMBOTTOM"
       :easing="Easing.OUT"
-      :timing="Timing.FAST"
+      :timing="Timing.NORMAL"
       class="applicants-boards"
     >
       <li
         v-for="({ id, title, footer }, index) in applicantCardMapped()"
-        class="vacancies-boards__col"
+        class="applicants-boards__item"
         :id="id"
         :key="id"
-        :style="{ transitionDelay: `${index * 0.2}s` }"
+        :style="{ transitionDelay: `${index * 0.1}s` }"
       >
         <CardData
           :id="id"
@@ -23,10 +26,9 @@
           <template #footer>
             <BaseIcon name="IconClock" />
             {{
-              // compareDates({ input: footer as string })
-              //   ? translate({ key: `RECRUITMENT.INFO.today` })
-              //   : footer
-              footer
+              compareDates({ input: footer as string })
+                ? translate({ key: `RECRUITMENT.INFO.today` })
+                : footer
             }}
           </template>
         </CardData>
@@ -43,10 +45,13 @@ import { keyUseTranslations } from '@app/shared/types/symbols';
 import {
   LoadingIs,
   TransitionIs,
-  CardData
+  CardData,
+  BaseIcon
 } from '@app/ui/components/index';
 import { Types, Easing, Timing } from '@app/ui/components/abstracts/transition-is/types';
+import { compareDates } from '@app/shared/utilities';
 
 const { isLoading: isApplicantLoad, applicantCardMapped } = storeToRefs(useApplicantStore);
 const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
 </script>
+<style src="./ApplicantsBoard.scss" lang="scss" scoped></style>

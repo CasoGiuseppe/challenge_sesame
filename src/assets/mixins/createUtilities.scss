@@ -131,16 +131,17 @@
 }
 
 @mixin create-snap-scroll($direction: 'x') {
-    @apply overflow-auto scroll-smooth snap-mandatory;
+    @apply  scroll-smooth snap-mandatory overflow-auto;
 
     @if $direction == 'y' {
-        @apply snap-y
+        @apply snap-y overflow-y-auto overflow-x-hidden
     } @else {
-        @apply snap-x
+        @apply snap-x overflow-x-auto overflow-y-hidden
     }
 
+    -ms-overflow-style: none;
     scrollbar-color: var(--color-area-200, #000) transparent;
-    scrollbar-width: thin;
+    scrollbar-width: none;
 
     > * {
         @apply snap-start

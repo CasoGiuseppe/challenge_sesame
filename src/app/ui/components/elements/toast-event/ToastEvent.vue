@@ -2,6 +2,7 @@
   <component
     ref="toast"
     :is="tag"
+    :id="id"
     :class="[
       'toast-event',
       `toast-event--is-${type}`,
@@ -20,6 +21,7 @@ import { ref, onMounted, onUnmounted, type PropType } from 'vue';
 import type { UniqueId } from '@app/ui/types';
 import { Tags, Types, type IContdown } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
+import { timeout as delay } from "@app/shared/utilities";
 
 const { timer, id } = defineProps({
   /**
@@ -58,22 +60,19 @@ const { timer, id } = defineProps({
 
 const exit = ref<boolean>(false);
 const toast = ref<HTMLElement | null>(null);
-const timeout = ref<ReturnType<typeof setTimeout> | null>(null);
 const emits = defineEmits(['close']);
-const startTimer = () => {
+const startTimer = async () => {
   if (!timer?.active) return;
-  timeout.value = setTimeout(() => handleClose(), timer.duration);
+  await delay(timer.duration)  // simulate delay
+  handleClose()
 };
 
 const handleClose = () => {
   if (!toast.value) return;
   exit.value = true;
-  toast.value.addEventListener('animationend', () => emits('close', { id }))
-};
+  toast.value.addEventListener('animationend', () => emits('close', { id }));
+}
 
 onMounted(() => startTimer());
-onUnmounted(() => {
-  if (timeout.value) clearTimeout(timeout.value);
-});
 </script>
 <style lang="scss" src="./ToastEvent.scss"></style>
