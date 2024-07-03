@@ -15,7 +15,6 @@ const app = createApp(defineAsyncComponent(() => import('@app/ui/layouts/App.vue
 app
 .directive('click-outside', ClickOutside)
 .use(router)
-.use(pinia)
 .use(i18n);
 app.config.warnHandler = () => null;
 
@@ -25,5 +24,5 @@ router.isReady().then(() => {
   router.addRoute('recruitment', applicant)
 
   router.addRoute('app', fake)
-  app.mount('#app')
+  app.use(pinia).mount('#app')
 });

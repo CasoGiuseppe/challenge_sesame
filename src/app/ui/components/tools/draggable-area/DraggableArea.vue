@@ -25,9 +25,9 @@
         group
         tag="ul"
         :id="id"
-        :type="transitionTypeIs"
-        :easing="transitionEasingIs"
-        :timing="transitionTimingIs"
+        :type="ensureCardsExist ? Types.FROMLEFT : Types.OPACITY"
+        :easing="ensureCardsExist ? Easing.ELASTIC :  Easing.OUT"
+        :timing="Timing.FAST"
         :data-draggable-area="id"
         :class="[
           'draggable-area__active-zone',
@@ -51,7 +51,6 @@
         <li
           v-else
           class="draggable-area__fallback"
-          :style="{ transitionDuration: '0s' }"
         >
           <slot name="fallback">No items was found</slot>
         </li>
@@ -114,10 +113,6 @@ const props = defineProps({
 const customEmits = defineEmits(['drag-enter', 'drag-leave', 'drop-end', 'drag-over', 'load']);
 const dragging = ref<boolean>(false);
 const dragArea = ref<HTMLInputElement>();
-
-const transitionTypeIs = computed(() => ensureCardsExist ? Types.FROMLEFT : Types.OPACITY)
-const transitionEasingIs = computed(() => ensureCardsExist ? Easing.ELASTIC: Easing.OUT)
-const transitionTimingIs = computed(() => ensureCardsExist ? Timing.FAST : Timing.NONE)
 
 const handleDragOver = (payload: Event): void => {
   payload.preventDefault();

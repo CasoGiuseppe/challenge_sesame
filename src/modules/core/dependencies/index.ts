@@ -8,8 +8,8 @@ import { CreateNewApplicantUseCase } from '@modules/applicant/domain/application
 import { GetApplicantsByVacancyIdUseCase } from '@modules/applicant/domain/application/use-cases/GetApplicantsByVacancyId';
 import { ChangeApplicantStatusUseCase } from '@modules/applicant/domain/application/use-cases/ChangeApplicantStatus';
 import { HTTPServiceProvider } from '@modules/core/providers/http/http.provide';
-import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
-import { useApplicantStore } from '@/modules/applicant/presentation/store/applicant';
+import { useVacancyResponse } from '@modules/vacancy/presentation/store/vacancy';
+import { useApplicantResponse } from '@/modules/applicant/presentation/store/applicant';
 import { EventEmitter } from '@app/shared/utilities/EventsModel/EventEmitter';
 import { useGlobalEventsStore } from '@app/shared/stores/global-events/globalEvents';
 import { keyUseEventSuccess } from "@app/shared/types/symbols";
@@ -20,7 +20,7 @@ eventEmitter.subscribe(keyUseEventSuccess.toString(), global.setEmittedEventStat
 
 const provideVacancyPloc = () => {
   const router = appRouter;
-  const store = useVacancyStore;
+  const store = useVacancyResponse();
   const vacancyStateRepository = new VacancyStateRepository(new HTTPServiceProvider());
   const getVacancyById = new GetVacancyByIdUseCase(vacancyStateRepository);
 
@@ -35,7 +35,7 @@ const provideVacancyPloc = () => {
 
 const provideApplicantPloc = () => {
   const router = appRouter;
-  const store = useApplicantStore;
+  const store = useApplicantResponse();
   const applicantRepository = new ApplicantRepository(new HTTPServiceProvider());
   const getApplicantsByVacancyId = new GetApplicantsByVacancyIdUseCase(applicantRepository);
   const createNewApplicant = new CreateNewApplicantUseCase(applicantRepository);

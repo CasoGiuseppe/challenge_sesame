@@ -4,7 +4,6 @@ import type { IApplicantPersistenceData } from '@modules/applicant/data/models/m
 import type { IApplicantStoreModel } from './interfaces/IApplicantStore';
 import { applicantStore } from './model';
 import type { IUpdateApplicant } from '@modules/applicant/data/models/mapper';
-import { UUID } from '@/modules/core/providers/Uuid-v4/Uuid';
 
 export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const state = reactive<IApplicantStoreModel>(structuredClone(applicantStore));
@@ -16,7 +15,6 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
     const movedApplicant = state.applicants.find((el: any) => el.employeeID === employeeID)
     if(!movedApplicant) return;
     movedApplicant.areaID = areaID
-    movedApplicant.UUID = UUID.generate()
   }
 
   const savedApplicants = computed((): IApplicantPersistenceData[] => state.applicants);
