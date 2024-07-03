@@ -9,7 +9,7 @@
       aria-describedby="ui-card-content"
       data-testID="ui-card-test"
       :draggable="draggable"
-      @dragstart="handleDragStart"
+      @dragstart="handleDragStart($event, id)"
       @dragend="handleDragEnd"
     >
       <header class="card-data__header">
@@ -81,7 +81,11 @@ const dragged = ref<boolean>(false);
 const isDragged = computed(():boolean => dragged.value) 
 const customEmits = defineEmits(['drag-init', 'drag-stop']);
 
-const handleDragStart = () => {
+const handleDragStart = (evt: DragEvent, id: string) => {
+  if(!evt.dataTransfer) return;
+  evt.dataTransfer.effectAllowed = 'move';
+  evt.dataTransfer.dropEffect = 'move';
+  evt.dataTransfer.setData('applicantID', id);
   dragged.value = true;
   customEmits('drag-init', { id });
 }

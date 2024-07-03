@@ -24,7 +24,7 @@
           :loading="isApplicantLoad"
           :cards="cardContentMapped(id)"
           :load-message="translate({ key: `RECRUITMENT.BOARD.AREAS.loading` })"
-          @drag-enter="dragEnter"
+          @drop-end="dropEnd"
         >
           <template #title>{{
             translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
@@ -55,7 +55,6 @@
             </BaseButton>
           </template>
           <template #items="{ property: { id, title, content, footer } }">
-            {{ id }}
             <CardData
               :id="id"
               draggable
@@ -142,8 +141,11 @@ const scrollIntoView = ():void => {
   document.getElementById(area as string)?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
 };
 
-const dragEnter = ({ id }: { id: string }): void => setDraggingID({id})
-
+const dropEnd = ({evt, area}: {evt:DragEvent, area: string}): void => {
+  console.log(evt.dataTransfer?.getData('applicantID'))
+  console.log(area)
+}
+const dragLeave = ({ id }: { id: string }): void => { return }
 onMounted(() => scrollIntoView())
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>

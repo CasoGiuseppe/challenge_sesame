@@ -33,10 +33,10 @@
           'draggable-area__active-zone',
           ensureCardsExist ? '' : 'draggable-area__active-zone--is-empty'
         ]"
-        @dragover="handleDragOver"
-        @dragenter="handleDragEnter"
-        @dragleave="handleDragLeave"
-        @drop="handleDrop"
+        @dragover.prevent="handleDragOver"
+        @dragenter.prevent="handleDragEnter"
+        @dragleave.prevent="handleDragLeave"
+        @drop="handleDrop($event)"
       >
         <template v-if="ensureCardsExist">
           <li
@@ -124,7 +124,6 @@ const handleDragEnter = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
   const area = document.querySelector(`[data-draggable-area="${id}"]`);
   if(area !== payload.target) return
-  console.log(dragArea.value)
   customEmits('drag-enter', { id });
 };
 
@@ -134,10 +133,10 @@ const handleDragLeave = (payload: Event): void => {
   customEmits('drag-leave', { id });
 };
 
-const handleDrop = (payload: Event) => {
-  payload.preventDefault();
-  const { id } = payload.target as HTMLInputElement;
-  customEmits('drop-end', { id });
+const handleDrop = (evt: DragEvent) => {
+  dragging.value = false;
+  if(!evt.dataTransfer) return;
+  customEmits('drop-end', {evt, area: props.id});
 };
 
 const ensureCardsExist = computed(() => props.cards.length > 0)
