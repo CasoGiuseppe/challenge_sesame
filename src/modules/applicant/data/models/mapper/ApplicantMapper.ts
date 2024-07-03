@@ -11,7 +11,8 @@ export class ApplicantMapper {
 
   public static toPersistance (applicant: Applicant): IApplicantPersistenceData {
     return {
-      name: applicant.getCompleteName,
+      firstName: applicant.getFirstName,
+      lastName: applicant.getLastName,
       createAt: applicant.getCreationDate.toLocaleDateString("es-ES"),
       creator: applicant.getCreatedBy,
       areaID: applicant.getStatus,

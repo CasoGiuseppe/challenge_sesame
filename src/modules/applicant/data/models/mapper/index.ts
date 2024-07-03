@@ -106,7 +106,8 @@ export interface IApplicantPostData {
 }
 
 export interface IApplicantPersistenceData {
-  name: string;
+  firstName: string,
+  lastName: string,
   createAt: string;
   creator: string;
   areaID: string | undefined;

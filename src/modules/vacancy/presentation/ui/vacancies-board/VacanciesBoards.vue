@@ -123,10 +123,10 @@ const { setApplicantNewArea } = useApplicantStore;
 const cardContentMapped = (id: string) => {
   return filterdApplicantsByArea
     .value(id)
-    .map(({ employeeID, name, creator, createAt }: IApplicantPersistenceData) => {
+    .map(({ employeeID, firstName, lastName, creator, createAt }: IApplicantPersistenceData) => {
       return {
         id: employeeID,
-        title: name,
+        title: `${firstName} ${lastName}`,
         content: creator,
         footer: createAt
       };
@@ -151,7 +151,7 @@ const moveApplicantToNewArea = ({ evt, area }: { evt: DragEvent; area: string })
     employeID: employeeID,
     areaID: area
   });
-  const { name } = returnApplicantById.value(employeeID) || {};
+  const { firstName } = returnApplicantById.value(employeeID) || {};
 };
 onMounted(() => scrollIntoView());
 </script>

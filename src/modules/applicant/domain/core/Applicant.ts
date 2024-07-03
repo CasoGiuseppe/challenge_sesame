@@ -24,6 +24,14 @@ export class Applicant extends Entity<IApplicant>{
     return `${this.props.firstName} ${this.props.lastName}`;
   }
 
+  get getFirstName(): string {
+    return this.props.firstName;
+  }
+
+  get getLastName(): string {
+    return this.props.lastName;
+  }
+
   get getCreationDate(): Date {
     return this.props.createdAt
   }
