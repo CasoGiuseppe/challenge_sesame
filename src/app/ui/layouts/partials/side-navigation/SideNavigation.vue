@@ -42,18 +42,32 @@
         </AccordionInfo>
       </template>
       <template #footer>
-        <LanguageHandle id="chhoseLanguage">
+        <LanguageHandle
+          id="choseLanguage"
+          :locales="locales"
+        >
           <template #default>
             {{ translate({ key: 'LANGUAGE.message' }) }}
           </template>
-
+          <template #locales="{ property: { id, label } }">
+            <BaseButton
+              :id="id"
+              :type="Types.SECONDARY"
+              :size="buttonSizes.SMALL"
+              :is="Is.BUTTON"
+              se
+              @send="changeLanguage"
+            >
+              <template #default>{{ label  }}</template>
+            </BaseButton>
+          </template>
         </LanguageHandle>
       </template>
     </ResponsivePanel>
   </section>
 </template>
 <script setup lang="ts">
-import { computed, ref, watch, inject } from 'vue';
+import { computed, ref, watch, inject, reactive } from 'vue';
 import { useRoute } from 'vue-router';
 import {
   ResponsivePanel,
@@ -62,7 +76,8 @@ import {
   BaseItemMenu,
   FakeLogo,
   MenuShell,
-  LanguageHandle
+  LanguageHandle,
+  BaseButton
 } from '@app/ui/components/index';
 import { Sizes } from '@app/ui/components/base/base-icon//types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';
@@ -71,13 +86,21 @@ import {
   type ITranslation,
   type IRouterUtilities
 } from '@app/shared/composables';
+import { Types, Sizes as buttonSizes} from '@app/ui/components/base/base-button/types';
 import { keyUseTranslations, keyUseRouterUtilities } from '@app/shared/types/symbols';
+import { i18n } from '@app/translation';
 
-const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
+const { translate, setNewTranslationLocale } = inject<ITranslation>(keyUseTranslations) as ITranslation;
 const { getRoutesByType } = inject<IRouterUtilities>(keyUseRouterUtilities) as IRouterUtilities;
 
 const route = useRoute();
 const currentRoute = ref<string | unknown>();
+const locales = reactive(i18n.global.availableLocales.map(locale => {
+  return {
+    id: locale,
+    label: locale
+  };
+}))
 
 const routesNavigation = computed((): IRouterNavigation[] => {
   return getRoutesByType({}).map(({ name, meta: { family, to: redirect } = {} }) => {
@@ -88,6 +111,8 @@ const routesNavigation = computed((): IRouterNavigation[] => {
     };
   });
 });
+
+const changeLanguage = ({ id }: { id: string }) => setNewTranslationLocale(id)
 
 watch(
   route,

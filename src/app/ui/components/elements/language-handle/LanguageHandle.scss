@@ -1,6 +1,10 @@
 .language-handle {
     $languagehandle: &;
 
-    @apply flex justify-between;
-    @apply text-xsm
+    @apply flex justify-between items-center;
+    @apply text-xsm;
+
+    &__locales {
+        @apply flex gap-xsm items-center;
+    }
 }

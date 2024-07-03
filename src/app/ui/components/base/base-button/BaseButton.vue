@@ -3,6 +3,7 @@
     :key="is"
     :id="id"
     :disabled="disabled"
+    :selected="selected"
     :aria-disabled="disabled"
     :aria-invalid="disabled"
     aria-labelledby="ui-button-label"
@@ -90,6 +91,14 @@ const props = defineProps({
   },
 
   /**
+   * Set the selected button state
+   */
+   selected: {
+    type: Boolean as PropType<boolean>,
+    default: false
+  },
+
+  /**
    * Set the loading button state
    */
   loading: {
@@ -121,7 +130,7 @@ const isTypeLink = computed(() => (props.is === Is.ROUTERLINK));
 const customEmits = defineEmits(['send']);
 const handleEmitClick = () => {
   if(isTypeLink.value) return 
-  customEmits('send')
+  customEmits('send', { id: props.id })
 };
 </script>
 <style src="./BaseButton.scss" lang="scss"></style>

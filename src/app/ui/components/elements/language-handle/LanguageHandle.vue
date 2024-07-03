@@ -1,22 +1,18 @@
 <template>
-  <section class="language-handle">
+  <aside class="language-handle">
     <slot />
-    <ul class="language-handle__list">
-      <li v-for="({ id, label }, index) of cards">
+    <ul class="language-handle__locales">
+      <li v-for="({ id, label }, index) of locales">
         <!-- @slot Language: slot-scope to show languages -->
-        <slot :property="{ id, label }" name="Language" />
+        <slot :property="{ id, label }" name="locales" />
       </li>
     </ul>
-  </section>
+  </aside>
 </template>
 <script setup lang="ts">
 import type { UniqueId } from '@app/ui/types';
-import { inject, type PropType } from 'vue';
+import { type PropType } from 'vue';
 import type { ILanguages } from './types';
-import type { ITranslation } from '@app/shared/composables';
-import { keyUseTranslations } from '@app/shared/types/symbols';
-
-const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
 
 defineProps({
   /**
@@ -30,7 +26,7 @@ defineProps({
   /**
    * Set the list of laguages
    */
-  cards: {
+  locales: {
     type: Array as PropType<Array<ILanguages>>,
     default: () => []
   }

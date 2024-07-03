@@ -19,6 +19,18 @@
         &:not([laoding=true]) {
             @apply cursor-pointer;
 
+            &[selected=true] {
+                @apply shadow-light pointer-events-none;
+
+                &#{$basebutton}--is-primary {
+                    @apply bg-logo-400
+                }
+
+                &#{$basebutton}--is-secondary {
+                    @apply bg-logo-100
+                }
+            }
+
             @media(hover) {
                 &:hover {
                     @apply shadow-light;
