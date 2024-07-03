@@ -12,6 +12,7 @@ const meta = {
     argTypes: {
         id: { control: "text" },
         loading: { control: "radio", options: [true, false] },
+        selected: { control: "radio", options: [true, false] },
         type: { control: "select", options: Object.values(Types) },
         size: { control: "select", options: Object.values(Sizes) },
         is: { control: "select", options: Object.values(Is) },
@@ -24,6 +25,7 @@ const meta = {
         size: Sizes.DEFAULT,
         is: Is.BUTTON,
         loading: false,
+        selected: false,
         disabled: false,
         default: "Button",
     }

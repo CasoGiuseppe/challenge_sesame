@@ -26,7 +26,7 @@
     }
 
     &__content {
-        @apply fixed w-full left-none flex-1 p-sm bottom-none min-h-[calc(100vh-(var(--min-height)))] z-50;
+        @apply fixed w-full left-none flex-1 p-sm pt-xxxlg top-none z-[2] min-h-full;
         @apply bg-neutral-200;
         @apply translate-x-[100vw] transition-transform duration-[var(--animationTime)] ease-out;
        
@@ -51,6 +51,8 @@
             $color: var(--color-logo-500),
             $activeColor: var(--color-outline)
         );
+
+        @apply z-10;
 
         @screen tablet-pt {
             @apply hidden
