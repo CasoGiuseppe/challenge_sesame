@@ -27,7 +27,7 @@
         :id="id"
         :type="ensureCardsExist ? Types.FROMLEFT : Types.OPACITY"
         :easing="ensureCardsExist ? Easing.ELASTIC: Easing.OUT"
-        :timing="Timing.NORMAL"
+        :timing="ensureCardsExist ? Timing.NORMAL : Timing.NONE"
         :data-draggable-area="id"
         :class="[
           'draggable-area__active-zone',

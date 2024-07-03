@@ -15,8 +15,8 @@ const app = createApp(defineAsyncComponent(() => import('@app/ui/layouts/App.vue
 app
 .directive('click-outside', ClickOutside)
 .use(router)
-.use(i18n)
-.use(pinia);
+.use(pinia)
+.use(i18n);
 app.config.warnHandler = () => null;
 
 router.isReady().then(() => {

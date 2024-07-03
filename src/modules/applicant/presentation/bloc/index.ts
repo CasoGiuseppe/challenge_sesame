@@ -14,7 +14,6 @@ import { timeout } from "@app/shared/utilities";
 import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
 import { keyUseEventSuccess } from "@app/shared/types/symbols";
 import { UUID } from "@modules/core/providers/Uuid-v4/Uuid";
-
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
     private readonly createNewApplicant: CreateNewApplicantUseCase;
@@ -89,6 +88,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
             }, 
             (response: Applicant) => {
                 this.store.setApplicantNewArea({ applicant: ApplicantMapper.toPersistance(response) })
+                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: `${firstName} ${lastName} candidate's status has been successfully changed` })
             }
         )
     }

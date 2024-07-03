@@ -14,8 +14,9 @@ import { EventEmitter } from '@app/shared/utilities/EventsModel/EventEmitter';
 import { useGlobalEventsStore } from '@app/shared/stores/global-events/globalEvents';
 import { keyUseEventSuccess } from "@app/shared/types/symbols";
 
-const eventEmitter = new EventEmitter();
+export const eventEmitter = new EventEmitter();
 const global = useGlobalEventsStore;
+eventEmitter.subscribe(keyUseEventSuccess.toString(), global.setEmittedEventState);
 
 const provideVacancyPloc = () => {
   const router = appRouter;
@@ -23,7 +24,6 @@ const provideVacancyPloc = () => {
   const vacancyStateRepository = new VacancyStateRepository(new HTTPServiceProvider());
   const getVacancyById = new GetVacancyByIdUseCase(vacancyStateRepository);
 
-  eventEmitter.subscribe(keyUseEventSuccess.toString(), global.setEmittedEventState);
 
   return new VacancyBloc({
     router,
@@ -41,8 +41,6 @@ const provideApplicantPloc = () => {
   const createNewApplicant = new CreateNewApplicantUseCase(applicantRepository);
   const changeApplicantStatus = new ChangeApplicantStatusUseCase(applicantRepository);
   
-  eventEmitter.subscribe(keyUseEventSuccess.toString(), global.setEmittedEventState);
-
   return new ApplicantBloc({
     router,
     store,
