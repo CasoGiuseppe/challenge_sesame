@@ -36,9 +36,7 @@
             <span>{{
               translate({
                 key: `RECRUITMENT.BOARD.AREAS.fallback`,
-                options: {
-                  area: translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
-                }
+                options: { area: translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })}
               })
             }}</span>
             <BaseButton
@@ -52,7 +50,11 @@
             </BaseButton>
           </template>
           <template #items="{ property: { id, title, content, footer } }">
-            <CardData :id="id" draggable>
+            <CardData
+              :id="id"
+              :key="id"
+              draggable
+            >
               <template #title>{{ title }}</template>
               <template #content>{{
                 translate({ key: `RECRUITMENT.INFO.createBy`, options: { user: content } })
@@ -73,10 +75,9 @@
   </LoadingIs>
 </template>
 <script setup lang="ts">
-import { inject, onMounted } from 'vue';
+import { computed, inject, onMounted, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
-
 import {
   DraggableArea,
   TransitionIs,
@@ -118,7 +119,7 @@ const {
   returnApplicantById
 } = storeToRefs(useApplicantStore);
 
-const cardContentMapped = (id: string) => {
+const cardContentMapped = computed(() => (id: string) => {
   return filterdApplicantsByArea
     .value(id)
     .map(({ employeeID, firstName, lastName, creator, createAt }: IApplicantPersistenceData) => {
@@ -129,7 +130,7 @@ const cardContentMapped = (id: string) => {
         footer: createAt
       };
     });
-};
+});
 
 const scrollIntoView = (): void => {
   const area = route?.params?.area;

@@ -113,3 +113,5 @@ export interface IApplicantPersistenceData {
   areaID: string | undefined;
   employeeID: string | undefined;
 }
+
+export type IUpdateApplicant = Omit<IApplicantPersistenceData, 'firstName' | 'lastName' | 'createAt' | 'creator'>

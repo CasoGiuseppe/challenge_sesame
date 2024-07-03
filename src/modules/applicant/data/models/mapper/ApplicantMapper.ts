@@ -1,5 +1,5 @@
 import { UserDate } from "@modules/core/guards/valueObjects/UserDate"
-import type { IApplicantDataResponse, IApplicantPersistenceData } from "."
+import type { IApplicantDataResponse, IApplicantPersistenceData, IUpdateApplicant } from "."
 import { Applicant } from "@modules/applicant/domain/core/Applicant"
 import { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID"
 import { UserName } from "@modules/core/guards/valueObjects/UserName"
@@ -38,5 +38,14 @@ export class ApplicantMapper {
 export class CreateApplicantMapper {
   public static fromJson ( response: any ): IApplicantDataResponse {
     return response.data
+  }
+}
+
+export class UpdateApplicantArea {
+  public static toPersistance (applicant: Applicant): IUpdateApplicant {
+    return {
+      areaID: applicant.getStatus,
+      employeeID: applicant.getEmployeeId
+    }
   }
 }

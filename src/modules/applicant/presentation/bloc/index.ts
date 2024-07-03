@@ -8,7 +8,7 @@ import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
 import type { ChangeApplicantStatusUseCase } from "@modules/applicant/domain/application/use-cases/ChangeApplicantStatus";
 import { NetworkConstants } from "@modules/core/utilities/networkConstants";
 import type { Applicant } from "@modules/applicant/domain/core/Applicant";
-import { ApplicantMapper } from "@modules/applicant/data/models/mapper/ApplicantMapper";
+import { ApplicantMapper, UpdateApplicantArea } from "@modules/applicant/data/models/mapper/ApplicantMapper";
 import type { ApplicantResponseStore } from "../store/applicant";
 import { timeout } from "@app/shared/utilities";
 import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
@@ -71,7 +71,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
                 this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
             (response: Applicant) => {
-                const { firstName, lastName } = ApplicantMapper.toPersistance(response)
+                const { firstName, lastName, } = ApplicantMapper.toPersistance(response)
                 this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(response) })
                 this.router.push({ name: 'positions', params: { area: response.getStatus} })
                 this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: `The candidate ${firstName} ${lastName} has been created successfully` })
@@ -80,6 +80,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     }
 
     changeApplicantArea = async({ employeeId, firstName, lastName, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant) => {
+        await timeout()  // simulate delay
         const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, vacancyId, statusId })
 
         changedApplicant.fold(
@@ -87,7 +88,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
                 this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
             (response: Applicant) => {
-                this.store.setApplicantNewArea({ applicant: ApplicantMapper.toPersistance(response) })
+                this.store.updateApplicantArea(UpdateApplicantArea.toPersistance(response))
                 this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'success', id: UUID.generate(), translation: `${firstName} ${lastName} candidate's status has been successfully changed` })
             }
         )

@@ -33,16 +33,16 @@
           'draggable-area__active-zone',
           ensureCardsExist ? '' : 'draggable-area__active-zone--is-empty'
         ]"
-        @dragover.prevent="handleDragOver"
-        @dragenter.prevent="handleDragEnter"
-        @dragleave.prevent="handleDragLeave"
+        @dragover="handleDragOver"
+        @dragenter="handleDragEnter"
+        @dragleave="handleDragLeave"
         @drop="handleDrop($event)"
       >
         <template v-if="ensureCardsExist">
           <li
             :key="id"
             v-for="({ id, title, content, footer }, index) of cards"
-            :style="{ transitionDelay: `${index * 0.05}s` }"
+            :style="{ transitionDelay: `${ensureCardsExist ? (index * 0.05) : 0}s` }"
           >
             <!-- @slot Items: slot-scope to show cards -->
             <slot :property="{ id, title, content, footer }" name="items" />
@@ -116,12 +116,14 @@ const dragging = ref<boolean>(false);
 const dragArea = ref<HTMLInputElement>();
 
 const handleDragOver = (payload: Event): void => {
+  payload.preventDefault();
   const { id } = payload.target as HTMLInputElement;
   dragging.value = true;
   customEmits('drag-over', { id });
 };
 
 const handleDragEnter = (payload: Event): void => {
+  payload.preventDefault();
   const { id } = payload.target as HTMLInputElement;
   const area = document.querySelector(`[data-draggable-area="${id}"]`);
   if(area !== payload.target) return
@@ -129,6 +131,7 @@ const handleDragEnter = (payload: Event): void => {
 };
 
 const handleDragLeave = (payload: Event): void => {
+  payload.preventDefault();
   const { id } = payload.target as HTMLInputElement;
   dragging.value = false;
   customEmits('drag-leave', { id });

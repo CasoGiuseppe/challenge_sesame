@@ -8,7 +8,7 @@
     }
 
     &__content {
-      @apply flex flex-1 flex-col p-sm gap-md;
+      @apply flex flex-1 flex-col p-sm gap-md overflow-hidden;
 
       @screen tablet-pt {
         @apply px-lg pt-sm pb-lg;

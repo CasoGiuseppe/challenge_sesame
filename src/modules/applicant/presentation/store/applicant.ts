@@ -3,6 +3,7 @@ import { computed, reactive } from 'vue';
 import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
 import type { IApplicantStoreModel } from './interfaces/IApplicantStore';
 import { applicantStore } from './model';
+import type { IUpdateApplicant } from '@modules/applicant/data/models/mapper';
 
 export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const state = reactive<IApplicantStoreModel>(structuredClone(applicantStore));
@@ -10,11 +11,11 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const waitForApplicants = ({ value }: { value: boolean }):void => { state.loading = value };
   const waitForCreation = ({ value }: { value: boolean }):void => { state.creation = value };
   const setApplicants = ({ applicant }: { applicant: IApplicantPersistenceData }): void => { state.applicants = [...state.applicants, applicant] };
-  const setApplicantNewArea = ({ applicant }: { applicant: IApplicantPersistenceData }): void => {
-    const { employeeID } = applicant
-    state.applicants = state.applicants.filter((applicant:IApplicantPersistenceData) => applicant.employeeID !== employeeID);
-    setApplicants({ applicant })
-  };
+  const updateApplicantArea = ({ areaID, employeeID}: IUpdateApplicant): void => {
+    const moved = state.applicants.find((el: any) => el.employeeID === employeeID)
+    if(!moved) return;
+    moved.areaID = areaID
+  }
 
   const savedApplicants = computed((): IApplicantPersistenceData[] => state.applicants);
   const applicantsAlreadyExists = computed((): boolean => savedApplicants.value.length > 0);
@@ -32,7 +33,7 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
     waitForApplicants,
     waitForCreation,
     setApplicants,
-    setApplicantNewArea,
+    updateApplicantArea,
 
     isLoading,
     isCreated,
