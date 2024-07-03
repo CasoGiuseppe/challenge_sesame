@@ -21,9 +21,17 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const applicantsAlreadyExists = computed((): boolean => savedApplicants.value.length > 0);
   const isLoading = computed((): boolean => state.loading);
   const isCreated = computed((): boolean => state.creation);
-  const filterdApplicantsByArea = computed( () => (area: string) =>
-      state.applicants.filter((applicant: IApplicantPersistenceData) => applicant.areaID === area)
-  );
+  const applicantCardMapped = computed(() => (area?: string) => {
+    const mappedApplicants = area ? savedApplicants.value.filter((applicant: IApplicantPersistenceData) => applicant.areaID === area) : savedApplicants.value
+    return mappedApplicants.map(({ employeeID, firstName, lastName, creator, createAt }: IApplicantPersistenceData) => {
+        return {
+          id: employeeID,
+          title: `${firstName} ${lastName}`,
+          content: creator,
+          footer: createAt,
+        };
+      })
+  });
   const returnApplicantById = computed( () => (id: string) =>
       state.applicants.find((applicant: IApplicantPersistenceData) => applicant.employeeID === id)
   );
@@ -38,7 +46,7 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
     isLoading,
     isCreated,
     applicantsAlreadyExists,
-    filterdApplicantsByArea,
+    applicantCardMapped,
     returnApplicantById
   };
 });

@@ -19,7 +19,7 @@
           :id="id"
           :area="Areas[name.toUpperCase() as keyof typeof Areas]"
           :loading="isApplicantLoad"
-          :cards="cardContentMapped(id)"
+          :cards="applicantCardMapped(id)"
           :load-message="translate({ key: `RECRUITMENT.BOARD.AREAS.loading` })"
           @drop-end="moveApplicantToNewArea"
         >
@@ -75,7 +75,7 @@
   </LoadingIs>
 </template>
 <script setup lang="ts">
-import { computed, inject, onMounted } from 'vue';
+import { inject, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 import {
@@ -96,7 +96,6 @@ import {
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
-import type { IApplicantPersistenceData } from '@modules/applicant/data/models/mapper';
 import { compareDates } from '@app/shared/utilities';
 import { type ITranslation } from '@app/shared/composables';
 import { keyUseTranslations } from '@app/shared/types/symbols';
@@ -115,22 +114,9 @@ const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
 const { isLoading: isVacancyLoad, savedVacancyAreas } = storeToRefs(useVacancyStore);
 const {
   isLoading: isApplicantLoad,
-  filterdApplicantsByArea,
+  applicantCardMapped,
   returnApplicantById
 } = storeToRefs(useApplicantStore);
-
-const cardContentMapped = computed(() => (id: string) => {
-  return filterdApplicantsByArea
-    .value(id)
-    .map(({ employeeID, firstName, lastName, creator, createAt }: IApplicantPersistenceData) => {
-      return {
-        id: employeeID,
-        title: `${firstName} ${lastName}`,
-        content: creator,
-        footer: createAt,
-      };
-    });
-});
 
 const scrollIntoView = (): void => {
   const area = route?.params?.area;

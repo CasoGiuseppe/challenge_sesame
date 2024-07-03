@@ -65,7 +65,7 @@
     }
 
     &__fallback {
-        @apply flex justify-between gap-sm flex-col items-center mt-auto mb-auto absolute p-md;
+        @apply flex justify-center gap-sm flex-col items-center mt-auto mb-auto absolute p-md h-full;
         @apply text-logo-300 text-sm font-regular;
         inset: 50% auto ;
     }
