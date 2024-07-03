@@ -55,7 +55,7 @@
               :type="Types.SECONDARY"
               :size="buttonSizes.SMALL"
               :is="Is.BUTTON"
-              se
+              :selected="id === currentLocale.value"
               @send="changeLanguage"
             >
               <template #default>{{ label  }}</template>
@@ -101,6 +101,8 @@ const locales = reactive(i18n.global.availableLocales.map(locale => {
     label: locale
   };
 }))
+
+const currentLocale = computed(() => i18n.global.locale)
 
 const routesNavigation = computed((): IRouterNavigation[] => {
   return getRoutesByType({}).map(({ name, meta: { family, to: redirect } = {} }) => {
