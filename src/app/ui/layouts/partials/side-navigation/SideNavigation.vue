@@ -41,6 +41,14 @@
           </template>
         </AccordionInfo>
       </template>
+      <template #footer>
+        <LanguageHandle id="chhoseLanguage">
+          <template #default>
+            {{ translate({ key: 'LANGUAGE.message' }) }}
+          </template>
+
+        </LanguageHandle>
+      </template>
     </ResponsivePanel>
   </section>
 </template>
@@ -53,7 +61,8 @@ import {
   BaseIcon,
   BaseItemMenu,
   FakeLogo,
-  MenuShell
+  MenuShell,
+  LanguageHandle
 } from '@app/ui/components/index';
 import { Sizes } from '@app/ui/components/base/base-icon//types';
 import { Is } from '@app/ui/components/abstracts/component-is/types';

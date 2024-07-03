@@ -23,6 +23,13 @@
         >
             <slot name="body" />
         </section>
+
+        <footer
+            v-if="$slots['footer']"
+            class="responsive-panel__footer"
+        >
+            <slot name="footer" />
+        </footer>
     </aside>
 </template>
 <script setup lang="ts">

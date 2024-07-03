@@ -42,7 +42,9 @@ export default async () => {
       "message": "Esta es una aplicación de muestra para demostrar la funcionalidad de Sesame HR System.",
       "action": "Empezar"
     },
-    
+    "LANGUAGE": {
+      "message": "Elige tu idioma"
+    },
     ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
   }
 }

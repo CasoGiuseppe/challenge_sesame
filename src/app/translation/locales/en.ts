@@ -46,6 +46,10 @@ export default async () => {
       "message": "This is a sample application to demonstrate the functionality of the Sesame HR System",
       "action": "Get started"
     },
+
+    "LANGUAGE": {
+      "message": "Choose your language"
+    },
     ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
   }
 }

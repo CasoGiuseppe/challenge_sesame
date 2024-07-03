@@ -18,6 +18,7 @@ import ResponsivePanel from './tools/responsive-panel/ResponsivePanel.vue';
 import TabsShell from './tools/tabs-shell/TabsShell.vue';
 import FakeLogo from '../elements/fakes/FakeLogo.vue';
 import ToastEvent from './elements/toast-event/ToastEvent.vue';
+import LanguageHandle from './elements/language-handle/LanguageHandle.vue';
 
 export {
     BaseButton,
@@ -39,5 +40,6 @@ export {
     ResponsivePanel,
     TabsShell,
     FakeLogo,
-    ToastEvent
+    ToastEvent,
+    LanguageHandle
 }

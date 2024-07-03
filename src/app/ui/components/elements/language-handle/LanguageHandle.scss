@@ -1,0 +1,6 @@
+.language-handle {
+    $languagehandle: &;
+
+    @apply flex justify-between;
+    @apply text-xsm
+}

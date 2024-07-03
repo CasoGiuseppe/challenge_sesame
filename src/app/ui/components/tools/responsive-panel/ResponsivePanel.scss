@@ -41,6 +41,10 @@
         }
     }
 
+    &__footer {
+        @apply w-full
+    }
+
     &__close {
         @include create-hamburger-menu(
             $width: var(--spacing-50),

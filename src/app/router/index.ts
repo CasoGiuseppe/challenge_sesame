@@ -22,7 +22,7 @@ const router = createRouter({
           }
         },
         {
-          path: 'app',
+          path: 'app/:lang?',
           name: 'app',
           components: {
             aside: () =>
