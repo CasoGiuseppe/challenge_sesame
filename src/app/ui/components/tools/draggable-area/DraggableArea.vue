@@ -1,9 +1,14 @@
 <template>
   <section
+    ref="dragArea"
     :area="area"
     :dragging="dragging"
     :id="id"
     class="draggable-area"
+    @dragover="handleDragOver"
+    @dragenter="handleDragEnter"
+    @dragleave="handleDragLeave"
+    @drop="handleDrop"
   >
     <header
       v-if="$slots['title']"
@@ -27,10 +32,6 @@
         :type="ensureCardsExist ? Types.FROMLEFT : Types.OPACITY"
         :easing="ensureCardsExist ? Easing.ELASTIC: Easing.OUT"
         :timing="Timing.NORMAL"
-        @dragover="handleDragOver"
-        @dragenter="handleDragEnter"
-        @dragleave="handleDragLeave"
-        @drop="handleDrop"
         :class="[
           'draggable-area__active-zone',
           ensureCardsExist ? '' : 'draggable-area__active-zone--is-empty'
@@ -110,14 +111,18 @@ const props = defineProps({
 
 const customEmits = defineEmits(['drag-enter', 'drag-leave', 'drop-end', 'drag-over', 'load']);
 const dragging = ref<boolean>(false);
+const dragArea = ref<HTMLInputElement>();
+
 const handleDragOver = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
+  dragging.value = true;
   customEmits('drag-over', { id });
 };
 
 const handleDragEnter = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
-  dragging.value = true;
+  if(dragArea.value !== payload.target) return
+  console.log(payload.target as HTMLInputElement)
   customEmits('drag-enter', { id });
 };
 

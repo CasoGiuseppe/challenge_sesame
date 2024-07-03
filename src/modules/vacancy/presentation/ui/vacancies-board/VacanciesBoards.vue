@@ -54,7 +54,10 @@
             </BaseButton>
           </template>
           <template #items="{ property: { id, title, content, footer } }">
-            <CardData :id="id" draggable>
+            <CardData
+              :id="id"
+              draggable
+            >
               <template #title>{{ title }}</template>
               <template #content>{{
                 translate({ key: `RECRUITMENT.INFO.createBy`, options: { user: content } })
