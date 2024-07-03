@@ -13,7 +13,6 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
   const setApplicantNewArea = ({ applicant }: { applicant: IApplicantPersistenceData }): void => {
     const { employeeID } = applicant
     state.applicants = state.applicants.filter((applicant:IApplicantPersistenceData) => applicant.employeeID !== employeeID);
-    console.log(employeeID)
     setApplicants({ applicant })
   };
 

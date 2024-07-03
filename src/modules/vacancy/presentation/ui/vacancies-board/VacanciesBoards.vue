@@ -117,7 +117,6 @@ const {
   filterdApplicantsByArea,
   returnApplicantById
 } = storeToRefs(useApplicantStore);
-const { setApplicantNewArea } = useApplicantStore;
 
 const cardContentMapped = (id: string) => {
   return filterdApplicantsByArea
