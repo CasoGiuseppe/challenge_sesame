@@ -35,4 +35,8 @@ export class Applicant extends Entity<IApplicant>{
   get getStatus(): string|undefined {
     return this.props.statusId;
   }
+
+  get getEmployeeId(): string | undefined {
+    return this.props.employeeId;
+  }
 }

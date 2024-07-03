@@ -1,7 +1,5 @@
 import type { Router } from "vue-router";
 import type { DataExceptions } from "@modules/core/domain/exceptions/models";
-import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
-import type { GlobalEventsStore } from "@app/shared/stores/global-events/globalEvents";
 
 export class Ploc<T> {
     public store: T;

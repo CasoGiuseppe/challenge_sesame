@@ -14,7 +14,8 @@ export class ApplicantMapper {
       name: applicant.getCompleteName,
       createAt: applicant.getCreationDate.toLocaleDateString("es-ES"),
       creator: applicant.getCreatedBy,
-      areaID: applicant.getStatus
+      areaID: applicant.getStatus,
+      employeeID: applicant.getEmployeeId
     }
   }
 

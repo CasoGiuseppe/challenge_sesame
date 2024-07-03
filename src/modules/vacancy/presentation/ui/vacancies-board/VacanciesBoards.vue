@@ -1,8 +1,5 @@
 <template>
-  <LoadingIs
-    :state="isVacancyLoad"
-    :message="translate({ key: `RECRUITMENT.BOARD.loading` })"
-  >
+  <LoadingIs :state="isVacancyLoad" :message="translate({ key: `RECRUITMENT.BOARD.loading` })">
     <TransitionIs
       group
       tag="ul"
@@ -24,7 +21,7 @@
           :loading="isApplicantLoad"
           :cards="cardContentMapped(id)"
           :load-message="translate({ key: `RECRUITMENT.BOARD.AREAS.loading` })"
-          @drop-end="dropEnd"
+          @drop-end="moveApplicantToNewArea"
         >
           <template #title>{{
             translate({ key: `RECRUITMENT.BOARD.AREAS.${name.toLocaleLowerCase()}` })
@@ -55,10 +52,7 @@
             </BaseButton>
           </template>
           <template #items="{ property: { id, title, content, footer } }">
-            <CardData
-              :id="id"
-              draggable
-            >
+            <CardData :id="id" draggable>
               <template #title>{{ title }}</template>
               <template #content>{{
                 translate({ key: `RECRUITMENT.INFO.createBy`, options: { user: content } })
@@ -119,15 +113,19 @@ const iconMapper = {
 const route = useRoute();
 const { translate } = inject<ITranslation>(keyUseTranslations) as ITranslation;
 const { isLoading: isVacancyLoad, savedVacancyAreas } = storeToRefs(useVacancyStore);
-const { isLoading: isApplicantLoad, filterdApplicantsByArea } = storeToRefs(useApplicantStore);
-const { setDraggingID } = useVacancyStore;
+const {
+  isLoading: isApplicantLoad,
+  filterdApplicantsByArea,
+  returnApplicantById
+} = storeToRefs(useApplicantStore);
+const { setApplicantNewArea } = useApplicantStore;
 
 const cardContentMapped = (id: string) => {
   return filterdApplicantsByArea
     .value(id)
-    .map(({ areaID, name, creator, createAt }: IApplicantPersistenceData) => {
+    .map(({ employeeID, name, creator, createAt }: IApplicantPersistenceData) => {
       return {
-        id: areaID,
+        id: employeeID,
         title: name,
         content: creator,
         footer: createAt
@@ -135,17 +133,26 @@ const cardContentMapped = (id: string) => {
     });
 };
 
-const scrollIntoView = ():void => {
+const scrollIntoView = (): void => {
   const area = route?.params?.area;
   if (!area) return;
-  document.getElementById(area as string)?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+  document
+    .getElementById(area as string)
+    ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
 };
 
-const dropEnd = ({evt, area}: {evt:DragEvent, area: string}): void => {
-  console.log(evt.dataTransfer?.getData('applicantID'))
-  console.log(area)
-}
-const dragLeave = ({ id }: { id: string }): void => { return }
-onMounted(() => scrollIntoView())
+const moveApplicantToNewArea = ({ evt, area }: { evt: DragEvent; area: string }): void => {
+  const employeeID = evt.dataTransfer?.getData('applicantID') as string
+
+  if(!employeeID) return;
+  if(!area) return;
+
+  setApplicantNewArea({
+    employeID: employeeID,
+    areaID: area
+  });
+  const { name } = returnApplicantById.value(employeeID) || {};
+};
+onMounted(() => scrollIntoView());
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>

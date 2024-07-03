@@ -110,4 +110,5 @@ export interface IApplicantPersistenceData {
   createAt: string;
   creator: string;
   areaID: string | undefined;
+  employeeID: string | undefined;
 }

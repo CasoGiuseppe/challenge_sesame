@@ -63,7 +63,7 @@ const router = createRouter({
   strict: true
 });
 
-router.beforeEach((to, from) => {
+router.beforeEach((to) => {
   if (!to.name) return { path: '/welcome' };
 });
 

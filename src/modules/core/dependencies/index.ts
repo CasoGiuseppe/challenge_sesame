@@ -13,7 +13,6 @@ import { useApplicantStore } from '@/modules/applicant/presentation/store/applic
 import { EventEmitter } from '@app/shared/utilities/EventsModel/EventEmitter';
 import { useGlobalEventsStore } from '@app/shared/stores/global-events/globalEvents';
 import { keyUseEventSuccess } from "@app/shared/types/symbols";
-import { useTranslation } from '@app/shared/composables';
 
 const eventEmitter = new EventEmitter();
 const global = useGlobalEventsStore;

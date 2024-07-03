@@ -1,4 +1,3 @@
-import type { Component } from "vue";
 import type { EventCallback } from "../types";
 
 export interface IEventEmitter {

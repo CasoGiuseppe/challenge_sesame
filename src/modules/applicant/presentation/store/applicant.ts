@@ -9,30 +9,43 @@ export const useApplicantResponse = defineStore('useApplicantResponse', () => {
 
   const waitForApplicants = ({ value }: { value: boolean }) => (state.loading = value);
   const waitForCreation = ({ value }: { value: boolean }) => (state.creation = value);
-  const setApplicants = ({ applicant }: { applicant: IApplicantPersistenceData }) => (state.applicants = [...state.applicants, applicant]);
+  const setApplicants = ({ applicant }: { applicant: IApplicantPersistenceData }) =>
+    (state.applicants = [...state.applicants, applicant]);
+  const setApplicantNewArea = ({ employeID, areaID }: { employeID: string; areaID: string }) => {
+    state.applicants = state.applicants.map((applicant: IApplicantPersistenceData) => {
+      if (applicant.employeeID === employeID) applicant.areaID = areaID;
+      return applicant;
+    });
+  };
 
   const savedApplicants = computed((): IApplicantPersistenceData[] => state.applicants);
   const applicantsAlreadyExists = computed((): boolean => savedApplicants.value.length > 0);
   const isLoading = computed((): boolean => state.loading);
   const isCreated = computed((): boolean => state.creation);
-  const filterdApplicantsByArea = computed(() => (area: string) => state.applicants.filter((applicant: IApplicantPersistenceData) => applicant.areaID === area))
-  
+  const filterdApplicantsByArea = computed( () => (area: string) =>
+      state.applicants.filter((applicant: IApplicantPersistenceData) => applicant.areaID === area)
+  );
+  const returnApplicantById = computed( () => (id: string) =>
+      state.applicants.find((applicant: IApplicantPersistenceData) => applicant.employeeID === id)
+  );
   return {
     state,
 
     waitForApplicants,
     waitForCreation,
     setApplicants,
-    
+    setApplicantNewArea,
+
     isLoading,
     isCreated,
     applicantsAlreadyExists,
-    filterdApplicantsByArea
-  }
-})
+    filterdApplicantsByArea,
+    returnApplicantById
+  };
+});
 
 export const useApplicantStore = useApplicantResponse();
 export type ApplicantResponseStore = Omit<
   ReturnType<typeof useApplicantResponse>,
   keyof ReturnType<typeof defineStore>
->
+>;
