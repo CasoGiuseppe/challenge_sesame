@@ -127,7 +127,7 @@ const cardContentMapped = computed(() => (id: string) => {
         id: employeeID,
         title: `${firstName} ${lastName}`,
         content: creator,
-        footer: createAt
+        footer: createAt,
       };
     });
 });
@@ -146,7 +146,9 @@ const moveApplicantToNewArea = ({ evt, area }: { evt: DragEvent; area: string })
   if(!employeID) return;
   if(!area) return;
 
-  const { firstName, lastName } = returnApplicantById.value(employeID) || {};
+  const { firstName, lastName, areaID } = returnApplicantById.value(employeID) || {};
+  if(area === areaID) return;
+
   const applicants = dependencies.provideApplicantPloc()
   applicants.changeApplicantArea({
     employeeId: employeID,

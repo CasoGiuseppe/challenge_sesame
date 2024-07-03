@@ -12,7 +12,7 @@ import { ApplicantMapper, UpdateApplicantArea } from "@modules/applicant/data/mo
 import type { ApplicantResponseStore } from "../store/applicant";
 import { timeout } from "@app/shared/utilities";
 import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
-import { keyUseEventSuccess } from "@app/shared/types/symbols";
+import { keyUseEventError, keyUseEventSuccess } from "@app/shared/types/symbols";
 import { UUID } from "@modules/core/providers/Uuid-v4/Uuid";
 export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     private readonly getApplicantsByVacancyId: GetApplicantsByVacancyIdUseCase;
@@ -52,7 +52,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
         
         applicantResult.fold(
             (error: DataExceptions) => {
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
+                this.eventEmitter.emit(keyUseEventError.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
             (response: Applicant[]) => {
                 response.map((applicant: Applicant) => this.store.setApplicants({ applicant: ApplicantMapper.toPersistance(applicant) }))
@@ -68,7 +68,7 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
 
         newApplicant.fold(
             (error: DataExceptions) => {
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
+                this.eventEmitter.emit(keyUseEventError.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
             (response: Applicant) => {
                 const { firstName, lastName, } = ApplicantMapper.toPersistance(response)
@@ -80,12 +80,11 @@ export class ApplicantBloc extends Ploc<ApplicantResponseStore> {
     }
 
     changeApplicantArea = async({ employeeId, firstName, lastName, vacancyId = NetworkConstants.BASE_API_VACANCY_ID, statusId }: ISendApplicant) => {
-        await timeout()  // simulate delay
         const changedApplicant = await this.changeApplicantStatus.execute({ employeeId, firstName, lastName, vacancyId, statusId })
 
         changedApplicant.fold(
             (error: DataExceptions) => {
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
+                this.eventEmitter.emit(keyUseEventError.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
             (response: Applicant) => {
                 this.store.updateApplicantArea(UpdateApplicantArea.toPersistance(response))

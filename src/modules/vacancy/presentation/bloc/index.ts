@@ -10,9 +10,8 @@ import { VacancyState } from "@modules/vacancy/domain/core/Vacancy";
 import { VacancyMapper } from "@modules/vacancy/data/models/mapper/VacancyMapper";
 import { dependencies } from "@/modules/core/dependencies";
 import type { IEventEmitter } from "@app/shared/utilities/EventsModel/interfaces/IEventEmitter";
-import { keyUseEventSuccess } from "@app/shared/types/symbols";
+import { keyUseEventError } from "@app/shared/types/symbols";
 import { UUID } from "@modules/core/providers/Uuid-v4/Uuid";
-
 
 export class VacancyBloc extends Ploc<VacancyResponseStore> {
     private readonly getVacancyById: GetVacancyByIdUseCase;
@@ -43,7 +42,7 @@ export class VacancyBloc extends Ploc<VacancyResponseStore> {
 
         vacancyResult.fold(
             (error: DataExceptions) => {
-                this.eventEmitter.emit(keyUseEventSuccess.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
+                this.eventEmitter.emit(keyUseEventError.toString(), { type: 'error', id: UUID.generate(), translation: this.handleError(error) })
             }, 
             (response: any) => {
                 response.map((vacancy: VacancyState) => this.store.setVacancyAreas({ area: VacancyMapper.toPersistence(vacancy) }))

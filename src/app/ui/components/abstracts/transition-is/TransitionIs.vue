@@ -83,8 +83,8 @@ const removeBehaviour = (el:Element) => {
 }
 
 const emits = defineEmits(['enter', 'before']);
-const afterEnter = (el:Element) => emits('enter', { el: el })
-const beforeEnter = (el: Element) => emits('before', { el: el })
+const afterEnter = (el:Element) => emits('enter', { el })
+const beforeEnter = (el: Element) => emits('before', { el })
 </script>
 <style lang="scss">
 @include create-animation(
