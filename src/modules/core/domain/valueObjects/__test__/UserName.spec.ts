@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { UserName } from "../UserName";
-import { NameIncorrectFormat } from "../../exceptions/NameIsNotValid";
+import { NameIncorrectFormat } from "../../../guards/exceptions/NameIsNotValid";
 
 describe("UserName", () => {
     it("should accept a name with a length of 16 characters", () => {

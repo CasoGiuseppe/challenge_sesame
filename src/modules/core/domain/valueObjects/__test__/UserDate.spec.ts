@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { UserDate } from "../UserDate";
-import { DateIncorrectFormat } from "../../exceptions/DateIsNotValid";
+import { DateIncorrectFormat } from "../../../guards/exceptions/DateIsNotValid";
 
 describe("UserDate", () => {
   it("should correctly format date to string", () => {

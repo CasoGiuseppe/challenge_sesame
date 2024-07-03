@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { UserEmail } from "../UserEmail";
-import { EmailIncorrectFormat } from "../../exceptions/EmailIsNotValid";
+import { EmailIncorrectFormat } from "../../../guards/exceptions/EmailIsNotValid";
 
 describe("UserEmail", () => {
     it("throws EmailIncorrectFormat when email domain is invalid", () => {

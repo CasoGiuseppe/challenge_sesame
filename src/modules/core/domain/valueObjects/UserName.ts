@@ -1,5 +1,5 @@
 import { StringValueObject } from "./abstracts/StringValueObject";
-import { NameIncorrectFormat } from "../exceptions/NameIsNotValid";
+import { NameIncorrectFormat } from "../../guards/exceptions/NameIsNotValid";
 
 export class UserName extends StringValueObject {
     constructor(value: string) {

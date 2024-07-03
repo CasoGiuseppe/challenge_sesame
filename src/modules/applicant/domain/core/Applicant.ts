@@ -1,8 +1,8 @@
 import { Entity } from "@modules/core/guards/Entity";
-import type { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID";
+import type { UniqueEntityID } from "@/modules/core/domain/valueObjects/UniqueEntityID";
 import type { IApplicant } from "./entity";
-import { UserDate } from "@modules/core/guards/valueObjects/UserDate";
-import { UserName } from "@modules/core/guards/valueObjects/UserName";
+import { UserDate } from "@/modules/core/domain/valueObjects/UserDate";
+import { UserName } from "@/modules/core/domain/valueObjects/UserName";
 
 export class Applicant extends Entity<IApplicant>{
   private constructor (props: IApplicant, id?: UniqueEntityID) {

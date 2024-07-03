@@ -1,4 +1,4 @@
-import type { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID"
+import type { UniqueEntityID } from "@/modules/core/domain/valueObjects/UniqueEntityID"
 
 export interface IVacancyState {
     id: UniqueEntityID,

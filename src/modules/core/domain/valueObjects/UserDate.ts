@@ -1,5 +1,5 @@
 import { DateValueObject } from "./abstracts/DateValueObject";
-import { DateIncorrectFormat } from "../exceptions/DateIsNotValid";
+import { DateIncorrectFormat } from "../../guards/exceptions/DateIsNotValid";
 
 export class UserDate extends DateValueObject {
     constructor( readonly value: Date ) {

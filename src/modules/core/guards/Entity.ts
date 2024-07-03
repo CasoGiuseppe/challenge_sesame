@@ -1,4 +1,4 @@
-import { UniqueEntityID } from "./valueObjects/UniqueEntityID";
+import { UniqueEntityID } from "../domain/valueObjects/UniqueEntityID";
 
 const isEntity = (role: any): role is Entity<any> => role instanceof Entity;
 

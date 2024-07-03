@@ -1,4 +1,4 @@
-import { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID"
+import { UniqueEntityID } from "@/modules/core/domain/valueObjects/UniqueEntityID"
 import type { IVacancyDataResponse, IVacancyPersistenceData } from ".."
 import { VacancyState } from "@modules/vacancy/domain/core/Vacancy"
 

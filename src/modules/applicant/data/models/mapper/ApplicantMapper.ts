@@ -1,8 +1,8 @@
-import { UserDate } from "@modules/core/guards/valueObjects/UserDate"
+import { UserDate } from "@/modules/core/domain/valueObjects/UserDate"
 import type { IApplicantDataResponse, IApplicantPersistenceData, IUpdateApplicant } from "."
 import { Applicant } from "@modules/applicant/domain/core/Applicant"
-import { UniqueEntityID } from "@modules/core/guards/valueObjects/UniqueEntityID"
-import { UserName } from "@modules/core/guards/valueObjects/UserName"
+import { UniqueEntityID } from "@/modules/core/domain/valueObjects/UniqueEntityID"
+import { UserName } from "@/modules/core/domain/valueObjects/UserName"
 
 export class ApplicantMapper {
   public static fromJson ( response: any ): IApplicantDataResponse[] {

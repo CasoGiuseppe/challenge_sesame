@@ -3,8 +3,8 @@ import type { DataExceptions } from "@modules/core/domain/exceptions/models";
 import type { IApplicantRepository } from "@modules/applicant/domain/core/repository/IApplicant";
 import type { Applicant } from "@modules/applicant/domain/core/Applicant";
 import type { ISendApplicant } from "@modules/applicant/domain/core/entity";
-import { UserName } from "@modules/core/guards/valueObjects/UserName";
-import { UserEmail } from "@modules/core/guards/valueObjects/UserEmail";
+import { UserName } from "@/modules/core/domain/valueObjects/UserName";
+import { UserEmail } from "@/modules/core/domain/valueObjects/UserEmail";
 
 export class CreateNewApplicantUseCase {
     constructor(

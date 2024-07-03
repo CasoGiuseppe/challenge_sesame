@@ -1,5 +1,5 @@
 import { StringValueObject } from "./abstracts/StringValueObject";
-import { EmailIncorrectFormat } from "../exceptions/EmailIsNotValid";
+import { EmailIncorrectFormat } from "../../guards/exceptions/EmailIsNotValid";
 
 export class UserEmail extends StringValueObject {
     constructor(value: string) {

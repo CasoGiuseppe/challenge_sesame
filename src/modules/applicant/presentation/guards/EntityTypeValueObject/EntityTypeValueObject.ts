@@ -1,6 +1,6 @@
 
 import { DataTypeIsDenied } from "@modules/core/guards/exceptions/DataTypeIsDenied";
-import { StringValueObject } from "@modules/core/guards/valueObjects/abstracts/StringValueObject";
+import { StringValueObject } from "@/modules/core/domain/valueObjects/abstracts/StringValueObject";
 
 export class EntityTypeValueObject extends StringValueObject {
   constructor(value: string) {
