@@ -122,7 +122,6 @@ const handleDragOver = (payload: Event): void => {
 const handleDragEnter = (payload: Event): void => {
   const { id } = payload.target as HTMLInputElement;
   if(dragArea.value !== payload.target) return
-  console.log(payload.target as HTMLInputElement)
   customEmits('drag-enter', { id });
 };
 
