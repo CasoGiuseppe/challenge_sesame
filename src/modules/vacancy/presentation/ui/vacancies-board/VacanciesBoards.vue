@@ -9,6 +9,7 @@
       :type="Types.FROMBOTTOM"
       :easing="Easing.OUT"
       :timing="Timing.FAST"
+      @enter="enterAreas"
       class="vacancies-boards"
     >
       <li
@@ -99,7 +100,7 @@ import {
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
-import { compareDates } from '@app/shared/utilities';
+import { compareDates, dragWheel } from '@app/shared/utilities';
 import { type ITranslation } from '@app/shared/composables';
 import { keyUseTranslations } from '@app/shared/types/symbols';
 import { dependencies } from "@modules/core/dependencies";
@@ -124,8 +125,6 @@ const {
 const scrollIntoView = (): void => {
   const area = route?.params?.area;
   if (!area) return;
-  console.log(document
-    .getElementById(area as string))
   document
     .getElementById(area as string)
     ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
@@ -148,6 +147,18 @@ const moveApplicantToNewArea = ({ evt, area }: { evt: DragEvent; area: string })
     statusId: area,
   })
 };
-onMounted(() => scrollIntoView());
+
+const enterAreas = (area: Record<string, any>): void => {
+  // const rect = area.getBoundingClientRect()
+  const { el } = area
+  console.log((el as HTMLElement).getBoundingClientRect().width)
+  const draggableAera = document.querySelector('.vacancies-boards') as HTMLElement;
+  if(!draggableAera) return;
+  dragWheel({ target: draggableAera, amount: (el as HTMLElement).getBoundingClientRect().width})
+}
+
+onMounted(async () => {
+  scrollIntoView()
+});
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>

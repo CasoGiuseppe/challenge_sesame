@@ -43,3 +43,15 @@ export const compareDates = ({ input }: { input: string }) => {
   const today = new Date()
   return input === today.toLocaleDateString("es-ES")
 }
+
+export const dragWheel = ({ target, amount }: { target: HTMLElement, amount: number }) => {
+  target.addEventListener('wheel', (evt: any) => {
+    // const exludeTargets = document.querySelectorAll(exclude)
+    evt.preventDefault();
+    // if(![...exludeTargets].includes(evt.target)) {
+      target.scrollBy({
+        left: evt.deltaY < 0 ? (amount * -1) : amount
+      })
+    // };
+  })
+}
