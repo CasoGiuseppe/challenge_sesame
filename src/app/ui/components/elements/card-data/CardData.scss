@@ -47,7 +47,8 @@
         }
 
         &-dragged {
-            @apply opacity-50
+            @apply opacity-50;
+            @apply cursor-wait
         }
     }
 }

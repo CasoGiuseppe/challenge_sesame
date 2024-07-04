@@ -78,7 +78,7 @@
   </LoadingIs>
 </template>
 <script setup lang="ts">
-import { inject, onMounted, ref } from 'vue';
+import { inject, onMounted } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useRoute } from 'vue-router';
 import {
@@ -102,7 +102,7 @@ import { useApplicantStore } from '@modules/applicant/presentation/store/applica
 import { compareDates } from '@app/shared/utilities';
 import { type ITranslation } from '@app/shared/composables';
 import { keyUseTranslations } from '@app/shared/types/symbols';
-import { dependencies } from "@/modules/core/dependencies";
+import { dependencies } from "@modules/core/dependencies";
 
 const iconMapper = {
   [Areas.NEW]: 'IconInbox',
@@ -124,6 +124,8 @@ const {
 const scrollIntoView = (): void => {
   const area = route?.params?.area;
   if (!area) return;
+  console.log(document
+    .getElementById(area as string))
   document
     .getElementById(area as string)
     ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });

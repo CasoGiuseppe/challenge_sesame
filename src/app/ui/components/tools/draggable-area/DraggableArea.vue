@@ -3,6 +3,7 @@
     ref="dragArea"
     :area="area"
     :dragging="dragging"
+    :id="id"
     class="draggable-area"
   >
     <header
