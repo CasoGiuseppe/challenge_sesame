@@ -131,7 +131,7 @@
 }
 
 @mixin create-snap-scroll($direction: 'x') {
-    @apply  scroll-smooth snap-mandatory overflow-auto;
+    @apply  scroll-smooth snap-mandatory;
 
     @if $direction == 'y' {
         @apply snap-y overflow-y-auto overflow-x-hidden

@@ -1,6 +1,15 @@
 # screaming architecture
 
 
+| Packages       | Vesions |
+| -------------- | ------- |
+| Node           | 21.6.2  |
+| npm            | 10.2.4  |
+| vue            | ^3.4.15 |
+| pinia          | ^2.1.7  |
+| storybook/vue3 | ^8.1.6  |
+| tailwindcss    | ^3.4.4  |
+| i18n           | ^10.2.4 |
 
 # vue-base-architecture
 

@@ -1,7 +1,7 @@
 .base-tab {
     @apply inline-flex py-sm relative items-center justify-center gap-sm;
     @apply font-default text-neutral-300 text-md font-regular;
-    @apply rounded-xsm select-none;
+    @apply rounded-xsm select-none outline-none;
     @apply transition-all duration-[var(--animationTime)] ease-elastic;
     
     &:not([selected = true]) {
@@ -31,9 +31,11 @@
     }
 
     &:focus-visible {
-        &:not(:hover) {
-            @apply shadow-focus;
-            @apply font-bold text-variant-100;
+        &:not([selected=true]) {
+            &:not(:hover) {
+                @apply shadow-focus;
+                @apply font-bold text-variant-100;
+            }
         }
     }
 

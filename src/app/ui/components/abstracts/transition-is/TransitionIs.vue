@@ -109,8 +109,8 @@ const beforeEnter = (el: Element) => emits('before', { el })
 
 @include create-animation(
   $name: 'from-bottom',
-  $from: translateY(15%),
-  $to: translateY(15%),
+  $from: translateY(55%),
+  $to: translateY(55%),
   $duration: v-bind(timing),
   $duration-out: var(--outAnimationTime),
   $ease: v-bind(easing),
