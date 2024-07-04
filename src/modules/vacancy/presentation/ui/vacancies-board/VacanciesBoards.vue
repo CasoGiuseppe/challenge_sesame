@@ -100,7 +100,7 @@ import {
 import { Is } from '@app/ui/components/abstracts/component-is/types';
 import { useVacancyStore } from '@modules/vacancy/presentation/store/vacancy';
 import { useApplicantStore } from '@modules/applicant/presentation/store/applicant';
-import { compareDates, dragWheel } from '@app/shared/utilities';
+import { compareDates, scrollWithWheel } from '@app/shared/utilities';
 import { type ITranslation } from '@app/shared/composables';
 import { keyUseTranslations } from '@app/shared/types/symbols';
 import { dependencies } from "@modules/core/dependencies";
@@ -151,10 +151,9 @@ const moveApplicantToNewArea = ({ evt, area }: { evt: DragEvent; area: string })
 const enterAreas = (area: Record<string, any>): void => {
   // const rect = area.getBoundingClientRect()
   const { el } = area
-  console.log((el as HTMLElement).getBoundingClientRect().width)
   const draggableAera = document.querySelector('.vacancies-boards') as HTMLElement;
   if(!draggableAera) return;
-  dragWheel({ target: draggableAera, amount: (el as HTMLElement).getBoundingClientRect().width})
+  scrollWithWheel({ target: draggableAera, amount: (el as HTMLElement).getBoundingClientRect().width})
 }
 
 onMounted(async () => {

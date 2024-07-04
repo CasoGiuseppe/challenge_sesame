@@ -44,14 +44,17 @@ export const compareDates = ({ input }: { input: string }) => {
   return input === today.toLocaleDateString("es-ES")
 }
 
-export const dragWheel = ({ target, amount }: { target: HTMLElement, amount: number }) => {
+/**
+ * Adds a 'wheel' event listener to the specified target element and scrolls it horizontally based on the mouse wheel movement.
+ *
+ * @param {HTMLElement} target - The target element to which the event listener will be added.
+ * @param {number} amount - The amount of pixels to scroll horizontally for each wheel event.
+ */
+export const scrollWithWheel = ({ target, amount }: { target: HTMLElement, amount: number }): void => {
   target.addEventListener('wheel', (evt: any) => {
-    // const exludeTargets = document.querySelectorAll(exclude)
     evt.preventDefault();
-    // if(![...exludeTargets].includes(evt.target)) {
       target.scrollBy({
         left: evt.deltaY < 0 ? (amount * -1) : amount
       })
-    // };
   })
 }
