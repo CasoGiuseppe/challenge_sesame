@@ -15,7 +15,7 @@
     </section>
 </template>
 <script setup lang="ts">
-import useTranslation from '@app/shared/composables/useTranslation';
+import { useTranslation } from '@app/shared/composables';
 const { translate, setNewTranslationLocale } = useTranslation();
 const setLocale = (evt: any) => {  
     const { target: { value }} = evt || {};  

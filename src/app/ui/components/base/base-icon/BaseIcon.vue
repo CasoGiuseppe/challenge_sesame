@@ -14,7 +14,7 @@ import { type PropType } from 'vue';
 import type { UniqueId } from '@app/ui/types';
 import { Sizes } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';
-import useAsyncComponent from '@app/shared/composables/useAsyncComponent';
+import { useAsyncComponent } from '@app/shared/composables';
 
 const { create } = useAsyncComponent();
 

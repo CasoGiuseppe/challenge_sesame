@@ -1,15 +1,10 @@
-import { loadExternalsResources, type DynamicImportPath } from "@app/router/utilties";
+import * as esApplicantLocale from '@/modules/applicant/presentation/translations/locales/es.json'
+import * as esVacancyLocale from '@/modules/vacancy/presentation/translations/locales/es.json'
 
-const translations = <DynamicImportPath[]>[
-  { path: import('@/modules/vacancy/presentation/translations/locales/es.json') },
-  { path: import('@/modules/applicant/presentation/translations/locales/es.json') }
-]
-
-export default async () => {
-  return {
-    "RECRUITMENT": {
-      "area": "Reclutamiento",
-      ...(await loadExternalsResources({ collection: translations })).reduce((obj, item) => Object.assign(obj, item), {}),
-    },
+export const translation = {
+  RECRUITMENT: {
+    area: 'Reclutamiento',
+    ...esApplicantLocale,
+    ...esVacancyLocale
   }
-}
+};

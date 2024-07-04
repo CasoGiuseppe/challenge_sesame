@@ -1,6 +1,8 @@
 import { createI18n } from 'vue-i18n';
-import createTranslationEs from './locales/es';
-import createTranslationEn from './locales/en';
+import { es } from './locales/es';
+import { en } from './locales/en';
+import { translation as esRecruitment } from './recruitment/es';
+// import { translation as enRecruitment } from './recruitment/en';
 
 export const i18n = await createI18n({
     locale: import.meta.env.VITE_APP_LOCALE,
@@ -12,8 +14,9 @@ export const i18n = await createI18n({
     silentTranslationWarn: false,
     fallbackWarn: false,
     messages: {
-      es: await createTranslationEs(),
-      en: await createTranslationEn()
+      es: { ...es },
+      en: { ...en }
+      
     }
   });
 
