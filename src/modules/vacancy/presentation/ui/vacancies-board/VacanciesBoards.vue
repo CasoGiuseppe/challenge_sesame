@@ -6,7 +6,7 @@
     <TransitionIs
       group
       tag="ul"
-      :type="Types.FROMBOTTOM"
+      :type="Types.FROMRIGHT "
       :easing="Easing.OUT"
       :timing="Timing.FAST"
       @enter="enterAreas"
@@ -122,9 +122,7 @@ const {
   returnApplicantById
 } = storeToRefs(useApplicantStore);
 
-const scrollIntoView = (): void => {
-  const area = route?.params?.area;
-  if (!area) return;
+const scrollIntoView = (area: string): void => {
   document
     .getElementById(area as string)
     ?.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
@@ -149,7 +147,6 @@ const moveApplicantToNewArea = ({ evt, area }: { evt: DragEvent; area: string })
 };
 
 const enterAreas = (area: Record<string, any>): void => {
-  // const rect = area.getBoundingClientRect()
   const { el } = area
   const draggableAera = document.querySelector('.vacancies-boards') as HTMLElement;
   if(!draggableAera) return;
@@ -157,7 +154,9 @@ const enterAreas = (area: Record<string, any>): void => {
 }
 
 onMounted(async () => {
-  scrollIntoView()
+  const area = route?.params?.area;
+  if (!area) return;
+  scrollIntoView(area as string)
 });
 </script>
 <style src="./VacanciesBoards.scss" lang="scss" scoped></style>

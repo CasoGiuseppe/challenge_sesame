@@ -17,7 +17,7 @@
   </component>
 </template>
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, type PropType } from 'vue';
+import { ref, onMounted, type PropType } from 'vue';
 import type { UniqueId } from '@app/ui/types';
 import { Tags, Types, type IContdown } from './types';
 import { ensureValueCollectionExists } from '@app/ui/validators/useCustomValidator';

@@ -10,6 +10,7 @@
 | pinia          | ^2.1.7  |
 | storybook/vue3 | ^8.1.6  |
 | tailwindcss    | ^3.4.4  |
+| i18n           | ^10.2.4 |
 
 # Project Setup
 ```
