@@ -22,7 +22,7 @@ export class VacancyMapper {
         name: raw.name,
         companyId: raw.companyId,
       },
-      id: new UniqueEntityID(raw.id),
+      id: new UniqueEntityID(),
     })
   }
 }
