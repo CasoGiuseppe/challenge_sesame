@@ -22,7 +22,5 @@ export default function useIntersectionObserver({
         return observer;
     }
 
-    return {
-        createObserver
-    }
+    return { createObserver }
 };
